@@ -1,0 +1,447 @@
+/* 
+# School of Communication Design
+### Base
+*/
+@import 'libs/grids';
+@import 'breakpoint';
+@import 'utils';
+@import 'vars';
+
+@import 'compass/reset';
+@import 'compass/css3';
+@import 'formalize'; // Edited Version
+
+@import 'layout';
+
+@import 'modules';
+
+/*
+## Headings
+
+```
+<h1 class="h1">Heading One</h1>
+<h2 class="h2">Heading Two</h2>
+<h3 class="h3">Heading Three</h3>
+<h4 class="h4">Heading Four</h4>
+<h5 class="h5">Heading Five</h5>
+<h6 class="h6">Heading Six</h6>
+```
+*/
+
+// Base styles
+html, body{
+	@include fontstack_regular;
+	line-height: 1.16;
+	margin: 0 auto;
+	height: 100%;
+	background-color: $colour_background;
+}
+
+img {
+	max-width: 100%;
+	display: block;
+	line-height: 0;
+}
+
+
+/* Typography */
+
+.h1 {
+	@include fontstack_bold;
+	@include font-size(1.85);
+	margin: .3em auto;
+	border-top: .1rem solid;
+	display: inline-block;
+	padding: .2em .4em;
+	line-height: 1;
+	text-align: center;
+}
+
+.h2 {
+	@include fontstack_bold;
+	@include font-size(1.125);
+	margin: 0;
+}
+	.h2--ruled {
+		border-top: 1px solid rgba(255,255,255,0.5);
+		padding: .75em 0;
+	}
+
+
+.h3 {
+	@include fontstack_light;
+	@include font-size(1.125);
+}
+	.h3--ruled {
+		border-top: 1px solid rgba(255,255,255,0.5);
+		padding: .75em 0;
+	}
+
+.h4 {
+	@include fontstack_bold;
+	@include font-size(.75);
+	margin-bottom: 1em;
+}
+.h5 {
+		
+}
+.h6 {
+	
+}
+
+p {
+	@include font-size(1);
+	margin: 0 0 1em;
+}
+
+a {
+	color: $colour_link;
+	text-decoration: none;
+	
+	&:after {
+		content:' ';
+		display: inline-block;
+		width: .75em;
+		height: 1em;
+		position: relative;
+		top: .3em;
+		background: top left #fff url('../svg/external.svg') no-repeat;
+		background-size: .65em;
+		margin-left: .1em;
+	}
+
+	/* Internal links should not have outbound link graphic */
+	&[href*="socd.io"]:after,
+	&[href*="#"]:after,
+	&[href*="gdnm.org"]:after {
+		display: none;
+	}
+
+	&[href*="#"]:after {
+		text-decoration: none;
+	}
+
+}
+
+/**
+ * Form Elements
+ */
+
+input {
+	border: 2px solid $colour_dark;
+	background: red;
+}
+
+/*
+ ## Lists
+```
+<ul>
+	<li>List item</li>
+	<li>Another list item</li>
+	<li>Another list item, with sub items (unordered)
+		<ul>
+			<li>Sub list item</li>
+			<li>Another sub list item</li>
+		</ul>
+	</li>
+	<li>List item with sub items (ordered)
+		<ol>
+			<li>Sub item A</li>
+			<li>Sub item B</li>
+		</ol>
+	</li>
+</ul>
+```
+
+```
+<ol>
+	<li>List item</li>
+	<li>Another list item</li>
+	<li>Another list item, with sub items (unordered)
+		<ul>
+			<li>Sub list item</li>
+			<li>Another sub list item</li>
+		</ul>
+	</li>
+	<li>List item with sub items (ordered)
+		<ol>
+			<li>Sub item A</li>
+			<li>Sub item B</li>
+		</ol>
+	</li>
+</ol>
+```
+
+*/
+.ol,
+.wysiwyg ol,
+.ul,
+.wysiwyg ul {
+	list-style: none;
+	padding: 0;
+	line-height: 1.4;
+	
+	li {
+		position: relative;
+		padding-left: 1.2em;
+
+		&:before {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		ol li:before {
+			margin-right: .5em;
+		}
+	}
+
+	ol, ul {
+		padding-left: 1em;
+	}
+}
+
+.ul,
+.wysiwyg ul {
+	li:before {
+		content: "\2014  ";
+	}
+
+	ul {
+		li:before {
+			content: "\2013  ";
+		}
+	}
+}
+
+.ol,
+.wysiwyg ol {
+	counter-reset: li;
+
+	& > li:before {
+		content: counter(li);
+		counter-increment: li;
+		display: inline-block;
+		margin-right: 1em;
+		@include fontstack_bold;
+	}
+
+	ol {
+		padding-left: 1em;
+	}
+}
+
+/**
+ * Used on navigation listing
+ */
+.listing__navigation {
+
+	&>li:before {
+		content: "> " !important;
+	}
+
+	a {
+		color: inherit;
+	}
+}
+
+/*
+### Form Elements
+
+#### Buttons
+
+```
+<div>
+	<a href="#" class="btn">Default Button</a>
+	<a href="#" class="btn btn-primary">Primary Button</a>
+	<a href="#" class="btn btn-info">Info Button</a>
+	<a href="#" class="btn btn-danger">Danger Button</a>
+	<a href="#" class="btn btn-success">Success Button</a>			
+	<a href="#" class="btn btn-warning">Warning Button</a>			
+	<a href="#" class="btn btn-inverse">Inverse Button</a>
+	<a href="#" class="btn disabled">Disabled Button</a>
+</div>
+```
+
+ */
+
+input[type="submit"],
+.btn {
+	background: none;
+	@include border-radius(0);
+	border: 1px solid $colour_light;
+	color: $colour_dark;
+	display: inline-block;
+	@include fontstack_regular;
+	@include font-size(1);
+	letter-spacing: 0;
+	margin: .25em .25em .25em 0;
+	padding: .85em 2em;
+	text-decoration: none;
+	text-transform: capitalize;
+	@include text-shadow(none);
+
+	
+	@include transition(all .15s ease-in-out);
+
+	&:hover {
+		background: #fff;
+		border-color: $colour_dark;
+		color: $colour_dark;
+	}
+
+	&:after {
+		display: none;
+	}
+
+	&.disabled,
+	&[disabled] {
+		background: $colour_light;
+		color: darken($colour_light, 15);
+		&:hover {
+			border-color: $colour_light;
+		}
+	}
+}
+
+	.btn-primary {
+		background: $colour_light;
+	}
+
+	input[type="submit"],
+	.btn-submit {
+		background: $colour_dark;
+		color: #fff;
+	}
+
+
+	.input-labelled {
+		position: relative;
+		
+		label {
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 1;
+			padding: .95em 1.2em;
+		}
+
+		input {
+			position: relative;
+			z-index: 2;
+			background-color: transparent;
+
+			&:focus {
+				background-color: #fff;
+			}
+		}
+	}
+
+/*
+## Inputs
+
+```
+<div>
+	<fieldset>
+		<legend>Legend</legend>
+		<div>
+			<input type="text" value="" placeholder="Inactive"/>
+		</div>
+		<div>
+			<input type="text" value="Error"/>
+		</div>
+		<div>
+			<input type="text" value="Success"/>
+		</div>
+		<div>
+			<input type="text" value="Disabled" disabled="disabled"/>
+		</div>
+		<div>
+
+		</div>
+		<div>
+			<label for="select">Select</label>
+			<select value="pick" class="span3" tabindex="1" name="select">
+				<option value="0">Choose Option</option>
+				<option value="1">Option 1</option>
+				<option value="2">Option 2</option>
+				<option value="3">Option 3</option>
+				<option value="X-Men" selected="selected">Option 4</option>
+				<option value="Crocodile">Option 5</option>
+			</select>
+		</div>
+
+		<div>
+			<textarea name="textarea" id="textarea" cols="30" rows="10"></textarea>
+		</div>
+		<div>
+			<input type="submit" value="Submit"/>
+		</div>
+		<div>
+			<input type="submit" value="Unsubmittable" disabled="disabled"/>
+		</div>
+	</fieldset>
+</div>
+```
+ */
+
+/* 
+
+#### Search Labels
+```
+<div class="row input-labelled">
+	<label for="search">Search</label>
+	<input type="search" value=""name="search"/>
+</div>
+```
+
+
+```
+<div class="row input-labelled">
+	<label for="date">Date</label>
+	<input type="date" value=""name="date"/>
+</div>
+```
+
+ */
+
+.input-labelled {
+	position: relative;
+	
+	label {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		padding: .95em 1.2em;
+	}
+
+	input {
+		position: relative;
+		z-index: 2;
+		background-color: transparent;
+
+		&:focus {
+			background-color: #fff;
+		}
+	}
+}
+
+// Miscelleanous
+@import 'component';
+
+// Block colours
+@import 'colours';
+
+// Main menu
+@import 'main-navigation';
+
+// Stream
+@import 'stream';
+
+// Build Components
+@import 'build';
+
+
+// Homepage
+@import 'homepage';

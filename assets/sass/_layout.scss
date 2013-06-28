@@ -1,0 +1,125 @@
+/*------------------------------------*\
+    $Layouts
+\*------------------------------------*/
+/**
+ * Built off of the excellent CSS Wizardy grid system [libs/_grids.scss]
+ * as we're only using a small subsection of it's functionality we use
+ * SASS silent classes to pull through required behaviour. 
+ */
+
+/**
+ * Container for the site's content, there may be multiple instances on this
+ * on the page as it's main use is for centering content
+ */
+.site-wrap {
+	margin: 0 auto;
+	
+	@include respond-min($breakpoint_palm) {
+		max-width: 90%;
+	}
+}
+
+/**
+ * Single use page container for the main bulk of the content, this forces
+ * the footer to appear at the bottom of the page
+ */
+.site-main {
+	min-height: 100%;
+}
+
+.gw {
+	@extend %grid;
+}
+	.gw--rtl {
+		@extend %grid--rev
+	}
+
+.col {
+	@extend %grid__item;
+}
+
+.col-half {
+	@extend %grid__item;
+	@extend %desk--one-half;
+}
+
+.col-third,
+.col-one-third {
+	@extend %grid__item;
+	@extend %desk--one-third;
+}
+.col-two-thirds {
+	@extend %grid__item;
+	@extend %desk--two-thirds;
+}
+
+.col-one-quarter {
+	@extend %grid__item;
+	@extend %desk--one-quarter;
+}
+.col-three-quarters {
+	@extend %grid__item;
+	@extend %desk--three-quarters;
+}
+
+.col-one-fifth {
+	@extend %lap--one-fifth;
+	@extend %desk--one-fifth;
+}
+.col-four-fifths {
+	@extend %lap--four-fifths;
+	@extend %desk--four-fifths;
+}
+
+.col-sixth,
+.col-one-sixth {
+	@extend %grid__item;
+	@extend %desk--one-sixth;
+}
+
+.col-five-sixths {
+	@extend %grid__item;
+	@extend %desk--five-sixths;
+}
+
+/**
+ * Off grid units
+ *
+ * Used to handle components that aren't specifically addressed
+ * with the main columns.
+ */
+
+	/**
+	 * Small sidebar 
+	 */
+	.col--side {
+		@extend %grid__item;
+		width: 22%
+	}
+
+	/**
+	 * Main container for stream content used
+	 * on noticeboards and sketchbooks
+	 */
+	.col--stream {
+		@extend %grid__item;
+		width: 100% - (22 * 2)
+	}
+	
+	/**
+	 * Main content block, used on the single page template.
+	 */
+	.col--main {
+		width: 39%;
+	}
+
+.cell {
+	padding: 1.4rem;
+}
+
+/* Push */
+.push--col-one-sixth {
+	margin-left: (100% / 6);
+}
+
+/* Pull */

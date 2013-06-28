@@ -1,0 +1,46 @@
+/**
+ * Header
+ */
+
+.header {
+	text-align: center;
+	padding: 4em 0; 
+}
+	.header__title {
+		text-align: left;
+	}
+
+
+
+/**
+ * Footer
+ *
+ * Global
+ */
+
+.footer {
+	background: $colour_background_dark;
+	color: #fff;	
+	padding-top: 1rem;
+
+	li {
+		font-size: .75rem;
+	}
+
+	@include breakpoint($breakpoint_palm_max) {
+		padding: 1rem;
+	}
+}
+
+	.footer--menu {
+		margin: .5rem 0 1rem 0;
+		
+		@include breakpoint($breakpoint_palm) {
+			@include column-count(3);
+		} 
+
+		a {
+			color: #fff;
+			text-decoration: none;
+		}
+	}

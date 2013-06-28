@@ -1,0 +1,30 @@
+/**
+ * Components related exclusively to the site build
+ */
+
+.populate {
+	position: fixed;
+	bottom: 1em;
+	right: 1em;
+	width: 33%;
+	display: none;
+
+	form {
+		background: #fff;
+		border: $colour_dark 1px solid;
+		padding: 1rem;
+	}
+
+	select {
+		display: block;
+		width: 100%;
+	}
+}
+
+/**
+ * Debugging
+ */
+
+.debug *[class*="col"] {
+	outline: 1px solid red;
+}

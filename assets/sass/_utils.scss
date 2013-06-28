@@ -1,0 +1,43 @@
+/**
+ * Takes a value provided as decimal to be used
+ * in declaring the font-size in rem units. Then converted
+ * back into a fallback px size for browsers that don't support the unit.
+ * 
+ */
+@mixin rem( $property, $value: 1.6) {
+	#{$property}: ($value * 10) + px;
+	#{$property}: $value + rem;
+}
+
+@mixin font-size( $size_value: 1.6 ) {
+	@include rem( "font-size", $size_value);
+}
+
+$fix-mqs: false;
+@mixin respond-min($width) {
+	//
+	@if $fix-mqs {
+		@if $fix-mqs >= $width {
+			@content;
+		}
+	}
+	@else {
+		// Otherwise, output it using a regular media query
+		@media screen and (min-width: $width) {
+			@content;
+		}
+	}
+}
+
+@mixin respond-max($width) {
+	@if $fix-mqs {
+		@if $fix-mqs <= $width {
+			@content;
+		}
+	}
+	@else {
+		@media screen and (max-width: $width) {
+			@content;
+		}
+	}
+}
