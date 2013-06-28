@@ -1,0 +1,23 @@
+{
+  "name": "socd",
+  "version": "0.0.1",
+  "description": "\"Reference for mark up and styling patterns used across the SOCD Network\"",
+  "main": "Gruntfile.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gdnm/new_base.git"
+  },
+  "author": "",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "gitHead": "8462263b66293c8d418447f881b642920d5e5559",
+  "bugs": {
+    "url": "https://github.com/gdnm/new_base/issues"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-compass": "~0.2.0",
+    "grunt-contrib-watch": "~0.4.4",
+    "grunt-sftp-deploy": "0.0.8"
+  }
+}
