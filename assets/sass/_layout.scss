@@ -13,10 +13,8 @@
  */
 .site-wrap {
 	margin: 0 auto;
-	
-	@include respond-min($breakpoint_palm) {
-		max-width: 90%;
-	}
+	max-width: 64em;
+	min-height: 100%;
 }
 
 /**
@@ -89,6 +87,7 @@
  * with the main columns.
  */
 
+
 	/**
 	 * Small sidebar 
 	 */
@@ -115,6 +114,7 @@
 
 .cell {
 	padding: 1.4rem;
+	text-align: left;
 }
 
 /* Push */

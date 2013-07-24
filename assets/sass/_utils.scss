@@ -41,3 +41,7 @@ $fix-mqs: false;
 		}
 	}
 }
+
+@function size_in_context( $size, $context ) {
+	@return ($size / $context) * 100%;
+}
