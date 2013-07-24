@@ -45,3 +45,7 @@ $fix-mqs: false;
 @function size_in_context( $size, $context ) {
 	@return ($size / $context) * 100%;
 }
+
+@mixin col_width($no) {
+	width: $no * $size_grid_percentage;
+}

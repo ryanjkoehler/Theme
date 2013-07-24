@@ -66,6 +66,9 @@
 .colour--light-grey {
 	background-color: $colour_light;
 
+	.h2--ruled {
+		border-color: darken($colour_light, 20);
+	}
 
 	a {
 		color: $colour_blue;
