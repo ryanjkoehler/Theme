@@ -105,4 +105,4 @@ get_header(); ?>
 	</div><!-- 
 	-->
 </div><!-- .gw -->
-<?php get_footer(); ?>
+<?php get_footer();
