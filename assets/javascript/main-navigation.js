@@ -6,7 +6,6 @@
 	 *
 	 */
 
-
 	var $menuSections = $('.main-navigation__menu-item--breadcrumb');
 	var currVis = 0;
 

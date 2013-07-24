@@ -2,6 +2,12 @@
 	font-family: 'Theinhardt-Regular', Arial, "Liberation Sans", FreeSans, sans-serif;
 }
 
+@mixin fontstack_medium {
+	font-family: 'Theinhardt-Medium', Arial, "Liberation Sans", FreeSans, sans-serif;
+	font-style: normal;
+	font-weight: normal;
+}
+
 @mixin fontstack_bold {
 	font-family: 'Theinhardt-Bold', Arial, "Liberation Sans", FreeSans, sans-serif;
 	font-style: normal;

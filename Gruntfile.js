@@ -27,14 +27,14 @@ module.exports = function(grunt) {
             port: 22,
             authKey: "wpengine-unknowndomain"
           },
-          src: "/Users/Luke/Documents/Work/work13/013 SOCD:GDNM/03 Build/wp-content/themes/socd",
-          dest: "/wp-content/themes/socd",
+          src: "./",
+          dest: "./",
           exclusions: [
-            '/Users/Luke/Documents/Work/work13/013 SOCD:GDNM/03 Build/wp-content/themes/socd/.DS_Store',
-            '/Users/Luke/Documents/Work/work13/013 SOCD:GDNM/03 Build/wp-content/themes/socd/.git',
-            '/Users/Luke/Documents/Work/work13/013 SOCD:GDNM/03 Build/wp-content/themes/socd/node_modules',
-            '/Users/Luke/Documents/Work/work13/013 SOCD:GDNM/03 Build/wp-content/themes/socd/.ftppass',
-            '/Users/Luke/Documents/Work/work13/013 SOCD:GDNM/03 Build/wp-content/themes/socd/assets/.sass-cache',
+            './.DS_Store',
+            './.git',
+            './node_modules',
+            './.ftppass',
+            './assets/.sass-cache',
           ]
       }
     }

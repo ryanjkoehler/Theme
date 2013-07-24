@@ -1,34 +1,63 @@
+// .site-wrap,
+// .avoid-menu{
+// 	-webkit-transform: translateX( 16rem );
+// }
+
 .main-navigation-container{
-	width: 100%;
-	position: relative;
+	*{
+		@include box-sizing( border-box );
+	}
+	// -webkit-transform: translateX( -16rem );
+	height: 100%;
+	min-height: 100%;
 	.main-navigation-container__fixed-size{
-		z-index: 10;
+		left: 0;
+		min-height: 100%;
 		position: absolute;
 		top: 0;
-		width: 100%;
+		@include rem( width, 14 );
 	}
 	.main-navigation-container__openable{
-		z-index: 9;
-		position: absolute;
+		display: none;
+		min-height: 100%;
+		position: fixed;
+		right: 0;
 		top: 0;
 		width: 100%;
+		z-index: 10;
+	}
+	@include breakpoint($breakpoint_palm) {
+		position: relative;
+		width: 100%;
+		.main-navigation-container__fixed-size{
+			z-index: 10;
+			position: absolute;
+			top: 0;
+			width: 100%;
+		}
+		.main-navigation-container__openable{
+			z-index: 9;
+			position: absolute;
+			top: 0;
+			width: 100%;
+		}
 	}
 }
 
 //block
 .main-navigation{
-	$menuHeight: 2;
- 	height: $menuHeight + em;
+	background: $colour_background_dark;
+	color: $colour_background;
+	@include rem( 'line-height', 1.4 );
+	@include rem( 'padding-top', .5 );
+	@include rem( 'padding-bottom', .5 );
 	width: 100%;
-	max-width: 100%;
-
-	display: -webkit-box;
-	display: -moz-box;
-	display: -ms-flexbox;
-	display: -webkit-flex;
-	display: flex; 
-	justify-content: center;
-
+	a{
+		color: $colour_background;
+		&:hover{
+			color: $colour_link;
+		}
+	}
 	// remove external or any link iconography
 	// not relevant in menu
 	a:after{
@@ -36,143 +65,32 @@
 		display: none;
 	}	
 	
-	//section
 	.main-navigation__menu-item{
-		@include box-sizing( border-box );
-		height: 100%;
-		white-space: nowrap;
-		//contents
-		.title{				
-			line-height: $menuHeight + em;
-			padding: 0 .5em;			
-		}
-		a{
-			color: $colour_white;
-			text-decoration: none;
-		}
-			
-		//modifiers
-		&.main-navigation__menu-item--breadcrumb{
-			//lighten breadcrumbs proportionally as we go deeper
-			@for $i from 1 through 5 {
-				&:nth-of-type( #{$i} ){
-					background: lighten( $colour_grey, percentage(($i*20)/100));
-					.drop{
-						background: lighten( $colour_grey, percentage(($i*20)/100));
-					}
-				}
-			}
-		}
-		&.main-navigation__menu-item--flexible{
-			-webkit-box-flex: 1;
-			-moz-box-flex: 1;
-			max-width: 100%;
-			-webkit-flex: 1;
-			-ms-flex: 1;
-			flex: 1;
-			padding: 0;
-		}
-		&.main-navigation__menu-item--dropdown{
-			overflow: hidden;
-			max-height: $menuHeight + em;
-			min-height: 0;
-			position: relative;
-			//contents
-			.title:after{											
-				line-height: $menuHeight + em;
-				content: '\25BE';
-				color: $colour_white;
-				margin-left: .5em;
-			}
-			.drop{		
-				@include box-sizing( border-box );
-				padding: 0 0 .5em 0;
-				line-height: 1.8em;	
-				position: absolute;
-				min-width: 100%;
-				.drop__option{
-					padding: 0 1.5em 0 .5em;
-					&:hover{
-						background: rgba( 255, 255, 255, 0.2 );
-					}
-				}
-			}
-			//inteaction
-			&.open{					
-				min-height: $menuHeight + em;
-				height: auto;
-				max-height: 300px;
-				overflow: visible;
-			}	
-		}	
+		@include fontstack_light;
+		@include rem( 'padding-left', 1 );
+		@include rem( 'padding-right', 1 );
+		@include rem( 'padding-top', .5 );
+		@include rem( 'padding-bottom', 1 );
 
-		&.main-navigation__menu-item--button{
-			width: $menuHeight + em;
-			height: $menuHeight + em;
-			text-align: center;
-			background-color: $colour_blue;
-			color: $colour_white;
-			a{
-				padding: 0;
-				width: $menuHeight + em;
-				height: $menuHeight + em;
-				&:hover{
-					background: rgba( 255,255,255, 0.1 );
-				}			
-			}
-			span{	
-				position: relative;
-				width: $menuHeight + em;
-				height: $menuHeight + em;
-				display: block;	
-				@include transition( transform .2s ease-in-out );
-			}			
-			//interaction
-			.close{	
-				span{					
-					@include transform( rotate( 45deg ) );
-				}
-			}
+		.title{
+			@include fontstack_medium;	
 		}
-
-		//specific elements
-		&.main-navigation__menu-item--profile{
-			padding: 0;
-			a{
-				color: $colour_grey;
-			}
-			.tab{
-				background: $colour_yellow;					
-				.title{
-					@include inline-block;
-					vertical-align: top;
-					background: $colour_yellow;
-					padding: 0 .5em 0 0;
-					&:after{
-						color: $colour_black;
-					}
-				}
-				img{
-					@include inline-block;
-					margin-right: 0.5rem;
-					width: $menuHeight + em;
-					height: $menuHeight + em;
-					background-color: red;
-					vertical-align: top;
-				}
-			}
-			.drop{
-				background: $colour_yellow;
-				.drop__option{					
-					&:hover{
-						background: darken( $colour_yellow, 5% );
-					}
-				}
-			}
+		.drop{
+			margin-top: .4em;
 		}
 	}
-	.main-navigation__quickpost{
-		top: $menuHeight + em;
+	.main-navigation__menu-item--root{
+		.drop{
+			display: none;
+		}
+	}
+
+	.main-navigation__menu-item--search{
+		left: 0;
+		position: fixed;
+		top: 0;		
+		width: 100%;
+		padding: 0;
 	}
 }
 

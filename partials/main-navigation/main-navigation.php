@@ -1,6 +1,6 @@
 <nav class="main-navigation-container">
 	<ul class="main-navigation-container__fixed-size main-navigation no-style">
-		<li class="main-navigation__menu-item main-navigation__menu-item--dropdown main-navigation__menu-item--breadcrumb">
+		<li class="main-navigation__menu-item main-navigation__menu-item--dropdown main-navigation__menu-item--breadcrumb main-navigation__menu-item--root">
 			<div class="tab">
 				<h1 class="title"><a href="/">SOCD.io</a></h1>
 			</div>
@@ -37,7 +37,7 @@
 	 --><li class="main-navigation__menu-item main-navigation__menu-item--dropdown main-navigation__menu-item--breadcrumb">
 			<h1 class="title"><a href="">Course Gallery</a></h1>
 		</li><!--
-	 --><li class="site-search main-navigation__menu-item main-navigation__menu-item--flexible">
+	 --><li class="site-search main-navigation__menu-item main-navigation__menu-item--flexible main-navigation__menu-item--search avoid-menu">
 			<input class="site-search__input" type="text" placeholder="Search">
 		</li><!--
 	 --><li class="main-navigation__menu-item main-navigation__menu-item--dropdown main-navigation__menu-item--profile">
