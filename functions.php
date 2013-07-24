@@ -8,7 +8,16 @@
  */
 
 
-require( get_stylesheet_directory() . '/inc/extras.php' );
+
+function socd_setup() {
+	require( get_stylesheet_directory() . '/inc/customizer.php' );
+	require( get_stylesheet_directory() . '/inc/extras.php' );
+	require( get_stylesheet_directory() . '/inc/template-tags.php' );
+
+	add_theme_support( 'post-thumbnails', 'customizer' );
+}
+
+add_action('init', 'socd_setup');
 
 /**
  * Manually hook in the webink stylesheet as it uses some characters '&' that 
