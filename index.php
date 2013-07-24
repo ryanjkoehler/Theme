@@ -1,12 +1,16 @@
 <?php
 /**
+ * 
  * @package SOCD
  */
 
 get_header(); ?>
-
 <section class="gw">
-	<section class="col--side">
+	<header class="header">
+		<h1 class="h1 site--title"><?php bloginfo('name'); ?></h1>
+		<h2 class="blog--title"><?php socdinfo('blog_type'); ?></h2>
+	</header><!-- .header -->
+	<section class="col--side col--side__left">
 		<div class="cell colour--blue">
 			<h2 class="h2 h2--ruled">About</h2>
 			<?php bloginfo( 'description' ); ?>
@@ -22,7 +26,7 @@ get_header(); ?>
 			</div>
 		</div>
 	</section><!--
-	--><aside class="sidebar col--side">
+	--><aside class="sidebar col--side col--side__right">
 		<div class="cell colour--light-grey">
 			
 			<?php if ( dynamic_sidebar( 'blog_sidebar' ) ) : else : endif; ?>

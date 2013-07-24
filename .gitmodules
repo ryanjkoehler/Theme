@@ -1,0 +1,3 @@
+[submodule "assets/javascript/libs/fixie"]
+	path = assets/javascript/libs/fixie
+	url = git@github.com:socd-io/fixie.git

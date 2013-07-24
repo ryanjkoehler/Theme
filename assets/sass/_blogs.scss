@@ -1,0 +1,19 @@
+/**
+ *
+ * 
+ */
+
+.template__noticeboard {
+	
+	.col--side__left  {
+		@include col_width(3);
+	}
+
+	.col--stream {
+		@include col_width(9);
+	}
+
+	.col--side__right {
+		@include col_width(6);
+	}
+}

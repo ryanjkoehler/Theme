@@ -8,7 +8,16 @@
  */
 
 
-require( get_stylesheet_directory() . '/inc/extras.php' );
+
+function socd_setup() {
+	require( get_stylesheet_directory() . '/inc/customizer.php' );
+	require( get_stylesheet_directory() . '/inc/extras.php' );
+	require( get_stylesheet_directory() . '/inc/template-tags.php' );
+
+	add_theme_support( 'post-thumbnails', 'customizer' );
+}
+
+add_action('init', 'socd_setup');
 
 /**
  * Manually hook in the webink stylesheet as it uses some characters '&' that 
@@ -54,6 +63,10 @@ function socd_widets_init() {
 	register_sidebar( array(
 		'name' => 'Blog sidebar',
 		'id'   => 'blog_sidebar',
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="h2 h2--ruled">',
+		'after_title'  => '</h2>'
 	) );
 }
 

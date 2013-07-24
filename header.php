@@ -20,7 +20,3 @@
 <section class="site-wrap h-animate-transform">
 	
 <?php require 'partials/main-navigation/main-navigation.php'; ?>
-
-<header class="header">
-	<h1 class="h1 header__title">School of Communication&nbsp;Design</h1>
-</header>
