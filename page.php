@@ -6,11 +6,24 @@
  get_header(); ?>
 <div class="gw">
 	<?php while ( have_posts() ) : the_post(); ?>
-		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-			<h1><?php the_title(); ?></h1>
-			<?php the_content(); ?>
+		<article id="post-<?php the_ID(); ?>" <?php post_class("page h-center"); ?>>
 
-			<?php 
+			<header class="header">
+				<h1 class="h1 header__title">
+					<?php the_title(); ?>
+				</h1><!-- .h1.header__title -->
+			</header><!-- .header -->
+
+			<figure class="page--thumbnail">
+				<?php the_post_thumbnail( 'large' ); ?>
+			</figure>
+
+			<div class="page--main">
+				<div class="cell">
+					<?php the_content(); ?>
+				</div>
+			</div><!-- .col--page --><?php 
+
 			/**
 			 * Subpages menu
 			 */
@@ -20,16 +33,15 @@
 				'echo'	   => 0
 			) );
 
-			if ( $subpages ) : ?>
-			<div class="col--side">
-				<div class="cell colour--blue">
-					<?php echo $subpages ?>
-				</div>
+			if ( $subpages ) :
+
+				?><div class="page--aside">
+					<div class="cell colour--blue">
+						<?php echo $subpages ?>
+					</div>
+				</div><!-- .page--aside -->
 			<?php endif; ?>
-			<footer>
-				<?php edit_post_link( __('Edit', 'socd') ); ?>
-			</footer>
-		</article>
+		</article><!-- #post<?php the_ID(); ?> -->
 	<?php endwhile; ?>
 </div>
 <?php get_footer(); ?>
