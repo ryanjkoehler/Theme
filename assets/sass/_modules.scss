@@ -4,7 +4,8 @@
 
 .header {
 	text-align: center;
-	padding: 4em 0; 
+	padding: 4em 0;
+	height: $height_header; 
 }
 	.header__title {
 		text-align: left;
@@ -22,6 +23,8 @@
 	background: $colour_background_dark;
 	color: #fff;	
 	padding-top: 1rem;
+	position: relative;
+	z-index: 1;
 
 	li {
 		font-size: .75rem;

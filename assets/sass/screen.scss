@@ -32,6 +32,10 @@
 */
 
 // Base styles
+* {
+	@include box-sizing(border-box);
+}
+
 html, body{
 	@include fontstack_regular;
 	line-height: 1.16;
@@ -378,6 +382,9 @@ input[type="submit"],
 
 // Post
 @import "post";
+
+// Page
+@import "page";
 
 // Homepage
 @import "homepage";
