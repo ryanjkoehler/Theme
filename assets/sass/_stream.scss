@@ -5,6 +5,46 @@
  * across Noticeboards & Sketchbooks
  */
 
+.stream {}
+
+/**
+ * Stream Filters
+ *
+ * Appearing at the top of the posts these should
+ * be styled as tabs.
+ *
+ * There are a couple of states that should be considered
+ *
+ *
+ * :hover
+ * .s-active
+ */
+.stream--filters {
+	li {
+		@extend %grid__item;
+		width: auto;
+
+		a {
+			background: darken(#fff, 53);
+			color: #fff;
+			font-size: .8rem;
+			@include fontstack_regular;
+			display: inline-block;
+			padding: $grid_padding * .5;
+
+			&:hover {
+				background-color: darken(#fff, 71);
+			}
+
+			&.s-active,
+			&:active {
+				background-color: #fff;
+				color: darken(#fff, 71);
+			}
+		}
+	}
+}
+
 .stream--article {
 	border-top: 1px solid red;
 	padding: 1.4rem 0;
