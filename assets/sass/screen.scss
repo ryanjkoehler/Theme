@@ -122,7 +122,6 @@ a {
 	&[href*="socd.loc"]:after,
 	&[href*="socd.io"]:after,
 	&[href*="#"]:after,
-	&[href*="/"]:after,
 	&[href*="gdnm.org"]:after {
 		display: none;
 	}
@@ -133,7 +132,15 @@ a {
 
 }
 
+pre {
+	@include fontstack_mono;
+	white-space: pre-wrap;
+}
+
 .site--title {
+	a {
+		color: inherit;
+	}
 	
 	@include respond-min($breakpoint_palm) {
 		min-width: $size_grid * 8;

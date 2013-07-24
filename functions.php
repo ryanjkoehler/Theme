@@ -61,7 +61,16 @@ function remove_admin_bar() {
 
 function socd_widets_init() {
 	register_sidebar( array(
-		'name' => 'Blog sidebar',
+		'name' => 'Left Sidebar',
+		'id'   => 'left_sidebar',
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="h2 h2--ruled">',
+		'after_title'  => '</h2>'
+	) );
+
+	register_sidebar( array(
+		'name' => 'Right Sidebar',
 		'id'   => 'blog_sidebar',
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</div>',
