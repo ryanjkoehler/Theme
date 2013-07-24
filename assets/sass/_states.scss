@@ -1,0 +1,16 @@
+/**
+ * 
+ * States
+ * -------
+ * 
+ * page-wide, conditional changes. Prefixed by '.state-'
+ * 
+ */
+
+ .state-mobile-menu-visible{
+ 	overflow-x: hidden;
+	.site-wrap,
+	.avoid-menu{
+		@include transform( translateX( $size_grid * 4.5 ) );
+	}
+ }

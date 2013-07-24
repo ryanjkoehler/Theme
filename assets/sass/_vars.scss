@@ -2,6 +2,12 @@
 	font-family: 'Theinhardt-Regular', Arial, "Liberation Sans", FreeSans, sans-serif;
 }
 
+@mixin fontstack_medium {
+	font-family: 'Theinhardt-Medium', Arial, "Liberation Sans", FreeSans, sans-serif;
+	font-style: normal;
+	font-weight: normal;
+}
+
 @mixin fontstack_bold {
 	font-family: 'Theinhardt-Bold', Arial, "Liberation Sans", FreeSans, sans-serif;
 	font-style: normal;
@@ -39,7 +45,11 @@ $colour_green: #27874b;
 $colour_red: #f4000f;
 $colour_bluegrey: #252437;
 
+$colour_menu_grey_mid: #464648;
+$colour_menu_grey_light: #96989c;
+
 $height_header: 11em;
+$height_menu: 2.6;
 
 $number_of_columns: 18;
 

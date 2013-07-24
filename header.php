@@ -17,6 +17,6 @@
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-<section class="site-wrap">
+<section class="site-wrap h-animate-transform">
 	
 <?php require 'partials/main-navigation/main-navigation.php'; ?>
