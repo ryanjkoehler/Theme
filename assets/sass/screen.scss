@@ -106,12 +106,13 @@ a {
 		height: 1em;
 		position: relative;
 		top: .3em;
-		background: top left #fff url('../svg/external.svg') no-repeat;
+		background: top left transparent url('../svg/external.svg') no-repeat;
 		background-size: .65em;
 		margin-left: .1em;
 	}
 
 	/* Internal links should not have outbound link graphic */
+	&[href*="socd.loc"]:after,
 	&[href*="socd.io"]:after,
 	&[href*="#"]:after,
 	&[href*="gdnm.org"]:after {
