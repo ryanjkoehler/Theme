@@ -1,0 +1,24 @@
+/**
+ *
+ * 
+ */
+
+.widget {
+	padding-bottom: 1em;
+
+	/**
+	 * Widgets with listings(Categories,Pages, Navigation)
+	 * often add hierarchy to the lists stylable via following class
+	 */
+	.children {
+		padding-left: 1em;
+	}	
+}
+
+
+/**
+ * 
+ */
+.widget_nav_menu {
+	@extend .listing__navigation;
+}
