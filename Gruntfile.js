@@ -4,7 +4,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     watch: {
       styleguide: {
-        files: ['*.php', 'includes/*.php', 'assets/sass/**/*.scss', 'assets/sass/*.scss'],
+        files: ['*php', '*php', 'assets/sass/**/*.scss', 'assets/sass/*.scss'],
         tasks: ['compass:styleguide'],
         options: {
           livereload: true
