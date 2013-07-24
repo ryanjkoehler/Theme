@@ -34,3 +34,8 @@ function socd_customize_register( $wp_customize ) {
 	
 }
 add_action('customize_register', 'socd_customize_register');
+
+function socd_customize_menu() {
+	add_theme_page( 'customize.php', __('Customize','socd'), 'edit_theme_options', 'customize.php' );
+}
+add_action('admin_menu', 'socd_customize_menu');
