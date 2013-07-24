@@ -90,6 +90,13 @@
  */
 
 	/**
+	 * 
+	 */
+	.col--page {
+		@extend %grid__item;
+		width: 400 / 1021 * 100%;
+	}
+	/**
 	 * Small sidebar 
 	 */
 	.col--side {
@@ -115,6 +122,7 @@
 
 .cell {
 	padding: 1.4rem;
+	text-align: center;
 }
 
 /* Push */

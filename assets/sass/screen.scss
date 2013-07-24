@@ -15,6 +15,9 @@
 
 @import 'modules';
 
+// Build Components
+@import "build";
+
 /*
 ## Headings
 
@@ -339,74 +342,6 @@ input[type="submit"],
 		}
 	}
 
-/*
-## Inputs
-
-```
-<div>
-	<fieldset>
-		<legend>Legend</legend>
-		<div>
-			<input type="text" value="" placeholder="Inactive"/>
-		</div>
-		<div>
-			<input type="text" value="Error"/>
-		</div>
-		<div>
-			<input type="text" value="Success"/>
-		</div>
-		<div>
-			<input type="text" value="Disabled" disabled="disabled"/>
-		</div>
-		<div>
-
-		</div>
-		<div>
-			<label for="select">Select</label>
-			<select value="pick" class="span3" tabindex="1" name="select">
-				<option value="0">Choose Option</option>
-				<option value="1">Option 1</option>
-				<option value="2">Option 2</option>
-				<option value="3">Option 3</option>
-				<option value="X-Men" selected="selected">Option 4</option>
-				<option value="Crocodile">Option 5</option>
-			</select>
-		</div>
-
-		<div>
-			<textarea name="textarea" id="textarea" cols="30" rows="10"></textarea>
-		</div>
-		<div>
-			<input type="submit" value="Submit"/>
-		</div>
-		<div>
-			<input type="submit" value="Unsubmittable" disabled="disabled"/>
-		</div>
-	</fieldset>
-</div>
-```
- */
-
-/* 
-
-#### Search Labels
-```
-<div class="row input-labelled">
-	<label for="search">Search</label>
-	<input type="search" value=""name="search"/>
-</div>
-```
-
-
-```
-<div class="row input-labelled">
-	<label for="date">Date</label>
-	<input type="date" value=""name="date"/>
-</div>
-```
-
- */
-
 .input-labelled {
 	position: relative;
 	
@@ -430,22 +365,22 @@ input[type="submit"],
 }
 
 // Miscelleanous
-@import 'component';
+@import "component";
 
 // Block colours
-@import 'colours';
+@import "colours";
 
 // Main menu
-@import 'main-navigation';
+@import "main-navigation";
 
 // Stream
-@import 'stream';
+@import "stream";
 
-// Build Components
-@import 'build';
-
-// 
-@import 'post';
+// Post
+@import "post";
 
 // Homepage
-@import 'homepage';
+@import "homepage";
+
+// Helpers
+@import "helpers";
