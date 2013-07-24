@@ -1,21 +1,15 @@
-// .site-wrap,
-// .avoid-menu{
-// 	-webkit-transform: translateX( 16rem );
-// }
-
 .main-navigation-container{
 	*{
 		@include box-sizing( border-box );
 	}
-	// -webkit-transform: translateX( -16rem );
 	height: 100%;
 	min-height: 100%;
 	.main-navigation-container__fixed-size{
-		left: 0;
+		left: $size_grid * -4.5;
 		min-height: 100%;
 		position: absolute;
 		top: 0;
-		@include rem( width, 14 );
+		width: $size_grid * 4;
 	}
 	.main-navigation-container__openable{
 		display: none;
@@ -26,6 +20,15 @@
 		width: 100%;
 		z-index: 10;
 	}
+	.main-navigation-container__mobile-toggle{
+		background: red;
+		display: block;
+		left: 0;
+		position: fixed;
+		top: 0;
+		@include rem( 'height', $height_menu );
+		@include rem( 'width', $height_menu );
+	}
 	@include breakpoint($breakpoint_palm) {
 		position: relative;
 		width: 100%;
@@ -33,6 +36,7 @@
 			z-index: 10;
 			position: absolute;
 			top: 0;
+			left: 0;
 			width: 100%;
 		}
 		.main-navigation-container__openable{
@@ -41,23 +45,34 @@
 			top: 0;
 			width: 100%;
 		}
+		.main-navigation-container__mobile-toggle{
+			display: none;
+		}
 	}
+
 }
 
 //block
 .main-navigation{
 	background: $colour_background_dark;
 	color: $colour_background;
-	@include rem( 'line-height', 1.4 );
-	@include rem( 'padding-top', .5 );
-	@include rem( 'padding-bottom', .5 );
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex; 	
+	@include rem( 'height', $height_menu );
+	justify-content: center;
+	@include rem( 'line-height', $height_menu );
 	width: 100%;
+
 	a{
 		color: $colour_background;
 		&:hover{
 			color: $colour_link;
 		}
 	}
+
 	// remove external or any link iconography
 	// not relevant in menu
 	a:after{
@@ -66,31 +81,196 @@
 	}	
 	
 	.main-navigation__menu-item{
+		background: $colour_background_dark;
 		@include fontstack_light;
-		@include rem( 'padding-left', 1 );
-		@include rem( 'padding-right', 1 );
-		@include rem( 'padding-top', .5 );
-		@include rem( 'padding-bottom', 1 );
+		white-space: nowrap;
+		&:nth-child( 2 ){
+			background: $colour_menu_grey_mid;
+		}
+		&:nth-child( 3 ){
+			background: $colour_menu_grey_light;
+		}
+	
+		&.main-navigation__menu-item--flexible{
+			-webkit-box-flex: 1;
+			-moz-box-flex: 1;			
+			-webkit-flex: 1;
+			-ms-flex: 1;
+			flex: 1;
+			max-width: 100%;
+			padding-top: 0;
+			padding-right: 0;
+			padding-bottom: 0;
+			padding-left: 0;
+		}
 
 		.title{
 			@include fontstack_medium;	
-		}
-		.drop{
-			margin-top: .4em;
+			@include rem( padding-left, .5 );
+			@include rem( padding-right, .5 ); 
 		}
 	}
-	.main-navigation__menu-item--root{
+	
+	.main-navigation__menu-item--dropdown{
+		position: relative;
 		.drop{
-			display: none;
+			background: blue;
+			height: 0;
+			overflow: hidden;
+			position: absolute;
+			min-width: 100%;
+			@include rem( top, $height_menu );
+			@include rem( padding-left, .5 );
+			@include rem( padding-right, 1.5 ); 			
+		}
+		&:hover,
+		&.active{
+			.drop{
+				height: auto;
+				@include rem( padding-top, .5 );
+				@include rem( padding-bottom, 1 );
+			}
 		}
 	}
 
 	.main-navigation__menu-item--search{
-		left: 0;
-		position: fixed;
-		top: 0;		
-		width: 100%;
-		padding: 0;
+		height: 100%;
+		.site-search__input{
+			color: $colour_background_dark;
+			@include fontstack_medium;	
+			@include rem( 'height', $height_menu );
+		}
+	}
+
+	.main-navigation__menu-item--profile{
+		background: $colour_menu_grey_light;		
+		.avatar{
+			display: none;
+		}
+		.title a{
+			color: $colour_background_dark;
+		}
+	}
+	.main-navigation__menu-item--quickpost{
+		display: none;
+		@include rem( 'height', $height_menu );
+		@include rem( 'width', $height_menu );
+		.title{
+			text-align: center;
+			width: 100%;
+			height: 100%;
+			display: block;
+		}
+	}
+
+	
+	@include breakpoint( $breakpoint_palm_max ) {
+		display: block;
+		@include rem( 'line-height', 1.4 );
+		@include rem( 'padding-top', .5 );
+		@include rem( 'padding-bottom', .5 );
+		height: auto;
+
+		.main-navigation__menu-item{
+			background: $colour_background_dark;
+			border-bottom: 1px solid lighten( $colour_dark, 10% );
+			@include rem( 'padding-left', 1 );
+			@include rem( 'padding-right', 1 );
+			@include rem( 'padding-top', .5 );
+			@include rem( 'padding-bottom', .5 );
+			.title{ 
+				padding: 0;
+			}
+			.drop{
+				margin-top: .4em;
+			}
+		}
+		.main-navigation__menu-item:nth-child( 2 ),
+		.main-navigation__menu-item:nth-child( 3 ){
+			background: $colour_background_dark;
+		}
+		
+		.main-navigation__menu-item--dropdown{
+			.drop{
+				background: transparent;
+				display: block;
+				height: auto;
+				padding: 0;
+				position: relative;
+				top: 0;
+			}
+			&.active,
+			&:hover{
+				.drop{
+					padding-top: 0;
+					padding-bottom: 0;
+				}
+			}
+		}
+
+		.main-navigation__menu-item--root{
+			.drop{
+				display: none;
+			}
+		}
+
+		.main-navigation__menu-item--search{
+			border-bottom: none;
+			@include rem( 'height', $height_menu );
+			left: 0;
+			position: fixed;
+			top: 0;		
+			width: 100%;
+			padding: 0;				
+			&.main-navigation__menu-item--flexible{
+				@include rem( 'padding-left', $height_menu );
+				@include rem( 'padding-right', $height_menu );
+			}
+		}
+
+		.main-navigation__menu-item--quickpost{
+			@include rem( 'height', $height_menu );
+			position: fixed;
+			right: 0;
+			top: 0;
+			@include rem( 'width', $height_menu );
+		}
+
+		.main-navigation__menu-item--profile{
+			border-bottom: none;
+			.avatar{
+				display: none;
+			}
+		}
+	} //end breakpoint: $breakpoint_palm_max
+}
+
+//logged in menu styles
+body.logged-in{
+	.main-navigation{
+		.main-navigation__menu-item--profile{
+			@include breakpoint( $breakpoint_palm ) {
+				background: $colour_yellow;
+				.avatar{
+					@include inline-block;
+					max-height: 100%;
+					vertical-align: top;
+					width: auto;
+				}
+			}			
+			.title{
+				@include inline-block;
+				vertical-align: top;
+				@include breakpoint( $breakpoint_palm_max ) {
+					a{
+						color: $colour_background;
+					}
+				}
+			}
+		}
+		.main-navigation__menu-item--quickpost{
+			display: block;
+		}
 	}
 }
 
@@ -170,7 +350,6 @@
 	overflow: hidden;	
 	max-height: 0;
 	min-height: 0;
-	
 	background: $colour_blue;
 	width: 100%;
 	@include transition( max-height .7s ease-out, min-height .3s ease-out, border-top .5s ease-out );	
