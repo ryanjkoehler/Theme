@@ -153,16 +153,22 @@
 	}
 
 	.main-navigation__menu-item--profile{
-		background: $colour_menu_grey_light;		
+		background: $colour_menu_grey_light;	
 		.avatar{
 			display: none;
 		}
 		.title a{
 			color: $colour_background_dark;
 		}
+		.drop{			
+			right: 0;
+			left: auto;
+		}
 	}
-	.main-navigation__menu-item--quickpost{
+	.main-navigation__menu-item--quickpost{		
 		display: none;
+		position: absolute;
+		right: 0;
 		@include rem( 'height', $height_menu );
 		@include rem( 'width', $height_menu );
 		.title{
@@ -264,6 +270,7 @@ body.logged-in{
 		.main-navigation__menu-item--profile{
 			@include breakpoint( $breakpoint_palm ) {
 				background: $colour_yellow;
+				@include rem( padding-right, $height_menu ); 
 				.avatar{
 					@include inline-block;
 					max-height: 100%;
@@ -277,6 +284,15 @@ body.logged-in{
 				@include breakpoint( $breakpoint_palm_max ) {
 					a{
 						color: $colour_background;
+					}
+				}
+			}
+			.drop{
+				background: $colour_yellow;
+				a{
+					color: $colour_background_dark;
+					&:hover{
+						color: $colour_link;
 					}
 				}
 			}
