@@ -1,11 +1,32 @@
 /**
  * 
  */
+.comments-section{
+	.comments-section--header{
+		width: 100%;
+		overflow: hidden;
+		border-top: 1px solid black;
+		@include rem( 'padding-top', .5 );
+		@include rem( 'margin-bottom', 1 );
+	}
+	.comments-section--count{
+		float: left;		
+		
+	}
+	.comments-section--navigation{
+		float: right;
+	}
+}
 
 .comments-listing {
-	
 	.children {
 		padding-left: 2em;
-		background: rgba(0,255,0, .5);
+		background: rgba( 0, 255, 0, .5 );
+	}
+}
+
+.comment-body{
+	.comment-body--comment-meta{
+
 	}
 }
