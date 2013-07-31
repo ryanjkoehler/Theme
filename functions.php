@@ -7,6 +7,7 @@
  * @package SOCD
  */
 
+require( get_stylesheet_directory() . '/inc/taxonomies/year.php' );
 
 
 function socd_setup() {
@@ -14,11 +15,21 @@ function socd_setup() {
 	require( get_stylesheet_directory() . '/inc/customizer.php' );
 	require( get_stylesheet_directory() . '/inc/extras.php' );
 	require( get_stylesheet_directory() . '/inc/template-tags.php' );
-
-	add_theme_support( 'post-thumbnails', 'customizer' );
 }
 
+function socd_register_field() {
+	require_once( get_stylesheet_directory() . '/inc/acf/acf-repeater/acf-repeater.php' );
+}
+
+add_action( 'acf/register_fields', 'socd_register_field' );
+
+
 add_action('init', 'socd_setup');
+
+function socd_after_theme_setup() {
+	add_theme_support( 'post-thumbnails');
+}
+add_action( 'after_setup_theme', 'socd_after_theme_setup');
 
 /**
  * Manually hook in the webink stylesheet as it uses some characters '&' that 
@@ -58,8 +69,8 @@ function remove_admin_bar() {
 
 /**
  * Register our sidebars and widetized areas
+ * 
  */
-
 function socd_widets_init() {
 	register_sidebar( array(
 		'name' => 'Left Sidebar',

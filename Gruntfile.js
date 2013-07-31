@@ -23,15 +23,15 @@ module.exports = function(grunt) {
     "sftp-deploy": {
       build: {
           auth: {
-            host: "unknowndomain.wpengine.com",
+            host: "socd.wpengine.com",
             port: 22,
-            authKey: "wpengine-unknowndomain"
+            authKey: "socd"
           },
           src: "./",
-          dest: "./",
+          dest: "./wp-content/themes/socd/",
           exclusions: [
             './.DS_Store',
-            './.git',
+            './.git*',
             './node_modules',
             './.ftppass',
             './assets/.sass-cache',
