@@ -32,6 +32,8 @@
 	@include breakpoint($breakpoint_palm) {
 		position: relative;
 		width: 100%;
+		@include rem( 'height', $height_menu );
+		min-height: 0;
 		.main-navigation-container__fixed-size{
 			z-index: 10;
 			position: absolute;
@@ -84,11 +86,20 @@
 		background: $colour_background_dark;
 		@include fontstack_light;
 		white-space: nowrap;
+		.drop{
+			background: $colour_background_dark;
+		}
 		&:nth-child( 2 ){
 			background: $colour_menu_grey_mid;
+			.drop{
+				background: $colour_menu_grey_mid;
+			}
 		}
 		&:nth-child( 3 ){
 			background: $colour_menu_grey_light;
+			.drop{
+				background: $colour_menu_grey_light;
+			}	
 		}
 	
 		&.main-navigation__menu-item--flexible{
@@ -106,21 +117,20 @@
 
 		.title{
 			@include fontstack_medium;	
-			@include rem( padding-left, .5 );
-			@include rem( padding-right, .5 ); 
+			@include rem( padding-left, 1 );
+			@include rem( padding-right, 1 ); 
 		}
 	}
 	
 	.main-navigation__menu-item--dropdown{
 		position: relative;
 		.drop{
-			background: blue;
 			height: 0;
 			overflow: hidden;
 			position: absolute;
 			min-width: 100%;
 			@include rem( top, $height_menu );
-			@include rem( padding-left, .5 );
+			@include rem( padding-left, 1 );
 			@include rem( padding-right, 1.5 ); 			
 		}
 		&:hover,
@@ -143,16 +153,24 @@
 	}
 
 	.main-navigation__menu-item--profile{
-		background: $colour_menu_grey_light;		
+		background: $colour_menu_grey_light;
 		.avatar{
 			display: none;
 		}
 		.title a{
 			color: $colour_background_dark;
 		}
+		.drop{
+			background: $colour_menu_grey_light;
+			color: $colour_background_dark;
+			right: 0;
+			left: auto;
+		}
 	}
-	.main-navigation__menu-item--quickpost{
+	.main-navigation__menu-item--quickpost{		
 		display: none;
+		position: absolute;
+		right: 0;
 		@include rem( 'height', $height_menu );
 		@include rem( 'width', $height_menu );
 		.title{
@@ -181,8 +199,11 @@
 			.title{ 
 				padding: 0;
 			}
-			.drop{
-				margin-top: .4em;
+			.drop,
+			&:nth-child( 2 ) .drop,
+			&:nth-child( 3 ) .drop {
+				@include rem( 'margin-top', .4 );
+				background: transparent;
 			}
 		}
 		.main-navigation__menu-item:nth-child( 2 ),
@@ -251,6 +272,7 @@ body.logged-in{
 		.main-navigation__menu-item--profile{
 			@include breakpoint( $breakpoint_palm ) {
 				background: $colour_yellow;
+				@include rem( padding-right, $height_menu ); 
 				.avatar{
 					@include inline-block;
 					max-height: 100%;
@@ -264,6 +286,15 @@ body.logged-in{
 				@include breakpoint( $breakpoint_palm_max ) {
 					a{
 						color: $colour_background;
+					}
+				}
+			}
+			.drop{
+				background: $colour_yellow;
+				a{
+					color: $colour_background_dark;
+					&:hover{
+						color: $colour_link;
 					}
 				}
 			}
@@ -289,6 +320,7 @@ body.logged-in{
 	.twitter-typeahead{
 		width: 100%;
 		height: 100%;
+		vertical-align: top;
 		input{
 			@include box-sizing( border-box );
 			width: 100%;
