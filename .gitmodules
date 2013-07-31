@@ -1,3 +1,6 @@
 [submodule "assets/javascript/libs/fixie"]
 	path = assets/javascript/libs/fixie
 	url = git@github.com:socd-io/fixie.git
+[submodule "inc/acf/acf-core"]
+	path = inc/acf/acf-core
+	url = git@github.com:elliotcondon/acf.git
