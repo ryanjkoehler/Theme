@@ -11,7 +11,7 @@ module.exports = function(grunt) {
         }
       },
       hogan: {
-        files: [ './assets/templates/src/**/*.html' ],
+        files: [ 'assets/templates/**/*.html' ],
         tasks: [ 'hogan' ]
       }
     },
@@ -46,20 +46,25 @@ module.exports = function(grunt) {
     },
     hogan: {
       publish: {
-        options: {
+        options: { 
           defaultName: function( file ) {
+            // constructs a name for each template based on the 
+            // path to the files
             var path = file.split('/');
             var name = '';
-            if( path.length > 4 ){
+            if( path.length > 3 ){
+              // if the file's in a sub directory of templates/ 
+              // then use the directory name as a prefix for the template
               name += path[ path.length - 2 ];
               name += '--';
             }
+            // use the file name as part ( or all ) of the template name
             name += path[ path.length - 1 ].replace( '.html', '' );
             return name;
           }
         },
         files: {
-          './assets/javascript/socd-hogan-templates.js': ['./assets/templates/src/**/*.html']
+          './assets/javascript/socd-hogan-templates.js': [ './assets/templates/**/*.html' ]
         }
       }
     }
