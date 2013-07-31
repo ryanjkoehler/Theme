@@ -10,8 +10,7 @@
 require( get_stylesheet_directory() . '/inc/taxonomies/year.php' );
 
 
-function socd_setup() {
-	//require( get_stylesheet_directory() . '/partials/comments/comments.php' );
+function socd_setup() {	
 	require( get_stylesheet_directory() . '/inc/customizer.php' );
 	require( get_stylesheet_directory() . '/inc/extras.php' );
 	require( get_stylesheet_directory() . '/inc/template-tags.php' );

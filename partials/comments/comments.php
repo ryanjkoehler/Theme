@@ -4,6 +4,8 @@
  * @package socd
  */
 
+require( get_stylesheet_directory() . '/inc/comments.php' );
+
 if ( post_password_required() )
 	return;
 ?>
