@@ -132,7 +132,8 @@ a {
 
 }
 
-pre {
+pre,
+code {
 	@include fontstack_mono;
 	white-space: pre-wrap;
 }
@@ -395,7 +396,7 @@ input[type="submit"],
 @import "blogs";
 @import "stream";
 @import "post";
-
+@import "comments";
 @import "page";
 
 @import "homepage";
