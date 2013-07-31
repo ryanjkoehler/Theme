@@ -19,5 +19,8 @@
     "grunt-contrib-compass": "~0.2.0",
     "grunt-contrib-watch": "~0.4.4",
     "grunt-sftp-deploy": "0.0.8"
+  },
+  "dependencies": {
+    "grunt-contrib-hogan": "~0.2.2"
   }
 }

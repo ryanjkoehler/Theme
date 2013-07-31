@@ -153,14 +153,16 @@
 	}
 
 	.main-navigation__menu-item--profile{
-		background: $colour_menu_grey_light;	
+		background: $colour_menu_grey_light;
 		.avatar{
 			display: none;
 		}
 		.title a{
 			color: $colour_background_dark;
 		}
-		.drop{			
+		.drop{
+			background: $colour_menu_grey_light;
+			color: $colour_background_dark;
 			right: 0;
 			left: auto;
 		}

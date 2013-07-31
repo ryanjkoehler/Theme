@@ -9,6 +9,10 @@ module.exports = function(grunt) {
         options: {
           livereload: true
         }
+      },
+      hogan: {
+        files: [ './assets/templates/src/**/*.html' ],
+        tasks: [ 'hogan' ]
       }
     },
     compass: {
@@ -39,9 +43,29 @@ module.exports = function(grunt) {
             './Gruntfile.js'
           ]
       }
+    },
+    hogan: {
+      publish: {
+        options: {
+          defaultName: function( file ) {
+            var path = file.split('/');
+            var name = '';
+            if( path.length > 4 ){
+              name += path[ path.length - 2 ];
+              name += '--';
+            }
+            name += path[ path.length - 1 ].replace( '.html', '' );
+            return name;
+          }
+        },
+        files: {
+          './assets/javascript/socd-hogan-templates.js': ['./assets/templates/src/**/*.html']
+        }
+      }
     }
   });
 
+  grunt.loadNpmTasks('grunt-contrib-hogan');
   grunt.loadNpmTasks("grunt-contrib-compass");
   grunt.loadNpmTasks("grunt-contrib-watch");
   grunt.loadNpmTasks("grunt-sftp-deploy");
