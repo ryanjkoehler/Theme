@@ -38,9 +38,19 @@
 			<input class="site-search__input" type="text" placeholder="Search">
 		</li><!--
 	 --><li class="main-navigation__menu-item main-navigation__menu-item--dropdown main-navigation__menu-item--profile">
+	 		<?php $user_info = get_userdata( get_current_user_id() ); ?>
 			<div class="tab">
-				<img class="avatar" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/avatar.png" alt="">
-				<h1 class="title"><a href="wp-admin">Login</a></h1>
+				<?php if( is_user_logged_in(  ) ): ?>
+					<h1 class="title"><a href="wp-admin"><?php echo $user_info->display_name; ?></a></h1>
+					<ul class="drop">
+						<li class="drop__option"><a href="<?php echo wp_logout_url( get_permalink() ); ?>">Log Out</a></li>
+					</ul>
+				<?php else: ?>
+					<h1 class="title"><a href="wp-login.php">Login</a></h1>
+					<div class="drop">
+						<?php wp_login_form( array( 'form_id' => 'main-navigation--login-form' ) ); ?>
+					</div>
+				<?php endif; ?>
 			</div>				
 		</li>
 		<li class="main-navigation__menu-item main-navigation__menu-item--button main-navigation__menu-item--quickpost avoid-menu">
