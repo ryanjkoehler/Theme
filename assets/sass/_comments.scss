@@ -20,13 +20,25 @@
 
 .comments-listing {
 	.children {
-		padding-left: 2em;
-		background: rgba( 0, 255, 0, .5 );
+		padding-left: 16.666%;
 	}
 }
 
 .comment-body{
 	.comment-body--comment-meta{
+		@include rem( 'margin-bottom', 0.8 );
+	}
+	.comment-body--reply{
+		text-align: right;
+	}
+}
 
+.comment.depth-1{
+	border-top: 1px solid black;
+	@include rem( 'padding-top', 1 );
+	@include rem( 'padding-bottom', 1 );
+	&:first-child{
+		border-top: none;
+		padding-top: 0;
 	}
 }
