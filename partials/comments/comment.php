@@ -15,7 +15,7 @@ if ( 'pingback' == $comment->comment_type || 'trackback' == $comment->comment_ty
 	?><li id="comment-<?php comment_ID(); ?>" <?php comment_class( array( empty( $args['has_children'] ) ? '' : 'parent', 'comment') ); ?>>
 		<article id="div-comment-<?php comment_ID(); ?>" class="comment-body palm-cell gw">			
 			<div class="comment-body--actions col col-one-sixth">
-				<?php echo get_avatar( $comment, 50 ); ?>				
+				<?php echo get_avatar( $comment, 50 ); ?>
 				<div class="comment-actions">
 					<?php edit_comment_link( 'Edit', '<span class="edit-link">', '</span>' ); ?>
 				</div><!-- .comment-metadata -->
@@ -32,7 +32,9 @@ if ( 'pingback' == $comment->comment_type || 'trackback' == $comment->comment_ty
 							</a>
 					</div><!--
 				--><div class="comment-body--reply h5 col col-one-sixth">
-						<?php comment_reply_link( array_merge( $args, array( 'add_below' => 'div-comment', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+						<div class="button action-button">
+							<?php comment_reply_link( array_merge( $args, array( 'add_below' => 'div-comment', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+						</div>
 					</div><!-- .reply -->
 					<?php if ( '0' == $comment->comment_approved ) : ?>
 						<p class="comment-awaiting-moderation">Your comment is awaiting moderation.</p>
