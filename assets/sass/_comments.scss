@@ -2,23 +2,24 @@
  * 
  */
 .comments-section{
+	overflow: hidden;
 	.comments-section--header{
 		width: 100%;
-		overflow: hidden;
+		float: left;
 		border-top: 1px solid black;
 		@include rem( 'padding-top', .5 );
 		@include rem( 'margin-bottom', 1 );
-	}
-	.comments-section--count{
-		float: left;		
-		
-	}
-	.comments-section--navigation{
-		float: right;
-	}
+		.comments-section--count{
+			float: left;		
+		}
+		.comments-section--navigation{
+			float: right;
+		}
+	}	
 }
 
 .comments-listing {
+	clear: both;
 	.children {
 		padding-left: 16.666%;
 	}

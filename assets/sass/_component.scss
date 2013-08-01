@@ -11,7 +11,37 @@
 	margin-bottom: .5rem;
 }
 
+/** 
+ *	PAGINATION
+ */
 
+.pagination-links{
+	.prev{
+		@include rem( 'margin-right', .25 );
+
+		&:before{	
+			content: '\2190  ';
+			@include rem( 'margin-right', .12 );
+		}
+	}
+	.next{
+		@include rem( 'margin-left', .25 );
+		&:after{
+			background: none;
+			content: '  \2192';
+			display: inline !important;			
+			height: auto;
+			@include rem( 'margin-left', .12 );
+			position: static;
+			top: auto;
+			width: auto;	
+		}
+	}
+	a.page-numbers:hover{
+		border-bottom: 2px solid $colour_link;
+
+	}
+}
 
 /**
  *  BUTTONS
@@ -64,6 +94,6 @@
 
 	}
 	&.button__edit-button{
-		
+
 	}
  }

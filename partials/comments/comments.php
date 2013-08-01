@@ -10,8 +10,8 @@ if ( post_password_required() )
 	return;
 ?>
 <section id="comments" class="comments-section">
-	<header class="comments-section--header">
-		<?php if ( have_comments() ) : ?>
+	<?php if ( have_comments() ) : ?>
+	<header class="comments-section--header">	
 			<h1 class="comments-section--count">
 				<?php
 					printf( _nx( 'One comment', '%1$s comments', get_comments_number(), 'comments title', 'socd' ), number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>'); 
@@ -29,9 +29,10 @@ if ( post_password_required() )
 				?>
 			</h1>
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
-			<nav id="comment-nav-above" class="comments-section--navigation" role="navigation">			
-				<a href="#" class="nav-previous">Older</a>
-				<a href="#" class="nav-next">Newer</a>
+			<nav id="comment-nav-above" class="comments-section--navigation pagination-links" role="navigation">			
+				<!-- <a href="#" class="pagintation-links--previous nav-previous">Older</a>
+				<a href="#" class="pagintation-links--next nav-next">Newer</a> -->
+				<?php paginate_comments_links('prev_text=Older&next_text=Newer'); ?>
 			</nav><!-- #comment-nav-above -->
 		<?php endif; // check for comment navigation ?>
 
@@ -54,6 +55,32 @@ if ( post_password_required() )
 			) );
 		?>
 	</ol><!-- .comment-list -->
+	<footer class="comments-section--header comments-section--header__footer">	
+			<h1 class="comments-section--count">
+				<?php
+					printf( _nx( 'One comment', '%1$s comments', get_comments_number(), 'comments title', 'socd' ), number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>'); 
+				?>
+				<?php 
+					$pages = get_comment_pages_count();	
+					if( $pages > 1 ):
+				?>
+				over 
+				<?php 
+					printf( _nx( 'one page', '%1$s pages', $pages, 'comments title', 'socd' ), number_format_i18n( $pages ) ); 
+				?>
+				<?php 
+					endif; 
+				?>
+			</h1>
+		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
+			<nav id="comment-nav-below" class="comments-section--navigation pagination-links" role="navigation">			
+				<!-- <a href="#" class="pagintation-links--previous nav-previous">Older</a>
+				<a href="#" class="pagintation-links--next nav-next">Newer</a> -->
+				<?php paginate_comments_links('prev_text=Older&next_text=Newer'); ?>
+			</nav><!-- #comment-nav-above -->
+		<?php endif; // check for comment navigation ?>	
+	</footer>
+	<ol class=
 	<?php endif; ?>
 
 </section>
