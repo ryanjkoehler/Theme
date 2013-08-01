@@ -25,10 +25,19 @@
 }
 
 .comment-body{
-	.comment-body--comment-meta{
-		@include rem( 'margin-bottom', 0.8 );
+	.comment-body--author{
+		@include inline-block;
+		@include fontstack_medium;
 	}
-	.comment-body--reply{
+	.comment-body--comment-content{
+		@include rem( 'margin-bottom', .5 );
+	}
+	.comment-body--comment-meta{
+		@include rem( 'font-size', .7 );	
+		@include rem( 'line-height', 1.6 );	
+	}
+	.comment-body--reply,
+	.comment-body--edit{
 		text-align: right;
 	}
 }

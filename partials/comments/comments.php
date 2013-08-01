@@ -13,20 +13,20 @@ if ( post_password_required() )
 	<header class="comments-section--header">
 		<?php if ( have_comments() ) : ?>
 			<h1 class="comments-section--count">
-			<?php
-				printf( _nx( 'One comment', '%1$s comments', get_comments_number(), 'comments title', 'socd' ), number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>'); 
-			?>
-			<?php 
-				$pages = get_comment_pages_count();	
-				if( $pages > 1 ):
-			?>
-			over 
-			<?php 
-				printf( _nx( 'one page', '%1$s pages', $pages, 'comments title', 'socd' ), number_format_i18n( $pages ) ); 
-			?>
-			<?php 
-				endif; 
-			?>
+				<?php
+					printf( _nx( 'One comment', '%1$s comments', get_comments_number(), 'comments title', 'socd' ), number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>'); 
+				?>
+				<?php 
+					$pages = get_comment_pages_count();	
+					if( $pages > 1 ):
+				?>
+				over 
+				<?php 
+					printf( _nx( 'one page', '%1$s pages', $pages, 'comments title', 'socd' ), number_format_i18n( $pages ) ); 
+				?>
+				<?php 
+					endif; 
+				?>
 			</h1>
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
 			<nav id="comment-nav-above" class="comments-section--navigation" role="navigation">			

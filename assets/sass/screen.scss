@@ -38,7 +38,7 @@
 
 html, body{
 	@include fontstack_regular;
-	line-height: 1.16;
+	line-height: 1.26;
 	margin: 0 auto;
 	height: 100%;
 	background-color: $colour_background;
@@ -100,7 +100,11 @@ img {
 p {
 	@include font-size(1);
 	margin: 0 0 1em;
+	&:last-child{
+		margin: 0;
+	}
 }
+
 
 a {
 	color: $colour_link;

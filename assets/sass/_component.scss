@@ -18,31 +18,34 @@
  */
 
  .button{
+ 	@include inline-block;
+ 	@include rem( 'height', 1.6 );
  	position: relative;
- 	@include rem( 'line-height', 1.6 );	
  	a{
+ 		position: relative;
  		@include inline-block;
  		background: $colour_light;
  		border-style: solid;
- 		color: $colour_background;
-		height: 100%;		
+ 		bottom: 0;
+ 		color: $colour_background;		
+		@include rem( 'line-height', 1.6 );	
 		@include rem( 'padding-left', .8 );
 		@include rem( 'padding-right', .8 );
-		position: relative;
 		text-align: center;
+
 		&:hover{
 			background: lighten( $colour_light, 10% );
 			border-bottom-color: darken( $colour_light, 10% );
-			@include rem( 'border-bottom-width', .15 );			
-			@include rem( 'top', -.15 );		
+			@include rem( 'border-bottom-width', .15 );	
+			@include rem( 'bottom', .15 );
 		}
 		&:active{
 			background: darken( $colour_light, 5% );
 			border-bottom-width: 0;
 			border-top-color: darken( $colour_light, 10% );
 			@include rem( 'border-top-width', .15 );
+			bottom: 0;
 			@include rem( 'line-height', 1.45 );
-			top: 0;
 		}
  	}
  	&.loading{
@@ -56,5 +59,11 @@
 			background: red;
 			text-align: center;
 		}
+	}
+	&.button__action-button{
+
+	}
+	&.button__edit-button{
+		
 	}
  }
