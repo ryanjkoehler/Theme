@@ -291,35 +291,72 @@ input {
 ```
 
  */
+.button{
+	@include rem( 'height', 1.6 );
+ 	position: relative;
+}
 
 input[type="submit"],
-.btn {
-	background: none;
+.button a{
+	@include inline-block;
+	
+
+	background: $colour_light;
 	@include border-radius(0);
-	border: 1px solid $colour_light;
-	color: $colour_dark;
-	display: inline-block;
+	border: none;
+	bottom: 0;
+	@include box-shadow( none );
+	color: $colour_background;
 	@include fontstack_regular;
-	@include font-size(1);
+	@include font-size( 1 );
 	letter-spacing: 0;
-	margin: .25em .25em .25em 0;
-	padding: .85em 2em;
+	@include rem( 'line-height', 1.6 );	
+	@include rem( 'padding-bottom', 0.1 );
+	@include rem( 'padding-left', .8 );
+	@include rem( 'padding-right', .8 );
+	@include rem( 'padding-top', 0.1 );
+	position: relative;
+	text-align: center;
 	text-decoration: none;
 	text-transform: capitalize;
 	@include text-shadow(none);
 
-	
-	@include transition(all .15s ease-in-out);
-
-	&:hover {
-		background: #fff;
-		border-color: $colour_dark;
-		color: $colour_dark;
+	&:hover{
+		background: lighten( $colour_light, 10% );
+		border-bottom-color: darken( $colour_light, 10% );
+		border-bottom-style: solid;
+		@include rem( 'border-bottom-width', .15 );	
+		@include rem( 'bottom', .15 );
+		@include box-shadow( none );
 	}
-
-	&:after {
-		display: none;
+	&:active{
+		background: darken( $colour_light, 5% );
+		border-bottom-width: 0;
+		border-top-color: darken( $colour_light, 10% );
+		border-top-style: solid;
+		@include rem( 'border-top-width', .15 );
+		bottom: 0;
+		@include box-shadow( none );
+		@include rem( 'line-height', 1.45 );
 	}
+ 	&.loading{
+		&:after{
+			content: ' LOADING ';
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			background: red;
+			text-align: center;
+		}
+	}
+	&.button__action-button{
+
+	}
+	&.button__edit-button{
+
+	}	
 
 	&.disabled,
 	&[disabled] {
@@ -334,13 +371,6 @@ input[type="submit"],
 	.btn-primary {
 		background: $colour_light;
 	}
-
-	input[type="submit"],
-	.btn-submit {
-		background: $colour_dark;
-		color: #fff;
-	}
-
 
 	.input-labelled {
 		position: relative;
