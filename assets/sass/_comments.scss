@@ -25,7 +25,10 @@
 .comments-listing {
 	clear: both;
 	.children {
-		padding-left: 16.666%;
+		margin-left: 16.666%;
+		&:before{
+		
+		}
 	}
 }
 
@@ -39,7 +42,7 @@
 	}
 	.comment-body--comment-meta{
 		@include rem( 'font-size', .7 );	
-		@include rem( 'line-height', 1.6 );	
+		@include rem( 'line-height', 1.8 );	
 	}
 	.comment-body--reply,
 	.comment-body--edit{
@@ -47,12 +50,22 @@
 	}
 }
 
-.comment.depth-1{
-	border-top: 1px solid black;
-	@include rem( 'padding-top', 1 );
-	@include rem( 'padding-bottom', 1 );
-	&:first-child{
-		border-top: none;
-		padding-top: 0;
+
+.comment{
+	&.depth-1{
+		border-top: 1px solid black;
+		@include rem( 'padding-top', 1 );
+		@include rem( 'padding-bottom', 1 );
+		&:first-child{
+			border-top: none;
+			padding-top: 0;
+		}
+	}
+	&.parent{
+		.children{
+			border-top: 1px solid black;
+			@include rem( 'margin-top', 1 );
+			@include rem( 'padding-top', 1 );
+		}
 	}
 }

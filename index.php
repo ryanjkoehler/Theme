@@ -15,7 +15,9 @@ get_header(); ?>
 			<?php if (!dynamic_sidebar( 'left_sidebar' ) ) : ?>
 	
 				<h2 class="h2 h2--ruled">About</h2>
-				<?php bloginfo( 'description' ); ?>
+				<div class="wysiwyg">
+					<?php bloginfo( 'description' ); ?>
+				</div>
 
 			<?php endif; ?>
 		</div>
