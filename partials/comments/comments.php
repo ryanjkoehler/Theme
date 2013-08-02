@@ -12,22 +12,22 @@ if ( post_password_required() )
 <section id="comments" class="comments-section">
 	<?php if ( have_comments() ) : ?>
 	<header class="comments-section--header">	
-			<h1 class="comments-section--count">
-				<?php
-					printf( _nx( 'One comment', '%1$s comments', get_comments_number(), 'comments title', 'socd' ), number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>'); 
-				?>
-				<?php 
-					$pages = get_comment_pages_count();	
-					if( $pages > 1 ):
-				?>
-				over 
-				<?php 
-					printf( _nx( 'one page', '%1$s pages', $pages, 'comments title', 'socd' ), number_format_i18n( $pages ) ); 
-				?>
-				<?php 
-					endif; 
-				?>
-			</h1>
+		<h1 class="comments-section--count">
+			<?php
+				printf( _nx( 'One comment', '%1$s comments', get_comments_number(), 'comments title', 'socd' ), number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>'); 
+			?>
+			<?php 
+				$pages = get_comment_pages_count();	
+				if( $pages > 1 && false):
+			?>
+			over 
+			<?php 
+				printf( _nx( 'one page', '%1$s pages', $pages, 'comments title', 'socd' ), number_format_i18n( $pages ) ); 
+			?>
+			<?php 
+				endif; 
+			?>
+		</h1>
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
 			<nav id="comment-nav-above" class="comments-section--navigation pagination-links" role="navigation">			
 				<!-- <a href="#" class="pagintation-links--previous nav-previous">Older</a>
@@ -62,7 +62,7 @@ if ( post_password_required() )
 				?>
 				<?php 
 					$pages = get_comment_pages_count();	
-					if( $pages > 1 ):
+					if( $pages > 1 && false ):
 				?>
 				over 
 				<?php 
@@ -80,7 +80,8 @@ if ( post_password_required() )
 			</nav><!-- #comment-nav-above -->
 		<?php endif; // check for comment navigation ?>	
 	</footer>
-	<ol class=
 	<?php endif; ?>
-
+	<section class="comments-section--add-comment">
+		<?php comment_form(); ?>
+	</section>
 </section>
