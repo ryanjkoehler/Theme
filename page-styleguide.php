@@ -17,7 +17,13 @@ get_header(); ?>
 </div>
 
 <h1>Typography</h1>
+<section>
+	<?php for ($i=1; $i < 6; $i++) {
+		printf( '<h%1$d class="h%1$d">Heading %1$d</h%1$d>', $i );
+	} ?>
+</section>
 
+<h1>Modules</h1>
 <section>
 	
 	<div class="cell">

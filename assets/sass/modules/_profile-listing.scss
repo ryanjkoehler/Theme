@@ -43,7 +43,6 @@
 					margin-top: 0;
 				}
 			}
-
 		}
 
 		.name {
@@ -53,5 +52,17 @@
 
 		.role {
 			margin-bottom: $grid_padding * .5;
+		}
+
+		.year {
+			position: absolute;
+			top: $grid_padding;
+			right: 0;
+		}
+	}
+
+	.profile__student {
+		.name {
+			margin-bottom: .5em;
 		}
 	}

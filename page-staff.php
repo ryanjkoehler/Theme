@@ -12,7 +12,7 @@ get_header(); ?>
 			<h1 class="h1 header__title">Staff Profiles</h1>
 		</header>
 		
-		<ul class="h-center col col-two-thirds h-center listing__profiles">
+		<ul class="col col-two-thirds h-center listing__profiles">
 			<?php
 
 			for ($i=0; $i < 12; $i++) :
