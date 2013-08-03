@@ -21,7 +21,7 @@ get_header(); ?>
 
 			<div id="posts-container">
 				<?php while( have_posts() ) : the_post(); ?>
-					<?php get_template_part( 'partials/post/post'); ?>
+					<?php get_template_part( 'templates/post/post'); ?>
 				<?php endwhile; ?>
 			</div>
 		</div>

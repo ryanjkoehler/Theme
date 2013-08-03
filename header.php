@@ -19,4 +19,4 @@
 <body <?php body_class(); ?>>
 <section class="site-wrap h-animate-transform">
 	
-<?php require 'partials/main-navigation/main-navigation.php'; ?>
+<?php require 'templates/main-navigation/main-navigation.php'; ?>

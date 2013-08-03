@@ -62,7 +62,7 @@
 									<ul>
 										<?php while ( $news->have_posts() ) : $news->the_post(); ?>
 											<li>
-												<?php get_template_part( 'partials/post/post'); ?>
+												<?php get_template_part( 'templates/post/post'); ?>
 											</li>
 										<?php endwhile; ?>
 									</ul>

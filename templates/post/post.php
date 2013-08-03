@@ -22,4 +22,4 @@
 		<?php socd_posted_on(); ?>
 	</aside>
 </article>
-<?php comments_template('/partials/comments/comments.php'); ?>
+<?php comments_template('/templates/comments/comments.php'); ?>
