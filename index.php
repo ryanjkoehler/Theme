@@ -21,13 +21,7 @@ get_header(); ?>
 		</div>
 	</section><!-- 
 	--><section class="col--stream stream">
-		<div class="stream--filters">
-			<ul>
-				<li><a href="#" class="s-active">Year 1</a></li><!-- 
-				--><li><a href="#">Year 2</a></li><!-- 
-				--><li><a href="#">Year 3</a></li>
-			</ul>
-		</div>
+		<?php do_action( 'socd_year_taxonomy' ); ?>
 		<div class="cell colour--white">
 
 			<div id="posts-container">
