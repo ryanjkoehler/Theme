@@ -1,5 +1,6 @@
 /**
- * Components related exclusively to the site build
+ * Components related exclusively to the site build, so if
+ * you've noticed some really weird colours then this is likely the file to check
  */
 
 .populate {
@@ -25,11 +26,11 @@
  * Debugging
  */
 
-.debug *[class*="col"] {
+x*[class*="col"] {
 	outline: 1px solid red;
 }
 
 
 .cell {
-	background: rgba(0,255,0,0.2);
+	xbackground: rgba(0,255,0,0.2);
 }

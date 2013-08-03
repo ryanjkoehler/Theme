@@ -61,6 +61,10 @@
 .colour--white {
 	background-color: $colour_white;
 	color: #000;
+
+	.h2--ruled {
+		border-color: darken($colour_white, 20);
+	}
 }
 
 .colour--light-grey {

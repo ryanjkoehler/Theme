@@ -73,6 +73,7 @@ img {
 	.h2--ruled {
 		border-top: 2px solid rgba(255,255,255,0.5);
 		padding: .75em 0;
+		display: block;
 	}
 
 
@@ -87,12 +88,13 @@ img {
 
 .h4 {
 	@include fontstack_bold;
-	@include font-size(.75);
 	margin-bottom: 1em;
 }
+
 .h5 {
 		
 }
+
 .h6 {
 	
 }
@@ -122,6 +124,7 @@ a {
 	&[href*="socd.loc"]:after,
 	&[href*="socd.io"]:after,
 	&[href*="#"]:after,
+	&[href^="/"]:after,
 	&[href*="gdnm.org"]:after {
 		display: none;
 	}
@@ -398,6 +401,7 @@ input[type="submit"],
 @import "post";
 @import "comments";
 @import "page";
+@import "modules/_profile-listing";
 
 @import "homepage";
 

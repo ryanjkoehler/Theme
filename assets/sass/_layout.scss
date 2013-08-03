@@ -53,6 +53,7 @@
 
 .col-one-quarter {
 	@extend %grid__item;
+	@extend %lap--one-quarter;
 	@extend %desk--one-quarter;
 }
 .col-three-quarters {
