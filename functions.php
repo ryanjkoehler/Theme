@@ -7,9 +7,6 @@
  * @package SOCD
  */
 
-require( get_stylesheet_directory() . '/inc/taxonomies/year.php' );
-
-
 function socd_setup() {
 	//require( get_stylesheet_directory() . '/partials/comments/comments.php' );
 	require( get_stylesheet_directory() . '/inc/customizer.php' );
@@ -76,6 +73,7 @@ function remove_admin_bar() {
  * 
  */
 function socd_widets_init() {
+
 	register_sidebar( array(
 		'name' => 'Left Sidebar',
 		'id'   => 'left_sidebar',
@@ -97,3 +95,27 @@ function socd_widets_init() {
 
 add_action('widgets_init', 'socd_widets_init');
 
+/**
+ * In the spirit of DRY just
+ * wraps requested template in a header & footer
+ * 
+ * @return [type] [description]
+ */
+function socd_template() {
+	get_template_part('header');
+	get_template_part('footer');
+}
+
+function socd_faux_pages() {
+
+	$pages = array(
+		'a'
+	);
+
+	if ( $_SERVER['REQUEST_URI'] == "/student" ) {
+		preg_match("/a|b/", $_SERVER['REQUEST_URI'], $finds );
+		var_dump( $finds );
+		die();
+	}
+}
+add_action('template_redirect', 'socd_faux_pages');
