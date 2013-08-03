@@ -1,11 +1,71 @@
 /**
  * 
  */
+.comments-section{
+	overflow: hidden;
+	.comments-section--header{
+		width: 100%;
+		float: left;
+		border-top: 1px solid black;
+		@include rem( 'padding-top', .5 );
+		@include rem( 'margin-bottom', 1 );
+		@include rem( 'padding-bottom', .5 );
+		.comments-section--count{
+			float: left;		
+		}
+		.comments-section--navigation{
+			float: right;
+		}
+	}	
+	.comments-section--add-comment{
+		border-top: 1px solid black;
+	}
+}
 
 .comments-listing {
-	
+	clear: both;
 	.children {
-		padding-left: 2em;
-		background: rgba(0,255,0, .5);
+		margin-left: 16.666%;
+		&:before{
+		
+		}
+	}
+}
+
+.comment-body{
+	.comment-body--author{
+		@include inline-block;
+		@include fontstack_medium;
+	}
+	.comment-body--comment-content{
+		@include rem( 'margin-bottom', .5 );
+	}
+	.comment-body--comment-meta{
+		@include rem( 'font-size', .7 );	
+		@include rem( 'line-height', 1.8 );	
+	}
+	.comment-body--reply,
+	.comment-body--edit{
+		text-align: right;
+	}
+}
+
+
+.comment{
+	&.depth-1{
+		border-top: 1px solid black;
+		@include rem( 'padding-top', 1 );
+		@include rem( 'padding-bottom', 1 );
+		&:first-child{
+			border-top: none;
+			padding-top: 0;
+		}
+	}
+	&.parent{
+		.children{
+			border-top: 1px solid black;
+			@include rem( 'margin-top', 1 );
+			@include rem( 'padding-top', 1 );
+		}
 	}
 }

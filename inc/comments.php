@@ -6,8 +6,13 @@
  * @package socd
  */
 
+function socd_comment_images( ){
+	
+
+}
+
 function socd_comment($comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
 
-	require_once(get_stylesheet_directory() . '/partials/comments/comment.php');
+	include( get_stylesheet_directory() . '/partials/comments/comment.php' );
 }

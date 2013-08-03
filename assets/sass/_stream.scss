@@ -53,4 +53,30 @@
 		border-top: 0;
 		padding-top: 0;
 	}
+	.article--header{
+		@include rem( 'padding-bottom', 1.4 );
+		img{
+			@include rem( 'margin-bottom', .5 );
+		}	
+	}
+	.article--meta{
+		@include fontstack_light;
+		@include font-size( .9 );
+		@include rem('padding-right', 1.4 );
+		.entry-date{
+			display: block;
+			@include rem( 'padding-bottom', 0.7 );
+			.date{
+				@include fontstack_medium;
+			}
+			.time{
+				display: block;	
+			}
+		}
+		.byline{
+			.author{
+				@include fontstack_medium;
+			}
+		}
+	}
 }
