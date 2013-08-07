@@ -15,17 +15,15 @@
 		</li><!-- 
 	 --><li class="main-navigation__menu-item main-navigation__menu-item--dropdown main-navigation__menu-item--breadcrumb">
 			<div class="tab">
-				<h1 class="title"><a href="">Prototype</a></h1>
+				<h1 class="title"><a href="#">Prototype</a></h1>
 			</div>
 			<ul class="drop">
-				<li class="drop__option"><a href="/typography.php">Type Specimen</a></li>
-				<li class="drop__option"><a href="/noticeboard.php">Noticeboard</a></li>
-				<li class="drop__option"><a href="/noticeboard.php">Sketchbook</a></li>
+				<li class="drop__option"><a href="/styleguide">Styleguide</a></li>
 			</ul>
 		</li><!--
 	 --><li class="main-navigation__menu-item main-navigation__menu-item--dropdown main-navigation__menu-item--breadcrumb">
 			<div class="tab">
-				<h1 class="title"><a href="">BA (Hons) Graphic Design</a></h1>
+				<h1 class="title"><a href="#">BA (Hons) Graphic Design</a></h1>
 			</div>
 			<ul class="drop">
 				<li class="drop__option"><a href="#">Gallery</a></li>
@@ -62,5 +60,5 @@
 	<section class="quickpost main-navigation-container__openable">				
 		<h1>QUICKPOST</h1>
 	</section>
-	<a href="" class="main-navigation-container__mobile-toggle"></a>
+	<a href="#" class="main-navigation-container__mobile-toggle"></a>
 </nav>
