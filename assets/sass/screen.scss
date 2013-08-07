@@ -13,8 +13,6 @@
 
 @import 'layout';
 
-@import 'modules';
-
 // Build Components
 @import "build";
 
@@ -175,15 +173,6 @@ strong{
 	@include fontstack_light;
 }
 
-/**
- * Form Elements
- */
-
-input {
-	border: 2px solid $colour_dark;
-	background: red;
-}
-
 /*
  ## Lists
  */
@@ -321,7 +310,10 @@ input {
 @import "blogs";
 @import "stream";
 @import "comments";
+
+@import "modules/_header";
 @import "modules/_profile-listing";
+@import "modules/_footer";
 
 //states
 @import "states";
