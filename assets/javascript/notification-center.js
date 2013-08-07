@@ -5,59 +5,81 @@
 		message: Templates[ 'notifications--message' ].render.bind( Templates[ 'notifications--message' ] )
 	};
 
-	var nCenter = {	
+	var notifications = {	
 		$ele: $( '.navigation-notifications' ),
 		$content: $('.notifications-center-display'),
 		notificationTime: 5000,
-		messageCount: 0,
+		centerMessageCount: 0,
 		timers: [],
-		message: function( _message, _tone, _time ){
-			var timer, tone, time, rendered, $rendered;
+		clearTimers: function(){
+			for( var i = 0; i < notifications.timers.length; i++ ){
+				clearTimeout( notifications.timers[i] );
+			}
+		},
+		handleMessage: function( _opts ){
+			var rendered, $rendered;
+			opts = _opts || {};
+			var options = {
+				message: opts.message,
+				tone: opts.tone || 'ambivalent',
+				time: opts.time || 0,
+				location: opts.location || notifications.$content,
+				position: opts.position || 'append'
+			};
 
-			if( !_tone ){
-				tone = 'ambivalent'; //default tone is ambivalent
+			var inNotificationCenter = ( !!opts.location ) ? false : true;
+
+			if( typeof options.message !== 'string' ){
+				throw new Error( 'SOCD_notifications message objects should have a field, \'message\'' );
+				return;
 			}
-			if( !_time ){
-				time = nCenter.notificationTime; //if no time specified, use the default
-			}
-			if( !_message ){
-				return; //if there isn't a message - just give up
-			}
+			
 
 			rendered = T.message({
-				tone: tone,
-				message: _message
+				message: options.message,
+				tone: options.tone 
 			});
-			
 			$rendered = $( rendered );
 
-			nCenter.$content.append( $rendered );			
-			
-			( function( $toHide ){
-				timer = setTimeout( function(){
-					$toHide.addClass( 'hide' );
-					nCenter.messageCount--;
+			if( options.position === 'after' ){
+				options.location.after( $rendered );
+			} else {
+				options.location.append( $rendered );
+			}
+
+			if( options.time > 0 ){
+				var timer = setTimeout( function(){
+					$rendered.addClass( 'hide' );
 					var tempTimer = setTimeout( function(){
-						$toHide.remove();
-						if( nCenter.messageCount <= 0){
-							nCenter.$ele.removeClass( 'open' );
+						$rendered.remove();
+						if( inNotificationCenter ){
+							notifications.centerMessageCount--;
+							if( notifications.centerMessageCount <= 0 ){
+								notifications.$ele.removeClass( 'open' );
+							}
 						}
 					}, 500 );
-				
-					nCenter.timers.push( tempTimer );
+					notifications.timers.push( tempTimer );
+				}, options.time );
+				notifications.timers.push( timer );
+			}
+
+			if( inNotificationCenter ){
+				// open the notification center
+				notifications.centerMessageCount++;
+				notifications.$ele.addClass( 'open' );
+			}
 			
-				}, nCenter.notificationTime );
-			})( $rendered );
+			return $rendered;
 
-			nCenter.timers.push( timer );
-
-			nCenter.messageCount++;
-
-			// open the notification center
-			nCenter.$ele.addClass( 'open' );
+		},
+		message: function(  ){
+			for( var i = 0; i < arguments.length; i++ ){
+				notifications.handleMessage( arguments[i] );
+			}
 		}
 	};
 
-	window.SOCD_notification_center = nCenter;	
+	window.SOCD_notifications = notifications;	
 
 })( window, jQuery );

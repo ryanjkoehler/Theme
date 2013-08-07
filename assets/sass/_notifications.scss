@@ -1,5 +1,6 @@
 .notifications{
 	.notifications-message{
+		@include transition( opacity .5s ease-in-out );
 		&.notifications-message__ambivalent{
 
 		}
@@ -8,6 +9,9 @@
 		}
 		&.notifications-message__negative{
 			color: $colour_red;
+		}
+		&.hide{
+			opacity: 0;
 		}
 	}
 }
