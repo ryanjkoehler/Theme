@@ -1,4 +1,12 @@
 <nav class="main-navigation-container">
+	<section class="navigation-quickpost quickpost main-navigation-container__openable">				
+		<div class="cell"></div>
+	</section>
+	<section class="navigation-notifications notifications main-navigation-container__openable">				
+		<div class="cell notifications-center-display">			
+			<p class="notifications-message notifications-message__negative">This message is negative. Very negative.</p>
+		</div>
+	</section>
 	<ul class="main-navigation-container__fixed-size main-navigation no-style">
 		<li class="main-navigation__menu-item main-navigation__menu-item--dropdown main-navigation__menu-item--breadcrumb main-navigation__menu-item--root">
 			<div class="tab">
@@ -57,8 +65,5 @@
 			</a>
 		</li>
 	</ul>
-	<section class="quickpost main-navigation-container__openable">				
-		<h1>QUICKPOST</h1>
-	</section>
 	<a href="#" class="main-navigation-container__mobile-toggle"></a>
 </nav>

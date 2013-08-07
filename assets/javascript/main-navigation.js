@@ -1,6 +1,6 @@
-(function( $ ){
+( function( window, $, undefined ){
 
-	var localTemplates = {
+	var T = {
 		header: Templates[ 'main-navigation--typeahead-header' ].render.bind( Templates[ 'main-navigation--typeahead-header' ] ),
 		result: Templates[ 'main-navigation--typeahead-result' ].render.bind( Templates[ 'main-navigation--typeahead-result' ] )
 	};
@@ -47,26 +47,26 @@
 							tokens: ['blog', 'four']
 						}
 					],					
-					header: localTemplates.header( { name: 'Blogs' } ),
-					template: localTemplates.result
+					header: T.header( { name: 'Blogs' } ),
+					template: T.result
 				},
 				{
 					name: 'Staff',
 					local: [ 'Luke Watts', 'Tom Lynch', 'Oliver Smith', 'Eva Verhoeven' ],
-					header: localTemplates.header( { name: 'Staff' } ),
-					template: localTemplates.result
+					header: T.header( { name: 'Staff' } ),
+					template: T.result
 				},
 				{
 					name: 'Students',
 					local: [ 'Jonny', 'Jimmy', 'Jamie', 'Jeremy', 'Jerome' ],
-					header: localTemplates.header( { name: 'Students' } ),
-					template: localTemplates.result
+					header: T.header( { name: 'Students' } ),
+					template: T.result
 				},
 				{
 					name: 'Courses',
 					local: [ 'Graphic Design: New Media', 'Graphic Design', 'Communication Design', 'Illustration' ],
-					header: localTemplates.header( { name: 'Courses' } ),
-					template: localTemplates.result
+					header: T.header( { name: 'Courses' } ),
+					template: T.result
 				}
 			]);
 		}
@@ -76,4 +76,4 @@
 
 	window.SOCD_menu = SOCD_menu;
 
-})( jQuery );
+})( window, jQuery );

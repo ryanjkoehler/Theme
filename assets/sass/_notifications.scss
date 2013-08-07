@@ -1,0 +1,13 @@
+.notifications{
+	.notifications-message{
+		&.notifications-message__ambivalent{
+
+		}
+		&.notifications-message__positive{
+			color: $colour_green;
+		}
+		&.notifications-message__negative{
+			color: $colour_red;
+		}
+	}
+}
