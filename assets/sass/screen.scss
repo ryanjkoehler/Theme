@@ -18,19 +18,6 @@
 // Build Components
 @import "build";
 
-/*
-## Headings
-
-```
-<h1 class="h1">Heading One</h1>
-<h2 class="h2">Heading Two</h2>
-<h3 class="h3">Heading Three</h3>
-<h4 class="h4">Heading Four</h4>
-<h5 class="h5">Heading Five</h5>
-<h6 class="h6">Heading Six</h6>
-```
-*/
-
 // Base styles
 * {
 	@include box-sizing(border-box);
@@ -60,16 +47,15 @@ img {
 	margin: .3em auto 0;
 	border-top: .1rem solid;
 	display: inline-block;
-	padding: .2em .4em 0;
+	padding: .35em .4em 0;
 	line-height: 1;
-	text-align: center;
 }
 
 .h2,
 .wysiwyg h1 {
 	@include fontstack_bold;
 	@include font-size(1.125);
-	margin: 0;
+	margin: 0 0 .4em;
 }
 	.h2--ruled {
 		border-top: 2px solid rgba(255,255,255,0.5);
@@ -97,7 +83,6 @@ img {
 .wysiwyg h5,
 .wysiwyg h6 {
 	@include fontstack_bold;
-	@include font-size(.8);
 	margin-bottom: 1em;
 }
 
@@ -201,45 +186,7 @@ input {
 
 /*
  ## Lists
-```
-<ul>
-	<li>List item</li>
-	<li>Another list item</li>
-	<li>Another list item, with sub items (unordered)
-		<ul>
-			<li>Sub list item</li>
-			<li>Another sub list item</li>
-		</ul>
-	</li>
-	<li>List item with sub items (ordered)
-		<ol>
-			<li>Sub item A</li>
-			<li>Sub item B</li>
-		</ol>
-	</li>
-</ul>
-```
-
-```
-<ol>
-	<li>List item</li>
-	<li>Another list item</li>
-	<li>Another list item, with sub items (unordered)
-		<ul>
-			<li>Sub list item</li>
-			<li>Another sub list item</li>
-		</ul>
-	</li>
-	<li>List item with sub items (ordered)
-		<ol>
-			<li>Sub item A</li>
-			<li>Sub item B</li>
-		</ol>
-	</li>
-</ol>
-```
-
-*/
+ */
 .ol,
 .wysiwyg ol,
 .ul,
@@ -320,150 +267,6 @@ input {
 	}
 }
 
-/*
-### Form Elements
-
-#### Buttons
-
-```
-<div>
-	<a href="#" class="btn">Default Button</a>
-	<a href="#" class="btn btn-primary">Primary Button</a>
-	<a href="#" class="btn btn-info">Info Button</a>
-	<a href="#" class="btn btn-danger">Danger Button</a>
-	<a href="#" class="btn btn-success">Success Button</a>			
-	<a href="#" class="btn btn-warning">Warning Button</a>			
-	<a href="#" class="btn btn-inverse">Inverse Button</a>
-	<a href="#" class="btn disabled">Disabled Button</a>
-</div>
-```
-
- */
-.button{
-	@include rem( 'height', 1.6 );
- 	position: relative;
-}
-
-input[type="submit"],
-.button a{
-	@include inline-block;
-	
-
-	background: $colour_light;
-	@include border-radius(0);
-	border: none;
-	bottom: 0;
-	@include box-shadow( none );
-	color: $colour_background;
-	@include fontstack_regular;
-	@include font-size( 1 );
-	letter-spacing: 0;
-	@include rem( 'line-height', 1.6 );	
-	@include rem( 'padding-bottom', 0.1 );
-	@include rem( 'padding-left', .8 );
-	@include rem( 'padding-right', .8 );
-	@include rem( 'padding-top', 0.1 );
-	position: relative;
-	text-align: center;
-	text-decoration: none;
-	text-transform: capitalize;
-	@include text-shadow(none);
-
-	&:hover{
-		background: lighten( $colour_light, 10% );
-		border-bottom-color: darken( $colour_light, 10% );
-		border-bottom-style: solid;
-		@include rem( 'border-bottom-width', .15 );	
-		@include rem( 'bottom', .15 );
-		@include box-shadow( none );
-	}
-	&:active{
-		background: darken( $colour_light, 5% );
-		border-bottom-width: 0;
-		border-top-color: darken( $colour_light, 10% );
-		border-top-style: solid;
-		@include rem( 'border-top-width', .15 );
-		bottom: 0;
-		@include box-shadow( none );
-		@include rem( 'line-height', 1.45 );
-	}
- 	&.loading{
-		&:after{
-			content: ' LOADING ';
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			top: 0;
-			left: 0;
-			background: red;
-			text-align: center;
-		}
-	}
-	&.button__action-button{
-
-	}
-	&.button__edit-button{
-
-	}	
-
-	&.disabled,
-	&[disabled] {
-		background: $colour_light;
-		color: darken($colour_light, 15);
-		&:hover {
-			border-color: $colour_light;
-		}
-	}
-}
-
-	.btn-primary {
-		background: $colour_light;
-	}
-
-	.input-labelled {
-		position: relative;
-		
-		label {
-			position: absolute;
-			top: 0;
-			left: 0;
-			z-index: 1;
-			padding: .95em 1.2em;
-		}
-
-		input {
-			position: relative;
-			z-index: 2;
-			background-color: transparent;
-
-			&:focus {
-				background-color: #fff;
-			}
-		}
-	}
-
-.input-labelled {
-	position: relative;
-	
-	label {
-		position: absolute;
-		top: 0;
-		left: 0;
-		z-index: 1;
-		padding: .95em 1.2em;
-	}
-
-	input {
-		position: relative;
-		z-index: 2;
-		background-color: transparent;
-
-		&:focus {
-			background-color: #fff;
-		}
-	}
-}
-
 /* 
 *	WYSIWYG output defaults
 */
@@ -517,15 +320,17 @@ input[type="submit"],
 
 @import "blogs";
 @import "stream";
-@import "post";
 @import "comments";
-@import "page";
 @import "modules/_profile-listing";
-
-@import "homepage";
 
 //states
 @import "states";
 
 // Misc
 @import "helpers";
+
+// Templates
+@import "templates/_homepage";
+@import "templates/_page";
+@import "templates/_post";
+@import "templates/_signup";
