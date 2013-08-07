@@ -1,14 +1,19 @@
 .notifications{
 	.notifications-message{
 		@include transition( opacity .5s ease-in-out );
+		@include rem( 'padding', 1 );
+		margin: 0;
+		color: $colour_white;
+		background: $colour_menu_grey_light;
 		&.notifications-message__ambivalent{
-
+			// actually, this is probably just the default one?
 		}
 		&.notifications-message__positive{
-			color: $colour_green;
+			background: $colour_green;
+			
 		}
 		&.notifications-message__negative{
-			color: $colour_red;
+			background: $colour_red;
 		}
 		&.hide{
 			opacity: 0;
