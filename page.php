@@ -19,7 +19,7 @@
 			</figure>
 
 			<div class="page--main">
-				<div class="cell">
+				<div class="cell colour--white">
 					<?php the_content(); ?>
 				</div>
 			</div><!-- .col--page --><?php 
