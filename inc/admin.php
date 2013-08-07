@@ -13,3 +13,9 @@ function socd_signup_style() {
 }
 
 add_action('wp_head', 'socd_signup_style', 1);
+
+function socd_signup_page() {
+	require_once get_stylesheet_directory() . "/templates/signup/signup.php";;
+}
+
+add_action('before_signup_form', 'socd_signup_page');
