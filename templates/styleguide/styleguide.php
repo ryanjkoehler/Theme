@@ -5,7 +5,9 @@
  * @package  socd
  */
 get_header(); ?>
-
+<header class="header">
+	<h1 class="h1 site-title">Styleguide</h1>
+</header>
 <h1>Typography</h1>
 <section>
 	<?php for ( $i=1; $i < 6; $i++ ) { printf( '<h%1$d class="h%1$d">Heading %1$d</h%1$d>', $i ); } ?>
