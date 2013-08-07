@@ -1,3 +1,5 @@
+if( !window.SOCD ){ window.SOCD = {} };
+
 ( function( window, $, undefined ){
 
 	var T = {
@@ -5,22 +7,22 @@
 		result: Templates[ 'main-navigation--typeahead-result' ].render.bind( Templates[ 'main-navigation--typeahead-result' ] )
 	};
 
-	var SOCD_menu = {
+	var Menu = {
 		ele: '.main-navigation-container',
 		$ele: $( '.main-navigation-container' ),
 		init: function(){
-			SOCD_menu.init_toggle();
-			SOCD_menu.init_typeahead();
+			Menu.init_toggle();
+			Menu.init_typeahead();
 		},
 		init_toggle: function(){
-			var $menuToggle = $( '.main-navigation-container__mobile-toggle', SOCD_menu.$ele );
+			var $menuToggle = $( '.main-navigation-container__mobile-toggle', Menu.$ele );
 			$menuToggle.click( function( e ){
 				e.preventDefault();
-				SOCD_states.toggleState( 'state-mobile-menu-visible' );
+				SOCD.States.toggleState( 'state-mobile-menu-visible' );
 			});
 		},
 		init_typeahead: function(){
-			var $searchBox = $( '.site-search__input', SOCD_menu.$ele );			
+			var $searchBox = $( '.site-search__input', Menu.$ele );			
 			$searchBox.typeahead([
 				{
 					name: 'Blogs',
@@ -72,8 +74,8 @@
 		}
 	};
 
-	SOCD_menu.init();
+	Menu.init();
 
-	window.SOCD_menu = SOCD_menu;
+	window.SOCD.Menu = Menu;
 
 })( window, jQuery );

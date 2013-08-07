@@ -20,6 +20,8 @@
 *
 */
 
+if( !window.SOCD ){ window.SOCD = {} };
+
 ( function( window, $, undefined ){
 	
 	// put our template rendering functions into a quicker to access object, local to this file
@@ -115,6 +117,6 @@
 		}
 	};
 
-	window.SOCD_notifications = Notifications;	
+	window.SOCD.Notifications = Notifications;	
 
 })( window, jQuery );
