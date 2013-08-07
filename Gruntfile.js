@@ -39,6 +39,7 @@ module.exports = function(grunt) {
             './node_modules',
             './.ftppass',
             './assets/.sass-cache',
+            './assets/sass',
             './package.json',
             './Gruntfile.js'
           ]
