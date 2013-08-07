@@ -16,13 +16,6 @@ function socd_setup() {
 	require( get_stylesheet_directory() . '/inc/template-tags.php' );
 }
 
-function socd_register_field() {
-	require_once( get_stylesheet_directory() . '/inc/acf/acf-repeater/acf-repeater.php' );
-}
-
-add_action( 'acf/register_fields', 'socd_register_field' );
-
-
 add_action('init', 'socd_setup');
 
 function socd_after_theme_setup() {
