@@ -2,48 +2,73 @@
  * 
  */
 .comments-section{
-	overflow: hidden;
+	@include rem( 'margin-top', 1.4 );
+	@include rem( 'padding-top', 3.2 );
+	@include rem( 'padding-bottom', 3.2 );
+	position: relative;
 	.comments-section--header{
-		width: 100%;
-		float: left;
-		border-top: 1px solid black;
-		@include rem( 'padding-top', .5 );
-		@include rem( 'margin-bottom', 1 );
-		@include rem( 'padding-bottom', .5 );
+		position: absolute;
+		@include rem( 'left', -1.4 );
+		@include rem( 'right', -1.4 );
+		border-top: 1px solid $colour_red;
+		top: 0;		
+		@include font-size( .8 );
 		.comments-section--count{
-			float: left;		
+			float: left;
+			@include rem( 'width', 6.1 );
+			@include rem( 'padding', .5 );
+			background: $colour_red;
+			color: $colour_white;
 		}
 		.comments-section--navigation{
 			float: right;
+			@include rem( 'padding', .5 );
+			a, span{
+				color: $colour_red;
+				&.current,
+				&:hover{
+					color: $colour_red;
+					border-bottom: 2px solid $colour_red;
+				}	
+			}
 		}
 	}	
-	.comments-section--add-comment{
-		border-top: 1px solid black;
+	.comments-section--header__footer{
+		top: auto;
+		bottom: 0;
 	}
 }
 
 .comments-listing {
-	clear: both;
-	.children {
-		margin-left: 16.666%;
-		&:before{
-		
-		}
-	}
+	clear: both;	
 }
 
 .comment-body{
+	.comment-body--avatar{
+		@include rem( 'padding-right', 1 );
+		img{
+			@include rem( 'width', 4.6 );
+		}
+	}
+	.comment-body--header{
+		@include rem( 'height', 1.6 );
+		border-bottom: 1px solid $colour_red;
+		@include rem( 'margin-bottom', .5 );
+	}
 	.comment-body--author{
-		@include inline-block;
+		float: left;
 		@include fontstack_medium;
+		@include rem( 'line-height', 1.6 );	
+	}
+	.comment-body--comment-meta{
+		@include rem( 'font-size', .8 );	
+		@include rem( 'line-height', 1.6 );	
+		float: right;
 	}
 	.comment-body--comment-content{
 		@include rem( 'margin-bottom', .5 );
 	}
-	.comment-body--comment-meta{
-		@include rem( 'font-size', .7 );	
-		@include rem( 'line-height', 1.8 );	
-	}
+	
 	.comment-body--reply,
 	.comment-body--edit{
 		text-align: right;
@@ -53,9 +78,9 @@
 
 .comment{
 	&.depth-1{
-		border-top: 1px solid black;
+		// border-top: 1px solid black;
 		@include rem( 'padding-top', 1 );
-		@include rem( 'padding-bottom', 1 );
+		@include rem( 'padding-bottom', 2 );
 		&:first-child{
 			border-top: none;
 			padding-top: 0;
@@ -63,9 +88,86 @@
 	}
 	&.parent{
 		.children{
-			border-top: 1px solid black;
+			position: relative;
+			border-top: 1px solid $colour_red;
 			@include rem( 'margin-top', 1 );
-			@include rem( 'padding-top', 1 );
+			@include rem( 'padding-top', .7 );
+			background: $colour_background;
+			&:before{
+				@include font-size( .8 );
+				@include box-sizing( border-box );
+				position: absolute;
+				top: 0;
+				left: 0;
+				content: 'Replies';
+				@include inline-block;
+				@include rem( 'padding', .5 );
+				background: $colour_red;
+				color: $colour_white;
+				@include rem( 'width', 4.6 );
+			}
+
+			.children{
+				border-top: none;
+				&:before{
+					content: none;
+				}
+			}
+		}
+	}
+	&.depth-2{
+		.comment-body--avatar{
+			@extend .col-one-sixth;
+			@include rem( 'padding-right', 1 );
+			@include rem( 'max-width', 4.3 );
+
+		}
+	}
+}
+
+.comments-section--add-comment{
+	position: relative;
+	#respond{
+		&:before{
+			content: ' ';
+			@include rem( 'left', -1.4 );
+			@include rem( 'right', -1.4 );
+			height: 0;
+			padding-top: 1px;
+			overflow: hidden;
+			background: $colour_red;
+			display: block;
+			position: absolute;
+			top: 0;
+		}
+	}
+	#reply-title{
+		position: absolute;
+		background: $colour_red;
+		color: $colour_white;
+		@include font-size( .8 );
+		@include rem( 'padding', .5 );
+		@include rem( 'left', -1.4 );
+		top: 0;		
+	}
+	#commentform{
+		.logged-in-as{			
+			@include font-size( .8 );
+			@include rem( 'margin-left', 5.4 );
+			@include rem('padding-top', .5 );
+			@include rem('padding-bottom', .5 );			
+		}
+		.comment-form-comment{
+			@include rem( 'margin-top', 1.3 ); 
+			label[for="comment"]{
+				display: none;
+			}
+			textarea{
+				background: $colour_background;
+			}
+		}
+		.form-allowed-tags{
+			display: none;
 		}
 	}
 }

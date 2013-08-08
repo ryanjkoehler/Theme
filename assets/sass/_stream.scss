@@ -61,7 +61,7 @@
 	}
 	.article--meta{
 		@include fontstack_light;
-		@include font-size( .9 );
+		@include font-size( .8 );
 		@include rem('padding-right', 1.4 );
 		.entry-date{
 			display: block;
