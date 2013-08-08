@@ -1,1 +1,4 @@
-<p class="notifications-message notifications-message__{{ tone }}">{{ message }}</p> 
+<div class="notifications-message notifications-message__{{ tone }}" id="notification-{{ id }}">
+	{{ message }}
+	<a href="#notification-{{ id }}" class="notifications-message--dismiss">&times;</a>
+</div> 
