@@ -18,6 +18,8 @@
 *
 *	It creates html based on the /assets/templates/notifications/message.html template, adding the 'tone' argument as a class.
 *
+*	returns an ID of the message that can be used to forcibly remove it at an arbitrary point in the future with removeMessage();
+*	or, if multiple messages are passed, returns an array of message IDs that can be used for the same purpose
 */
 
 if( !window.SOCD ){ window.SOCD = {} };
@@ -35,15 +37,18 @@ if( !window.SOCD ){ window.SOCD = {} };
 		_notificationTime: 5000,
 		_centerMessageCount: 0,
 		_timers: [],
+		_systemLifetimeMessageCount: 0,
+		_systemMessages: {},
 		_clearTimers: function(){
 			for( var i = 0; i < Notifications.timers.length; i++ ){
 				clearTimeout( Notifications.timers[i] );
 			}
 		},
 		_handleMessage: function( _opts ){
-			var rendered, $rendered;
+			var inNotificationCenter, messageId, options, rendered, $rendered;
+
 			opts = _opts || {};
-			var options = {
+			options = {
 				text: opts.text,
 				tone: opts.tone || 'ambivalent',
 				time: opts.time || 0,
@@ -51,7 +56,9 @@ if( !window.SOCD ){ window.SOCD = {} };
 				position: opts.position || 'append'
 			};
 
-			var inNotificationCenter = !( !!opts.location );
+			inNotificationCenter = !( !!opts.location );
+
+			messageId = Notifications._systemLifetimeMessageCount;
 
 			if( typeof options.text !== 'string' ){
 				throw new Error( 'SOCD_Notifications message objects should have a field, \'text\' which is a string containing the text of the message' );
@@ -78,7 +85,7 @@ if( !window.SOCD ){ window.SOCD = {} };
 			}
 
 			if( options.time > 0 ){
-				Notifications._removeMessage( $rendered, options.time, inNotificationCenter );
+				Notifications._handleRemoveMessage( $rendered, options.time, inNotificationCenter );
 			}
 
 			if( inNotificationCenter ){
@@ -87,10 +94,17 @@ if( !window.SOCD ){ window.SOCD = {} };
 				Notifications._ele.addClass( 'open' );
 			}
 			
-			return $rendered;
+			Notifications._systemMessages[ messageId ] = {
+				ele: $rendered,
+				inNotificationCenter: inNotificationCenter
+			};
+
+			Notifications._systemLifetimeMessageCount++;
+
+			return messageId;
 
 		},
-		_removeMessage: function( $message, when, inNotificationCenter ){
+		_handleRemoveMessage: function( $message, when, inNotificationCenter ){
 			var timer = setTimeout( function(){
 				$message.addClass( 'hide' );
 				var tempTimer = setTimeout( function(){
@@ -110,10 +124,28 @@ if( !window.SOCD ){ window.SOCD = {} };
 
 			Notifications._timers.push( timer );
 		},
+		removeMessage: function( id, _when ){
+			var when = _when || 0;
+			var messageRef = Notifications._systemMessages[ id ];
+
+			Notifications._handleRemoveMessage( messageRef.ele, when, messageRef.inNotificationCenter );
+		},
 		message: function( message ){
-			for( var i = 0; i < arguments.length; i++ ){
-				Notifications._handleMessage( arguments[i] );
+			var createdIds;
+
+			if( arguments.length > 1 ){
+				createdIds = [];
 			}
+
+			for( var i = 0; i < arguments.length; i++ ){
+				var id = Notifications._handleMessage( arguments[i] );
+				if( arguments.length > 1 ){
+					createdIds.push( id );
+				} else {
+					createdIds = id;
+				}
+			}
+			return createdIds;
 		}
 	};
 
