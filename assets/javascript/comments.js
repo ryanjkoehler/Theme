@@ -6,8 +6,10 @@ if( !window.SOCD ){ window.SOCD = {} };
 
 	var Comments = {
 		_inputBox: $( 'textarea#comment' ),
+		_uploadingMessageId: undefined,
+		_errorMessageId: undefined,
 		_inlineAttachOptions: {
-			uploadUrl: '',
+			uploadUrl: 'upload.php',
 			uploadFieldName: 'file',
 			downloadFieldName: 'file',
 			allowedTypes: [
@@ -19,12 +21,45 @@ if( !window.SOCD ){ window.SOCD = {} };
 			progressText: '![Uploading File.]()',
 			urlText: '![file]({filename})',
 			onReceivedFile: function( file ){
-				SOCD.Notifications.message({
-					text: 'Uploading'
-				});
+				if( typeof Comments._uploadingMessageId !== 'undefined' ){
+					SOCD.Notifications.removeMessage( Comments._uploadingMessageId );
+				}
+				if( typeof Comments._errorMessageId !== 'undefined' ){
+					SOCD.Notifications.removeMessage( Comments._errorMessageId );
+				}
+				Comments._uploadingMessageId = SOCD.Notifications.message({
+					text: 'Uploading File.',
+					location: Comments._inputBox,
+					position: 'after'
+				});				
 			},
 			onUploadedFile: function( json ){
-				console.log( 'uploaded' );
+				SOCD.Notifications.removeMessage( Comments._uploadingMessageId );
+				if( typeof Comments._errorMessageId !== 'undefined' ){
+					SOCD.Notifications.removeMessage( Comments._errorMessageId );
+				}
+				
+				SOCD.Notifications.message({
+					text: 'Upload Successful.',
+					location: Comments._inputBox,
+					position: 'after',
+					tone: 'positive',
+					time: 5000
+				});
+
+			},
+			customErrorHandler: function(){				
+				if( typeof Comments._uploadingMessageId !== 'undefined' ){
+					SOCD.Notifications.removeMessage( Comments._uploadingMessageId );
+				}
+
+				Comments._errorMessageId = SOCD.Notifications.message({
+					text: 'There was a problem uploading this file.',
+					location: Comments._inputBox,
+					position: 'after',					
+					tone: 'negative'
+				});
+				return false; // necessary to prevent default error handler firing
 			},
 			errorText: 'Error uploading file.'
 		},
