@@ -45,9 +45,9 @@
 
 .comment-body{
 	.comment-body--avatar{
-		@include rem( 'padding-right', 1 );
+		@include rem( 'padding-right', 0.6 );
 		img{
-			@include rem( 'width', 4.6 );
+			@include rem( 'width', 4.7 );
 		}
 	}
 	.comment-body--header{
@@ -118,7 +118,7 @@
 	&.depth-2{
 		.comment-body--avatar{
 			@extend .col-one-sixth;
-			@include rem( 'padding-right', 1 );
+			@include rem( 'padding-right', 0.6 );
 			@include rem( 'max-width', 4.3 );
 
 		}

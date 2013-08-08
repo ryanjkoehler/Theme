@@ -20,7 +20,7 @@ if ( 'pingback' == $comment->comment_type || 'trackback' == $comment->comment_ty
 				&nbsp;
 			</div><?php endif; ?><!--
 		 --><div class="comment-body--avatar col <?php if( $depth <= 1 ): ?>col-one-sixth<?php endif; ?>">
-				<?php echo get_avatar( $comment,  60 ); ?>
+					<?php echo get_avatar( $comment, 150 ); ?>
 			</div><!--
 			--><div class="col <?php if( $depth > 1 ): ?>col-two-thirds<?php else: ?>col-five-sixths<?php endif; ?>">
 				<header class="comment-body--header">
