@@ -2,6 +2,7 @@
 /**
  * Default Page template
  * 
+ * @package  socd
  */
  get_header(); ?>
 <div class="gw">
