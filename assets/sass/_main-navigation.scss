@@ -55,7 +55,7 @@
 			&.open{
 				height: auto;
 				min-height: 0;
-				max-height: 50em;
+				max-height: 500em; //this is a high value to ensure that it will spring open
 			}
 		}
 		.main-navigation-container__mobile-toggle{
@@ -393,6 +393,7 @@ body.logged-in{
 .navigation-notifications{
 	background: $colour_light;
 	color: $colour_background_dark;
+	@include rem( 'max-height', 10 );
 }
 
 .navigation-quickpost{

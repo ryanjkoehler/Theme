@@ -1,13 +1,15 @@
+if( !window.SOCD ){ window.SOCD = {} };
+
 (function( $ ){
 
-	var SOCD_states = {
+	var States = {
 		ele: 'body',
 		$ele: $( 'body' ),
 		toggleState: function( state ){
-			SOCD_states.$ele.toggleClass( state );
+			States.$ele.toggleClass( state );
 		}
 	};
 
-	window.SOCD_states = SOCD_states;
+	window.SOCD.States = States;
 
 })( jQuery );

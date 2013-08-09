@@ -3,8 +3,8 @@
 		<div class="cell"></div>
 	</section>
 	<section class="navigation-notifications notifications main-navigation-container__openable">				
-		<div class="cell notifications-center-display">			
-			<p class="notifications-message notifications-message__negative">This message is negative. Very negative.</p>
+		<div class="notifications-center-display">
+			<!-- populated with content formatted by the template /assets/templates/notifications/message.html -->
 		</div>
 	</section>
 	<ul class="main-navigation-container__fixed-size main-navigation no-style">
