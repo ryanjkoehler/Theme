@@ -11,24 +11,9 @@
 		<li class="main-navigation__menu-item main-navigation__menu-item--dropdown main-navigation__menu-item--breadcrumb main-navigation__menu-item--root">
 			<div class="tab">
 				<h1 class="title"><a href="/">SOCD.io</a></h1>
+				<?php socd_network_menu(); ?>
 			</div>
-			<ul class="drop">
-				<li class="drop__option"><a href="#">Courses</a></li>
-				<li class="drop__option"><a href="#">School Gallery</a></li>
-				<li class="drop__option"><a href="#">All Staff</a></li>
-				<li class="drop__option"><a href="#">All Students</a></li>
-				<li class="drop__option"><a href="#">All Events</a></li>
-				<li class="drop__option"><a href="#">Research</a></li>
-			</ul>
 		</li><!-- 
-	 --><li class="main-navigation__menu-item main-navigation__menu-item--dropdown main-navigation__menu-item--breadcrumb">
-			<div class="tab">
-				<h1 class="title"><a href="#">Prototype</a></h1>
-			</div>
-			<ul class="drop">
-				<li class="drop__option"><a href="/styleguide">Styleguide</a></li>
-			</ul>
-		</li><!--
 	 --><li class="main-navigation__menu-item main-navigation__menu-item--dropdown main-navigation__menu-item--breadcrumb">
 			<div class="tab">
 				<h1 class="title"><a href="#">BA (Hons) Graphic Design</a></h1>
