@@ -53,3 +53,23 @@ function socd_posted_on() {
 		esc_html( get_the_author() )
 	);
 }
+
+
+
+function socd_network_menu() {
+	echo 'Test navigation';
+
+	if ( false === ( $output = get_site_transient( 'site__socd_menu' ) ) && false ) {
+		echo 'Not in Transient';
+		switch_to_blog( 1 );
+		$output = wp_nav_menu( array(
+			'theme_location' => 'socd_site_menu',
+			'container_class' => 'drop',
+			'echo' => false
+		) );
+		restore_current_blog();
+		set_site_transient( 'site__socd_menu', $output, 12 * HOUR_IN_SECONDS );
+	}
+
+	echo $output;
+} 
