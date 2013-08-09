@@ -8,8 +8,9 @@ get_header(); ?>
 <header class="header">
 	<h1 class="h1 site-title">Styleguide</h1>
 </header>
-<h1>Typography</h1>
 <section>
+  <h1 class="h2">Typography</h1>
+
 	<?php for ( $i=1; $i < 6; $i++ ) { printf( '<h%1$d class="h%1$d">Heading %1$d</h%1$d>', $i ); } ?>
 
   <h2 class="h2">Special Cases</h2>
@@ -45,8 +46,9 @@ get_header(); ?>
 </section>
 
 <section>
+  <h1 class="h2">Form</h1>
   <form action="">
-    
+
     <label for="name">Name</label>
     <input class="input_full" type="text" id="name" name="name" required="required">
 
@@ -111,6 +113,12 @@ get_header(); ?>
     <textarea id="description" name="description" rows="8" required="required"></textarea>
   
     <input type="submit"/>
+
+    <h2 class="h3">States</h2>
+    <label for="name">Status: Checking</label><input type="text" class="input_full input__checking"/>
+    <label for="name">Status: Error</label><input type="text" class="input_full input__error"/>
+    <label for="name">Status: OK</label><input type="text" class="input_full input__ok"/>
+
   </form>
 
 </section>

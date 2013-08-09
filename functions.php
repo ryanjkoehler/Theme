@@ -7,21 +7,21 @@
  * @package SOCD
  */
 
+require( get_stylesheet_directory() . '/inc/templates.php' );
+
 function socd_setup() {
 	require( get_stylesheet_directory() . '/inc/admin.php' );
-	// require( get_stylesheet_directory() . '/templates/comments/comments.php' );
 	require( get_stylesheet_directory() . '/inc/customizer.php' );
 	require( get_stylesheet_directory() . '/inc/extras.php' );
-	require( get_stylesheet_directory() . '/inc/templates.php' );
 	require( get_stylesheet_directory() . '/inc/template-tags.php' );
 }
 
-add_action('init', 'socd_setup');
+add_action( 'init', 'socd_setup' );
 
 function socd_after_theme_setup() {
-	add_theme_support( 'post-thumbnails');
+	add_theme_support( 'post-thumbnails' );
 }
-add_action( 'after_setup_theme', 'socd_after_theme_setup');
+add_action( 'after_setup_theme', 'socd_after_theme_setup' );
 
 /**
  * Manually hook in the webink stylesheet as it uses some characters '&' that 
@@ -32,7 +32,7 @@ function socd_webink() { ?>
 	<?php 
 }
 
-add_action( 'wp_head', 'socd_webink');
+add_action( 'wp_head', 'socd_webink' );
 
 
 function socd_assets () {
@@ -52,13 +52,13 @@ function socd_assets () {
 
 }
 
-add_action('wp_enqueue_scripts', 'socd_assets' );
+add_action( 'wp_enqueue_scripts', 'socd_assets' );
 
 
 /**
  * Removes WP Admin bar
  */
-add_action('after_setup_theme', 'remove_admin_bar');
+add_action( 'after_setup_theme', 'remove_admin_bar' );
 
 function remove_admin_bar() {
 	if ( is_admin() ) {
@@ -93,4 +93,15 @@ function socd_widets_init() {
 	) );
 }
 
-add_action('widgets_init', 'socd_widets_init');
+add_action( 'widgets_init', 'socd_widets_init' );
+
+
+function socd_menus() {
+
+	register_nav_menus( array( 
+		'socd_network_menu' => 'Network Menu',
+		'socd_network_footer' => 'Network Footer'
+	) );
+}
+
+add_action( 'init', 'socd_menus' );
