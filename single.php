@@ -17,7 +17,11 @@ get_header(); ?>
 		</div>
 	</section><!-- 
 	--><section class="col--stream stream">
-		<?php do_action( 'socd_year_taxonomy' ); ?>
+		<div class="stream--filters">
+			<ul>
+				<li><a href="'<?php echo htmlspecialchars( $_SERVER['HTTP_REFERER'] ); ?>'" class="s__active">&larr; Back</a></li>
+			</ul>
+		</div>
 		<div class="cell colour--white">
 			<div id="posts-container">
 				<?php while( have_posts() ) : the_post(); ?>
