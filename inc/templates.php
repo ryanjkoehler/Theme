@@ -43,6 +43,8 @@ function socd_template( $template_directory, $template_name=false ) {
 	if ( $wp_query->is_404 ) {
 		$wp_query->is_404 = false;
 		header("HTTP/1.1 200 OK");
+	} else if ( $template_name === "404" ) {
+		header("HTTP/1.1 404 Not Found");
 	}
 	get_header();
 	require_once get_stylesheet_directory() . "/templates/{$template_directory}/{$template_name}.php";
@@ -77,17 +79,18 @@ function socd_faux_pages() {
 	}
 
 	// Load our Student/Staff Listings
-	if ( $socd_template = $wp_query->get('socd_template') ) {
+	if ( 'profile' === $wp_query->get('socd_template') ) {
 	
 		$user = get_user_by( 'slug', $wp_query->get('user_slug') );
 
 		// No User found
+		// 
 		if ( !$user ) {
-			socd_template( 'profile', '404.php' );
+			socd_template( 'profile', '404' );
 			exit;
 		};
 		
-		socd_template( $socd_template );
+		socd_template( 'profile' );
 		exit;
 	}
 }
@@ -99,7 +102,7 @@ add_action('template_redirect', 'socd_faux_pages');
  */
 function socd_rewrite_urls() {
 	add_rewrite_rule(
-		'(students)/([a-z0-9\-]+)/?$',
+		'(students?|staff)/([a-z0-9\-]+)/?$',
 		'index.php?socd_template=profile&user_slug=$matches[2]',
 		'top' );
 }
@@ -118,7 +121,8 @@ add_filter( 'query_vars', 'socd_query_vars' );
 
 function flushRules(){
 	global $wp_rewrite;
+
 	$wp_rewrite->flush_rules();
 }
 
-add_filter('init','flushRules');
+// add_filter('init','flushRules');
