@@ -25,7 +25,6 @@ get_header(); ?>
 	--><section class="col--stream stream">
 		<?php do_action( 'socd_year_taxonomy' ); ?>
 		<div class="cell colour--white">
-
 			<div id="posts-container">
 				<?php while( have_posts() ) : the_post(); ?>
 					<?php get_template_part( 'templates/post/post'); ?>
