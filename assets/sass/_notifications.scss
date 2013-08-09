@@ -1,6 +1,8 @@
 .notifications-message{
 	background: $colour_menu_grey_light;
 	color: $colour_white;
+	padding: $grid_padding * .5 $grid_padding $grid_padding;
+	position: relative;
 	margin: 0;
 	@include transition( opacity .5s ease-in-out );
 	@include rem( 'padding-bottom', .5 );
@@ -8,22 +10,28 @@
 	@include rem( 'padding-right', 1 );
 	@include rem( 'padding-top', .5 );
 	@include font-size( .8 );
+	
 	&.notifications-message__ambivalent{
 		// actually, this is probably just the default one?
 	}
+
 	&.notifications-message__positive{
 		background: $colour_green;
 		
 	}
+	
 	&.notifications-message__negative{
 		background: $colour_red;
 	}
+	
 	&.hide{
 		opacity: 0;
 	}
 
 	.notifications-message--dismiss{
-		float: right;
 		color: $colour_white;
+		position: absolute;
+		top: $grid_padding * .5;
+		right: $grid_padding * .5;
 	}
 }
