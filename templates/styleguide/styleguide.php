@@ -5,13 +5,43 @@
  * @package  socd
  */
 get_header(); ?>
+<style>
+    
+    /**
+     * Styleguide Only
+     */
+    
+    .styleguide section {
+      position: relative;
+      padding-bottom: 2em;
+      margin-bottom: 2em;
+    }
+    
+    .styleguide section:before,
+    .styleguide section:after {
+      content: "";
+      display: block;
+      border-bottom: 1px solid rgba( 0, 0, 0, .25);
+      position: absolute;
+      bottom: 0;
+      left: -50%;
+      width: 100%;
+    }
+
+    .styleguide section:after {
+      left: 50%;
+    }
+
+</style>
 <header class="header">
 	<h1 class="h1 site-title">Styleguide</h1>
 </header>
-<section>
+<div class="styleguide">
+  
+  <section>
   <h1 class="h2">Typography</h1>
 
-	<?php for ( $i=1; $i < 6; $i++ ) { printf( '<h%1$d class="h%1$d">Heading %1$d</h%1$d>', $i ); } ?>
+  <?php for ( $i=1; $i < 6; $i++ ) { printf( '<h%1$d class="h%1$d">Heading %1$d</h%1$d>', $i ); } ?>
 
   <h2 class="h2">Special Cases</h2>
 
@@ -24,25 +54,25 @@ get_header(); ?>
 
 </section>
 <div class="wysiwyg">
-	<p data-fixie class="fixie"></p>
-	<ul data-fixie class="fixie">
-		<li data-fixie class="fixie"></li>
-		<ul data-fixie class="fixie"></ul>
-	</ul>
-	<ol data-fixie></ol>
-	<ul class="listing__navigation" data-fixie></ul>
+  <p data-fixie class="fixie"></p>
+  <ul data-fixie class="fixie">
+    <li data-fixie class="fixie"></li>
+    <ul data-fixie class="fixie"></ul>
+  </ul>
+  <ol data-fixie></ol>
+  <ul class="listing__navigation" data-fixie></ul>
 
-	<p data-fixie data-fixie-clone="2"></p>
+  <p data-fixie data-fixie-clone="2"></p>
 </div>
 
 
 <h1>Modules</h1>
 <section>
-	
-	<div class="cell">
-		<h1 class="h2 h2--ruled">Sample Heading</h1>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse feugiat, felis eget eleifend porta, mi mi iaculis quam, sit amet pharetra ante massa sed magna. Morbi vulputate augue quis nibh cursus sed accumsan massa sodales. Aenean nec aliquet leo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi eget pharetra tellus. Donec vitae rutrum justo. Curabitur semper, diam id congue dapibus, dolor nulla hendrerit urna, vitae commodo nulla orci eu neque. Sed eros lacus, sollicitudin ut ornare vitae, fermentum eget orci. Morbi dictum nibh et lectus suscipit pharetra vitae et ipsum.</p>
-	</div>
+  
+  <div class="cell">
+    <h1 class="h2 h2--ruled">Sample Heading</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse feugiat, felis eget eleifend porta, mi mi iaculis quam, sit amet pharetra ante massa sed magna. Morbi vulputate augue quis nibh cursus sed accumsan massa sodales. Aenean nec aliquet leo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi eget pharetra tellus. Donec vitae rutrum justo. Curabitur semper, diam id congue dapibus, dolor nulla hendrerit urna, vitae commodo nulla orci eu neque. Sed eros lacus, sollicitudin ut ornare vitae, fermentum eget orci. Morbi dictum nibh et lectus suscipit pharetra vitae et ipsum.</p>
+  </div>
 </section>
 
 <section>
@@ -122,6 +152,14 @@ get_header(); ?>
   </form>
 
 </section>
+<section>
+  <h1 class="h2">Notifications</h1>
+  <div class="notifications-message"><p data-fixie></p><a href="#" class="notifications-message--dismiss">&times;</a></div>
+  <div class="notifications-message notifications-message__ambivalent"><p data-fixie></p><a href="#" class="notifications-message--dismiss">&times;</a></div>
+  <div class="notifications-message notifications-message__positive"><p data-fixie></p><a href="#" class="notifications-message--dismiss">&times;</a></div>
+  <div class="notifications-message notifications-message__negative"><p data-fixie></p><a href="#" class="notifications-message--dismiss">&times;</a></div>
+</section>
 
+</div>
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/javascript/libs/fixie/fixie.js"></script>
 <?php get_footer();
