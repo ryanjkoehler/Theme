@@ -97,8 +97,8 @@ add_action( 'widgets_init', 'socd_widets_init' );
 function socd_menus() {
 
 	register_nav_menus( array( 
-		'socd_site_menu' => 'Site Menu',
-		'socd_footer_menu' => 'Footer Menu'
+		'socd_network_menu' => 'Network Menu',
+		'socd_network_footer' => 'Network Footer'
 	) );
 }
 
