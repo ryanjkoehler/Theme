@@ -57,19 +57,31 @@ function socd_posted_on() {
 
 
 function socd_network_menu() {
-	echo 'Test navigation';
-
-	if ( false === ( $output = get_site_transient( 'site__socd_menu' ) ) && false ) {
-		echo 'Not in Transient';
+	if ( false === ( $output = get_site_transient( 'site__socd_menu' ) ) || false ) {
 		switch_to_blog( 1 );
 		$output = wp_nav_menu( array(
-			'theme_location' => 'socd_site_menu',
+			'theme_location' => 'socd_network_menu',
 			'container_class' => 'drop',
 			'echo' => false
 		) );
 		restore_current_blog();
-		set_site_transient( 'site__socd_menu', $output, 12 * HOUR_IN_SECONDS );
+		set_site_transient( 'site__socd_menu', $output, 1 * HOUR_IN_SECONDS );
 	}
 
 	echo $output;
 } 
+
+function socd_network_footer() {
+	if ( false === ( $output = get_site_transient( 'site__socd_network_footer' ) ) || false ) {
+		switch_to_blog( 1 );
+		$output = wp_nav_menu( array(
+			'theme_location' => 'socd_network_footer',
+			'container_class' => 'footer--menu',
+			'echo' => false
+		) );
+		restore_current_blog();
+		set_site_transient( 'site__socd_network_footer', $output, 1 * HOUR_IN_SECONDS );
+	}
+
+	echo $output;
+}
