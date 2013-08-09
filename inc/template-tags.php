@@ -72,11 +72,12 @@ function socd_network_menu() {
 } 
 
 function socd_network_footer() {
-	if ( false === ( $output = get_site_transient( 'site__socd_network_footer' ) ) || false ) {
+
+	if ( false === ( $output = get_site_transient( 'site__socd_network_footer' ) ) || true ) {
 		switch_to_blog( 1 );
 		$output = wp_nav_menu( array(
 			'theme_location' => 'socd_network_footer',
-			'container_class' => 'footer--menu',
+			'menu_class' => 'ul footer--menu',
 			'echo' => false
 		) );
 		restore_current_blog();
