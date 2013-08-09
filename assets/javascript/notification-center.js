@@ -67,10 +67,16 @@ if( !window.SOCD ){ window.SOCD = {} };
 
 			rendered = T.message({
 				message: options.text,
-				tone: options.tone 
+				tone: options.tone,
+				id: messageId
 			});
 
 			$rendered = $( rendered );
+
+			$( '.notifications-message--dismiss', $rendered ).click( function( e ){
+				e.preventDefault();
+				Notifications.removeMessage( messageId );
+			});
 
 			switch( options.position ){
 				case 'after':
