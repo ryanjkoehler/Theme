@@ -59,7 +59,6 @@ function socd_assets () {
 
 add_action( 'wp_enqueue_scripts', 'socd_assets' );
 
-
 /**
  * Removes WP Admin bar
  */
@@ -106,3 +105,46 @@ function socd_menus() {
 }
 add_action( 'init', 'socd_menus' );
 
+//////////////////////////////////////////////////////////////////////////////////////////////
+// QUICKPOST /////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * Enqueue script and adding localisation
+ */
+function socd_qp_enqueue_scripts() {
+	wp_enqueue_script( 'socd_qp', get_stylesheet_directory_uri() . '/assets/javascript/quickpost.js', array( 'jquery' ), false, true );
+
+	$blogs = get_blogs_of_user( get_current_user_id() );
+	$user_blogs = array();
+	
+	if ( count( $blogs ) > 0 )
+		foreach ( $blogs as $blog )
+			if ( current_user_can_for_blog( $blog->userblog_id, 'publish_posts' ) )
+				$user_blogs[] = array( 'id' => $blog->userblog_id, 'title' => $blog->blogname );
+	
+	wp_localize_script( 'socd_qp', 'SOCD_QP_CONFIG', array(
+		'ajax_url' => admin_url( 'admin-ajax.php' ),
+		'user_blogs' => $user_blogs,
+		'user_primary_blog' => get_user_meta( get_current_user_id(), 'primary_blog', true ),
+		'current_blog' => get_current_blog_id(),
+		'nonce' => wp_create_nonce( 'socd_qp' )
+		
+	) );
+}
+add_action( 'wp_enqueue_scripts', 'socd_qp_enqueue_scripts' );
+
+/**
+ * AJAX Endpoint for QuickPost
+ */
+function socd_qp_ajax_post() {
+	if ( ! empty( $_POST['nonce'] ) && wp_verify_nonce( $_POST['nonce'], 'socd_qp' ) ) {
+		echo 'nonce ok';
+		exit;
+	}
+}
+add_action( 'wp_ajax_socd_post', 'socd_qp_ajax_post' );
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////

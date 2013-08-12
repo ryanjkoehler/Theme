@@ -1,6 +1,8 @@
 <nav class="main-navigation-container">
 	<section class="navigation-quickpost quickpost main-navigation-container__openable">				
-		<div class="cell"></div>
+		<div class="quickpost--interface">
+			
+		</div>
 	</section>
 	<section class="navigation-notifications notifications main-navigation-container__openable">				
 		<div class="notifications-center-display">
