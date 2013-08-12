@@ -151,19 +151,39 @@
 		top: 0;		
 	}
 	#commentform{
-		.logged-in-as{			
-			@include font-size( .8 );
-			@include rem( 'margin-left', 5.4 );
-			@include rem('padding-top', .5 );
-			@include rem('padding-bottom', .5 );			
+		.required{
+			color: $colour_red;
 		}
-		.comment-form-comment{
-			@include rem( 'margin-top', 1.3 ); 
-			label[for="comment"]{
-				display: none;
+		.logged-in-as,
+		.comment-notes{
+			@include font-size( .8 );
+			@include rem( 'margin-bottom', 1.3 );
+			@include rem( 'margin-left', 5.4 );	
+			@include rem( 'padding-bottom', .5 );
+			@include rem( 'padding-top', .5 );
+		}		
+		
+		label[for="comment"]{
+			display: none;
+		}
+		
+		textarea, input[type="text"]{
+			background: $colour_background;
+		}
+		p{
+			label{
+				@include font-size( .8 );
+				display: block;
 			}
-			textarea{
-				background: $colour_background;
+			input[type="text"]{
+				width: 100%;
+			}
+			&.comment-form-author, &.comment-form-email{
+				width: 48%;
+				@include inline-block;
+			}
+			&.comment-form-author{
+				margin-right: 3%;
 			}
 		}
 		.form-allowed-tags{
