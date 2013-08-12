@@ -25,6 +25,7 @@ add_action( 'init', 'socd_setup' );
  */
 function socd_after_theme_setup() {
 	add_theme_support( 'post-thumbnails' );
+	add_theme_support( 'post-formats', array( 'image', 'video', 'link', 'quote' ) );
 }
 add_action( 'after_setup_theme', 'socd_after_theme_setup' );
 
@@ -113,24 +114,34 @@ add_action( 'init', 'socd_menus' );
  * Enqueue script and adding localisation
  */
 function socd_qp_enqueue_scripts() {
-	wp_enqueue_script( 'socd_qp', get_stylesheet_directory_uri() . '/assets/javascript/quickpost.js', array( 'jquery' ), false, true );
-
-	$blogs = get_blogs_of_user( get_current_user_id() );
-	$user_blogs = array();
+	if ( ! is_admin() ) {		
+		// Include javascript
+		wp_enqueue_script( 'socd_qp', get_stylesheet_directory_uri() . '/assets/javascript/quickpost.js', array( 'jquery' ), false, true );
 	
-	if ( count( $blogs ) > 0 )
-		foreach ( $blogs as $blog )
-			if ( current_user_can_for_blog( $blog->userblog_id, 'publish_posts' ) )
-				$user_blogs[] = array( 'id' => $blog->userblog_id, 'title' => $blog->blogname );
-	
-	wp_localize_script( 'socd_qp', 'SOCD_QP_CONFIG', array(
-		'ajax_url' => admin_url( 'admin-ajax.php' ),
-		'user_blogs' => $user_blogs,
-		'user_primary_blog' => get_user_meta( get_current_user_id(), 'primary_blog', true ),
-		'current_blog' => get_current_blog_id(),
-		'nonce' => wp_create_nonce( 'socd_qp' )
+		// Prepare a list of user blogs
+		$blogs = get_blogs_of_user( get_current_user_id() );
+		$user_blogs = array();
 		
-	) );
+		if ( count( $blogs ) > 0 )
+			foreach ( $blogs as $blog )
+				if ( current_user_can_for_blog( $blog->userblog_id, 'publish_posts' ) )
+					$user_blogs[] = array( 'id' => $blog->userblog_id, 'title' => $blog->blogname );
+		
+		// Prepare a list of post formats
+		$post_formats = get_theme_support( 'post-formats' );
+		$post_formats = $post_formats[0];
+		$post_formats[] = 'blog';
+
+		// Send important values to client browser
+		wp_localize_script( 'socd_qp', 'SOCD_QP_CONFIG', array(
+			'ajax_url' => admin_url( 'admin-ajax.php' ),
+			'user_blogs' => $user_blogs,
+			'user_primary_blog' => get_user_meta( get_current_user_id(), 'primary_blog', true ),
+			'current_blog' => get_current_blog_id(),
+			'nonce' => wp_create_nonce( 'socd_qp' ),
+			'post_formats' => $post_formats
+		) );
+	}
 }
 add_action( 'wp_enqueue_scripts', 'socd_qp_enqueue_scripts' );
 
@@ -139,8 +150,80 @@ add_action( 'wp_enqueue_scripts', 'socd_qp_enqueue_scripts' );
  */
 function socd_qp_ajax_post() {
 	if ( ! empty( $_POST['nonce'] ) && wp_verify_nonce( $_POST['nonce'], 'socd_qp' ) ) {
-		echo 'nonce ok';
-		exit;
+
+		$output = array();
+		
+		// Process serialised form data from jQuery
+		parse_str( $_POST['formdata'], $data );
+
+		// Switch to correct blog
+		if ( ! empty( $data['blog_id'] ) && switch_to_blog( $data['blog_id'], true ) ) {
+	
+			// Check user can post to current blog
+			if ( current_user_can( 'publish_posts' ) ) {
+	
+				// Prepare Content
+				switch ( $data['post_format'] ) {
+					
+					case 'blog':
+						$title = htmlspecialchars( $data['title'] );
+						$content = $data['content'];
+					break;
+					
+					default: 
+						$output['status'] = 'error';
+						$output['message'] = 'Invalid posttype Specified.';
+					break;
+					
+				}
+				
+				// If content ready
+				if ( empty( $output['status'] ) ) {
+		
+					// Create post array
+					$post = array(
+					    'post_title' => $title,
+						'post_name' => $title,
+					    'post_content' => $content,
+						'post_author' => get_current_user_id(),
+						'post_date_gmt' => gmdate( 'Y-m-d H:i:s' )
+					);
+					
+					// Insert post
+					$post_id = wp_insert_post( $post );
+					
+					// Create a slug
+					$slug = wp_unique_post_slug( sanitize_title_with_dashes( $title, '', 'save' ), 0, 'publish', 'post', '' );
+					
+					wp_update_post( array( 
+						'ID' => $post_id,
+						'post_name' => $slug
+					) );					
+					
+					// Set post format
+					$post_formats = get_theme_support( 'post-formats' );
+					if ( in_array( $data['post_format'], $post_formats[0] ) )
+						set_post_format( $post_id, $data['post_format'] );
+		
+					// Publish post
+					wp_publish_post( $post_id );
+					
+					// Ouput where the post is
+					$output['post_id'] = $post_id;
+					$output['permalink'] = get_permalink( $post_id );
+					$output['status'] = 'published';
+				}
+	
+				// Output the result of the posting
+				echo json_encode( $output );
+				
+				// Go back to the original blog
+				restore_current_blog();
+				
+				// Exit before the echo zero
+				exit;
+			}
+		}
 	}
 }
 add_action( 'wp_ajax_socd_post', 'socd_qp_ajax_post' );
@@ -148,3 +231,44 @@ add_action( 'wp_ajax_socd_post', 'socd_qp_ajax_post' );
 //////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
