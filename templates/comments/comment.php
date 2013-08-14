@@ -36,6 +36,9 @@ if ( 'pingback' == $comment->comment_type || 'trackback' == $comment->comment_ty
 				</header>
 				<div class="col comment-body--comment-content wysiwyg">				
 					<?php comment_text(  ); ?>
+					<?php if ( get_comment_meta( $comment->comment_ID, 'image', true ) ): ?>
+						<?php echo wp_get_attachment_link( get_comment_meta( $comment->comment_ID, 'image', true ) ) ?>
+					<?php endif ?>
 				</div>
 			 	<div class="comment-body--edit col col-one-sixth">
 			 		<div class="button button__edit-button">
