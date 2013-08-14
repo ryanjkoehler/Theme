@@ -1,0 +1,44 @@
+.quickpost{
+	.col{
+		@include rem( 'padding-right', 1 );
+	}
+}
+
+.quickpost--interface{
+	color: $colour_white;
+	input[type="text"],
+	input[type="file"],
+	textarea{
+		width: 100%;
+		margin-bottom: 0;
+	}
+	.field{
+		@include rem( 'margin-bottom', 1 );
+	}
+	.quickpost--config{
+		padding-bottom: 0;
+		.col{
+			height: 100%;
+		}
+		input[type="radio"]{
+			display: none;
+		}
+		.quickpost--blog-select{
+			width: 100%;
+			margin-bottom: 0;
+			@include rem( 'height', 2.5 );
+		}
+		.quickpost--type-select{	
+			display: block;	
+			width: 100%;
+			height: 100%;
+			background: #FF0000;
+			@include rem( 'height', 2.5 );
+			@include rem( 'line-height', 2.5 );
+			text-align: center;
+		}
+			input[type="radio"]:checked + .quickpost--type-select{
+				background: #00FF00;	
+			}
+	}	
+}

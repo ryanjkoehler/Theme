@@ -56,8 +56,10 @@ module.exports = function(grunt) {
             if( path.length > 3 ){
               // if the file's in a sub directory of templates/ 
               // then use the directory name as a prefix for the template
-              name += path[ path.length - 2 ];
-              name += '--';
+              for( var i = 3; i < path.length - 1; i++ ){
+                name += path[ i ];
+                name += '--';
+              }
             }
             // use the file name as part ( or all ) of the template name
             name += path[ path.length - 1 ].replace( '.html', '' );

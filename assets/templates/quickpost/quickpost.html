@@ -1,5 +1,5 @@
 <form action="socd_post" method="post" enctype="multipart/form-data">
-	<nav class="gw cell">
+	<nav class="gw cell quickpost--config">
 		<div class="col col-one-sixth">
 			<select name="blog_id" class="quickpost--blog-select">
 				{{# user_blogs }}
@@ -8,52 +8,31 @@
 			</select>
 		</div><!--
 	 	{{# post_formats}}
- 		 --><div class="col col-one-sixth">
-				<label for="post_format_{{ slug }}">
-					{{ slug }}
-					<input type="radio" value="{{ slug }}" name="post_format" id="post_format_{{ slug }}" checked="{{ isDefault }}">
+ 		 --><div class="col col-one-sixth"> 		 		
+ 		 		<input type="radio" value="{{ slug }}" name="post_format" id="post_format_{{ slug }}" checked="{{ isDefault }}">
+				<label for="post_format_{{ slug }}" class="quickpost--type-select quickpost--type-select__{{ slug }}">
+					{{ slug }}	
 				</label>
 			</div><!--
 		{{/ post_formats}}
 	 -->
 	</nav>
-	<article class="cell">
-		<div class="field gw">
-			<div class="col col-one-sixth">	
-				<label for="title">Title</label>			
-		 	</div><!--
-		 --><div class="col col-five-sixths">
-		 		<input type="text" name="title">
-		 	</div>
-		</div>
-		<div class="field gw">
-	 		<div class="col col-one-sixth">	
-	 			<label for="content">Content</label>
-	 		</div><!--
-	 	 --><div class="col col-five-sixths">
-	 			<textarea name="content" cols="30" rows="10"></textarea>
-	 		</div>
-	 	</div>
-	 	<div class="field gw">
-	 		<div class="col col-one-sixth">	
-	 			<label for="categories">Categories</label>
-	 		</div><!--
-	 	 --><div class="col col-five-sixths">
-	 			<input type="text" name="categories">
-	 		</div>
-	 	</div>
-	 	<div class="field gw">
-	 		<div class="col col-one-sixth">	
-	 			<label for="tags">Tags</label>
-	 		</div><!--
-	 	 --><div class="col col-five-sixths">
-	 			<input type="text" name="tags">
-	 		</div>
-	 	</div>
-	 	<div class="field gw">
-	 		<div class="col col-one-sixth">		 		
-				<input type="submit">
-	 		</div>
-	 	</div>
+	<article class="cell ">
+		<fieldset class="variable-fields">
+			
+		</fieldset>
+		<fieldset class="taxonomies">
+					
+		</fieldset>
+		<fieldset class="submission">
+			<div class="field gw">
+				<div class="col col-five-sixths">
+					&nbsp;
+				</div><!--
+			 --><div class="col col-one-sixth">
+					<input type="submit" value="Post">
+				</div>
+			</div>
+		</fieldset>
 	</article>
 </form>
