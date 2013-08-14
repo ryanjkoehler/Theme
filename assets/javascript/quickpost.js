@@ -5,7 +5,11 @@ if( !window.SOCD ){ window.SOCD = {} };
 
 	var T = {	
 		form: Templates[ 'quickpost--quickpost' ].render.bind( Templates[ 'quickpost--quickpost' ] ),
-		oembed: Templates[ 'quickpost--oembed' ].render.bind( Templates[ 'quickpost--oembed' ] )
+		oembed: Templates[ 'quickpost--oembed' ].render.bind( Templates[ 'quickpost--oembed' ] ),
+		taxonomies: Templates[ 'quickpost--taxonomies--taxonomies' ].render.bind( Templates[ 'quickpost--taxonomies--taxonomies' ] ),
+		taxSuggestionTitle: Templates[ 'quickpost--taxonomies--title' ].render.bind( Templates[ 'quickpost--taxonomies--title' ] ),
+		taxSuggestion: Templates[ 'quickpost--taxonomies--suggestion' ].render.bind( Templates[ 'quickpost--taxonomies--suggestion' ] ),
+		taxToken: Templates[ 'quickpost--taxonomies--token' ].render.bind( Templates[ 'quickpost--taxonomies--token' ] )
 	};
 
 	var Quickpost = {
@@ -20,25 +24,6 @@ if( !window.SOCD ){ window.SOCD = {} };
 		_qp_nonce: config.qp_nonce,
 		_oembed_nonce: config.oembed_nonce,
 		_tax_nonce: config.tax_nonce,
-		_initUI: function(){
-			// open & close quick post
-			Quickpost._trigger.click( function(){
-				Quickpost._ele.toggleClass( 'open' );
-			});
-			// post format switching
-			$( 'input[type="radio"][name="post_format"]', Quickpost._form ).click( function(){
-				Quickpost._changeMode( $(this).attr('value') );	
-			});
-			// blog switching
-			$( '.quickpost--blog-select' ).on( 'change', function(){
-				Quickpost._changeBlog( $(this).val() );
-			} );
-			// form submission
-			Quickpost._form.on( 'submit', function(){
-				Quickpost._submit();
-				return false;
-			});			
-		},
 		_init: function(){
 			for( var i = 0; i < config.post_formats.length; i++ ){
 				var format = config.post_formats[i];
@@ -64,13 +49,34 @@ if( !window.SOCD ){ window.SOCD = {} };
 			Quickpost._changeMode( $( 'input[type="radio"][name="post_format"][checked="true"]' ).attr( 'value' ) );
 
 			//if the blog we're currently on is not in the user's blogs then default to the user's primary blog
-			if( Quick )
-			Quickpost.__changeBlog( )
+			if( Quickpost.userOwnsBlog() ){
+				Quickpost._changeBlog( Quickpost._config.current_blog );
+			} else {
+				Quickpost._changeBlog( Quickpost._config.user_primary_blog );
+			}
 		},
-		_changeBlog: function( id ){
-			console.log( id );
+		_initUI: function(){
+			// open & close quick post
+			Quickpost._trigger.click( function(){
+				Quickpost._ele.toggleClass( 'open' );
+			});
+			// post format switching
+			$( 'input[type="radio"][name="post_format"]', Quickpost._form ).click( function(){
+				Quickpost._changeMode( $(this).attr('value') );	
+			});
+			// blog switching
+			$( '.quickpost--blog-select' ).on( 'change', function(){
+				Quickpost._changeBlog( $(this).val() );
+			} );
+			// form submission
+			Quickpost._form.on( 'submit', function(){
+				Quickpost._submit();
+				return false;
+			});			
+		},
+		_changeBlog: function( id ){			
 			Quickpost._getTaxonomies( id, function( data ){
-				console.log( data );
+				Quickpost._prepareTaxonomies( data );
 			});
 		},
 		_changeMode: function( mode ){
@@ -79,8 +85,36 @@ if( !window.SOCD ){ window.SOCD = {} };
 			Quickpost._variableFields.append( template );
 			Quickpost._initModeUI( template );
 		},
-		_changeTaxonomies: function( ){
+		_prepareTaxonomies: function( data ){
+			var $taxBlock = $( '.taxonomies', Quickpost._content )
+			var $taxonomies = $( T.taxonomies() );
+			var $taxInput = $('.tokenizer--input', $taxonomies );
+			var $taxTokenList = $( '.tokenizer--tokens', $taxonomies );
+			$taxBlock.empty();
+			$taxBlock.append( $taxonomies );
 			
+			var typeaheadData = [];
+
+			for( var key in data.terms ){	
+				var local = [];
+				for( var i = 0; i < data.terms[key].length; i++ ){
+					local.push( data.terms[key][i] );
+				}
+				console.log( local );
+				typeaheadData.push({
+					name: data.taxes[key].name,
+					local: local,
+					header: T.taxSuggestionTitle( { name: data.taxes[key].name }),
+					template: T.taxSuggestion
+				});
+			}
+
+			console.log( typeaheadData );
+
+			$taxInput.typeahead( typeaheadData );
+
+
+
 		},
 		_initModeUI: function( context ){
 			$( 'input.oembed', context ).on( 'blur', function(){
@@ -119,13 +153,6 @@ if( !window.SOCD ){ window.SOCD = {} };
 			);
 		},
 		_getTaxonomies: function( id, callback ){
-			console.log(
-				{
-					action: 'socd_tax',
-					tax_nonce: Quickpost._tax_nonce,
-					blog_id: id
-				}
-			);
 			$.post(
 				Quickpost._config.ajax_url,
 				{
@@ -134,7 +161,7 @@ if( !window.SOCD ){ window.SOCD = {} };
 					blog_id: id
 				},
 				function( data ){
-					console.log( 'TAX RESPONSE: ' + data );
+					console.log( 'TAX RESPONSE: ', data );
 					if( typeof callback === 'function' ) callback( data );
 				}
 			).fail( function( err ){
@@ -157,9 +184,13 @@ if( !window.SOCD ){ window.SOCD = {} };
 			);
 		},
 		userOwnsBlog: function( _id ){
-			var id = _id || Quickpost.config.current_blog;
-			var blogs = Quickpost.config.user_blogs;
-			console.log( id in blogs );
+			var id = parseInt(_id) || parseInt(Quickpost._config.current_blog);
+			var blogs = Quickpost._config.user_blogs;
+			for( var i = 0; i < blogs.length; i++ ){				
+				if( blogs[i].id === id ){					
+					return true;
+				}
+			}
 		}
 	};
 
