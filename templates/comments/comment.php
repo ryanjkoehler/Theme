@@ -5,6 +5,8 @@
  * @package socd
  */
 
+global $comment;
+
 if ( 'pingback' == $comment->comment_type || 'trackback' == $comment->comment_type ) : ?>
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
 		<div class="comment-body">
