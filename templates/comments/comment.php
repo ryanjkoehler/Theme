@@ -5,19 +5,22 @@
  * @package socd
  */
 
-global $comment;
+global $comment, $depth, $args;
 
-if ( 'pingback' == $comment->comment_type || 'trackback' == $comment->comment_type ) : ?>
+if ( ! is_array( $args ) ) $args = array(); ?>
+<ol>
+<?php if ( 'pingback' == $comment->comment_type || 'trackback' == $comment->comment_type ) : ?>
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
 		<div class="comment-body">
 			<?php _e( 'Pingback:', 'modernshows' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __( 'Edit', 'modernshows' ), '<span class="edit-link">', '</span>' ); ?>
 		</div>
+	</li>
 
-	<?php else :
+<?php else : ?>
 
-	?><li id="comment-<?php comment_ID(); ?>" <?php comment_class( array( empty( $args['has_children'] ) ? '' : 'parent', 'comment') ); ?>>
+	<li id="comment-<?php comment_ID(); ?>" <?php comment_class( array( empty( $args['has_children'] ) ? '' : 'parent', 'comment') ); ?>>
 		<article id="div-comment-<?php comment_ID(); ?>" class="comment-body palm-cell gw">	
-			<?php if( $depth > 1 ): //is a child comment ?>
+		<?php if( $depth > 1 ): //is a child comment ?>
 			<div class="col col-one-sixth">
 				&nbsp;
 			</div><?php endif; ?><!--
@@ -37,7 +40,7 @@ if ( 'pingback' == $comment->comment_type || 'trackback' == $comment->comment_ty
 					</div>
 				</header>
 				<div class="col comment-body--comment-content wysiwyg">				
-					<?php comment_text(  ); ?>
+					<?php comment_text(); ?>
 					<?php if ( get_comment_meta( $comment->comment_ID, 'image', true ) ): ?>
 						<?php echo wp_get_attachment_link( get_comment_meta( $comment->comment_ID, 'image', true ) ) ?>
 					<?php endif ?>
@@ -49,7 +52,7 @@ if ( 'pingback' == $comment->comment_type || 'trackback' == $comment->comment_ty
 				</div><!--
 			 --><div class="comment-body--reply col col-one-sixth">
 					<div class="button button__action-button">
-						<?php comment_reply_link( array_merge( $args, array( 'add_below' => 'div-comment', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+						<?php comment_reply_link( array_merge( $args, array( 'add_below' => 'div-comment', 'depth' => $depth, 'max_depth' => isset( $args['max_depth'] ) ? $args['max_depth'] : 0 ) ) ); ?>
 					</div>
 				</div>
 				<div class="comment-body--reply">
@@ -57,8 +60,7 @@ if ( 'pingback' == $comment->comment_type || 'trackback' == $comment->comment_ty
 						<p class="comment-awaiting-moderation">Your comment is awaiting moderation.</p>
 					<?php endif; ?>
 				</div>
-			</div>
+			</div>	
 		</article>
-
-	<?php
-	endif;
+	</li>
+<?php endif; ?>

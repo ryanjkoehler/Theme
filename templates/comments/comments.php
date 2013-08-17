@@ -4,13 +4,13 @@
  * @package socd
  */
 
-require( get_stylesheet_directory() . '/inc/comments.php' );
+require_once get_stylesheet_directory() . '/inc/comments.php';
 
-if ( post_password_required() )
-	return;
-?>
+// Prevent 
+if ( post_password_required() ) return; ?>
 <section id="comments" class="comments-section">
 	<?php if ( have_comments() ) : ?>
+
 	<header class="comments-section--header">	
 		<h1 class="comments-section--count">
 			<?php
@@ -43,15 +43,15 @@ if ( post_password_required() )
 	<ol class="comments-listing">
 		<?php
 			/* Loop through and list the comments. Tell wp_list_comments()
-			 * to use modernshows_comment() to format the comments.
+			 * to use socd_comment() to format the comments.
 			 * If you want to overload this in a child theme then you can
-			 * define modernshows_comment() and that will be used instead.
-			 * See modernshows_comment() in inc/template-tags.php for more.
+			 * define socd_comment() and that will be used instead.
 			 */
 			wp_list_comments( array(
-				'callback' 	=> 'socd_comment',
-				'format'   	=> 'html5',
-				'style' 	=> 'ol'
+				'callback' 		=> 'socd_comment',
+				'end-callback'  => 'socd_comment_end',
+				'format'   		=> 'html5',
+				'style' 		=> 'ol'
 			) );
 		?>
 	</ol><!-- .comment-list -->
@@ -64,8 +64,9 @@ if ( post_password_required() )
 			</nav><!-- #comment-nav-above -->
 		<?php endif; // check for comment navigation ?>	
 	</footer>
+
 	<?php endif; ?>
-	<section class="comments-section--add-comment">
+	<div class="comments-section--add-comment">
 		<?php comment_form(); ?>
-	</section>
-</section>
+	</div>
+</section><!-- #comments.comments-section -->
