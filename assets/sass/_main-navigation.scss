@@ -1,7 +1,9 @@
 .main-navigation-container{
+	overflow: hidden; /* Styleguide Sketching */
 	*{
 		@include box-sizing( border-box );
 	}
+
 	min-height: 100%;
 	position: fixed;
 	z-index: 1;
