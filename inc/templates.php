@@ -53,6 +53,15 @@ function socd_template( $template_directory, $template_name=false ) {
 	exit;
 }
 
+/**
+ * Convience wrapper for WordPress' included function for loading template
+ * partials, accommodate socd conventions
+ */
+function socd_template_part( $template_directory, $template_name=false ) {
+	if ( !$template_name ) $template_name = $template_directory;
+	get_template_part( "templates/$template_directory/$template_name" );
+}
+
 function socd_faux_pages() {
 
 	global $wp_query;
