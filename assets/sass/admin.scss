@@ -1,0 +1,23 @@
+
+#login h1 {
+	display: none;
+}
+
+.login form {
+	background: transparent;
+	border: none;
+	-webkit-box-shadow: none;
+	   -moz-box-shadow: none;
+		-ms-box-shadow: none;
+			box-shadow: none;
+}
+
+.login form input[type="text|password"] {
+	background: #fff;
+}
+
+#login #nav a,
+#login #backtoblog a {
+	color: #444 !important;
+}
+

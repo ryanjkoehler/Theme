@@ -2,7 +2,7 @@
 /**
  * 
  * Handles modifications to the WordPress dashboard and some of it's
- * quirky pages. Such as 
+ * quirky pages.
  * 
  * @package  socd
  */
@@ -19,3 +19,29 @@ function socd_signup_page() {
 }
 
 add_action('before_signup_form', 'socd_signup_page');
+
+
+/**
+ * Customisations to the Login form
+ * 
+ */
+
+function socd_login_url() {
+	return get_bloginfo( 'wpurl' );
+}
+add_filter( 'login_headerurl', 'socd_login_url' );
+
+function socd_login_styles() {
+	wp_enqueue_style('admin_css', get_template_directory_uri() . '/assets/stylesheets/admin.css' );
+}
+
+add_filter('login_head', 'socd_login_styles');
+
+
+function socd_admin_footer() {
+	printf(
+		"&copy; %d<a href=\"%s\">School of Communication Design</a>",
+		date("Y"),
+		get_bloginfo('wpurl')
+	);
+}
