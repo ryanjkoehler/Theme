@@ -73,6 +73,8 @@ module.exports = function(grunt) {
     }
   });
 
+  grunt.registerTask('build', ['compass']);
+
   grunt.loadNpmTasks('grunt-contrib-hogan');
   grunt.loadNpmTasks("grunt-contrib-compass");
   grunt.loadNpmTasks("grunt-contrib-watch");
