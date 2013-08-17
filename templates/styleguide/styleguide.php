@@ -32,16 +32,54 @@ get_header(); ?>
       left: 50%;
     }
 
+    body {
+      position: relative;
+    }
+    
+    /**
+     * Thanks to --> http://basehold.it/
+     */
+    body:after {
+      position: absolute;
+      width: auto;
+      height: auto;
+      z-index: 9999;
+      content: '';
+      display: block;
+      pointer-events: none;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: url(http://basehold.it/image.php?height=7) repeat top left;
+    }
+
+    body:hover:after {
+      display: none;
+    }
+
 </style>
 <header class="header">
-	<h1 class="h1 site-title">Styleguide</h1>
+	<h1 class="h1 site--title">Styleguide</h1>
+  <p>Intended to cover the styling and markup conventions used on the site.</p>
 </header>
 <div class="styleguide">
   
   <section>
   <h1 class="h2">Typography</h1>
 
-  <?php for ( $i=1; $i < 6; $i++ ) { printf( '<h%1$d class="h%1$d">Heading %1$d</h%1$d>', $i ); } ?>
+  <?php
+
+  /**
+   * Headings
+   * 
+   */
+  
+  for ( $i=1; $i < 6; $i++ ) {
+
+    printf( '<h%1$d class="h%1$d">Heading %1$d <p class="fixie"></p></h%1$d>', $i );
+
+  } ?>
 
   <h2 class="h2">Special Cases</h2>
 
