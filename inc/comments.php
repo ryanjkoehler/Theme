@@ -6,13 +6,18 @@
  * @package socd
  */
 
-function socd_comment_images( ){
-	
+if ( !function_exists('socd_comment_images') ) {
 
+	function socd_comment_images( ){
+		
+	}
 }
 
-function socd_comment($comment, $args, $depth ) {
-	$GLOBALS['comment'] = $comment;
+if ( !function_exists('socd_comment') ) {
+	
+	function socd_comment($comment, $args, $depth ) {
+		$GLOBALS['comment'] = $comment;
 
-	include( get_stylesheet_directory() . '/templates/comments/comment.php' );
+		socd_template( 'comments', 'comment' );
+	}	
 }
