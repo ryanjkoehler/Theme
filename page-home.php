@@ -37,30 +37,39 @@ get_header(); ?>
 	</div><div class="gw gw--rtl">
 		<div class="col col-third push--col-one-sixth">
 			<div class="cell colour--red">
-				<h1 class="h2 h2--ruled">School News</h1>
-				<ol>
-					<li>
-						<article class="gw">
-							<time class="col col-one-fifth">03.06</time><!-- 
-							--><div class="col col-four-fifths">
-								<h2 class="h4">TEDx comes to Farnham &amp; UCA</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse feugiat, felis eget eleifend porta, mi mi iaculis quam, sit amet pharetra ante massa sed magna. Morbi vulputate augue quis nibh cursus sed accumsan massa sodales.</p>
-								<a href="#">Read More</a>
-							</div>
-						</article>
-					</li>
-					<li>
-						<article class="gw">
-							<time class="col col-one-fifth">03.06</time><!-- 
-							--><div class="col col-four-fifths">
-								<h2 class="h4">TEDx comes to Farnham &amp; UCA</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse feugiat, felis eget eleifend porta, mi mi iaculis quam, sit amet pharetra ante massa sed magna. Morbi vulputate augue quis nibh cursus sed accumsan massa sodales.</p>
-								<a href="#">Read More</a>
-							</div>
-						</article>
-					</li>
-				</ol>
+				<h1 class="h2 h2--ruled"><a href="<?php echo get_permalink( get_option( 'page_for_posts') ) ?>">School News</a></h1>
+				<?php 
 
+				/**
+				 * Query Latest News Posts
+				 */
+				
+				$news = get_posts(  array(
+					'numberposts'		=>	5,
+				) );
+
+				if ( count( $news ) ) : ?>
+
+					<ol>
+						<?php foreach ( $news as $key => $post ) : setup_postdata( $post ); ?>
+							<li>
+								<article class="gw">
+									<time class="col col-one-fifth">
+										<?php echo get_the_date("d.m"); ?>
+									</time><!-- 
+								 --><div class="col col-four-fifths">
+								 		<h2 class="h4"><?php the_title(); ?></h2>
+								 		<?php the_excerpt(); ?>
+								 		<a href="<?php the_permalink(); ?>">Read More</a>
+									</div><!-- .col.col-four-fifths -->
+								</article>
+							</li>
+						<?php endforeach; ?>
+					</ol>
+
+					<a href="<?php echo get_permalink( get_option( 'page_for_posts') ); ?>">Archives &rarr;</a>
+				
+				<?php endif; ?>
 			</div>
 		</div><!-- 
 		--><div class="col col-third">
