@@ -696,3 +696,6 @@ body.logged-in .main-navigation .main-navigation__menu-item--quickpost { display
 .mu_register input[type="radio"] { width: auto; }
 .mu_register label { display: block; }
 .mu_register label.checkbox { display: inline-block; }
+
+
+* {outline: 1px solid lime}
