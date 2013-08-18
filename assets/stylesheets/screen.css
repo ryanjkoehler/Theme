@@ -354,15 +354,15 @@ html, body { font-family: 'Theinhardt-Regular', Arial, "Liberation Sans", FreeSa
 img { max-width: 100%; height: auto; display: block; line-height: 0; }
 
 /* Typography */
-.h1 { font-family: 'Theinhardt-Bold', Arial, "Liberation Sans", FreeSans, sans-serif; font-style: normal; font-weight: normal; font-size: 18.5px; font-size: 1.85rem; margin: 0.4375rem 0; display: inline-block; line-height: 1.18; }
+.h1 { font-family: 'Theinhardt-Bold', Arial, "Liberation Sans", FreeSans, sans-serif; font-style: normal; font-weight: normal; font-size: 18.5px; font-size: 1.85rem; margin: 0.4375rem 0; display: inline-block; line-height: 1.19; }
 
-.h2, .mu_register h2, .wysiwyg h1 { font-family: 'Theinhardt-Bold', Arial, "Liberation Sans", FreeSans, sans-serif; font-style: normal; font-weight: normal; font-size: 11.25px; font-size: 1.125rem; margin: 0.4375rem 0; }
+.h2, .mu_register h2, .wysiwyg h1 { font-family: 'Theinhardt-Bold', Arial, "Liberation Sans", FreeSans, sans-serif; font-style: normal; font-weight: normal; font-size: 11.25px; font-size: 1.125rem; margin: 0.4375rem 0; line-height: 1.17; }
 
-.h2--ruled { border-top: 2px solid rgba(255, 255, 255, 0.5); padding: .75em 0; display: block; }
+.h2--ruled { border-top: 2px solid rgba(255, 255, 255, 0.5); padding: .4375rem 0; display: block; }
 
 .wysiwyg h2 { font-family: 'Theinhardt-Medium', Arial, "Liberation Sans", FreeSans, sans-serif; font-style: normal; font-weight: normal; font-size: 11.25px; font-size: 1.125rem; }
 
-.h3, .wysiwyg h3 { font-family: 'Theinhardt-Light', Arial, "Liberation Sans", FreeSans, sans-serif; font-weight: normal; font-size: 11.25px; font-size: 1.125rem; }
+.h3, .wysiwyg h3 { font-family: 'Theinhardt-Light', Arial, "Liberation Sans", FreeSans, sans-serif; font-weight: normal; font-size: 11.25px; font-size: 1.125rem; line-height: 1.2; }
 
 .h3--ruled { border-top: 1px solid rgba(255, 255, 255, 0.5); padding: .75em 0; }
 

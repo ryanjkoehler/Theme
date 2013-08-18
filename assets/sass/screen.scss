@@ -45,7 +45,7 @@ img {
 	@include font-size(1.85);
 	margin: 0.4375rem 0;
 	display: inline-block;
-	line-height: 1.18;
+	line-height: 1.19;
 }
 
 .h2,
@@ -53,10 +53,11 @@ img {
 	@include fontstack_bold;
 	@include font-size(1.125);
 	margin: 0.4375rem 0;
+	line-height: 1.17;
 }
 	.h2--ruled {
 		border-top: 2px solid rgba(255,255,255,0.5);
-		padding: .75em 0;
+		padding: .4375rem 0;
 		display: block;
 	}
 
@@ -69,6 +70,7 @@ img {
 .wysiwyg h3 {
 	@include fontstack_light;
 	@include font-size(1.125);
+	line-height: 1.2;
 }
 	.h3--ruled {
 		border-top: 1px solid rgba(255,255,255,0.5);

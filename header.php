@@ -30,4 +30,4 @@
 <body <?php body_class(); ?>>
 <section class="site-wrap h-animate-transform">
 	
-<?php require 'templates/main-navigation/main-navigation.php'; ?>
+<?php socd_template_part('main-navigation'); ?>

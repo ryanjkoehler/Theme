@@ -94,23 +94,26 @@ get_header(); ?>
   </div>
 
 </section>
-<div class="wysiwyg">
-  <p></p>
-  <ul>
-    <li></li>
-    <ul></ul>
-  </ul>
-  <ol></ol>
-  <ul class="listing__navigation"></ul>
 
-  <p data-fixie data-fixie-clone="2"></p>
+<section>
+  <h1 class="h2"><abbr title="What You See Is What You Get">WYSIWYG</abbr> Output</h1>
+  <div class="wysiwyg">
+  <p class="fixie"></p>
+  <ul>
+    <li class="fixie"></li>
+    <ul class="fixie"></ul>
+  </ul>
+  <ol class="fixie"></ol>
+  <ul class="fixie listing__navigation"></ul>
+
+  <p class="fixie" data-fixie-clone="2"></p>
 </div>
 
+</section>
 
-<h1>Modules</h1>
 <section>
-  
-  <div class="cell">
+  <h1 class="h2">Modules</h1>  
+  <div class="cell colour--white">
     <h1 class="h2 h2--ruled">Sample Heading</h1>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse feugiat, felis eget eleifend porta, mi mi iaculis quam, sit amet pharetra ante massa sed magna. Morbi vulputate augue quis nibh cursus sed accumsan massa sodales. Aenean nec aliquet leo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi eget pharetra tellus. Donec vitae rutrum justo. Curabitur semper, diam id congue dapibus, dolor nulla hendrerit urna, vitae commodo nulla orci eu neque. Sed eros lacus, sollicitudin ut ornare vitae, fermentum eget orci. Morbi dictum nibh et lectus suscipit pharetra vitae et ipsum.</p>
   </div>
@@ -185,7 +188,8 @@ get_header(); ?>
   
     <input type="submit"/>
 
-    <h2 class="h3">States</h2>
+    <h2 class="h2">Input States</h2>
+    <p>Used in client side validation to alert the user to any issues with the supplied information.</p>
     <label for="name">Status: Checking</label><input type="text" class="input_full input__checking"/>
     <label for="name">Status: Error</label><input type="text" class="input_full input__error"/>
     <label for="name">Status: OK</label><input type="text" class="input_full input__ok"/>
@@ -195,10 +199,10 @@ get_header(); ?>
 </section>
 <section>
   <h1 class="h2">Notifications</h1>
-  <div class="notifications-message"><p></p><a href="#" class="notifications-message--dismiss">&times;</a></div>
-  <div class="notifications-message notifications-message__ambivalent"><p></p><a href="#" class="notifications-message--dismiss">&times;</a></div>
-  <div class="notifications-message notifications-message__positive"><p></p><a href="#" class="notifications-message--dismiss">&times;</a></div>
-  <div class="notifications-message notifications-message__negative"><p></p><a href="#" class="notifications-message--dismiss">&times;</a></div>
+  <div class="notifications-message"><p class="fixie"></p><a href="#" class="notifications-message--dismiss">&times;</a></div>
+  <div class="notifications-message notifications-message__ambivalent"><p class="fixie"></p><a href="#" class="notifications-message--dismiss">&times;</a></div>
+  <div class="notifications-message notifications-message__positive"><p class="fixie"></p><a href="#" class="notifications-message--dismiss">&times;</a></div>
+  <div class="notifications-message notifications-message__negative"><p class="fixie"></p><a href="#" class="notifications-message--dismiss">&times;</a></div>
 </section>
 
 </div>
