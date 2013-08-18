@@ -354,9 +354,9 @@ html, body { font-family: 'Theinhardt-Regular', Arial, "Liberation Sans", FreeSa
 img { max-width: 100%; height: auto; display: block; line-height: 0; }
 
 /* Typography */
-.h1 { font-family: 'Theinhardt-Bold', Arial, "Liberation Sans", FreeSans, sans-serif; font-style: normal; font-weight: normal; font-size: 18.5px; font-size: 1.85rem; margin: .3em auto 0; border-top: .1rem solid; display: inline-block; padding: .35em .4em 0; line-height: 1; }
+.h1 { font-family: 'Theinhardt-Bold', Arial, "Liberation Sans", FreeSans, sans-serif; font-style: normal; font-weight: normal; font-size: 18.5px; font-size: 1.85rem; margin: 0.4375rem 0; display: inline-block; line-height: 1.18; }
 
-.h2, .mu_register h2, .wysiwyg h1 { font-family: 'Theinhardt-Bold', Arial, "Liberation Sans", FreeSans, sans-serif; font-style: normal; font-weight: normal; font-size: 11.25px; font-size: 1.125rem; margin: 0 0 .4em; }
+.h2, .mu_register h2, .wysiwyg h1 { font-family: 'Theinhardt-Bold', Arial, "Liberation Sans", FreeSans, sans-serif; font-style: normal; font-weight: normal; font-size: 11.25px; font-size: 1.125rem; margin: 0.4375rem 0; }
 
 .h2--ruled { border-top: 2px solid rgba(255, 255, 255, 0.5); padding: .75em 0; display: block; }
 
@@ -366,9 +366,9 @@ img { max-width: 100%; height: auto; display: block; line-height: 0; }
 
 .h3--ruled { border-top: 1px solid rgba(255, 255, 255, 0.5); padding: .75em 0; }
 
-.h4, .profile .name, .wysiwyg h4, .wysiwyg h5, .wysiwyg h6 { font-family: 'Theinhardt-Bold', Arial, "Liberation Sans", FreeSans, sans-serif; font-style: normal; font-weight: normal; margin-bottom: 1em; }
+.h4, .profile .name, .wysiwyg h4, .wysiwyg h5, .wysiwyg h6 { font-family: 'Theinhardt-Bold', Arial, "Liberation Sans", FreeSans, sans-serif; font-style: normal; font-weight: normal; line-height: 1.33; margin: 0.4375rem 0 0.875rem; }
 
-.wysiwyg h4, .wysiwyg h5, .wysiwyg h6 { margin-bottom: 0; }
+.h5, .h6 { line-height: 1.33; }
 
 p { font-size: 10px; font-size: 1rem; margin: 0 0 1em; }
 p:last-child { margin: 0; }
@@ -384,6 +384,7 @@ cite, em { font-style: italic; }
 
 strong { font-family: 'Theinhardt-Medium', Arial, "Liberation Sans", FreeSans, sans-serif; font-style: normal; font-weight: normal; }
 
+.site--title { margin-top: 0; padding: .25em .4em .15em; border-top: .1rem solid; }
 .site--title a { color: inherit; }
 @media screen and (min-width: 34em) { .site--title { min-width: 28rem; } }
 
@@ -474,7 +475,7 @@ strong { font-family: 'Theinhardt-Medium', Arial, "Liberation Sans", FreeSans, s
 .colour--light-grey .h2--ruled { border-color: #989998; }
 .colour--light-grey a { color: #0932c4; }
 
-.main-navigation-container { min-height: 100%; position: fixed; z-index: 1; }
+.main-navigation-container { overflow: hidden; /* Styleguide Sketching */ min-height: 100%; position: fixed; z-index: 1; }
 .main-navigation-container * { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 .main-navigation-container .main-navigation-container__fixed-size { left: -15.75rem; min-height: 100%; position: absolute; top: 0; width: 14rem; }
 .main-navigation-container .main-navigation-container__openable { display: none; min-height: 100%; position: fixed; right: 0; top: 0; width: 100%; z-index: 10; }
@@ -625,7 +626,7 @@ body.logged-in .main-navigation .main-navigation__menu-item--quickpost { display
 .comments-section--add-comment #commentform .form-allowed-tags { display: none; }
 
 /** Header */
-.header { text-align: center; padding: 4em 0; height: 11em; }
+.header { text-align: center; padding: 3.95em 0; height: 11.3em; }
 
 .header__title { text-align: left; }
 
@@ -682,7 +683,7 @@ body.logged-in .main-navigation .main-navigation__menu-item--quickpost { display
 .type-page .page--main, .mu_register .page--main { position: relative; width: 54.20054%; }
 .type-page .page--aside, .mu_register .page--aside { position: relative; width: 30.62331%; }
 
-.page--thumbnail { position: absolute; right: 0; top: 11em; z-index: 0; }
+.page--thumbnail { position: absolute; right: 0; top: 11.3em; z-index: 0; }
 
 /** Course About Page  */
 /** Block that displays link through to main content block.  */

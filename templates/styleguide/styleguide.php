@@ -34,6 +34,7 @@ get_header(); ?>
 
     body {
       position: relative;
+      height: auto;
     }
     
     /**
@@ -51,7 +52,7 @@ get_header(); ?>
       right: 0;
       bottom: 0;
       left: 0;
-      background: url(http://basehold.it/image.php?height=7) repeat top left;
+      background: url('<?php echo get_stylesheet_directory_uri(); ?>/assets/images/baseline.png') repeat top left;
     }
 
     body:hover:after {
@@ -75,9 +76,11 @@ get_header(); ?>
    * 
    */
   
+
+  
   for ( $i=1; $i < 6; $i++ ) {
 
-    printf( '<h%1$d class="h%1$d">Heading %1$d <p class="fixie"></p></h%1$d>', $i );
+    printf( '<h%1$d class="h%1$d">Heading %1$d</h%1$d><h%1$d class="h%1$d">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse feugiat, felis eget eleifend porta, mi mi iaculis quam, sit amet pharetra ante massa sed magna.</h%1$d>', $i );
 
   } ?>
 
@@ -92,13 +95,13 @@ get_header(); ?>
 
 </section>
 <div class="wysiwyg">
-  <p data-fixie class="fixie"></p>
-  <ul data-fixie class="fixie">
-    <li data-fixie class="fixie"></li>
-    <ul data-fixie class="fixie"></ul>
+  <p></p>
+  <ul>
+    <li></li>
+    <ul></ul>
   </ul>
-  <ol data-fixie></ol>
-  <ul class="listing__navigation" data-fixie></ul>
+  <ol></ol>
+  <ul class="listing__navigation"></ul>
 
   <p data-fixie data-fixie-clone="2"></p>
 </div>
@@ -192,10 +195,10 @@ get_header(); ?>
 </section>
 <section>
   <h1 class="h2">Notifications</h1>
-  <div class="notifications-message"><p data-fixie></p><a href="#" class="notifications-message--dismiss">&times;</a></div>
-  <div class="notifications-message notifications-message__ambivalent"><p data-fixie></p><a href="#" class="notifications-message--dismiss">&times;</a></div>
-  <div class="notifications-message notifications-message__positive"><p data-fixie></p><a href="#" class="notifications-message--dismiss">&times;</a></div>
-  <div class="notifications-message notifications-message__negative"><p data-fixie></p><a href="#" class="notifications-message--dismiss">&times;</a></div>
+  <div class="notifications-message"><p></p><a href="#" class="notifications-message--dismiss">&times;</a></div>
+  <div class="notifications-message notifications-message__ambivalent"><p></p><a href="#" class="notifications-message--dismiss">&times;</a></div>
+  <div class="notifications-message notifications-message__positive"><p></p><a href="#" class="notifications-message--dismiss">&times;</a></div>
+  <div class="notifications-message notifications-message__negative"><p></p><a href="#" class="notifications-message--dismiss">&times;</a></div>
 </section>
 
 </div>
