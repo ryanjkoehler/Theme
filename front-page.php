@@ -31,8 +31,8 @@ get_header(); ?>
 
 			</div>
 		</div><!-- 
-		--><div class="col col-two-thirds homepage--map">
-			<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/map.png" alt="">
+		--><div class="col col-two-thirds homepage--map-container">
+			<figure id="homepage--map"></figure>
 		</div>
 	</div><div class="gw gw--rtl">
 		<div class="col col-third push--col-one-sixth">
@@ -45,7 +45,7 @@ get_header(); ?>
 				 */
 				
 				$news = get_posts(  array(
-					'numberposts'		=>	5,
+					'numberposts' => 5,
 				) );
 
 				if ( count( $news ) ) : ?>
@@ -58,7 +58,7 @@ get_header(); ?>
 										<?php echo get_the_date("d.m"); ?>
 									</time><!-- 
 								 --><div class="col col-four-fifths">
-								 		<h2 class="h4"><?php the_title(); ?></h2>
+								 		<h2 class="h4 post--title"><?php the_title(); ?></h2>
 								 		<?php the_excerpt(); ?>
 								 		<a href="<?php the_permalink(); ?>">Read More</a>
 									</div><!-- .col.col-four-fifths -->
