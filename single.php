@@ -19,7 +19,7 @@ get_header(); ?>
 	--><section class="col--stream stream">
 		<div class="stream--filters">
 			<ul>
-				<li><a href="'<?php echo htmlspecialchars( $_SERVER['HTTP_REFERER'] ); ?>'" class="s__active">&larr; Back</a></li>
+				<li><a href="<?php echo htmlspecialchars( $_SERVER['HTTP_REFERER'] ); ?>" class="s__active">&larr; Back</a></li>
 			</ul>
 		</div>
 		<div class="cell colour--white">
