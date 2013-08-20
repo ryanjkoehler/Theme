@@ -22,4 +22,5 @@
 		<?php socd_posted_on(); ?>
 	</aside>
 </article>
+<?php do_action( 'socd_after_content' ); ?>
 <?php comments_template('/templates/comments/comments.php'); ?>
