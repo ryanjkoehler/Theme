@@ -15,20 +15,35 @@ get_header(); ?>
 		<ul class="col col-two-thirds h-center listing__profiles">
 			<?php
 
-			for ($i=0; $i < 12; $i++) :
+			$staff = get_users( array(
+				'meta_query' => array(
+					array(
+						'key'   => 'group',
+						'value' => 'staff',
+						'compare' => '='
+					)
+			) ) );
 
-				?><li itemscope itemtype="http://schema.org/Person" class="profile col col-one-quarter">
-					<img class="thumb" itemprop="image" src="http://placehold.it/150x150" alt="Staff Name"/>
-					
-					<div class="profile--info">
-						<h1 class="name" itemprop="name">Staff Name</h1>
-						<h2 class="role" itemprop="jobTitle">Role</h2>
+			if ( $staff ) : 
 
-						<p>Year of Teaching</p>
-					</div>
-				</li><?php
+				foreach ( $staff as $staff_member ) :
 
-			endfor; ?>
+					?><li itemscope itemtype="http://schema.org/Person" class="profile col col-one-quarter filter--course-<?php echo socd_course_code_to_course_name( get_user_meta( $staff_member->ID, 'course', true ) ) ?>">
+						<?php socd_user_thumbnail( $staff_member ); ?>
+						<div class="profile--info">
+							<h1 class="name" itemprop="name"><?php echo $staff_member->display_name; ?></h1>
+							<h2 class="role" itemprop="jobTitle"><?php echo get_user_meta( $staff_member->ID, 'socd_role', true ); ?></h2>
+	
+							<p><?php echo socd_course_code_to_course_name( get_user_meta( $staff_member->ID, 'course', true ) ); ?></p>
+						</div>
+						<!-- <?php var_dump($staff_member); ?> -->
+					</li><?php
+
+				endforeach;
+
+			endif;
+
+			?>
 		</ul>
 	</section>
 </div>
