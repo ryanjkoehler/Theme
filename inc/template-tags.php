@@ -86,3 +86,40 @@ function socd_network_footer() {
 
 	echo $output;
 }
+
+
+function socd_user_thumbnail( $user, $size = 'thumbnail' ) {
+	$src = wp_get_attachment_image_src( get_the_author_meta( 'user_headshot', $user->ID ), $size );
+	
+	if (!$src) {
+		$src = 'http://placehold.it/150x150';
+	} else {
+		$src = array_shift($src);
+	}
+
+	printf(
+		'<img class="thumb" itemprop="image" src="%s" />',
+		$src
+	);
+}
+
+function socd_course_code_to_course_name( $course_slug ) {
+
+	$courses = array(
+		'dcd'	 => "BA (Hons) Digital Communication Design",
+		'gd'	 => "BA (Hons) Graphic Design",
+		'cga'	 => "BA (Hons) Computer Games Arts",
+		'gc'	 => "BA (Hons) Graphic Communication",
+		'i'	 	 => "BA (Hons) Illustration",
+		'abc'	 => "BA (Hons) Advertising Brand Communication",
+		'gdvc'	 => "BA (Hons) Graphic Design: Visual Communication",
+		'magd'	 => "MA Graphic Design",
+		'madibm' => "MA Design Innovation and Brand Management",
+		'mai'	 => "MA Illustration"
+	);
+
+	if ("" == $course_slug || !$course_slug) return;
+	
+	return $courses[ $course_slug ];
+
+}
