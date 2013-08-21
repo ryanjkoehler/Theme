@@ -15,14 +15,25 @@ get_header(); ?>
 		<ul class="col col-two-thirds h-center listing__profiles">
 			<?php
 
+			$meta_query = array(
+				array(
+					'key'   => 'group',
+					'value' => 'staff',
+					'compare' => '='
+			) );
+
+			if ( is_main_site() && $course = socd_get_subdomain() ) {
+				$meta_query[] = array(
+					'key'     => 'course',
+					'value'	  => $course,
+					'compare' => '='
+				);
+			}
+
 			$staff = get_users( array(
-				'meta_query' => array(
-					array(
-						'key'   => 'group',
-						'value' => 'staff',
-						'compare' => '='
-					)
-			) ) );
+				'blog_id'	 => 1,
+				'meta_query' => $meta_query
+			) );
 
 			if ( $staff ) : 
 
