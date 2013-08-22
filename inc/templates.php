@@ -55,7 +55,7 @@ function socd_template( $template_directory, $template_name=false ) {
 
 /**
  * Convience wrapper for WordPress' included function for loading template
- * partials, accommodate socd conventions
+ * partials, accommodates socd conventions
  */
 function socd_template_part( $template_directory, $template_name=false ) {
 	if ( !$template_name ) $template_name = $template_directory;
@@ -89,7 +89,8 @@ function socd_faux_pages() {
 
 	// Load our Student/Staff Listings
 	if ( 'profile' === $wp_query->get('socd_template') ) {
-	
+		
+		global $user;
 		$user = get_user_by( 'slug', $wp_query->get('user_slug') );
 
 		// No User found
@@ -100,7 +101,7 @@ function socd_faux_pages() {
 		};
 		
 		socd_template( 'profile' );
-		exit;
+		exit; 
 	}
 }
 add_action('template_redirect', 'socd_faux_pages');
