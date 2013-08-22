@@ -8,7 +8,8 @@
  * @package  socd
  */
 
-?>
-<header class="header">
-	<h1 class="h1 site--title">Profile</h1>
+global $user;
+
+?><header class="header">
+	<h1 class="h1 site--title"><?php echo $user->data->display_name; ?></h1>
 </header>
