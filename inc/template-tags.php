@@ -24,7 +24,7 @@ add_filter('body_class', 'socd_body_class');
  * 
  * @return [type]      [description]
  */
-function socdinfo($key) {
+function socdinfo( $key ) {
 	$options = get_option('socd_theme_options');
 
 	echo isset( $options[$key] ) ? $options[$key] : '';
@@ -38,6 +38,31 @@ function is_noticeboard() {
 function is_sketchbook() {
 	$options = get_option('socd_theme_options');
 	return "sketchbook" == $options['blog_type'];
+}
+
+/**
+ * Checks whether the current blog is a Network
+ * @return boolean [description]
+ */
+function is_network( $blog_id = false ) {
+	
+	global $current_blog, $table_prefix, $wpdb;
+
+	if (!$blog_id ) $blog_id = $current_blog->blog_id;
+
+	$url_no_prototcal = preg_replace('/https?:\/\//', '', get_bloginfo( 'wpurl' ) );
+
+	// Query sites table
+	// 
+	if ( !isset($wpdb->sites) ) {
+		$wpdb->sites = $wpdb->base_prefix . 'site';
+	}
+	$res = $wpdb->get_results("SELECT * FROM $wpdb->sites WHERE `domain` = '" . $url_no_prototcal . "'");
+
+
+	if (!$res) return false;
+	
+	return count($res) == 1;
 }
 
 function socd_get_subdomain() {
