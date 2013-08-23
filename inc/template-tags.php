@@ -64,7 +64,7 @@ if ( !function_exists('is_network') ) {
 		$res = $wpdb->get_results("SELECT * FROM $wpdb->sites WHERE `domain` = '" . $url_no_prototcal . "'");
 
 
-		if (!$res) return false;
+		if ( ! $res ) return false;
 		
 		return count($res) == 1;
 	}
