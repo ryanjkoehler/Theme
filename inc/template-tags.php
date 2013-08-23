@@ -69,7 +69,7 @@ function socd_posted_on() {
 
 function socd_network_menu() {
 	if ( !function_exists('switch') ) {
-		
+
 	}
 	if ( false === ( $output = get_site_transient( 'site__socd_menu' ) ) || false ) {
 		switch_to_blog( 1 );
@@ -138,6 +138,20 @@ function socd_network_footer() {
 	echo $output;
 }
 
+function socd_profile_url( $user = false ) {
+	if ( !$user ) {
+		global $user;
+		$user = $user;
+	}
+
+	$group = 'students';
+	if ( 'staff' == get_user_meta( $user->ID, 'group', true ) ) {
+		$group = 'staff';
+	}
+
+	return get_bloginfo( 'wpurl' ) . "/$group/$user->data->user_login";
+	die();
+}
 
 function socd_user_thumbnail( $user, $size = 'thumbnail' ) {
 	$src = wp_get_attachment_image_src( get_the_author_meta( 'user_headshot', $user->ID ), $size );
@@ -171,6 +185,25 @@ function socd_course_code_to_course_name( $course_slug ) {
 
 	if ("" == $course_slug || !$course_slug) return;
 	
-	return $courses[ $course_slug ];
+	return isset( $courses[ $course_slug ] ) ? $courses[ $course_slug ] : false;
+}
 
+function socd_get_profile_field( $fieldname ) {
+	global $user;
+
+	return get_user_meta( $user->data->ID, $fieldname, true );
+}
+
+if ( ! function_exists('profile_field') ) {
+
+	/**
+	 * Profile field fetcher
+	 * 
+	 * @uses socd_get_profile_field
+	 * @return [type] [description]
+	 */
+	function profile_field( $fieldname ) {
+
+		echo socd_get_profile_field( $fieldname );
+	}
 }

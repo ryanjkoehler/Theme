@@ -195,7 +195,6 @@ get_header(); ?>
     <label for="name">Status: OK</label><input type="text" class="input_full input__ok"/>
 
   </form>
-
 </section>
 <section>
   <h1 class="h2">Notifications</h1>
@@ -204,7 +203,21 @@ get_header(); ?>
   <div class="notifications-message notifications-message__positive"><p class="fixie"></p><a href="#" class="notifications-message--dismiss">&times;</a></div>
   <div class="notifications-message notifications-message__negative"><p class="fixie"></p><a href="#" class="notifications-message--dismiss">&times;</a></div>
 </section>
-
+<section>
+  <h1 class="h2">Layout Snippets</h1>
+  <div class="gw">
+    <article class="type-page page h-center">
+      <header class="header">
+        <h1 class="h1 site--title">Sample Page Layout</h1>
+      </header>
+      <div class="page--main">
+        <div class="cell colour--white">
+          <p>Used on the Profile's and static page templates.</p>
+        </div>
+      </div>
+    </article><!-- .type-page.page.h-center -->
+  </div>
+</section>
 </div>
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/javascript/libs/fixie/fixie.js"></script>
 <?php get_footer();
