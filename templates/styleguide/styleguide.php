@@ -17,17 +17,6 @@ get_header(); ?>
       margin-bottom: 2em;
     }
     
-    .styleguide section:before,
-    .styleguide section:after {
-      content: "";
-      display: block;
-      border-bottom: 1px solid rgba( 0, 0, 0, .25);
-      position: absolute;
-      bottom: 0;
-      left: -50%;
-      width: 100%;
-    }
-
     .styleguide section:after {
       left: 50%;
     }
@@ -232,7 +221,7 @@ get_header(); ?>
           </div>
         </div><!-- .page--main -->
         
-        <img src="http://placekitten.com/680/540" class="profile--headshot"/>
+        <img src="http://placekitten.com/1024/540" class="profile--headshot"/>
 
       </div><!-- .profile--wrap -->
     </article><!-- .type-page.page.h-center -->
