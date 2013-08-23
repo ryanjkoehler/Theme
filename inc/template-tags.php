@@ -119,22 +119,26 @@ function socd_menu_has_course_crumb() {
 }
 
 function socd_menu_page_title() {
-	global $current_blog;
 	if( is_noticeboard() ){
 		$output = "Noticeboard";
 	} else if( is_sketchbook() ){
 		$output = "Sketchbook";
-	} 
+	}
+
 	if( is_page() ){
 		$output = get_the_title();
 	}
+
 	if( is_front_page() ){
 		if( is_noticeboard() ){
 			$output = "Noticeboard";
+		} else if( is_sketchbook() ){
+			$output = "Sketchbook";
 		} else {
 			$output = false;
 		}
-	}	
+	}
+
 	return $output;
 }
 

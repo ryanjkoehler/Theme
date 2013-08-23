@@ -38,7 +38,7 @@
 	 	<?php if( socd_menu_has_blog_crumb() ): ?>
 	 --><li class="main-navigation__menu-item main-navigation__menu-item--breadcrumb main-navigation__menu-item--dropdown">
 	 		<div class="tab">
-	 			<h1 class="title"><?php bloginfo( 'title' ); ?></h1>
+	 			<h1 class="title"><a href="<?php bloginfo( 'url' ); ?>"><?php bloginfo( 'title' ); ?></a></h1>
 	 		</div>
 	 		<?php socd_blog_menu(); ?>
 	 	</li><!--
