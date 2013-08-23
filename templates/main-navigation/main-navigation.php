@@ -35,6 +35,14 @@
 	 		<?php socd_site_menu(); ?>
 	 	</li><!--
 	 	<?php endif; ?>
+	 	<?php if( socd_menu_has_blog_crumb() ): ?>
+	 --><li class="main-navigation__menu-item main-navigation__menu-item--breadcrumb main-navigation__menu-item--dropdown">
+	 		<div class="tab">
+	 			<h1 class="title"><?php bloginfo( 'title' ); ?></h1>
+	 		</div>
+	 		<?php socd_blog_menu(); ?>
+	 	</li><!--
+	 	<?php endif; ?>
 	 	<?php if( socd_menu_page_title() ): ?>
 	 --><li class="main-navigation__menu-item main-navigation__menu-item--breadcrumb">
 	 		<div class="tab">

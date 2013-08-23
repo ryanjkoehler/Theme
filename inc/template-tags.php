@@ -91,10 +91,22 @@ function socd_site_menu(){
 	socd_network_menu();
 }
 
+function socd_blog_menu(){
+	//just so we've got something coming out
+	socd_network_menu();
+}
+
 function socd_menu_course_title() {
 	global $current_site;
 	$course_code = strtolower( $current_site->site_name );
 	return socd_course_code_to_course_name( $course_code );
+}
+
+function socd_menu_has_blog_crumb() {
+	global $current_blog;
+	if( $current_blog->blog_id != $current_blog->site_id ){
+		return true;
+	}
 }
 
 function socd_menu_has_course_crumb() {
@@ -123,9 +135,6 @@ function socd_menu_page_title() {
 			$output = false;
 		}
 	}	
-	if( $current_blog->blog_id != $current_blog->site_id ){
-		$output = get_bloginfo( 'title' );
-	}
 	return $output;
 }
 
