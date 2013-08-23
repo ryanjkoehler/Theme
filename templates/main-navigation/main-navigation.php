@@ -39,7 +39,7 @@
 						<li class="drop__option"><a href="<?php echo wp_logout_url( get_permalink() ); ?>">Log Out</a></li>
 					</ul>
 				<?php else: ?>
-					<h1 class="title"><a href="wp-login.php">Login</a></h1>
+					<h1 class="title"><a href="<?php echo wp_login_url( get_permalink() ); ?>">Login</a></h1>
 					<div class="drop">
 						<?php wp_login_form( array( 'form_id' => 'main-navigation--login-form' ) ); ?>
 					</div>
