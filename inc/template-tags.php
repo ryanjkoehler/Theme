@@ -75,7 +75,8 @@ function socd_network_menu() {
 		switch_to_blog( 1 );
 		$output = wp_nav_menu( array(
 			'theme_location' => 'socd_network_menu',
-			'container_class' => 'drop',
+			'container' => '',
+			'menu_class' => 'drop',
 			'echo' => false
 		) );
 		restore_current_blog();

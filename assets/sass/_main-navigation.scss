@@ -1,12 +1,11 @@
-.main-navigation-container{
-	overflow: hidden; /* Styleguide Sketching */
+.main-navigation-container{	
 	*{
 		@include box-sizing( border-box );
 	}
 
 	min-height: 100%;
 	position: fixed;
-	z-index: 1;
+	z-index: 10;
 	.main-navigation-container__fixed-size{
 		left: $size_grid * -4.5;
 		min-height: 100%;
@@ -98,19 +97,43 @@
 		background: $colour_background_dark;
 		@include fontstack_light;
 		white-space: nowrap;
-		.drop{
+		.drop,
+		.children,
+		.flyout{
 			background: $colour_background_dark;
+			.page_item,
+			.drop__option{
+				&:hover{
+					background: lighten( $colour_background_dark, 50% );
+				}
+			}
 		}
 		&:nth-child( 2 ){
 			background: $colour_menu_grey_mid;
-			.drop{
+			.drop,
+			.children,
+			.flyout{
 				background: $colour_menu_grey_mid;
+				.page_item,
+				.drop__option{
+					&:hover{
+						background: lighten( $colour_menu_grey_mid, 50% );
+					}
+				}
 			}
 		}
 		&:nth-child( 3 ){
 			background: $colour_menu_grey_light;
-			.drop{
+			.drop,
+			.children,
+			.flyout{
 				background: $colour_menu_grey_light;
+				.page_item,
+				.drop__option{
+					&:hover{
+						background: lighten( $colour_menu_grey_light, 50% );
+					}
+				}
 			}	
 		}
 	
@@ -136,19 +159,47 @@
 	
 	.main-navigation__menu-item--dropdown{
 		position: relative;
+		.drop,
+		.children,
+		.flyout{
+			overflow: hidden;
+			position: absolute;			
+		}
 		.drop{
 			height: 0;
-			overflow: hidden;
-			position: absolute;
 			min-width: 100%;
 			@include rem( top, $height_menu );
-			@include rem( padding-left, 1 );
-			@include rem( padding-right, 1.5 ); 			
+			.page_item,
+			.drop__option{
+				@include rem( padding-left, 1 );
+				@include rem( padding-right, 1.5 );
+				position: relative;
+				.children,
+				.flyout{
+					width: 0;
+					padding: 0;
+					left: 100%;
+					position: absolute;
+					top: 0;
+				}
+				&:hover,
+				&.active{					
+					color: white;
+					.children,
+					.flyout{
+						width: auto;
+						@include rem( margin-top, -.5 );
+						@include rem( padding-top, .5 );
+						@include rem( padding-bottom, 1 );					
+					}
+				}
+			}
 		}
 		&:hover,
 		&.active{
 			.drop{
 				height: auto;
+				overflow: visible;
 				@include rem( padding-top, .5 );
 				@include rem( padding-bottom, 1 );
 			}
