@@ -7,7 +7,7 @@
 get_header(); ?>
 <section class="gw">
 	<header class="header">
-		<h1 class="h1 site--title"><a href="<?php bloginfo( 'wpurl' ); ?>"><?php bloginfo('name'); ?></a></h1>
+	<h1 class="h1 site--title"><a href="<?php bloginfo( 'wpurl' ); ?>"><?php bloginfo('name'); ?></a></h1>
 		<h2 class="blog--title"><?php socdinfo('blog_type'); ?></h2>
 	</header><!-- .header -->
 	<section class="col--side col--side__left">

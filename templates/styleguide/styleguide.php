@@ -194,6 +194,92 @@ get_header(); ?>
 </section>
 
 <section>
+  <h1 class="h2">Grid System</h1>
+  <div class="gw">
+    <div class="col col-half">
+      <div class="cell colour--blue">
+        <h1 class="h2 h2--ruled fixie">Column Half</h1>
+      </div>
+    </div><!-- 
+ --><div class="col col-half">
+      <div class="cell colour--yellow">
+        <h1 class="h2 h2--ruled fixie">Column Half</h1>
+      </div>
+    </div>
+    <!-- Row -->
+    <div class="col col-one-third">
+      <div class="cell colour--red">
+        <h1 class="h2 h2--ruled">Column Third</h1>
+      </div>
+    </div><!-- 
+ --><div class="col col-one-third">
+      <div class="cell colour--green">
+        <h1 class="h2 h2--ruled">Column Third</h1>
+      </div>
+    </div><!-- 
+ --><div class="col col-one-third">
+      <div class="cell colour--blue">
+        <h1 class="h2 h2--ruled">Column Third</h1>
+      </div>
+    </div>
+
+    <!-- Row -->
+    <div class="col col-one-quarter">
+      <div class="cell colour--yellow">
+        <h1 class="h2 h2--ruled">Column Quarter</h1>
+      </div>
+    </div><!--
+    --><div class="col col-one-quarter">
+      <div class="cell colour--green">
+        <h1 class="h2 h2--ruled">Column Quarter</h1>
+      </div>
+    </div><!--
+    --><div class="col col-one-quarter">
+      <div class="cell colour--blue">
+        <h1 class="h2 h2--ruled">Column Quarter</h1>
+      </div>
+    </div><!--
+    --><div class="col col-one-quarter">
+      <div class="cell colour--red">
+        <h1 class="h2 h2--ruled">Column Quarter</h1>
+      </div>
+    </div>
+
+    <!-- Row -->
+    <div class="col col-one-sixth">
+      <div class="cell colour--blue">
+        <h1 class="h2 h2--ruled">Column Sixth</h1>
+      </div>
+    </div><!-- 
+ --><div class="col col-one-sixth">
+      <div class="cell colour--red">
+        <h1 class="h2 h2--ruled">Column Sixth</h1>
+      </div>
+    </div><!-- 
+ --><div class="col col-one-sixth">
+      <div class="cell colour--yellow">
+        <h1 class="h2 h2--ruled">Column Sixth</h1>
+      </div>
+    </div><!-- 
+ --><div class="col col-one-sixth">
+      <div class="cell colour--blue">
+        <h1 class="h2 h2--ruled">Column Sixth</h1>
+      </div>
+    </div><!-- 
+ --><div class="col col-one-sixth">
+      <div class="cell colour--red">
+        <h1 class="h2 h2--ruled">Column Sixth</h1>
+      </div>
+    </div><!-- 
+ --><div class="col col-one-sixth">
+      <div class="cell colour--yellow">
+        <h1 class="h2 h2--ruled">Column Sixth</h1>
+      </div>
+    </div>
+  </div><!-- .gw -->
+</section>
+
+<section>
   <h1 class="h2">Layout Snippets</h1>
   <div class="gw">
     <article class="type-page page h-center">
@@ -226,8 +312,6 @@ get_header(); ?>
       </div><!-- .profile--wrap -->
     </article><!-- .type-page.page.h-center -->
   </div><!-- .gw -->
-
-
 </section>
 
 </div>

@@ -4,6 +4,10 @@
  * Used on the Staff & Student Profiles
  */
 
+.profile {
+
+}
+
 .profile--wrap {
 	position: relative;
 
@@ -15,7 +19,14 @@
 	.profile--headshot {
 		position: absolute;
 		top: 0;
-		right: 0;
+		right: 11%;
 		z-index: 0;
+		width: 72.2%; // 100% / 18 * 13
+	}
+	
+	.profile--quick {
+		ul {
+			@extend .listing__navigation;
+		}
 	}
 }
