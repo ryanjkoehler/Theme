@@ -1,3 +1,14 @@
+<!-- <li class="main-navigation__menu-item main-navigation__menu-item--dropdown main-navigation__menu-item--breadcrumb">
+	<div class="tab">
+		<h1 class="title"><a href="#">BA (Hons) Graphic Design</a></h1>
+	</div>
+	<ul class="drop">
+		<li class="drop__option"><a href="#">Gallery</a></li>
+		<li class="drop__option"><a href="#">Staff</a></li>
+		<li class="drop__option"><a href="#">Students</a></li>
+		<li class="drop__option"><a href="#">Event</a></li>
+	</ul>
+</li> -->
 <nav class="main-navigation-container">
 	<section class="navigation-notifications notifications main-navigation-container__openable">				
 		<div class="notifications-center-display">
@@ -12,21 +23,25 @@
 	<ul class="main-navigation-container__fixed-size main-navigation no-style">
 		<li class="main-navigation__menu-item main-navigation__menu-item--dropdown main-navigation__menu-item--breadcrumb main-navigation__menu-item--root">
 			<div class="tab">
-				<h1 class="title"><a href="/">SOCD.io</a></h1>
+				<h1 class="title"><a href="http://socd.io">SOCD.io</a></h1>
 				<?php socd_network_menu(); ?>
 			</div>
 		</li><!-- 
-	 --><li class="main-navigation__menu-item main-navigation__menu-item--dropdown main-navigation__menu-item--breadcrumb">
-			<div class="tab">
-				<h1 class="title"><a href="#">BA (Hons) Graphic Design</a></h1>
-			</div>
-			<ul class="drop">
-				<li class="drop__option"><a href="#">Gallery</a></li>
-				<li class="drop__option"><a href="#">Staff</a></li>
-				<li class="drop__option"><a href="#">Students</a></li>
-				<li class="drop__option"><a href="#">Event</a></li>
-			</ul>
-		</li><!--
+	 	<?php if( socd_menu_has_course_crumb() ): ?>
+	 --><li class="main-navigation__menu-item main-navigation__menu-item--breadcrumb main-navigation__menu-item--dropdown">
+	 		<div class="tab">
+	 			<h1 class="title"><?php echo socd_menu_course_title(); ?></h1>
+	 		</div>
+	 		<?php socd_site_menu(); ?>
+	 	</li><!--
+	 	<?php endif; ?>
+	 	<?php if( socd_menu_page_title() ): ?>
+	 --><li class="main-navigation__menu-item main-navigation__menu-item--breadcrumb">
+	 		<div class="tab">
+	 			<h1 class="title"><?php echo socd_menu_page_title(); ?></h1>
+	 		</div>
+	 	</li><!--
+	 	<?php endif; ?>
 	 --><li class="site-search main-navigation__menu-item main-navigation__menu-item--flexible main-navigation__menu-item--search avoid-menu">
 			<input class="site-search__input" type="text" placeholder="Search">
 		</li><!--
