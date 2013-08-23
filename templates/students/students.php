@@ -23,7 +23,7 @@ get_header(); ?>
 
 			for ($i=0; $i < 25; $i++) :
 
-				?><li itemscope itemtype="http://schema.org/Person" class="profile profile__student col col-one-fifth">
+				?><li itemscope itemtype="http://schema.org/Person" class="listing--profile profile__student col col-one-fifth">
 					<img class="thumb" itemprop="image" src="http://placehold.it/60x60" alt="Staff Name"/>
 					
 					<div class="profile--info">

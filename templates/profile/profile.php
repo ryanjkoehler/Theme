@@ -12,12 +12,12 @@ global $current_site, $user;
 
 
 ?><div class="gw">
-	<article class="type-page page h-center">
+	<article class="profile h-center">
 		<header class="header">
 			<h1 class="h1 site--title"><?php echo $user->data->display_name; ?></h1>
 		</header>
 		<div class="profile--wrap">
-			<div class="page--main">
+			<div class="col col-one-third push--col-one-sixth">
 				<div class="cell colour--white">
 					<h2 class="h2 h2--ruled"><?php profile_field('socd_role'); ?></h2>
 					<h2><?php profile_field('socd_campus'); ?></h2>
@@ -58,13 +58,13 @@ global $current_site, $user;
 						echo "<ul>" . implode('', $output) . "</ul>";
 
 					 ?>
-				</div>
-			</div><?php if ( 1 !== $current_site->id ) : ?><div>
+				</div><!-- .cell -->
+			</div><?php if ( 1 !== $current_site->id ) : ?><aside class="col col-one-quarter profile--quick">
 				<div class="cell colour--blue">
 					<h2 class="h2 h2--ruled">Quick links</h2>
 					<?php socd_site_menu(); ?>
 				</div>
-			</div><?php endif; ?>
+			</aside><?php endif; ?>
 			<?php socd_headshot(); ?>
 		</div><!-- .page--wrap -->
 	</article>

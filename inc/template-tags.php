@@ -221,7 +221,7 @@ function socd_back_url() {
 	return $url;
 }
 
-function socd_profile_url( $user = false ) {
+function socd_get_profile_url( $user = false ) {
 	if ( !$user ) {
 		global $user;
 		$user = $user;
@@ -232,20 +232,21 @@ function socd_profile_url( $user = false ) {
 		$group = 'staff';
 	}
 
-	return get_bloginfo( 'wpurl' ) . "/$group/$user->data->user_login";
-	die();
+
+	return get_bloginfo( 'wpurl' ) . "/$group/" . $user->data->user_login;
 }
 
-function socd_user_thumbnail( $user, $size = 'thumbnail' ) {
-	$src = wp_get_attachment_image_src( get_the_author_meta( 'user_headshot', $user->ID ), $size );
+function socd_get_profile_thumbnail( $user = false, $size = 'thumb' ) {
+	
+	global $user;
+	
+	$src = get_the_author_meta( 'user_headshot_' . $size, $user->ID );
 	
 	if (!$src) {
-		$src = 'http://placehold.it/150x150';
-	} else {
-		$src = array_shift($src);
+		$src = 'http://placekitten.com/150/' . rand(147,152);
 	}
 
-	printf(
+	return sprintf(
 		'<img class="thumb" itemprop="image" src="%s" />',
 		$src
 	);

@@ -104,19 +104,32 @@ get_header(); ?>
 		--><div class="col col-sixth">
 			<div class="cell colour--dark">
 				<h1 class="h2 h2--ruled">School Staff</h1>
-				<a href="#" class="col-half">
-					<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/white.png" class="avatar" alt=""/>
-				</a><!-- 
-				--><a href="#" class="col-half">
-					<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/white.png" class="avatar" alt=""/>
-				</a><!-- 
-				--><a href="#" class="col-half">
-					<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/white.png" class="avatar" alt=""/>
-				</a><!-- 
-				--><a href="#" class="col-half">
-					<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/white.png" class="avatar" alt=""/>
-				</a><!-- 
-				-->
+				<?php
+
+				/**
+				 * Randomly Load Four staff members
+				 */
+
+				$staff = get_users( array(
+					'number' 	 => 4,
+					'meta_query' => array(
+						array(
+							'key'  	  => 'group',
+							'value'   => 'staff',
+							'compare' => '='
+				) ) ) );
+
+				if ($staff) {
+					foreach ( $staff as $user ) {
+						printf(
+							'<a href="%1$s" class="col-half">%2$s</a>',
+							socd_get_profile_url(),
+							socd_get_profile_thumbnail()
+						);
+					} 
+				}
+
+				?>
 			</div>
 		</div><!-- 
 		-->
