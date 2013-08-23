@@ -141,7 +141,6 @@ function socd_menu_has_blog_crumb() {
 
 function socd_menu_has_course_crumb() {
 	global $current_site;
-	echo $current_site->id;
 	if( $current_site->id == 1 ){
 		return false;
 	}
