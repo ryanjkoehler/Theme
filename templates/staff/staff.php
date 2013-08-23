@@ -35,12 +35,13 @@ get_header(); ?>
 				'meta_query' => $meta_query
 			) );
 
+			
 			if ( $staff ) : 
 
 				foreach ( $staff as $staff_member ) :
 
 					?><li itemscope itemtype="http://schema.org/Person" class="profile col col-one-quarter filter--course-<?php echo socd_course_code_to_course_name( get_user_meta( $staff_member->ID, 'course', true ) ) ?>">
-						<?php socd_user_thumbnail( $staff_member ); ?>
+						<a href="<?php echo socd_profile_url( $staff_member ); ?>"><?php socd_user_thumbnail( $staff_member ); ?></a>
 						<div class="profile--info">
 							<h1 class="name" itemprop="name"><?php echo $staff_member->display_name; ?></h1>
 							<h2 class="role" itemprop="jobTitle"><?php echo get_user_meta( $staff_member->ID, 'socd_role', true ); ?></h2>
