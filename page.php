@@ -10,7 +10,7 @@
 		<article id="post-<?php the_ID(); ?>" <?php post_class("page h-center"); ?>>
 
 			<header class="header">
-				<h1 class="h1 header__title">
+				<h1 class="h1 site--title">
 					<?php the_title(); ?>
 				</h1><!-- .h1.header__title -->
 			</header><!-- .header -->
