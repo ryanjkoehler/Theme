@@ -114,20 +114,35 @@ function socd_network_menu() {
 	}
 
 	echo $output;
-} 
+}
 
 function socd_site_menu(){
 	//just so we've got something coming out
 	socd_network_menu();
 }
 
+function socd_blog_menu(){
+	//just so we've got something coming out
+	socd_network_menu();
+}
+
 function socd_menu_course_title() {
-	return socd_course_code_to_course_name( socd_get_subdomain() );
+	global $current_site;
+	$course_code = strtolower( $current_site->site_name );
+	return socd_course_code_to_course_name( $course_code );
+}
+
+function socd_menu_has_blog_crumb() {
+	global $current_blog;
+	if( $current_blog->blog_id != $current_blog->site_id ){
+		return true;
+	}
 }
 
 function socd_menu_has_course_crumb() {
-	$site = get_current_site();
-	if( $site->id == 1 ){
+	global $current_site;
+	echo $current_site->id;
+	if( $current_site->id == 1 ){
 		return false;
 	}
 	return true;
@@ -138,17 +153,22 @@ function socd_menu_page_title() {
 		$output = "Noticeboard";
 	} else if( is_sketchbook() ){
 		$output = "Sketchbook";
-	} 
+	}
+
 	if( is_page() ){
 		$output = get_the_title();
 	}
+
 	if( is_front_page() ){
 		if( is_noticeboard() ){
 			$output = "Noticeboard";
+		} else if( is_sketchbook() ){
+			$output = "Sketchbook";
 		} else {
 			$output = false;
 		}
 	}
+
 	return $output;
 }
 
