@@ -181,6 +181,16 @@
 		}
 	}
 	
+	.main-navigation__menu-item--breadcrumb{
+		@include transition( max-width .5s linear, width .5s linear, min-width .5s linear );
+		width: auto;
+		max-width: 400px;
+		min-width: 0;
+		&.collapse{
+			max-width: 0;
+		}
+	}
+
 	.main-navigation__menu-item--dropdown{
 		position: relative;
 		.drop,
@@ -193,8 +203,7 @@
 			height: 0;
 			min-width: 100%;
 			@include rem( top, $height_menu );
-			.page_item,
-			.drop__option{
+			li{
 				@include rem( padding-left, 1 );
 				@include rem( padding-right, 1.5 );
 				position: relative;

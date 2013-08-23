@@ -13,6 +13,7 @@ if( !window.SOCD ){ window.SOCD = {} };
 		init: function(){
 			Menu.init_toggle();
 			Menu.init_typeahead();
+			Menu.init_ui();
 		},
 		init_toggle: function(){
 			var $menuToggle = $( '.main-navigation-container__mobile-toggle', Menu.$ele );
@@ -20,57 +21,29 @@ if( !window.SOCD ){ window.SOCD = {} };
 				e.preventDefault();
 				SOCD.States.toggleState( 'state-mobile-menu-visible' );
 			});
-		},
+		},	
 		init_typeahead: function(){
-			var $searchBox = $( '.site-search__input', Menu.$ele );			
-			$searchBox.typeahead([
-				{
-					name: 'Blogs',
-					//remote: '?s=%QUERY',
-					local: [ 
-						{
-							value: 'Blog One',
-							url: 'http://blog.one',
-							tokens: ['blog', 'one']
-						},
-						{
-							title: 'Blog Two',
-							url: 'http://blog.two',
-							tokens: ['blog', 'two']
-						},
-						{
-							title: 'Blog Three',
-							url: 'http://blog.three',
-							tokens: ['blog', 'three']
-						},
-						{
-							title: 'Blog Four',
-							url: 'http://blog.four',
-							tokens: ['blog', 'four']
-						}
-					],					
-					header: T.header( { name: 'Blogs' } ),
+			var $searchBox = $( '.site-search__input', Menu.$ele );	
+			var raw = SOCD.Config.typeahead_local;
+			var structureTypeahead = [];
+			for( type in raw ){
+				structureTypeahead.push({
+					name: type,
+					local: raw[type],
+					header: T.header( { name: type } ),
 					template: T.result
-				},
-				{
-					name: 'Staff',
-					local: [ 'Luke Watts', 'Tom Lynch', 'Oliver Smith', 'Eva Verhoeven' ],
-					header: T.header( { name: 'Staff' } ),
-					template: T.result
-				},
-				{
-					name: 'Students',
-					local: [ 'Jonny', 'Jimmy', 'Jamie', 'Jeremy', 'Jerome' ],
-					header: T.header( { name: 'Students' } ),
-					template: T.result
-				},
-				{
-					name: 'Courses',
-					local: [ 'Graphic Design: New Media', 'Graphic Design', 'Communication Design', 'Illustration' ],
-					header: T.header( { name: 'Courses' } ),
-					template: T.result
-				}
-			]);
+				});
+			}	
+			$searchBox.typeahead( structureTypeahead );
+		},
+		init_ui: function(){
+			var $searchBox = $( '.site-search__input', Menu.$ele );	
+			$searchBox.on('focus', function(){
+				$('.main-navigation__menu-item--breadcrumb:not(.main-navigation__menu-item--root)').addClass('collapse');
+			});
+			$searchBox.on('blur', function(){
+				$('.main-navigation__menu-item--breadcrumb:not(.main-navigation__menu-item--root)').removeClass('collapse');
+			});
 		}
 	};
 
