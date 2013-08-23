@@ -15,6 +15,7 @@
 	margin: 0 auto;
 	max-width: $size_grid_width;
 	min-height: 100%;
+	@include rem('padding-top', $height_menu );
 }
 
 /**

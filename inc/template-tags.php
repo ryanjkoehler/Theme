@@ -282,3 +282,17 @@ if ( ! function_exists('profile_field') ) {
 		echo socd_get_profile_field( $fieldname );
 	}
 }
+
+function socd_headshot( $user_id = false ) {
+	global $user;
+
+	if ( ! $user_id ) $user_id = $user_id;
+
+	$attachment_id = socd_get_profile_field('user_headshot');
+
+	if (!$attachment_id) return;
+
+	echo wp_get_attachment_image( $attachment_id, 'original', false, array(
+		'class' => "profile--headshot"
+	) );
+}
