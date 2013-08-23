@@ -34,6 +34,7 @@ if( !window.SOCD ){ window.SOCD = {} };
 					template: T.result
 				});
 			}	
+			console.log( structureTypeahead );
 			$searchBox.typeahead( structureTypeahead );
 		},
 		init_ui: function(){
