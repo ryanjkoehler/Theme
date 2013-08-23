@@ -23,7 +23,7 @@ get_header(); ?>
 		</div>
 	</section><!-- 
 	--><section class="col--stream stream">
-		<?php do_action( 'socd_year_taxonomy' ); ?>
+		<?php if ( apply_filters( 'socd_is_network', false ) ) do_action( 'socd_year_taxonomy' ); ?>
 		<div class="cell colour--white">
 			<div id="posts-container">
 				<?php while( have_posts() ) : the_post(); ?>

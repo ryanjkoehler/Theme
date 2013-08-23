@@ -16,6 +16,7 @@ function socd_setup() {
 	require( get_stylesheet_directory() . '/inc/admin.php' );
 	require( get_stylesheet_directory() . '/inc/customizer.php' );
 	require( get_stylesheet_directory() . '/inc/extras.php' );
+	require( get_stylesheet_directory() . '/inc/filters.php' );
 	require( get_stylesheet_directory() . '/inc/template-tags.php' );
 }
 add_action( 'init', 'socd_setup' );
@@ -108,10 +109,22 @@ add_action( 'widgets_init', 'socd_widets_init' );
  * Create various menus
  */
 function socd_menus() {
-	register_nav_menus( array( 
-		'socd_network_menu' => 'Network Menu',
-		'socd_network_footer' => 'Network Footer'
-	) );
+	global $current_blog;
+	if ( is_main_site() && 1 == $current_blog->blog_id ) {
+		register_nav_menus( array( 
+			'socd_network_menu' => 'Network Menu',
+			'socd_network_footer' => 'Network Footer'
+		) );
+
+	} elseif ( is_network() ){
+		register_nav_menus( array(
+			'socd_site_menu' => 'Site Menu'
+		) );
+	} else {
+		register_nav_menus( array(
+			'socd_blog_menu' => 'Menu'
+		) );
+	}
 }
 add_action( 'init', 'socd_menus' );
 
