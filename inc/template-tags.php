@@ -213,6 +213,14 @@ function socd_network_footer() {
 	echo $output;
 }
 
+function socd_back_url() {
+	$url = isset( $_SERVER['HTTP_REFERER'] ) ? htmlspecialchars( $_SERVER['HTTP_REFERER'] ) : '';
+
+	if ( ! preg_match( '/socd/', $url ) ) return get_bloginfo( 'wpurl' );
+	
+	return $url;
+}
+
 function socd_profile_url( $user = false ) {
 	if ( !$user ) {
 		global $user;
@@ -266,6 +274,8 @@ function socd_course_code_to_course_name( $course_slug ) {
 function socd_get_profile_field( $fieldname ) {
 	global $user;
 
+
+
 	return get_user_meta( $user->data->ID, $fieldname, true );
 }
 
@@ -281,4 +291,14 @@ if ( ! function_exists('profile_field') ) {
 
 		echo socd_get_profile_field( $fieldname );
 	}
+}
+
+function socd_headshot() {
+	$attachment_id = socd_get_profile_field('user_headshot');
+
+	if (!$attachment_id) return;
+
+	echo wp_get_attachment_image( $attachment_id, 'original', false, array(
+		'class' => "profile--headshot"
+	) );
 }

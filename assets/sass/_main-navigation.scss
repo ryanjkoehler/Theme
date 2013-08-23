@@ -5,7 +5,17 @@
 
 	min-height: 100%;
 	position: fixed;
+	top: 0;
 	z-index: 10;
+
+	/**
+	 * If the admin bar is visible then offset the
+	 * SOCD toolbar off of the viewport top
+	 */
+	.admin-bar & {
+		top: 28px;
+	}
+
 	.main-navigation-container__fixed-size{
 		left: $size_grid * -4.5;
 		min-height: 100%;
