@@ -18,6 +18,7 @@ function socd_setup() {
 	require( get_stylesheet_directory() . '/inc/extras.php' );
 	require( get_stylesheet_directory() . '/inc/filters.php' );
 	require( get_stylesheet_directory() . '/inc/template-tags.php' );
+	require( get_stylesheet_directory() . '/inc/main-navigation.php' );
 }
 add_action( 'init', 'socd_setup' );
 
@@ -52,6 +53,8 @@ function socd_assets () {
 	wp_deregister_script( 'jquery' );
 	wp_register_script( 'jquery', get_stylesheet_directory_uri(). '/assets/javascript/libs/jquery-1.9.1.min.js', false, false, true );
 	
+	wp_enqueue_script( 'socd_config', get_stylesheet_directory_uri() . '/assets/javascript/config.js', false, false, true );
+	
 	wp_enqueue_script( 'socd_inline_attach', get_stylesheet_directory_uri() . '/assets/javascript/libs/jquery.inline-attach.min.js', array( 'jquery' ), false, true );
 	wp_enqueue_script( 'socd_hogan', get_stylesheet_directory_uri() . '/assets/javascript/libs/hogan.js', array( 'jquery' ), false, true );
 	wp_enqueue_script( 'socd_hogan_templates', get_stylesheet_directory_uri() . '/assets/javascript/socd-hogan-templates.js', array( 'socd_hogan' ), false, true );
@@ -60,7 +63,7 @@ function socd_assets () {
 	wp_enqueue_script( 'socd_main_navigation', get_stylesheet_directory_uri() . '/assets/javascript/main-navigation.js', array( 'jquery', 'socd_typeahead', 'socd_states', 'socd_hogan', 'socd_hogan_templates' ), false, true );
 	wp_enqueue_script( 'socd_notification_center', get_stylesheet_directory_uri() . '/assets/javascript/notification-center.js', array( 'jquery', 'socd_hogan', 'socd_hogan_templates' ), false, true );
 	wp_enqueue_script( 'socd_comments', get_stylesheet_directory_uri() . '/assets/javascript/comments.js', array( 'jquery', 'socd_inline_attach'  ), false, true );
-
+	
 	// Main site homepage
 	
 	if ( is_front_page() && $blog_id == 1 ) {
@@ -70,6 +73,16 @@ function socd_assets () {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'socd_assets' );
+
+function socd_javascript_config(){
+	wp_localize_script( 'socd_config', 'SOCD', array(
+		'Config' => array(	
+			'ajax_url' => admin_url( 'admin-ajax.php' ),
+			'typeahead_local' => socd_get_navigation_data()
+		)
+	) );
+}
+add_action( 'wp_enqueue_scripts', 'socd_javascript_config' );
 
 /**
  * Removes WP Admin bar
