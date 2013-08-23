@@ -93,6 +93,27 @@ function socd_faux_pages() {
 		global $user;
 		$user = get_user_by( 'slug', $wp_query->get('user_slug') );
 
+		$filters = array(
+			'dcd'	,
+			'gd'	,
+			'cga'	,
+			'gc'	,
+			'i'	 	,
+			'abc'	,
+			'gdvc'	,
+			'magd'	,
+			'madibm',
+			'mai'	
+		);
+
+		// Is valid user or one of our filters?
+		if ( in_array( $wp_query->get('user_slug'), $filters ) )  {
+
+			$template = "staff" == $wp_query->get('socd_user_group') ? "staff" : "students";
+			//
+			socd_template( 'staff' );
+		}
+
 		// No User found
 		// 
 		if ( !$user ) {
@@ -104,7 +125,7 @@ function socd_faux_pages() {
 		exit; 
 	}
 }
-add_action('template_redirect', 'socd_faux_pages');
+add_action( 'template_redirect', 'socd_faux_pages' );
 
 /**
  * 
@@ -113,7 +134,7 @@ add_action('template_redirect', 'socd_faux_pages');
 function socd_rewrite_urls() {
 	add_rewrite_rule(
 		'(students?|staff)/([a-z0-9\-]+)/?$',
-		'index.php?socd_template=profile&user_slug=$matches[2]',
+		'index.php?socd_template=profile&socd_user_group=$matches[1]&user_slug=$matches[2]',
 		'top' );
 }
 add_action( 'init', 'socd_rewrite_urls' );
@@ -121,6 +142,7 @@ add_action( 'init', 'socd_rewrite_urls' );
 function socd_query_vars( $query_vars ) {
 	$query_vars[] = 'socd_template';
 	$query_vars[] = 'user_slug';
+	$query_vars[] = 'socd_user_group';
 	return $query_vars;
 }
 add_filter( 'query_vars', 'socd_query_vars' );
@@ -135,4 +157,4 @@ function flushRules(){
 	$wp_rewrite->flush_rules();
 }
 
-// add_filter('init','flushRules');
+add_filter('init','flushRules');
