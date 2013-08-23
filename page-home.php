@@ -110,24 +110,42 @@ get_header(); ?>
 				 * Randomly Load Four staff members
 				 */
 
-				$staff = get_users( array(
-					'number' 	 => 4,
-					'meta_query' => array(
-						array(
-							'key'  	  => 'group',
-							'value'   => 'staff',
-							'compare' => '='
-				) ) ) );
+				function socd_get_random_staff( $no_of_staff = 4 ) {
 
-				if ($staff) {
-					foreach ( $staff as $user ) {
-						printf(
-							'<a href="%1$s" class="col-half">%2$s</a>',
-							socd_get_profile_url(),
-							socd_get_profile_thumbnail()
-						);
-					} 
+					global $user;
+
+					$staff = get_users( array(
+						'number' 	 => 999,
+						'order_by'   => 'RAND()',
+						'meta_query' => array(
+							array(
+								'key'  	  => 'group',
+								'value'   => 'staff',
+								'compare' => '='
+					) ) ) );
+
+					$output = array();
+
+					if ($staff) {
+
+						shuffle( $staff );
+
+						for ( $i = 0, $max = $no_of_staff; $i < $max; $i++ ) {
+
+							$user = $staff[$i];
+							
+							$output[] = sprintf(
+								'<a href="%1$s" class="col-half">%2$s</a>',
+								socd_get_profile_url(),
+								socd_get_profile_thumbnail()
+							);
+						} 
+					}
+
+					echo implode( "", $output );
 				}
+
+				socd_get_random_staff();
 
 				?>
 			</div>
