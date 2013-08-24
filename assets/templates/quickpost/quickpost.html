@@ -1,6 +1,6 @@
 <form action="socd_post" method="post" enctype="multipart/form-data">
 	<nav class="gw cell quickpost--config">
-		<div class="col col-one-sixth">
+		<div class="col one-sixth">
 			<select name="blog_id" class="quickpost--blog-select">
 				{{# user_blogs }}
 					<option value="{{ id }}">{{ title }}</option>
@@ -8,7 +8,7 @@
 			</select>
 		</div><!--
 	 	{{# post_formats}}
- 		 --><div class="col col-one-sixth"> 		 		
+ 		 --><div class="col one-sixth"> 		 		
  		 		<input type="radio" value="{{ slug }}" name="post_format" id="post_format_{{ slug }}" checked="{{ isDefault }}">
 				<label for="post_format_{{ slug }}" class="quickpost--type-select quickpost--type-select__{{ slug }}">
 					{{ slug }}	
@@ -26,10 +26,10 @@
 		</fieldset>
 		<fieldset class="submission">
 			<div class="field gw">
-				<div class="col col-five-sixths">
+				<div class="col five-sixths">
 					&nbsp;
 				</div><!--
-			 --><div class="col col-one-sixth">
+			 --><div class="col one-sixth">
 					<input type="submit" value="Post">
 				</div>
 			</div>

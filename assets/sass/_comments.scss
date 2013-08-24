@@ -117,7 +117,7 @@
 	}
 	&.depth-2{
 		.comment-body--avatar{
-			@extend .col-one-sixth;
+			@extend .one-sixth;
 			@include rem( 'padding-right', 0.6 );
 			@include rem( 'max-width', 4.3 );
 

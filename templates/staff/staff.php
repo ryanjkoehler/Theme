@@ -12,7 +12,7 @@ get_header(); ?>
 			<h1 class="h1 header__title"><?php _e('Staff Profiles', 'socd'); ?></h1>
 		</header>
 		
-		<ul class="col col-two-thirds h-center listing__profiles">
+		<ul class="col two-thirds h-center listing__profiles">
 			<?php
 
 			$meta_query = array(
@@ -42,7 +42,7 @@ get_header(); ?>
 
 				foreach ( $staff as $user ) :
 
-					?><li itemscope itemtype="http://schema.org/Person" class="listing--profile col col-one-quarter filter--course-<?php echo socd_course_code_to_course_name( get_user_meta( $user->ID, 'course', true ) ) ?>">
+					?><li itemscope itemtype="http://schema.org/Person" class="listing--profile col one-quarter filter--course-<?php echo socd_course_code_to_course_name( get_user_meta( $user->ID, 'course', true ) ) ?>">
 						<a href="<?php echo socd_get_profile_url( $user ); ?>"><?php echo socd_get_profile_thumbnail(); ?></a>
 						<div class="profile--info">
 							<h1 class="name" itemprop="name"><?php echo $user->display_name; ?></h1>

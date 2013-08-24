@@ -1,9 +1,4 @@
 .main-navigation-container{	
-	*{
-		@include box-sizing( border-box );
-	}
-
-	min-height: 100%;
 	position: fixed;
 	top: 0;
 	z-index: 10;
@@ -14,6 +9,11 @@
 	 */
 	.admin-bar & {
 		top: 28px;
+	}
+
+	.lt-ie9 & {
+		position: absolute;
+		top: 0;
 	}
 
 	.main-navigation-container__fixed-size{

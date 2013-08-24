@@ -8,7 +8,7 @@
 <footer class="footer">
 	<div class="site-wrap">
 		<div class="gw">
-			<div class="col col-half">
+			<div class="col one-half">
 				<h3 class="h4">Site Information</h3>
 				<?php socd_network_footer(); ?>
 			</div>

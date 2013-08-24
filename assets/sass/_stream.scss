@@ -21,7 +21,7 @@
  */
 .stream--filters {
 	li {
-		@extend %grid__item;
+		@extend .col;
 		width: auto;
 
 		a {

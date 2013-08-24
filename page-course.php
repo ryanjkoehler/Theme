@@ -21,12 +21,12 @@
 			</figure>
 
 			<div class="gw">
-				<div class="col-half">
+				<div class="one-half">
 					<div class="cell colour--dark">
 						<p class="h2"><?php the_field('introduction_text'); ?>
 					</div>
 				</div><!-- 
-			 --><div class="col-half">
+			 --><div class="one-half">
 				 	<div class="cell about--gallery">
 				 		<a href="/gallery" class="h2 h2--ruled">View Gallery</a>
 				 		<img src="<?php echo get_stylesheet_directory_uri(); ?>/demo/surf.jpeg" alt="">
@@ -34,7 +34,7 @@
 				</div>
 			 	<div class="col">
 				 	<div class="gw">
-					 	<div class="col col-one-third">
+					 	<div class="col one-third">
 							<div class="cell colour--white">
 								<h1 class="h2 h2--ruled"><?php the_title(); ?></h1>
 								<div class="wysiwyg">
@@ -42,7 +42,7 @@
 								</div><!-- .wysiwyg -->
 							</div>	
 						</div><!-- 
-					 --><div class="col col-one-third push--col-one-sixth">
+					 --><div class="col one-third push--one-sixth">
 							<div class="cell colour--blue">
 								<h1 class="h2 h2--ruled">Course News</h1>
 								<?php 
@@ -69,7 +69,7 @@
 								<?php endif; ?>
 							</div>			 	
 						</div><!-- 
-					 --><div class="col col-one-sixth">
+					 --><div class="col one-sixth">
 							<div class="cell colour--yellow">
 								<h1 class="h2 h2--ruled">Apply to this course</h1>
 								<p>UCAS Code<br/>
@@ -85,7 +85,7 @@
 									<li><a href="#">Course 3</a></li>
 								</ul>
 							</div>
-						</div><!-- .col.col-one-sixth -->
+						</div><!-- .col.one-sixth -->
 			 		</div><!-- .gw -->
 			 	</div>
 			</div><!-- .col -->

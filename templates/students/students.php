@@ -12,7 +12,7 @@ get_header(); ?>
 			<h1 class="h1 header__title"><?php _e('Course Students', 'socd'); ?></h1>
 		</header>
 		
-		<div class="col col-one-sixth">
+		<div class="col one-sixth">
 			<div class="cell colour--blue">
 				<h1 class="h2 h2--ruled">Filter by</h1>
 				<ul>
@@ -30,7 +30,7 @@ get_header(); ?>
 				</ul>
 			</div>
 		</div><!-- 
-	--><ul class="col col-five-sixths listing__students">
+	--><ul class="col five-sixths listing__students">
 			<?php
 
 			$students = get_users( array(
@@ -49,7 +49,7 @@ get_header(); ?>
 
 			foreach ( $students as $user ) :
 
-				?><li itemscope itemtype="http://schema.org/Person" class="listing--profile profile__student col col-one-fifth">
+				?><li itemscope itemtype="http://schema.org/Person" class="listing--profile profile__student col one-fifth">
 					<a href="<?php profile_url(); ?>">
 						<img class="thumb" itemprop="image" src="http://placehold.it/60x60" alt="Staff Name"/>
 					</a>

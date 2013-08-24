@@ -21,13 +21,13 @@ if ( ! is_array( $args ) ) $args = array(); ?>
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class( array( empty( $args['has_children'] ) ? '' : 'parent', 'comment') ); ?>>
 		<article id="div-comment-<?php comment_ID(); ?>" class="comment-body palm-cell gw">	
 		<?php if( $depth > 1 ): //is a child comment ?>
-			<div class="col col-one-sixth">
+			<div class="col one-sixth">
 				&nbsp;
 			</div><?php endif; ?><!--
-		 --><div class="comment-body--avatar col <?php if( $depth <= 1 ): ?>col-one-sixth<?php endif; ?>">
+		 --><div class="comment-body--avatar col <?php if( $depth <= 1 ): ?>one-sixth<?php endif; ?>">
 					<?php echo get_avatar( $comment, 150 ); ?>
 			</div><!--
-			--><div class="col <?php if( $depth > 1 ): ?>col-two-thirds<?php else: ?>col-five-sixths<?php endif; ?>">
+			--><div class="col <?php if( $depth > 1 ): ?>two-thirds<?php else: ?>five-sixths<?php endif; ?>">
 				<header class="comment-body--header">
 					<h5 class="h5 comment-body--author"><?php echo get_comment_author_link(); ?></h5>
 					<div class="comment-body--comment-meta">
@@ -45,12 +45,12 @@ if ( ! is_array( $args ) ) $args = array(); ?>
 						<?php echo wp_get_attachment_link( get_comment_meta( $comment->comment_ID, 'image', true ) ) ?>
 					<?php endif ?>
 				</div>
-			 	<div class="comment-body--edit col col-one-sixth">
+			 	<div class="comment-body--edit col one-sixth">
 			 		<div class="button button__edit-button">
 						<?php edit_comment_link( 'Edit', '<span class="edit-link">', '</span>' ); ?> 
 					</div>
 				</div><!--
-			 --><div class="comment-body--reply col col-one-sixth">
+			 --><div class="comment-body--reply col one-sixth">
 					<div class="button button__action-button">
 						<?php comment_reply_link( array_merge( $args, array( 'add_below' => 'div-comment', 'depth' => $depth, 'max_depth' => isset( $args['max_depth'] ) ? $args['max_depth'] : 0 ) ) ); ?>
 					</div>

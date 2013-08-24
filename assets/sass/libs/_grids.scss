@@ -31,7 +31,7 @@
  * These namespaces are then used in the library to give you the ability to
  * manipulate your layouts based around them, for example:
  *
-   <div class="grid__item  one-whole  lap--one-half  desk--one-third">
+   <div class="col  one-whole  lap--one-half  desk--one-third">
  *
  * This would give you a grid item which is 100% width unless it is on a lap
  * device, at which point it become 50% wide, or it is on a desktop device, at
@@ -42,7 +42,7 @@
  * convention as above, but are prepended by either `push--` or `pull--`, for
  * example:
  *
-   `class="grid__item  one-half  push--one-half"`
+   `class="col  one-half  push--one-half"`
  *
  * This would give you a grid item which is 50% width and pushed over to the
  * right by 50%.
@@ -51,9 +51,9 @@
  * quickly be able to piece together any combinations you can imagine, for
  * example:
  *
-   `class="grid__item  one-whole  lap--one-half  desk--one-third  push--desk--one-third"`
+   `class="col  one-whole  lap--one-half  desk--one-third  push--desk--one-third"`
  *
-   `class="grid__item  one-quarter  palm--one-half  push--palm--one-half"`
+   `class="col  one-quarter  palm--one-half  push--palm--one-half"`
  *
    `class="   palm--one-third  desk--five-twelfths"`
  */
@@ -88,7 +88,7 @@ $gutter:                0!default;
 /**
  * Would you like Sass’ silent classes, or regular CSS classes?
  */
-$use-silent-classes:    true!default;
+$use-silent-classes:    false!default;
 
 
 /**
@@ -208,7 +208,7 @@ $class-type:            unquote(".");
  * 2. Remove any margins and paddings that might affect the grid system.
  * 3. Apply a negative `margin-left` to negate the columns’ gutters.
  */
-#{$class-type}grid{
+#{$class-type}gw{
     list-style:none;                /* [1] */
     margin:0;                       /* [2] */
     padding:0;                      /* [2] */
@@ -234,7 +234,7 @@ $class-type:            unquote(".");
      * 4. Full-width unless told to behave otherwise.
      * 5. Required to combine fluid widths and fixed gutters.
      */
-    #{$class-type}grid__item{
+    #{$class-type}col{
         display:inline-block;           /* [1] */
         padding-left:$gutter;           /* [2] */
         vertical-align:top;             /* [3] */
@@ -255,11 +255,11 @@ $class-type:            unquote(".");
  * Reversed grids allow you to structure your source in the opposite order to
  * how your rendered layout will appear. Extends `.grid`.
  */
-#{$class-type}grid--rev{
+#{$class-type}gw--rtl{
     direction:rtl;
     text-align:left;
 
-    > #{$class-type}grid__item{
+    > #{$class-type}col{
         direction:ltr;
         text-align:left;
     }
@@ -273,7 +273,7 @@ $class-type:            unquote(".");
 #{$class-type}grid--full{
     margin-left:0;
 
-    > #{$class-type}grid__item{
+    > #{$class-type}col{
         padding-left:0;
     }
 }
@@ -285,7 +285,7 @@ $class-type:            unquote(".");
 #{$class-type}grid--right{
     text-align:right;
 
-    > #{$class-type}grid__item{
+    > #{$class-type}col{
         text-align:left;
     }
 }
@@ -298,7 +298,7 @@ $class-type:            unquote(".");
 #{$class-type}grid--center{
     text-align:center;
 
-    > #{$class-type}grid__item{
+    > #{$class-type}col{
         text-align:left;
     }
 }
@@ -310,14 +310,14 @@ $class-type:            unquote(".");
  */
 #{$class-type}grid--middle{
 
-    > #{$class-type}grid__item{
+    > #{$class-type}col{
         vertical-align:middle;
     }
 }
 
 #{$class-type}grid--bottom{
 
-    > #{$class-type}grid__item{
+    > #{$class-type}col{
         vertical-align:bottom;
     }
 }
@@ -329,7 +329,7 @@ $class-type:            unquote(".");
 #{$class-type}grid--narrow{
     margin-left:-($gutter / 2);
 
-    > #{$class-type}grid__item{
+    > #{$class-type}col{
         padding-left:$gutter / 2;
     }
 }
@@ -341,7 +341,7 @@ $class-type:            unquote(".");
 #{$class-type}grid--wide{
     margin-left:-($gutter * 2);
 
-    > #{$class-type}grid__item{
+    > #{$class-type}col{
         padding-left:$gutter * 2;
     }
 }
