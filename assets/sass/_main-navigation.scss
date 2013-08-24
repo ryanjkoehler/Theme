@@ -109,10 +109,12 @@
 		white-space: nowrap;
 		.drop,
 		.children,
-		.flyout{
+		.flyout,
+		ul{
 			background: $colour_background_dark;
 			.page_item,
-			.drop__option{
+			.drop__option,
+			li{
 				&:hover{
 					background: lighten( $colour_background_dark, 50% );
 				}
@@ -122,10 +124,12 @@
 			background: $colour_menu_grey_mid;
 			.drop,
 			.children,
-			.flyout{
+			.flyout,
+			ul{
 				background: $colour_menu_grey_mid;
 				.page_item,
-				.drop__option{
+				.drop__option,
+				li{
 					&:hover{
 						background: lighten( $colour_menu_grey_mid, 50% );
 					}
@@ -136,10 +140,12 @@
 			background: $colour_menu_grey_mid_light;
 			.drop,
 			.children,
-			.flyout{
+			.flyout,
+			ul{
 				background: $colour_menu_grey_mid_light;
 				.page_item,
-				.drop__option{
+				.drop__option,
+				li{
 					&:hover{
 						background: lighten( $colour_menu_grey_mid_light, 50% );
 					}
@@ -150,10 +156,12 @@
 			background: $colour_menu_grey_light;
 			.drop,
 			.children,
-			.flyout{
+			.flyout,
+			ul{
 				background: $colour_menu_grey_light;
 				.page_item,
-				.drop__option{
+				.drop__option,
+				li{
 					&:hover{
 						background: lighten( $colour_menu_grey_light, 50% );
 					}
@@ -182,7 +190,7 @@
 	}
 	
 	.main-navigation__menu-item--breadcrumb{
-		@include transition( max-width .5s linear, width .5s linear, min-width .5s linear );
+		@include transition( max-width .25s ease-in-out, width .25s ease-in-out, min-width .25s ease-in-out );
 		width: auto;
 		max-width: 400px;
 		min-width: 0;
@@ -195,7 +203,8 @@
 		position: relative;
 		.drop,
 		.children,
-		.flyout{
+		.flyout,
+		ul{
 			overflow: hidden;
 			position: absolute;			
 		}
@@ -208,7 +217,8 @@
 				@include rem( padding-right, 1.5 );
 				position: relative;
 				.children,
-				.flyout{
+				.flyout,
+				ul{
 					width: 0;
 					padding: 0;
 					left: 100%;
@@ -219,7 +229,8 @@
 				&.active{					
 					color: white;
 					.children,
-					.flyout{
+					.flyout,
+					ul{
 						width: auto;
 						@include rem( margin-top, -.5 );
 						@include rem( padding-top, .5 );
@@ -230,7 +241,8 @@
 		}
 		&:hover,
 		&.active{
-			.drop{
+			.drop,
+			ul{
 				height: auto;
 				overflow: visible;
 				@include rem( padding-top, .5 );

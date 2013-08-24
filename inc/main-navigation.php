@@ -18,10 +18,16 @@
 
 		foreach( $menu_items as $item ){
 			$group = $item->attr_title;
+			$tokens = explode( ',', $item->description );
+			$clean_tokens = array();
+			foreach( $tokens as $token ){
+				$clean_tokens[] = trim( $token );
+			}
+			$clean_tokens[] = trim( strtolower( $item->title ) );
 			$item_data = array(
 				'url' => $item->url,
 				'title' => $item->title,
-				'tokens' => explode( ',', $item->description )
+				'tokens' => $clean_tokens
 			);
 			if( $group ){
 				$data[ $group ][] = $item_data;
