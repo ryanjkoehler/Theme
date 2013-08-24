@@ -153,6 +153,38 @@ function socd_menus() {
 }
 add_action( 'init', 'socd_menus' );
 
+/**
+ * Displays navigation to next/previous set of posts when applicable.
+ *
+ *
+ * @return void
+ */
+function socd_paging_nav() {
+	global $current_blog, $wp_query;
+
+	// Don't print empty markup if there's only one page.
+	if ( $wp_query->max_num_pages < 2 )
+		return;
+	?>
+	<nav class="navigation stream--paging" role="navigation">
+		<h1 class="h-screen-reader-text"><?php _e( 'Posts navigation', 'twentythirteen' ); ?></h1>
+		<div class="nav-links">
+			<?php
+			
+			if ( $prev = get_previous_posts_link( _('&uarr; Newer') ) )
+				echo preg_replace('/(http:\/\/)socd\.(io|loc)/', '$1' . $current_blog->domain, $prev );
+
+			if ( $next = get_next_posts_link( __( '&darr; Older' ) ) )
+				echo preg_replace('/(http:\/\/)socd\.(io|loc)/', '$1' . $current_blog->domain, $next );
+
+			?>
+		</div><!-- .nav-links -->
+	</nav><!-- .navigation -->
+	<?php
+}
+
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////
 // QUICKPOST /////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
