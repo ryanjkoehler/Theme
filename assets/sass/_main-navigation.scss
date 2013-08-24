@@ -202,8 +202,6 @@
 	.main-navigation__menu-item--dropdown{
 		position: relative;
 		.drop,
-		.children,
-		.flyout,
 		ul{
 			overflow: hidden;
 			position: absolute;			
@@ -212,37 +210,35 @@
 			height: 0;
 			min-width: 100%;
 			@include rem( top, $height_menu );
-			li{
-				@include rem( padding-left, 1 );
-				@include rem( padding-right, 1.5 );
-				position: relative;
-				.children,
-				.flyout,
-				ul{
-					width: 0;
-					padding: 0;
-					left: 100%;
-					position: absolute;
-					top: 0;
-				}
-				&:hover,
-				&.active{					
-					color: white;
-					.children,
-					.flyout,
-					ul{
-						width: auto;
-						@include rem( margin-top, -.5 );
-						@include rem( padding-top, .5 );
-						@include rem( padding-bottom, 1 );					
-					}
+		}
+				
+		li{
+			@include rem( padding-left, 1 );
+			@include rem( padding-right, 1.5 );
+			position: relative;
+			&>ul{				
+				width: 0;
+				padding: 0;
+				left: 100%;
+				position: absolute;
+				top: 0;	
+			}
+			&:hover,
+			&.active{					
+				color: white;
+				&>ul{
+					overflow: visible;
+					width: auto;
+					@include rem( margin-top, -.5 );
+					@include rem( padding-top, .5 );
+					@include rem( padding-bottom, 1 );					
 				}
 			}
 		}
+		
 		&:hover,
 		&.active{
-			.drop,
-			ul{
+			.drop{
 				height: auto;
 				overflow: visible;
 				@include rem( padding-top, .5 );
