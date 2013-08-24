@@ -232,8 +232,11 @@ function socd_get_profile_url( $user = false ) {
 		$group = 'staff';
 	}
 
-
 	return get_bloginfo( 'wpurl' ) . "/$group/" . $user->data->user_login;
+}
+
+function profile_url() {
+	echo socd_get_profile_url();
 }
 
 function socd_get_profile_thumbnail( $user = false, $size = 'thumb' ) {
@@ -294,6 +297,10 @@ if ( ! function_exists('profile_field') ) {
 	}
 }
 
+/**
+ * Profile Specific Fields
+ */
+
 function socd_headshot() {
 	$attachment_id = socd_get_profile_field('user_headshot');
 
@@ -302,4 +309,96 @@ function socd_headshot() {
 	echo wp_get_attachment_image( $attachment_id, 'original', false, array(
 		'class' => "profile--headshot"
 	) );
+}
+
+function socd_course() {
+	echo socd_course_code_to_course_name( socd_get_profile_field('course') );
+}
+
+/**
+ * Prints the user's year of enrolment, if that's not found
+ * then it will attempt to calculate that using their group/year number
+ * 
+ * @uses socd_get_profile_field
+ */
+function socd_enrolment_year() {
+	$enrolment = socd_get_profile_field( 'socd_enrolment_year' );
+	
+	if ( "" != $enrolment ) echo $enrolment;
+
+	$year_of_study = socd_get_profile_field('group');
+
+	if ( $year_of_study > 0 ) echo date("Y") - $year_of_study;
+}
+
+
+/**
+ * Filters used on the Student listing page
+ * 
+ * @param  [string] $column [description]
+ * @return [array]         [description]
+ */
+function get_filters( $column = false ) {
+	global $wpdb;
+	
+	// If no column specify then return an empty array
+	if (!$column) return array();
+
+	$q = "SELECT `meta_value` FROM {$wpdb->base_prefix}usermeta WHERE `meta_key` = '$column' AND `meta_value` NOT LIKE 'staff' GROUP BY `meta_value`";	
+	return $wpdb->get_col( $q , 0);
+}
+
+/**
+ * 
+ * 
+ * @uses get_filters
+ */
+function socd_filter_years_of_study() {
+	$filters = get_filters('group');
+
+	$output = array();
+
+	foreach ( $filters as $filter ) {
+		$output[] = sprintf( '<li><a href="#%1$s">Year %1$s</a></li>', $filter );
+	}
+
+	echo implode( ' ', $output );
+}
+
+/**
+ * 
+ * 
+ * @uses get_filters
+ */
+function socd_filter_course() {
+	$filters = get_filters('course');
+	
+	$output = array();
+	foreach ( $filters as $filter ) {
+		$output[] = sprintf(
+			'<li><a href="#">%1$s</a></li>',
+			socd_course_code_to_course_name( $filter )
+		);
+	}
+
+	echo implode( ' ', $output );
+}
+
+/**
+ * 
+ * 
+ * @uses get_filters
+ */
+function socd_filter_campus() {
+	$filters = get_filters('socd_campus');
+	
+	$output = array();
+	foreach ( $filters as $filter ) {
+		$output[] = sprintf(
+			'<li><a href="#">%1$s</a></li>',
+			$filter
+		);
+	}
+
+	echo implode( ' ', $output );
 }

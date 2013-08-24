@@ -15,26 +15,54 @@ get_header(); ?>
 		<div class="col col-one-sixth">
 			<div class="cell colour--blue">
 				<h1 class="h2 h2--ruled">Filter by</h1>
-				Year of Study
+				<ul>
+					<li>
+						Year of Study
+						<?php socd_filter_years_of_study(); ?>
+					</li>
+					<li>
+						Course
+						<?php socd_filter_course(); ?>
+					</li>
+					<li>Campus
+						<?php socd_filter_campus(); ?>
+					</li>
+				</ul>
 			</div>
 		</div><!-- 
 	--><ul class="col col-five-sixths listing__students">
 			<?php
 
-			for ($i=0; $i < 25; $i++) :
+			$students = get_users( array(
+				'blog_id'	 => 1,
+				'number'	 => 999,
+				'meta_query' => array(
+					array(
+						'key'	  => 'group',
+						'value'   => 'staff',
+						'compare' => 'NOT LIKE'
+					)
+				)
+			) );
+
+			global $user;
+
+			foreach ( $students as $user ) :
 
 				?><li itemscope itemtype="http://schema.org/Person" class="listing--profile profile__student col col-one-fifth">
-					<img class="thumb" itemprop="image" src="http://placehold.it/60x60" alt="Staff Name"/>
+					<a href="<?php profile_url(); ?>">
+						<img class="thumb" itemprop="image" src="http://placehold.it/60x60" alt="Staff Name"/>
+					</a>
 					
 					<div class="profile--info">
-						<h1 class="name" itemprop="name">Staff Name</h1>
+						<h1 class="name" itemprop="name"><?php echo $user->display_name; ?></h1>
 						
-						<p>Course Name</p>
-						<p class="year">20xx</p>
+						<p><?php socd_course(); ?></p>
+						<p class="year"><?php socd_enrolment_year(); ?></p>
 					</div>
 				</li><?php
 
-			endfor; ?>
+			endforeach; ?>
 		</ul>
 	</section>
 </div>
