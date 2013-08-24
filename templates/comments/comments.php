@@ -49,7 +49,7 @@ if ( post_password_required() ) return; ?>
 			 */
 			wp_list_comments( array(
 				'callback' 		=> 'socd_comment',
-				'end-callback'  => 'socd_comment_end',
+				//'end-callback'  => 'socd_comment_end',
 				'format'   		=> 'html5',
 				'style' 		=> 'ol'
 			) );
