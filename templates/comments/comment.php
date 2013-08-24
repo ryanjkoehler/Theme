@@ -6,22 +6,8 @@
  */
 
 global $comment, $depth, $args;
-?>
 
-<!--
-	<?php 
-		echo "DEPTH \n";
-		print_r( $depth ); 
-		echo "\n";
-		echo "COMMENT \n";
-		print_r( $comment );
-		echo "\n";
-		echo "ARGS \n";
-		print_r( $args );
-	?>
--->
-
-<?php if ( ! is_array( $args ) ) $args = array(); ?>
+if ( ! is_array( $args ) ) $args = array(); ?>
 
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class( array( empty( $args['has_children'] ) ? '' : 'parent', 'comment') ); ?>>
 		
@@ -68,4 +54,3 @@ global $comment, $depth, $args;
 				</div>
 			</div>	
 		</article>
-	
