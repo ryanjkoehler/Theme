@@ -272,6 +272,7 @@
 				&>ul{
 					overflow: visible;
 					width: auto;
+					min-width: 100%;
 					//@include rem( margin-top, -.5 );
 					//@include rem( padding-top, .5 );
 					//@include rem( padding-bottom, .5 );					
