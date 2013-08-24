@@ -239,9 +239,9 @@ function socd_get_profile_url( $user = false ) {
 function socd_get_profile_thumbnail( $user = false, $size = 'thumb' ) {
 	
 	global $user;
-	
-	$src = get_the_author_meta( 'user_headshot_' . $size, $user->ID );
-	
+
+	$src = get_user_meta( $user->ID, 'user_headshot_' . $size, true );
+
 	if (!$src) {
 		$src = 'http://placekitten.com/150/' . rand(147,152);
 	}

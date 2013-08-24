@@ -38,17 +38,19 @@ get_header(); ?>
 			
 			if ( $staff ) : 
 
-				foreach ( $staff as $staff_member ) :
+				global $user;
 
-					?><li itemscope itemtype="http://schema.org/Person" class="listing--profile col col-one-quarter filter--course-<?php echo socd_course_code_to_course_name( get_user_meta( $staff_member->ID, 'course', true ) ) ?>">
-						<a href="<?php echo socd_get_profile_url( $staff_member ); ?>"><?php socd_user_thumbnail( $staff_member ); ?></a>
+				foreach ( $staff as $user ) :
+
+					?><li itemscope itemtype="http://schema.org/Person" class="listing--profile col col-one-quarter filter--course-<?php echo socd_course_code_to_course_name( get_user_meta( $user->ID, 'course', true ) ) ?>">
+						<a href="<?php echo socd_get_profile_url( $user ); ?>"><?php echo socd_get_profile_thumbnail(); ?></a>
 						<div class="profile--info">
-							<h1 class="name" itemprop="name"><?php echo $staff_member->display_name; ?></h1>
-							<h2 class="role" itemprop="jobTitle"><?php echo get_user_meta( $staff_member->ID, 'socd_role', true ); ?></h2>
+							<h1 class="name" itemprop="name"><?php echo $user->display_name; ?></h1>
+							<h2 class="role" itemprop="jobTitle"><?php echo get_user_meta( $user->ID, 'socd_role', true ); ?></h2>
 	
-							<p><?php echo socd_course_code_to_course_name( get_user_meta( $staff_member->ID, 'course', true ) ); ?></p>
+							<p><?php echo socd_course_code_to_course_name( get_user_meta( $user->ID, 'course', true ) ); ?></p>
 						</div>
-						<!-- <?php var_dump($staff_member); ?> -->
+						<!-- <?php var_dump($user); ?> -->
 					</li><?php
 
 				endforeach;
