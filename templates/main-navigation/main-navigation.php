@@ -1,14 +1,3 @@
-<!-- <li class="main-navigation__menu-item main-navigation__menu-item--dropdown main-navigation__menu-item--breadcrumb">
-	<div class="tab">
-		<h1 class="title"><a href="#">BA (Hons) Graphic Design</a></h1>
-	</div>
-	<ul class="drop">
-		<li class="drop__option"><a href="#">Gallery</a></li>
-		<li class="drop__option"><a href="#">Staff</a></li>
-		<li class="drop__option"><a href="#">Students</a></li>
-		<li class="drop__option"><a href="#">Event</a></li>
-	</ul>
-</li> -->
 <nav class="main-navigation-container">
 	<section class="navigation-notifications notifications main-navigation-container__openable">				
 		<div class="notifications-center-display">
