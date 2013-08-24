@@ -7,7 +7,8 @@
  global $page, $paged;
 ?>
 <!DOCTYPE html>
-<html <?php language_attributes(); ?> class="no-js">
+<!--[if lt IE 9 ]> <html <?php language_attributes(); ?> class="no-js lt-ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html <?php language_attributes(); ?> class="no-js"> <!--<![endif]-->
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
@@ -28,6 +29,12 @@
 	</script>
 </head>
 <body <?php body_class(); ?>>
+<!--[if lt IE 9]>
+<div class="site-wrap notifications-message notifications-message__ambivalent">
+	<p>Note: The browser you're using is at least <a href="http://www.w3.org/People/Berners-Lee/FAQ.html#standards"><?php echo (date("Y") - 2008) * 4.6; ?></a> years old. As a result you are missing out on enhanced functionality available to modern browsers.</p>
+	<p>Please visit  for information about the latest browsers available.</p>
+</div>
+<![endif]  -->
 <section class="site-wrap h-animate-transform">
 	
 <?php socd_template_part('main-navigation'); ?>
