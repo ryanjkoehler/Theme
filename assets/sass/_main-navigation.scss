@@ -116,7 +116,17 @@
 			.drop__option,
 			li{
 				&:hover{
-					background: lighten( $colour_background_dark, 50% );
+					background: lighten( $colour_background_dark, 40% );
+					background: rgba( 255, 255, 255, 0.1 );
+				}
+				ul{
+					background: lighten( $colour_background_dark, 10% );
+					ul{
+						background: lighten( $colour_background_dark, 20% );
+						ul{
+							background: lighten( $colour_background_dark, 30% );
+						}
+					}
 				}
 			}
 		}
@@ -131,7 +141,17 @@
 				.drop__option,
 				li{
 					&:hover{
-						background: lighten( $colour_menu_grey_mid, 50% );
+						background: lighten( $colour_menu_grey_mid, 40% );
+						background: rgba( 255, 255, 255, 0.1 );
+					}
+					ul{
+						background: lighten( $colour_menu_grey_mid, 10% );
+						ul{
+							background: lighten( $colour_menu_grey_mid, 20% );
+							ul{
+								background: lighten( $colour_menu_grey_mid, 30% );
+							}
+						}
 					}
 				}
 			}
@@ -147,7 +167,17 @@
 				.drop__option,
 				li{
 					&:hover{
-						background: lighten( $colour_menu_grey_mid_light, 50% );
+						background: lighten( $colour_menu_grey_mid_light, 40% );
+						background: rgba( 255, 255, 255, 0.1 );
+					}
+					ul{
+						background: lighten( $colour_menu_grey_mid_light, 10% );
+						ul{
+							background: lighten( $colour_menu_grey_mid_light, 20% );
+							ul{
+								background: lighten( $colour_menu_grey_mid_light, 30% );
+							}
+						}
 					}
 				}
 			}	
@@ -163,7 +193,8 @@
 				.drop__option,
 				li{
 					&:hover{
-						background: lighten( $colour_menu_grey_light, 50% );
+						background: lighten( $colour_menu_grey_light, 40% );
+						background: rgba( 255, 255, 255, 0.1 );
 					}
 				}
 			}	
@@ -213,9 +244,21 @@
 		}
 				
 		li{
-			@include rem( padding-left, 1 );
-			@include rem( padding-right, 1.5 );
+			a{
+				width: 100%;
+				height: 100%;
+				display: block;
+				@include rem( padding-left, 1 );
+				@include rem( padding-right, 1.5 );
+			}			
 			position: relative;
+			&:first-child{
+				//@include rem( padding-top, .5 );
+			}
+			&:last-child{
+				//@include rem( padding-bottom, .5 );
+			}
+
 			&>ul{				
 				width: 0;
 				padding: 0;
@@ -229,9 +272,9 @@
 				&>ul{
 					overflow: visible;
 					width: auto;
-					@include rem( margin-top, -.5 );
-					@include rem( padding-top, .5 );
-					@include rem( padding-bottom, 1 );					
+					//@include rem( margin-top, -.5 );
+					//@include rem( padding-top, .5 );
+					//@include rem( padding-bottom, .5 );					
 				}
 			}
 		}
@@ -241,8 +284,8 @@
 			.drop{
 				height: auto;
 				overflow: visible;
-				@include rem( padding-top, .5 );
-				@include rem( padding-bottom, 1 );
+				// @include rem( padding-top, .5 );
+				// @include rem( padding-bottom, .5 );
 			}
 		}
 	}
