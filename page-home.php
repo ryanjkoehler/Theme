@@ -11,13 +11,13 @@ get_header(); ?>
 		</header>
 		<div class="col col-half" style="position: relative; z-index: 1;">
 			<div class="gw">
-				<div class="col">
+				<div class="col homepage--introduction">
 					<div class="cell colour--dark">
-						<p class="h3 h3--ruled">
-							Welcome to the School of Communication Design at University for the Creative Arts. The School is made up up thirteen courses and spread over three campus sites in Surrey and Kent.
-						</p>
-						<p>This is our new site, it's not set to launch until September, so consider this an early preview. Bit's are missing and undoubtedly there will be bugs. But we believe there's some value in building this out in the open.</p>
-						<a href="http://make.socd.io">Read More &rarr;</a>
+						<?php 
+
+						$page = get_post( get_option('page_on_front') );
+
+						echo apply_filters( 'the_content', $page->post_content ); ?>
 					</div>
 				</div>
 				<div class="col col-two-thirds">
