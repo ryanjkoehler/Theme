@@ -2,7 +2,7 @@
 	function socd_get_navigation_data(){
 		if ( !function_exists('switch_to_blog') ) return false;
 
-		if ( false === ( $data = get_site_transient( 'site__socd_typeahead_data' ) ) || false ) {
+		//if ( false === ( $data = get_site_transient( 'site__socd_typeahead_data' ) ) || false ) {
 			switch_to_blog( 1 );
 
 			$data = array();
@@ -40,7 +40,7 @@
 
 			restore_current_blog();
 			set_site_transient( 'site__socd_typeahead_data', $data, 1 * HOUR_IN_SECONDS );
-		}
+		//}
 
 		return $data;
 	}

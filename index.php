@@ -30,7 +30,15 @@ get_header(); ?>
 					<?php get_template_part( 'templates/post/post'); ?>
 				<?php endwhile; ?>
 			</div>
-
+			PAGINATE!
+			<?php echo paginate_links( 
+				array(
+					'format' => '/page/%#%',
+					'prev_text' => '&nbsp; PREV',
+					'next_text' => '&nbsp; NEXT',
+					'type' => 'list'
+				) 
+			); ?>
 			<?php wp_link_pages(); ?>
 		</div>
 	</section><!--

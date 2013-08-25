@@ -456,7 +456,7 @@ body.logged-in{
 }
 
 .site-search{
-	width: 100%;
+	width: 100%;	
 	.site-search__input{
 		height: 100%;
 		outline: none;
@@ -471,6 +471,12 @@ body.logged-in{
 		width: 100%;
 		height: 100%;
 		vertical-align: top;
+		a{
+			color: $colour_black;
+			&:hover{
+				color: $colour_link;
+			}
+		}
 		input{
 			@include box-sizing( border-box );
 			width: 100%;
@@ -482,47 +488,56 @@ body.logged-in{
 			font-size: 1em;		
 		}
 		.tt-hint{
-			color: lighten( $colour_grey, 40% );
+			color: lighten( $colour_black, 40% );
 		}
 		.tt-dropdown-menu{
 			width: 100%;			
 			background: $colour_white;
+			&>div,
 			[class^="tt-dataset-"]{
-				padding: 0 1em;
-				clear: both;
+				border-top: 1px solid $colour_background;
+				clear: both;				
 				overflow: hidden;
-				h2{
-					letter-spacing: 1px;	
-					font-weight: 400;							
-					color: lighten( $colour_grey, 50% );					
+				@include rem('padding-bottom', .5 );
+				@include rem('padding-left', 1 );
+				@include rem('padding-right', 1 );
+				@include rem('padding-top', .5 );
+				&:first-child{
+					border-top: none;
+				}
+				.tt-suggestions-title{
+					color: $colour_black;
 					float: left;
-					line-height: 1.8em;
+					@include fontstack_medium;
+					height: 100%;	
+					line-height: 1.6;
+					text-transform: capitalize;
 					width: 16%;
-					height: 100%;
+					h2{
+						white-space: normal;	
+					}
 				}
 				.tt-suggestions{
 					float: left;
 					width: 84%;
 					.tt-suggestion{
 						padding: 0 .5em;
-						line-height: 1.8em;
+						line-height: 1.6;
 						width: 100%;
-						&:hover{
-							background-color: lighten( $colour_grey, 30% );
-							color: $colour_white;
-						}
 						p{
 							margin-bottom: 0;
 						}
+						&:hover,
+						&:hover a{
+							color: $colour_link;
+						}
 					}
-				}
+				}				
 				&:hover{
-					background-color: lighten( $colour_grey, 50% );
-					h2{
-						color: $colour_white;
+					.tt-suggestions-title{
+						color: $colour_link;
 					}
 				}
-				margin: 0 0 2rem 0;
 			}
 		}
 	}
