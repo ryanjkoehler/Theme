@@ -21,21 +21,27 @@
 			color: $colour_white;
 		}
 		.comments-section--navigation{
-			float: right;
-			@include rem( 'padding', .5 );
-			a, span{
-				color: $colour_red;
-				&.current,
-				&:hover{
+			.pagination-links--links{
+				float: right;
+				@include rem( 'padding', .5 );
+				a, span{
 					color: $colour_red;
-					border-bottom: 2px solid $colour_red;
-				}	
+					&.current,
+					&:hover{
+						color: $colour_red;
+						border-bottom: 2px solid $colour_red;
+					}	
+				}
 			}
 		}
 	}	
 	.comments-section--header__footer{
 		top: auto;
 		bottom: 0;
+		border-top: none;
+		.comments-section--navigation{
+			border-top: 1px solid $colour_red;
+		}
 	}
 }
 

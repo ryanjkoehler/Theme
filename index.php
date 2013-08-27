@@ -30,7 +30,7 @@ get_header(); ?>
 					<?php get_template_part( 'templates/post/post'); ?>
 				<?php endwhile; ?>
 			</div>
-			<?php wp_link_pages(); ?>
+			<?php echo wp_link_pages(); ?>
 		</div>
 	</section><!--
 	--><aside class="sidebar col--side col--side__right">
