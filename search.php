@@ -14,7 +14,9 @@ get_header(); ?>
 	</header><!-- .header -->
 	<ul class="col col-two-thirds h-center listing__search-results">
 		<?php while( have_posts() ) : the_post(); ?>
-			<li class="gw listing--result <?php echo ( has_post_thumbnail() ) ? 'listing--result__thumbnail' : '' ; ?> <?php echo get_post_format() ?>">				
+			<li class="gw listing--result 
+				<?php echo ( has_post_thumbnail() ) ? 'listing--result__thumbnail' : '' ; ?>
+				<?php if( has_post_format() ): ?> listin--result__format-<?php echo get_post_format() ?><?php endif; ?>">				
 				<div class="col col-one-third">
 					<div class="result--heading">
 						<h2 class="result--title h2"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
