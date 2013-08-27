@@ -16,3 +16,8 @@
 .h-animate-transform{
 	@include transition( transform, .5s, ease-in-out );
 }
+
+.h-screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+}
