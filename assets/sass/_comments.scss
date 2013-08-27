@@ -73,6 +73,10 @@
 	.comment-body--edit{
 		text-align: right;
 	}
+	.comment-awaiting-moderation{
+		@include font-size( 0.8 );
+		color: $colour_red;
+	}
 }
 
 
