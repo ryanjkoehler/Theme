@@ -10,11 +10,12 @@ require_once get_stylesheet_directory() . '/inc/comments.php';
 if ( post_password_required() ) return; ?>
 <section id="comments" class="comments-section">
 	<?php if ( have_comments() ) : ?>
-
+	
 	<header class="comments-section--header">	
 		<h1 class="comments-section--count">
-			<?php
-				printf( _nx( 'One comment', '%1$s comments', get_comments_number(), 'comments title', 'socd' ), number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>'); 
+			<?php			
+				// printf( _nx( 'One comment', '%1$s comments', get_comments_number( $post->ID ), 'comments title', 'socd' ), number_format_i18n( get_comments_number( $post->ID ) ), '<span>' . get_the_title() . '</span>'); 
+				comments_number();
 			?>
 			<?php 
 				$pages = get_comment_pages_count();	
@@ -49,7 +50,7 @@ if ( post_password_required() ) return; ?>
 			 */
 			wp_list_comments( array(
 				'callback' 		=> 'socd_comment',
-				'end-callback'  => 'socd_comment_end',
+				//'end-callback'  => 'socd_comment_end',
 				'format'   		=> 'html5',
 				'style' 		=> 'ol'
 			) );

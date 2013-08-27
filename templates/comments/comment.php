@@ -8,17 +8,9 @@
 global $comment, $depth, $args;
 
 if ( ! is_array( $args ) ) $args = array(); ?>
-<ol>
-<?php if ( 'pingback' == $comment->comment_type || 'trackback' == $comment->comment_type ) : ?>
-	<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
-		<div class="comment-body">
-			<?php _e( 'Pingback:', 'modernshows' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __( 'Edit', 'modernshows' ), '<span class="edit-link">', '</span>' ); ?>
-		</div>
-	</li>
-
-<?php else : ?>
 
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class( array( empty( $args['has_children'] ) ? '' : 'parent', 'comment') ); ?>>
+		
 		<article id="div-comment-<?php comment_ID(); ?>" class="comment-body palm-cell gw">	
 		<?php if( $depth > 1 ): //is a child comment ?>
 			<div class="col one-sixth">
@@ -62,5 +54,3 @@ if ( ! is_array( $args ) ) $args = array(); ?>
 				</div>
 			</div>	
 		</article>
-	</li>
-<?php endif; ?>

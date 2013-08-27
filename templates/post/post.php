@@ -18,7 +18,7 @@
 			<?php the_content( 'Read more' ); ?>
 		</div>
 	</div><!--
-	--><aside class="one-sixth article--meta"> 
+	--><aside class="col one-sixth article--meta"> 
 		<?php socd_posted_on(); ?>
 	</aside>
 </article>
