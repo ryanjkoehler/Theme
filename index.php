@@ -30,7 +30,6 @@ get_header(); ?>
 					<?php get_template_part( 'templates/post/post'); ?>
 				<?php endwhile; ?>
 			</div>
-
 			<?php socd_paging_nav(); ?>
 		</div>
 	</section><!--

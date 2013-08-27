@@ -37,7 +37,12 @@ if ( ! is_array( $args ) ) $args = array(); ?>
 						<?php echo wp_get_attachment_link( get_comment_meta( $comment->comment_ID, 'image', true ) ) ?>
 					<?php endif ?>
 				</div>
-			 	<div class="comment-body--edit col one-sixth">
+				<div class="comment-body--moderation col col-two-thirds">
+					<?php if ( '0' == $comment->comment_approved ) : ?>
+						<p class="comment-awaiting-moderation">Your comment is awaiting moderation.</p>
+					<?php endif; ?>
+				</div><!--
+			 --><div class="comment-body--edit col col-one-sixth">
 			 		<div class="button button__edit-button">
 						<?php edit_comment_link( 'Edit', '<span class="edit-link">', '</span>' ); ?> 
 					</div>
@@ -46,11 +51,6 @@ if ( ! is_array( $args ) ) $args = array(); ?>
 					<div class="button button__action-button">
 						<?php comment_reply_link( array_merge( $args, array( 'add_below' => 'div-comment', 'depth' => $depth, 'max_depth' => isset( $args['max_depth'] ) ? $args['max_depth'] : 0 ) ) ); ?>
 					</div>
-				</div>
-				<div class="comment-body--reply">
-					<?php if ( '0' == $comment->comment_approved ) : ?>
-						<p class="comment-awaiting-moderation">Your comment is awaiting moderation.</p>
-					<?php endif; ?>
 				</div>
 			</div>	
 		</article>

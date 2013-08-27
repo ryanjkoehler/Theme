@@ -41,7 +41,6 @@
 			restore_current_blog();
 			set_site_transient( 'site__socd_typeahead_data', $data, 1 * HOUR_IN_SECONDS );
 		}
-
 		return $data;
 	}
 ?>

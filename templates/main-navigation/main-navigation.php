@@ -42,7 +42,7 @@
 	 --><li class="site-search main-navigation__menu-item main-navigation__menu-item--flexible main-navigation__menu-item--search avoid-menu">
 			<input class="site-search__input" type="text" placeholder="Search">
 		</li><!--
-	 --><li class="main-navigation__menu-item main-navigation__menu-item--dropdown main-navigation__menu-item--profile">
+	 --><li class="main-navigation__menu-item main-navigation__menu-item--dropdown main-navigation__menu-item--profile <?php echo ( is_user_logged_in()) ? 'logged-in' : 'logged-out'; ?> ">
 	 		<?php $user_info = get_userdata( get_current_user_id() ); ?>
 			<div class="tab">
 				<?php if( is_user_logged_in(  ) ): ?>
