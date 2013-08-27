@@ -12,12 +12,13 @@ get_header(); ?>
 			<?php echo $wp_query->found_posts; ?> found for '<?php echo $wp_query->query_vars['s']; ?>'
 		</h2>
 	</header><!-- .header -->
-	<ul class="col col-two-thirds h-center listing__search-results">
+	<ul class="col two-thirds h-center listing__search-results">
 		<?php while( have_posts() ) : the_post(); ?>
-			<li class="gw listing--result 
-				<?php echo ( has_post_thumbnail() ) ? 'listing--result__thumbnail' : '' ; ?>
-				<?php if( has_post_format() ): ?> listin--result__format-<?php echo get_post_format() ?><?php endif; ?>">				
-				<div class="col col-one-third">
+			<li class="gw listing--result<?php
+				echo ( has_post_thumbnail() ) ? ' listing--result__thumbnail' : '' ;
+				if( get_post_format() ): ?> listing--result__format-<?php echo get_post_format() ?><?php endif; 
+			?>">				
+				<div class="col one-third">
 					<div class="result--heading">
 						<h2 class="result--title h2"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 						<?php if( has_post_thumbnail() ): ?>
@@ -27,8 +28,26 @@ get_header(); ?>
 						<?php endif; ?>
 					</div>
 				</div><!--
-			 --><div class="col col-two-thirds last">
+			 --><div class="col two-thirds last">
+			 <!--
+			 				<?php print_r( the_content() ); ?>
+			 			-->
 			 		<div class="result--excerpt wysiwyg">
+			 			<?php if( has_post_format( 'image' ) ):
+			 				$images = get_posts( 
+			 					array(
+				 					'numberposts' => 1,								
+									'post_mime_type' => 'image',
+									'post_parent' => $post->ID,
+									'post_type' => 'attachment'
+				 				),
+				 				ARRAY_N
+			 				);
+			 				$src = $images[0]->guid;
+			 			?>
+							<img src="<?php echo $src; ?>" />
+			 			<?php endif; ?>
+
 						<?php the_excerpt(); ?>
 					</div>
 				</div>

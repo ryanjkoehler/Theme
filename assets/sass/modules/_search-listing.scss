@@ -14,6 +14,11 @@
 			margin-top: 1px;
 			@include rem(margin-bottom, 1);
 		}
+		.result--excerpt{
+			img{
+				margin-bottom: 1em;
+			}
+		}
 		.col{
 			padding-right: $grid_padding;
 			&.last{
