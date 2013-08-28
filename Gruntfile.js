@@ -13,6 +13,10 @@ module.exports = function(grunt) {
       hogan: {
         files: [ 'assets/templates/**/*.html' ],
         tasks: [ 'hogan' ]
+      },
+      jshint: {
+        files: ['assets/javascript/**.js'],
+        tasks: 'jshint'
       }
     },
     compass: {
@@ -70,6 +74,12 @@ module.exports = function(grunt) {
           './assets/javascript/socd-hogan-templates.js': [ './assets/templates/**/*.html' ]
         }
       }
+    },
+    jshint: {
+      files: ['Gruntfile.js', 'assets/javascript/maps.js'],
+      options: {
+        ignores: ['assets/javascript/socd-hogan-templates.js']
+      }
     }
   });
 
@@ -78,5 +88,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-hogan');
   grunt.loadNpmTasks("grunt-contrib-compass");
   grunt.loadNpmTasks("grunt-contrib-watch");
+  grunt.loadNpmTasks("grunt-contrib-jshint");
   grunt.loadNpmTasks("grunt-sftp-deploy");
-}
+};
