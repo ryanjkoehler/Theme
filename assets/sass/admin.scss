@@ -21,3 +21,40 @@
 	color: #444 !important;
 }
 
+
+/**
+ * Github Dashboard Widget
+ */
+
+#socd_commit_widget {
+	.inside {
+		margin: 0;
+	}
+}
+
+.github-widget {
+
+	ul {
+		margin: 0;
+	}
+	li {
+		border-bottom: 1px solid #DFDFDF;
+		margin: 0 -10px;
+		padding: 10px;
+		overflow: hidden;
+
+		&:nth-child(even) {
+			background-color: #FCFCFC;
+		}
+	
+		.avatar {
+			float: left;
+			margin: 0 10px 0 0;
+		}
+
+		.github-commit-wrap {
+			overflow: hidden;
+		}
+	}
+}
+

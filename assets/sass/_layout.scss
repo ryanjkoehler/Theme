@@ -13,9 +13,15 @@
  */
 .site-wrap {
 	margin: 0 auto;
+	width: 98%;
 	max-width: $size_grid_width;
 	min-height: 100%;
 	@include rem('padding-top', $height_menu );
+
+	.lt-ie9 & {
+		position: relative;
+		min-height: auto;
+	}
 }
 
 /**
@@ -24,62 +30,6 @@
  */
 .site-main {
 	min-height: 100%;
-}
-
-.gw {
-	@extend %grid;
-}
-	.gw--rtl {
-		@extend %grid--rev
-	}
-
-.col {
-	@extend %grid__item;
-}
-
-.col-half {
-	@extend %grid__item;
-	@extend %desk--one-half;
-}
-
-.col-third,
-.col-one-third {
-	@extend %grid__item;
-	@extend %desk--one-third;
-}
-.col-two-thirds {
-	@extend %grid__item;
-	@extend %desk--two-thirds;
-}
-
-.col-one-quarter {
-	@extend %grid__item;
-	@extend %lap--one-quarter;
-	@extend %desk--one-quarter;
-}
-.col-three-quarters {
-	@extend %grid__item;
-	@extend %desk--three-quarters;
-}
-
-.col-one-fifth {
-	@extend %lap--one-fifth;
-	@extend %desk--one-fifth;
-}
-.col-four-fifths {
-	@extend %lap--four-fifths;
-	@extend %desk--four-fifths;
-}
-
-.col-sixth,
-.col-one-sixth {
-	@extend %grid__item;
-	@extend %desk--one-sixth;
-}
-
-.col-five-sixths {
-	@extend %grid__item;
-	@extend %desk--five-sixths;
 }
 
 /**
@@ -94,7 +44,7 @@
 	 * Small sidebar 
 	 */
 	.col--side {
-		@extend %grid__item;
+		@extend .col;
 		width: 22%
 	}
 
@@ -103,7 +53,7 @@
 	 * on noticeboards and sketchbooks
 	 */
 	.col--stream {
-		@extend %grid__item;
+		@extend .col;
 		width: 100% - (22 * 2)
 	}
 	
@@ -114,14 +64,3 @@
 		width: 39%;
 	}
 
-.cell {
-	padding: $grid_padding;
-	text-align: left;
-}
-
-/* Push */
-.push--col-one-sixth {
-	margin-left: (100% / 6);
-}
-
-/* Pull */

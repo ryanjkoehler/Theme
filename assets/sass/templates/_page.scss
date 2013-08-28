@@ -2,7 +2,7 @@
  * 
  */
 .col--page {
-	@extend %grid__item;
+	@extend .col;
 	width: size_in_context(400, 1021);
 }
 
@@ -16,12 +16,12 @@
 	}
 
 	.page--main {
-		@extend %grid__item;
+		@extend .col;
 		position: relative;
 		width: size_in_context(400, 738);
 	}
 	.page--aside {
-		@extend %grid__item;
+		@extend .col;
 		position: relative;
 		width: size_in_context(226, 738);
 	}

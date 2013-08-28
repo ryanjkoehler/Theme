@@ -33,8 +33,7 @@ if( !window.SOCD ){ window.SOCD = {} };
 					header: T.header( { name: type } ),
 					template: T.result
 				});
-			}	
-			console.log( structureTypeahead );
+			}				
 			$searchBox.typeahead( structureTypeahead );
 		},
 		init_ui: function(){

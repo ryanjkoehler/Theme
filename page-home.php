@@ -9,7 +9,7 @@ get_header(); ?>
 		<header class="header homepage--header">
 			<h1 class="h1 site--title"><?php bloginfo( 'description' ); ?></h1>
 		</header>
-		<div class="col col-half" style="position: relative; z-index: 1;">
+		<div class="col one-half" style="position: relative; z-index: 1;">
 			<div class="gw">
 				<div class="col homepage--introduction">
 					<div class="cell colour--dark">
@@ -20,7 +20,7 @@ get_header(); ?>
 						echo apply_filters( 'the_content', $page->post_content ); ?>
 					</div>
 				</div>
-				<div class="col col-two-thirds">
+				<div class="col two-thirds">
 					<a href="/gallery" class="homepage--gallery">
 						<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/Joanna_Louise_Bird__BA_(Hons)_Graphic_Design__UCA_Epsom_image.jpg" alt=""/>
 						<div class="cell colour--green">
@@ -31,11 +31,11 @@ get_header(); ?>
 
 			</div>
 		</div><!-- 
-		--><div class="col col-two-thirds homepage--map-container">
+		--><div class="col two-thirds homepage--map-container">
 			<figure id="homepage--map"></figure>
 		</div>
 	</div><div class="gw gw--rtl">
-		<div class="col col-third push--col-one-sixth">
+		<div class="col one-third push--one-sixth">
 			<div class="cell colour--red">
 				<h1 class="h2 h2--ruled"><a href="<?php echo get_permalink( get_option( 'page_for_posts') ) ?>">School News</a></h1>
 				<?php 
@@ -46,6 +46,7 @@ get_header(); ?>
 				
 				$news = get_posts(  array(
 					'numberposts' => 5,
+					'category_name' => 'news'
 				) );
 
 				if ( count( $news ) ) : ?>
@@ -54,14 +55,14 @@ get_header(); ?>
 						<?php foreach ( $news as $key => $post ) : setup_postdata( $post ); ?>
 							<li>
 								<article class="gw">
-									<time class="col col-one-fifth">
+									<time class="col one-fifth">
 										<?php echo get_the_date("d.m"); ?>
 									</time><!-- 
-								 --><div class="col col-four-fifths">
+								 --><div class="col four-fifths">
 								 		<h2 class="h4 post--title"><?php the_title(); ?></h2>
 								 		<?php the_excerpt(); ?>
 								 		<a href="<?php the_permalink(); ?>">Read More</a>
-									</div><!-- .col.col-four-fifths -->
+									</div><!-- .col.four-fifths -->
 								</article>
 							</li>
 						<?php endforeach; ?>
@@ -72,16 +73,16 @@ get_header(); ?>
 				<?php endif; ?>
 			</div>
 		</div><!-- 
-		--><div class="col col-third">
+		--><div class="col one-third">
 			<div class="cell colour--blue">
 				<h1 class="h2 h2--ruled">School Events</h1>
 				<ul>
 					<li>
 						<div class="gw">
-							<div class="col-one-quarter">
+							<div class="col one-quarter">
 								<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/white.png" class="avatar" alt=""/>
 							</div><!--
-							--><div class="col-three-quarters">
+							--><div class="col three-quarters">
 								<h2 class="h4">Research Conference:</h2>
 								<p>Creative Responses to a Changing&nbsp;World</p>
 							</div>
@@ -89,10 +90,10 @@ get_header(); ?>
 					</li>
 					<li>
 						<div class="gw">
-							<div class="col-one-quarter">
+							<div class="col one-quarter">
 								<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/white.png" class="avatar" alt=""/>
 							</div><!--
-							--><div class="col-three-quarters">
+							--><div class="col three-quarters">
 								<h2 class="h4">Lecture Series: Developing Narrative</h2>
 								<p>We’re lucky to have the prolific speaker Lucy Davis at Farnham to talk about her process when developing...</p>
 							</div>
@@ -101,7 +102,7 @@ get_header(); ?>
 				</ul>
 			</div>
 		</div><!-- 
-		--><div class="col col-sixth">
+		--><div class="col one-sixth">
 			<div class="cell colour--dark">
 				<h1 class="h2 h2--ruled">School Staff</h1>
 				<?php
@@ -135,7 +136,7 @@ get_header(); ?>
 							$user = $staff[$i];
 							
 							$output[] = sprintf(
-								'<a href="%1$s" class="col-half">%2$s</a>',
+								'<a href="%1$s" class="col one-half">%2$s</a>',
 								socd_get_profile_url(),
 								socd_get_profile_thumbnail()
 							);

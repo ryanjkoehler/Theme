@@ -204,6 +204,7 @@ input[type="week"] {
   color: black;
   outline: 0;
   margin: 0 0 .5em;
+  max-width: 100%;
   padding: .75em 1em;
   text-align: left;
   // Leaving out Helvetica Neue, to not throw off size="..."

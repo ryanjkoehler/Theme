@@ -6,16 +6,30 @@
 
 require_once get_stylesheet_directory() . '/inc/comments.php';
 
-// Prevent 
+global $wp_query, $post, $wpdb;
+
+// Prevent unauthorised commenting
 if ( post_password_required() ) return; ?>
 <section id="comments" class="comments-section">
 	<?php if ( have_comments() ) : ?>
 	
 	<header class="comments-section--header">	
 		<h1 class="comments-section--count">
-			<?php			
-				// printf( _nx( 'One comment', '%1$s comments', get_comments_number( $post->ID ), 'comments title', 'socd' ), number_format_i18n( get_comments_number( $post->ID ) ), '<span>' . get_the_title() . '</span>'); 
+			<?php
+
+				/**
+				 *  Check comments amount..
+				 * 
+				 * Requires page reload as the $post item is cached, a hacky fix for something which is 
+				 * likely a result of garbled importers.
+				 */
+				if ( count($wp_query->comments) > $post->comment_count ) {
+					$post->comment_count = count( $wp_query->comments );
+					$wpdb->query( $wpdb->prepare("UPDATE $wpdb->posts SET `comment_count` = %d WHERE `id` = %d", count($wp_query->comments), $post->ID ) );
+				}
+				
 				comments_number();
+
 			?>
 			<?php 
 				$pages = get_comment_pages_count();	
@@ -31,9 +45,9 @@ if ( post_password_required() ) return; ?>
 		</h1>
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
 			<nav id="comment-nav-above" class="comments-section--navigation pagination-links" role="navigation">			
-				<!-- <a href="#" class="pagintation-links--previous nav-previous">Older</a>
-				<a href="#" class="pagintation-links--next nav-next">Newer</a> -->
-				<?php paginate_comments_links('prev_text=&nbsp;&next_text=&nbsp;'); ?>
+				<div class="pagination-links--links">
+					<?php paginate_comments_links('prev_text=&nbsp;&next_text=&nbsp;'); ?>
+				</div>
 			</nav><!-- #comment-nav-above -->
 		<?php endif; // check for comment navigation ?>
 
@@ -50,19 +64,20 @@ if ( post_password_required() ) return; ?>
 			 */
 			wp_list_comments( array(
 				'callback' 		=> 'socd_comment',
-				//'end-callback'  => 'socd_comment_end',
 				'format'   		=> 'html5',
 				'style' 		=> 'ol'
 			) );
+
+
 		?>
 	</ol><!-- .comment-list -->
-	<footer class="comments-section--header comments-section--header__footer">				
+	<footer class="comments-section--header comments-section--header__footer">
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
-			<nav id="comment-nav-below" class="comments-section--navigation pagination-links" role="navigation">			
-				<!-- <a href="#" class="pagintation-links--previous nav-previous">Older</a>
-				<a href="#" class="pagintation-links--next nav-next">Newer</a> -->
-				<?php paginate_comments_links('prev_text=&nbsp;&next_text=&nbsp;'); ?>
-			</nav><!-- #comment-nav-above -->
+				<nav id="comment-nav-below" class="comments-section--navigation pagination-links" role="navigation">
+					<div class="pagination-links--links">
+						<?php paginate_comments_links('prev_text=&nbsp;&next_text=&nbsp;'); ?>
+					</div>
+				</nav><!-- #comment-nav-above -->			
 		<?php endif; // check for comment navigation ?>	
 	</footer>
 

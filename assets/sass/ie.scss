@@ -1,5 +1,52 @@
-/* Welcome to Compass. Use this file to write IE specific override styles.
- * Import this file using the following HTML or equivalent:
- * <!--[if IE]>
- *   <link href="/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
- * <![endif]--> */
+
+/* 
+# School of Communication Design
+*/
+
+$breakpoint-no-queries: true;
+$breakpoint-no-query-fallbacks: true;
+
+@import 'libs/grids';
+@import 'breakpoint';
+@import 'utils';
+@import 'vars';
+
+@import 'compass/reset';
+@import 'compass/css3';
+@import 'formalize'; // Edited Version
+
+@import 'layout';
+
+// Build Only
+@import "build";
+
+@import "base";
+
+@import "component";
+@import "widget";
+@import "colours";
+@import "main-navigation";
+@import "quickpost";
+
+@import "blogs";
+@import "stream";
+@import "comments";
+
+@import "modules/_header";
+@import "modules/_profile-listing";
+@import "modules/_footer";
+
+@import "notifications";
+
+//states
+@import "states";
+
+// Misc
+@import "helpers";
+
+// Templates
+@import "templates/_homepage";
+@import "templates/_page";
+@import "templates/_post";
+@import "templates/_profile";
+@import "templates/_signup";

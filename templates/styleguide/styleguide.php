@@ -35,7 +35,7 @@ get_header(); ?>
       height: auto;
       z-index: 9999;
       content: '';
-      display: block;
+      display: none;
       pointer-events: none;
       top: 0;
       right: 0;
@@ -45,7 +45,7 @@ get_header(); ?>
     }
 
     body:hover:after {
-      display: none;
+      display: block;
     }
 
 </style>
@@ -196,82 +196,82 @@ get_header(); ?>
 <section>
   <h1 class="h2">Grid System</h1>
   <div class="gw">
-    <div class="col col-half">
+    <div class="col one-half">
       <div class="cell colour--blue">
         <h1 class="h2 h2--ruled fixie">Column Half</h1>
       </div>
     </div><!-- 
- --><div class="col col-half">
+ --><div class="col one-half">
       <div class="cell colour--yellow">
         <h1 class="h2 h2--ruled fixie">Column Half</h1>
       </div>
     </div>
     <!-- Row -->
-    <div class="col col-one-third">
+    <div class="col one-third">
       <div class="cell colour--red">
         <h1 class="h2 h2--ruled">Column Third</h1>
       </div>
     </div><!-- 
- --><div class="col col-one-third">
+ --><div class="col one-third">
       <div class="cell colour--green">
         <h1 class="h2 h2--ruled">Column Third</h1>
       </div>
     </div><!-- 
- --><div class="col col-one-third">
+ --><div class="col one-third">
       <div class="cell colour--blue">
         <h1 class="h2 h2--ruled">Column Third</h1>
       </div>
     </div>
 
     <!-- Row -->
-    <div class="col col-one-quarter">
+    <div class="col one-quarter">
       <div class="cell colour--yellow">
         <h1 class="h2 h2--ruled">Column Quarter</h1>
       </div>
     </div><!--
-    --><div class="col col-one-quarter">
+    --><div class="col one-quarter">
       <div class="cell colour--green">
         <h1 class="h2 h2--ruled">Column Quarter</h1>
       </div>
     </div><!--
-    --><div class="col col-one-quarter">
+    --><div class="col one-quarter">
       <div class="cell colour--blue">
         <h1 class="h2 h2--ruled">Column Quarter</h1>
       </div>
     </div><!--
-    --><div class="col col-one-quarter">
+    --><div class="col one-quarter">
       <div class="cell colour--red">
         <h1 class="h2 h2--ruled">Column Quarter</h1>
       </div>
     </div>
 
     <!-- Row -->
-    <div class="col col-one-sixth">
+    <div class="col one-sixth">
       <div class="cell colour--blue">
         <h1 class="h2 h2--ruled">Column Sixth</h1>
       </div>
     </div><!-- 
- --><div class="col col-one-sixth">
+ --><div class="col one-sixth">
       <div class="cell colour--red">
         <h1 class="h2 h2--ruled">Column Sixth</h1>
       </div>
     </div><!-- 
- --><div class="col col-one-sixth">
+ --><div class="col one-sixth">
       <div class="cell colour--yellow">
         <h1 class="h2 h2--ruled">Column Sixth</h1>
       </div>
     </div><!-- 
- --><div class="col col-one-sixth">
+ --><div class="col one-sixth">
       <div class="cell colour--blue">
         <h1 class="h2 h2--ruled">Column Sixth</h1>
       </div>
     </div><!-- 
- --><div class="col col-one-sixth">
+ --><div class="col one-sixth">
       <div class="cell colour--red">
         <h1 class="h2 h2--ruled">Column Sixth</h1>
       </div>
     </div><!-- 
- --><div class="col col-one-sixth">
+ --><div class="col one-sixth">
       <div class="cell colour--yellow">
         <h1 class="h2 h2--ruled">Column Sixth</h1>
       </div>

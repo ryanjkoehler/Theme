@@ -3,7 +3,6 @@
 	color: $colour_white;
 	padding: $grid_padding * .5 $grid_padding $grid_padding;
 	position: relative;
-	margin: 0;
 	@include transition( opacity .5s ease-in-out );
 	@include rem( 'padding-bottom', .5 );
 	@include rem( 'padding-left', 1 );
@@ -11,13 +10,16 @@
 	@include rem( 'padding-top', .5 );
 	@include font-size( .8 );
 	
+	p {
+		margin-bottom: .3em;
+	}
+
 	&.notifications-message__ambivalent{
-		// actually, this is probably just the default one?
+		background-color: #ffbb00;
 	}
 
 	&.notifications-message__positive{
 		background: $colour_green;
-		
 	}
 	
 	&.notifications-message__negative{

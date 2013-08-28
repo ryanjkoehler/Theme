@@ -35,9 +35,8 @@ add_action( 'after_setup_theme', 'socd_after_theme_setup' );
  * Manually hook in the webink stylesheet as it uses some characters '&' that 
  * get escaped by the 'wp_enqueue_style'
  */
-function socd_webink() {
-	?>
-		<link rel="stylesheet" href="http://fnt.webink.com/wfs/webink.css/?project=02A1E400-855B-411C-A4F5-7EC50DAC8A77&fonts=602BD939-0B36-207C-56E5-E3E6434C3273:f=Theinhardt-HairlineIta,BF522E13-B921-2C59-5FD3-9D3C689FC32B:f=Theinhardt-LightIta,864889ED-8E73-7E19-00E2-BBE0F997E58C:f=Theinhardt-Thin,2A04CF10-789B-A5BB-9721-E19ACED96EEB:f=Theinhardt-Black,8B459781-89CC-B7EA-6A87-7EC561303F45:f=Theinhardt-BoldIta,82DA4627-8191-9CE4-706C-58F3C2615A95:f=Theinhardt-Bold,BFE4A44E-8D1D-66D8-BBF8-42F52771F0D3:f=Theinhardt-ThinIta,DC84A178-A66C-DB8D-5140-7E5BF64AB28F:f=Theinhardt-RegularIta,F77BBDE3-5270-5846-90AD-5529C2FFDA57:f=Theinhardt-Medium,008579D7-00D8-1E34-1306-843EC6BC82EA:f=Theinhardt-Light,70F8A7D9-BDFF-D029-E465-E7FC928A5994:f=Theinhardt-MediumIta,9773ABFB-EF93-0C1B-AE14-35A7DD420754:f=Theinhardt-UltraLight,BA766C3D-9F83-4950-AFCD-AD9F2BF5CEAB:f=Theinhardt-Regular"/>
+function socd_webink() { ?>
+	<link rel="stylesheet" href="http://fnt.webink.com/wfs/webink.css/?project=02A1E400-855B-411C-A4F5-7EC50DAC8A77&fonts=602BD939-0B36-207C-56E5-E3E6434C3273:f=Theinhardt-HairlineIta,BF522E13-B921-2C59-5FD3-9D3C689FC32B:f=Theinhardt-LightIta,864889ED-8E73-7E19-00E2-BBE0F997E58C:f=Theinhardt-Thin,2A04CF10-789B-A5BB-9721-E19ACED96EEB:f=Theinhardt-Black,8B459781-89CC-B7EA-6A87-7EC561303F45:f=Theinhardt-BoldIta,82DA4627-8191-9CE4-706C-58F3C2615A95:f=Theinhardt-Bold,BFE4A44E-8D1D-66D8-BBF8-42F52771F0D3:f=Theinhardt-ThinIta,DC84A178-A66C-DB8D-5140-7E5BF64AB28F:f=Theinhardt-RegularIta,F77BBDE3-5270-5846-90AD-5529C2FFDA57:f=Theinhardt-Medium,008579D7-00D8-1E34-1306-843EC6BC82EA:f=Theinhardt-Light,70F8A7D9-BDFF-D029-E465-E7FC928A5994:f=Theinhardt-MediumIta,9773ABFB-EF93-0C1B-AE14-35A7DD420754:f=Theinhardt-UltraLight,BA766C3D-9F83-4950-AFCD-AD9F2BF5CEAB:f=Theinhardt-Regular"/>
 	<?php 
 }
 add_action( 'wp_head', 'socd_webink' );
@@ -46,15 +45,28 @@ add_action( 'wp_head', 'socd_webink' );
  * Load in the scripts and styles
  */
 function socd_assets () {
-	global $blog_id;
 
+	global $blog_id, $wp_styles;
+
+	/**
+	 * Styles
+	 */
 	wp_enqueue_style( 'socd_base', get_stylesheet_directory_uri() . '/assets/stylesheets/screen.css' );
-	
+	wp_register_style( 'socd_ie', get_stylesheet_directory_uri() . '/assets/stylesheets/ie.css' );
+	$wp_styles->add_data('socd_ie', 'conditional', 'IE');
+	wp_enqueue_style( 'socd_ie' );
+
+
+	/**
+	 * Scripts
+	 */
 	wp_deregister_script( 'jquery' );
 	wp_register_script( 'jquery', get_stylesheet_directory_uri(). '/assets/javascript/libs/jquery-1.9.1.min.js', false, false, true );
 	
 	wp_enqueue_script( 'socd_config', get_stylesheet_directory_uri() . '/assets/javascript/config.js', false, false, true );
 	
+	wp_enqueue_script( 'socd_modernizr', get_stylesheet_directory_uri() . '/assets/javascript/libs/modernizr.js', null, false, false );
+
 	wp_enqueue_script( 'socd_inline_attach', get_stylesheet_directory_uri() . '/assets/javascript/libs/jquery.inline-attach.min.js', array( 'jquery' ), false, true );
 	wp_enqueue_script( 'socd_hogan', get_stylesheet_directory_uri() . '/assets/javascript/libs/hogan.js', array( 'jquery' ), false, true );
 	wp_enqueue_script( 'socd_hogan_templates', get_stylesheet_directory_uri() . '/assets/javascript/socd-hogan-templates.js', array( 'socd_hogan' ), false, true );
@@ -67,9 +79,16 @@ function socd_assets () {
 	// Main site homepage
 	
 	if ( is_front_page() && $blog_id == 1 ) {
+		global $post;
+
+		$locations = get_field('locations', $post->ID );
+
 		wp_enqueue_style( 'socd_leaflet_css', "http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" );
 		wp_enqueue_script( 'socd_leaflet', "http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js", array(), '0.6.4', true );
 		wp_enqueue_script( 'socd_leaflet_maps', get_stylesheet_directory_uri() . '/assets/javascript/maps.js', array( 'socd_leaflet' ), '0.0.1', true );
+		wp_localize_script( 'socd_leaflet_maps', 'SOCDMapping', array(
+			'places' => is_array( $locations ) ? $locations : array()
+		) );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'socd_assets' );
@@ -140,6 +159,38 @@ function socd_menus() {
 	}
 }
 add_action( 'init', 'socd_menus' );
+
+/**
+ * Displays navigation to next/previous set of posts when applicable.
+ *
+ *
+ * @return void
+ */
+function socd_paging_nav() {
+	global $current_blog, $wp_query;
+
+	// Don't print empty markup if there's only one page.
+	if ( $wp_query->max_num_pages < 2 )
+		return;
+	?>
+	<nav class="navigation stream--paging" role="navigation">
+		<h1 class="h-screen-reader-text"><?php _e( 'Posts navigation', 'twentythirteen' ); ?></h1>
+		<div class="nav-links">
+			<?php
+			
+			if ( $prev = get_previous_posts_link( _('&uarr; Newer') ) )
+				echo preg_replace('/(http:\/\/)socd\.(io|loc)/', '$1' . $current_blog->domain, $prev );
+
+			if ( $next = get_next_posts_link( __( '&darr; Older' ) ) )
+				echo preg_replace('/(http:\/\/)socd\.(io|loc)/', '$1' . $current_blog->domain, $next );
+
+			?>
+		</div><!-- .nav-links -->
+	</nav><!-- .navigation -->
+	<?php
+}
+
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 // QUICKPOST /////////////////////////////////////////////////////////////////////////////////

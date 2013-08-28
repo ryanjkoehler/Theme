@@ -21,7 +21,7 @@
  */
 .stream--filters {
 	li {
-		@extend %grid__item;
+		@extend .col;
 		width: auto;
 
 		a {
@@ -66,8 +66,11 @@
 		.entry-date{
 			display: block;
 			@include rem( 'padding-bottom', 0.7 );
+			
 			.date{
+				display: block;
 				@include fontstack_medium;
+				margin-top: .5em;
 			}
 			.time{
 				display: block;	
@@ -78,5 +81,12 @@
 				@include fontstack_medium;
 			}
 		}
+	}
+}
+
+
+.stream--paging {
+	a {
+		padding-right: 1em;
 	}
 }

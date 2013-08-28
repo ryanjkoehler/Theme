@@ -30,7 +30,7 @@ get_header(); ?>
 					<?php get_template_part( 'templates/post/post'); ?>
 				<?php endwhile; ?>
 			</div>
-			<?php wp_link_pages(); ?>
+			<?php socd_paging_nav(); ?>
 		</div>
 	</section><!--
 	--><aside class="sidebar col--side col--side__right">

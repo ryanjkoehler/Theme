@@ -1,0 +1,44 @@
+.listing__search-results{
+
+}
+
+	.listing--result{
+		border-top: 1px solid $colour_black;
+		margin-bottom: 2em;
+		padding-top: .5em;
+		position: relative;
+		.result--heading{
+			position: relative;
+		}
+		.result--title{
+			margin-top: 1px;
+			@include rem(margin-bottom, 1);
+		}
+		.result--excerpt{
+			img{
+				margin-bottom: 1em;
+			}
+		}
+		.col{
+			padding-right: $grid_padding;
+			&.last{
+				padding-right: 0;
+			}
+		}
+	}
+
+	.listing--result__thumbnail{
+		.result--heading{
+			img{
+				width: 100%;
+				height: auto;
+			}
+		}
+		.result--title{
+			background: $colour_white;
+			color: $colour_red;
+			@include rem( padding, .5 );			
+			position: absolute;
+			top: 0;
+		}
+	}

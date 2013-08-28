@@ -12,7 +12,7 @@ function socd_page_title( $wp_title ) {
 
 	if ( $socd_page ) {
 
-		$wp_title = ucfirst( $socd_page ) . $wp_title;
+		$wp_title = ucfirst( $socd_page ) . " " . $wp_title;
 	}
 
 	return $wp_title;

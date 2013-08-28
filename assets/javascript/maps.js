@@ -1,26 +1,40 @@
-var map = L.map('homepage--map').setView([51.505, -0.09], 8);
+console.log(SOCDMapping.center.coordinates.split(','));
+var map = L.map('homepage--map').setView(
+	SOCDMapping.center.coordinates.split(','),
+	8
+);
 
-L.tileLayer('http://{s}.tile.cloudmade.com/c1642043366b40a7af2d02fb63680628/997/256/{z}/{x}/{y}.png', {
-	minZoom: 6,
-	maxZoom: 9,
-	attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>'
-}).addTo(map);
+var googleLayer = new L.Google('ROADMAP');
+map.addLayer( googleLayer, true );
+
+// L.tileLayer('http://{s}.tile.cloudmade.com/c1642043366b40a7af2d02fb63680628/997/256/{z}/{x}/{y}.png', {
+// 	minZoom: 6,
+// 	maxZoom: 9,
+// 	attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>'
+// }).addTo(map);
 
 // Add our Markers
+if ( SOCDMapping.places.length > 0 ) {
+	console.log(SOCDMapping.places.length, 'Places length' );
+	for (var i = 0, max = SOCDMapping.places.length; i < max; i++) {
+		var place = SOCDMapping.places[i];
 
-var coords = [
-	[ 51.270363, 0.522699 ],  // Maidstone
-	[ 51.388000, 0.506721], // Rochester
-	[ 51.214321, -0.798802],  // Farnham
-	[ 51.336036, -0.267382],  // Epsom
-	[ 51.280233, 1.078909 ]   // Canterbury
-];
+		if (!place) continue;
 
-for (var i = 0; i < coords.length; i++) {
-	var marker = L.marker(coords[i]).addTo(map);
-};
+		var latlng = place.locations.coordinates.split(','),
+			popup = L.popup({
+			closeButton: false,
+		})
+		.setLatLng( latlng )
+		.setContent( place.name + ' ' + place.telephone_number );
+
+		L.marker( latlng ).addTo(map).bindPopup( popup );
+	};
+}
 
 // Add our map Mask
+/*
+
 var polygon = L.polygon([
 	[ 85, 0 ], // North
 	[ -85 , 0], // South
@@ -42,3 +56,5 @@ var polygon = L.polygon([
 	fillColor: 'red',
 	fillOpacity: .5
 }).addTo(map);
+
+*/
