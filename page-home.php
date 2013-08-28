@@ -46,6 +46,7 @@ get_header(); ?>
 				
 				$news = get_posts(  array(
 					'numberposts' => 5,
+					'category_name' => 'news'
 				) );
 
 				if ( count( $news ) ) : ?>
@@ -78,10 +79,10 @@ get_header(); ?>
 				<ul>
 					<li>
 						<div class="gw">
-							<div class="one-quarter">
+							<div class="col one-quarter">
 								<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/white.png" class="avatar" alt=""/>
 							</div><!--
-							--><div class="three-quarters">
+							--><div class="col three-quarters">
 								<h2 class="h4">Research Conference:</h2>
 								<p>Creative Responses to a Changing&nbsp;World</p>
 							</div>
@@ -89,10 +90,10 @@ get_header(); ?>
 					</li>
 					<li>
 						<div class="gw">
-							<div class="one-quarter">
+							<div class="col one-quarter">
 								<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/white.png" class="avatar" alt=""/>
 							</div><!--
-							--><div class="three-quarters">
+							--><div class="col three-quarters">
 								<h2 class="h4">Lecture Series: Developing Narrative</h2>
 								<p>We’re lucky to have the prolific speaker Lucy Davis at Farnham to talk about her process when developing...</p>
 							</div>
@@ -135,7 +136,7 @@ get_header(); ?>
 							$user = $staff[$i];
 							
 							$output[] = sprintf(
-								'<a href="%1$s" class="one-half">%2$s</a>',
+								'<a href="%1$s" class="col one-half">%2$s</a>',
 								socd_get_profile_url(),
 								socd_get_profile_thumbnail()
 							);
