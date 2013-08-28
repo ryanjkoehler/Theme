@@ -21,7 +21,6 @@ global $current_site, $user;
 				<div class="cell colour--white">
 					<h2 class="h2 h2--ruled"><?php profile_field('socd_role'); ?></h2>
 					<h2><?php profile_field('socd_campus'); ?></h2>
-					<?php get_user_meta( $user->data->ID, $key = '', $single = false ) ?>
 					<?php echo apply_filters( 'the_content', socd_get_profile_field('description') ); ?>
 					<?php 
 
