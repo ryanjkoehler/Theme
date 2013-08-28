@@ -48,13 +48,33 @@ get_header(); ?>
 							<img src="<?php echo $src; ?>" />
 			 			<?php endif; ?>
 
-						<?php the_excerpt(); ?>
+						<?php 
+							if( has_post_format( array( 'quote', 'link' ) ) ){
+								the_content();
+							} else {
+								the_excerpt();
+							}
+						?>
 					</div>
 				</div>
 				
 			</li>
 		<?php endwhile; ?>
 	</ul>
-</section><!-- .gw -->
+	<div class="pagination col two-thirds h-center">
+		<?php
+			//see: http://codex.wordpress.org/Function_Reference/paginate_links#examples
+			global $wp_query;
 
+			$big = 999999999; // need an unlikely integer
+
+			echo paginate_links( array(
+				'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+				'format' => '?paged=%#%',
+				'current' => max( 1, get_query_var('paged') ),
+				'total' => $wp_query->max_num_pages
+			) );
+		?>
+	</div>
+</section><!-- .gw -->
 <?php get_footer(); ?>
