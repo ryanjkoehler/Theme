@@ -79,9 +79,16 @@ function socd_assets () {
 	// Main site homepage
 	
 	if ( is_front_page() && $blog_id == 1 ) {
+		global $post;
+
+		$locations = get_field('locations', $post->ID );
+
 		wp_enqueue_style( 'socd_leaflet_css', "http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" );
 		wp_enqueue_script( 'socd_leaflet', "http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js", array(), '0.6.4', true );
 		wp_enqueue_script( 'socd_leaflet_maps', get_stylesheet_directory_uri() . '/assets/javascript/maps.js', array( 'socd_leaflet' ), '0.0.1', true );
+		wp_localize_script( 'socd_leaflet_maps', 'SOCDMapping', array(
+			'places' => is_array( $locations ) ? $locations : array()
+		) );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'socd_assets' );

@@ -16,11 +16,17 @@ var coords = [
 	[ 51.280233, 1.078909 ]   // Canterbury
 ];
 
-for (var i = 0; i < coords.length; i++) {
-	var marker = L.marker(coords[i]).addTo(map);
-};
+if ( SOCDMapping.places.length >= 1 ) {
+	for (var i = 0; i < coords.length; i++) {
+		if (!SOCDMapping.places[i]) continue;
+
+		var marker = L.marker( SOCDMapping.places[i].locations.coordinates.split(',') ).addTo(map);
+	};
+}
 
 // Add our map Mask
+/*
+
 var polygon = L.polygon([
 	[ 85, 0 ], // North
 	[ -85 , 0], // South
@@ -42,3 +48,5 @@ var polygon = L.polygon([
 	fillColor: 'red',
 	fillOpacity: .5
 }).addTo(map);
+
+*/
