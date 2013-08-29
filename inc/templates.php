@@ -68,17 +68,18 @@ function socd_faux_pages() {
 
 	$socd_pages = array(
 		array(
-			'slug' => 'students',
+			'slug'  => 'students',
 			'title' => __('Student Directory', 'socd')
 		),
 		array(
-			'slug' => 'staff',
+			'slug'  => 'staff',
 			'title' => __('Staff Directory', 'socd')
 			),
 		array(
-			'slug' => 'styleguide',
+			'slug'  => 'styleguide',
 			'title' => __('Styleguide', 'socd')
-	) );
+		)
+	);
 
 	foreach ( $socd_pages as $page ) {
 		if ( $_SERVER['REQUEST_URI'] == "/{$page['slug']}" || $_SERVER['REQUEST_URI'] == "/{$page['slug']}/" ) {
@@ -87,6 +88,15 @@ function socd_faux_pages() {
 		}
 	}
 
+	/**
+	 * Registration Redirect allows for super simples typing
+	 * 
+	 */
+	if ( "register" == preg_replace('/\//','', $_SERVER['REQUEST_URI']) ) {
+		wp_safe_redirect( site_url('/wp-login.php?action=register') );
+		exit();
+	}
+	
 	// Load our Student/Staff Listings
 	if ( 'profile' === $wp_query->get('socd_template') ) {
 		
