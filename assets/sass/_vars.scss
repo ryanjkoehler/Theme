@@ -60,8 +60,22 @@ $colour_menu_grey_mid: #464648;
 $colour_menu_grey_mid_light: #76787c;
 $colour_menu_grey_light: #96989c;
 
+/**
+ * Emotive Colours
+ *
+ * In an effort to seperate our tone from 
+ * changable stylistic implementations.
+ *
+ * ie. $colour_error > $colour_red;
+ */
+
+$colour_error: $colour_red;
+$colour_ok: $colour_green;
+
+
 $height_header: 11.3em;
 $height_menu: 2.6;
+
 
 $number_of_columns: 18;
 
