@@ -31,10 +31,10 @@ img {
 	line-height: 1.19;
 }
 
-h2,
+.h2,
 .wysiwyg h1 {
 	@include fontstack_bold;
-	@include font-size(1.125);
+	@include font-size(1.25);
 	margin: 0.4375rem 0;
 	line-height: 1.17;
 }

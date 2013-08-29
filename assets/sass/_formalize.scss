@@ -4,46 +4,13 @@
 
 @import "compass/css3";
 
-// `Widths
-//----------------------------------------------------------------------------------------------------
-
-.input_tiny {
-  width: 50px;
-}
-
-.input_small {
-  width: 100px;
-}
-
-.input_medium {
-  width: 150px;
-}
-
-.input_large {
-  width: 200px;
-}
-
-.input_xlarge {
-  width: 250px;
-}
-
-.input_xxlarge {
-  width: 300px;
-}
-
-.input_full {
-  width: 100%;
-}
-
-// Applies only to IE7. Other browsers don't need it.
-
-.input_full_wrap {
-  display: block;
-  padding-right: 8px;
-}
-
 // `UI Consistency
 //----------------------------------------------------------------------------------------------------
+
+label {
+  @include inline-block;
+  margin-bottom: .6em;
+}
 
 input[type="search"]::-webkit-search-decoration {
   display: none;
@@ -70,6 +37,9 @@ textarea {
 input[type="file"],
 input[type="radio"],
 input[type="checkbox"] {
+  margin-bottom: .6em;
+  &.s__focus,
+  &.s__active,
   &:focus,
   &:active {
     @include box-shadow(none);
@@ -205,13 +175,14 @@ input[type="week"] {
   outline: 0;
   margin: 0 0 .5em;
   max-width: 100%;
-  padding: .75em 1em;
+  padding: .7em 1em;
   text-align: left;
   // Leaving out Helvetica Neue, to not throw off size="..."
   // on inputs. Arial is more reliable, on Windows and OS X.
 	@include fontstack_regular;
 	@include font-size(1);
-  @include transition(.2s ease border);
+  @include transition(.2s ease all);
+  width: 100%;
   vertical-align: top;
 
   // IE7
@@ -223,13 +194,22 @@ input[type="week"] {
 		border-color: $colour_light;
   }
 
+  &.s__focus,
   &:focus {
-    @include box-shadow(inset ($grid_padding*.33) -.1em 0 darken($colour_background, 25));
+    @include input-shadow( darken( $colour_background, 25 ) );
+  } 
+
+  &.s__error    {
+    @include input-shadow( $colour_error );
+  }
+  &.s__checking {
+    text-indent: 2.5em;
+    @include input-shadow( $colour_processing, 2.5em );
+  }
+  &.s__ok       {
+    @include input-shadow( $colour_ok );
   }
 }
-
-
-
 
 button[disabled],
 input[disabled],

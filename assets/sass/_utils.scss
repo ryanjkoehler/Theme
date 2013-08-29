@@ -49,3 +49,13 @@ $fix-mqs: false;
 @mixin col_width($no) {
 	width: $no * $size_grid_percentage;
 }
+
+/**
+ *  
+ */
+@mixin input-shadow( $colour: $colour_background, $left_border: $grid_padding * .33 ) {
+    @include box-shadow(
+      inset $left_border -.1rem 0 $colour,
+      inset -.1rem .1rem 0 $colour
+    );
+}

@@ -9,7 +9,8 @@
 	@include rem( 'padding-right', 1 );
 	@include rem( 'padding-top', .5 );
 	@include font-size( .8 );
-	
+	margin: 0;
+
 	p {
 		margin-bottom: .3em;
 	}
