@@ -83,11 +83,12 @@ function socd_assets () {
 
 		$locations = get_field('locations', $post->ID );
 
-		wp_enqueue_style( 'socd_leaflet_css', "http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" );
-		wp_enqueue_script( 'socd_leaflet', "http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js", array(), '0.6.4', true );
-		wp_enqueue_script( 'socd_leaflet_maps', get_stylesheet_directory_uri() . '/assets/javascript/maps.js', array( 'socd_leaflet' ), '0.0.1', true );
-		wp_localize_script( 'socd_leaflet_maps', 'SOCDMapping', array(
-			'places' => is_array( $locations ) ? $locations : array()
+		wp_enqueue_script( 'socd_maps_google', "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false");
+		wp_enqueue_script( 'socd_maps', get_stylesheet_directory_uri() . '/assets/javascript/maps.js', array(), '0.0.1', true );
+		
+		wp_localize_script( 'socd_maps', 'SOCDMapping', array(
+			'places' => is_array( $locations ) ? $locations : array(),
+			'center' => get_field( 'center_point', $post->ID )
 		) );
 	}
 }
@@ -200,7 +201,7 @@ function socd_paging_nav() {
  * Enqueue script and adding localisation
  */
 function socd_qp_enqueue_scripts() {
-	if ( ! is_admin() ) {		
+	if ( ! is_admin() && is_user_logged_in() && !is_front_page() ) {		
 		// Include javascript
 		wp_enqueue_script( 'socd_qp', get_stylesheet_directory_uri() . '/assets/javascript/quickpost.js', array( 'jquery' ), false, true );
 	
@@ -609,3 +610,19 @@ add_action( 'wp_ajax_socd_delete', 'socd_ci_ajax_delete' );
 //////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/**
+ * Fallback if ACF has not be defined
+ * 
+ * 
+ */
+if ( !function_exists('get_field') ) {
+	function get_field( $field_label = false, $post_id = false ) {
+		return false;
+	}
+
+	function the_field( $field_label = false, $post_id = false ) {
+		return false;
+	}
+}
