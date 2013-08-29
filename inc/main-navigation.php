@@ -43,4 +43,8 @@
 		}
 		return $data;
 	}
+	function socd_clear_transient() {
+		delete_site_transient( 'site__socd_typeahead_data' );
+	}
+	add_action( 'wp_update_nav_menu', 'socd_clear_transient' );
 ?>
