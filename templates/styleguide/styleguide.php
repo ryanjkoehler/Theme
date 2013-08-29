@@ -108,28 +108,28 @@ get_header(); ?>
   </div>
 </section>
 
-<section>
+<section id="form">
   <h1 class="h2">Form</h1>
   <form action="">
 
     <label for="name">Name</label>
-    <input class="input_full" type="text" id="name" name="name" required="required">
+    <input class="fixie" type="text" id="name" name="name" required="required">
 
     <label for="email">Email</label>
-    <input class="input_full" type="email" id="email" name="email" required="required">
+    <input class="fixie" type="email" id="email" name="email" required="required">
 
     <label for="cc"><abbr title="Courtesy Copy">CC</abbr></label>
     <input type="checkbox" id="cc" name="cc" value="1">
     <label for="cc">Send me a copy of this email</label>
 
     <label for="tel">Phone</label>
-    <input class="input_full" type="tel" id="tel" name="tel" required="required">
+    <input class="fixie" type="tel" id="tel" name="tel" required="required">
 
     <label for="url">URL</label>
-    <input class="input_full" type="text" id="url" name="url" placeholder="http://">
+    <input class="fixie" type="text" id="url" name="url" placeholder="http://">
 
     <label for="budget">Budget</label>
-    <select class="input_full" id="budget" name="budget">
+    <select class="fixie" id="budget" name="budget">
       <option value="">Ballpark estimate...</option>
       <optgroup label="Small">
         <option value="1k_2k">$1,000 to 2,000</option>
@@ -148,7 +148,7 @@ get_header(); ?>
       <optgroup label="Large">
         <option value="11k_12k">$11,000 to 12,000</option>
         <option value="12k_13k">$12,000 to 13,000</option>
-        <option value="13k_14k">$13,000 to 14,000</option>
+        <option value="13k_14k">$13,000 to 14,000</option>_
         <option value="14k_15k">$14,000 to 15,000</option>
         <option value="15k_16k">$15,000 to 16,000</option>
       </optgroup>
@@ -159,7 +159,7 @@ get_header(); ?>
         <option value="19k_20k">$19,000 to 20,000</option>
       </optgroup>
       <optgroup label="Ginormous">
-        <option value="over_20k">over $20,000</option>
+      <option value="over_20k">over $20,000</option>
       </optgroup>
     </select>
 
@@ -178,12 +178,16 @@ get_header(); ?>
     <input type="submit"/>
 
     <h2 class="h2">Input States</h2>
-    <p>Used in client side validation to alert the user to any issues with the supplied information.</p>
-    <label for="name">Status: Checking</label><input type="text" class="input_full input__checking"/>
-    <label for="name">Status: Error</label><input type="text" class="input_full input__error"/>
-    <label for="name">Status: OK</label><input type="text" class="input_full input__ok"/>
+    <label for="">Pseudo: Hover</label><input type="text" class="s__hover"/>
+    <label for="">Pseudo: Focus</label><input type="text" class="s__focus"/>
+</form>
 
-  </form>
+<p>Used in client side validation to alert the user to any issues with the supplied information.</p>
+<label for="name">Statuses</label><input id="statuses" type="text"/>
+<label for="name">Status: Checking</label><input type="text" class="s__checking"/>
+<label for="name">Status: Error</label><input type="text" class="s__error"/>
+<label for="name">Status: OK</label><input type="text" class="s__ok"/>
+
 </section>
 <section>
   <h1 class="h2">Notifications</h1>
@@ -316,4 +320,26 @@ get_header(); ?>
 
 </div>
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/javascript/libs/fixie/fixie.js"></script>
+<script>
+  
+  (function() {
+    var input = document.getElementById('statuses'),
+        classes = ['s__focus', 's__checking', 's__error', 's__focus', 's__checking', 's__ok' ],
+        i = 0;
+
+    setInterval(function() {
+      
+      if (classes[i]) input.className = classes[i]
+      
+      if (i >= classes.length) {
+        i = 0
+      } else {
+        i++;
+      }
+
+    }, 2000);
+
+  })();  
+
+</script>
 <?php get_footer();
