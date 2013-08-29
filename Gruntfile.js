@@ -79,7 +79,11 @@ module.exports = function(grunt) {
       }
     },
     jshint: {
-      files: ['Gruntfile.js', 'assets/javascript/maps.js'],
+      files: [
+        'Gruntfile.js',
+        'assets/javascript/maps.js',
+        'assets/javascript/register.js'
+      ],
       options: {
         ignores: ['assets/javascript/socd-hogan-templates.js']
       }
