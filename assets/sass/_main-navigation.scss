@@ -19,7 +19,7 @@
 	}
 
 	.main-navigation-container__fixed-size{
-		left: $size_grid * -4.5;
+		left: $size_grid * -5;
 		min-height: 100%;
 		position: absolute;
 		top: 0;
@@ -108,8 +108,13 @@
 	
 	.main-navigation__menu-item{
 		background: $colour_background_dark;
-		@include fontstack_light;
+		@include fontstack_light;	
 		white-space: nowrap;
+
+		.tab{			
+			line-height: 44px;			
+		}
+
 		.drop,
 		.children,
 		.flyout,
@@ -304,6 +309,7 @@
 			color: $colour_background_dark;
 			@include fontstack_medium;	
 			@include rem( 'height', $height_menu );
+			line-height: 44px;
 			&:focus{
 				-webkit-box-shadow: none;
 				-moz-box-shadow: none;
