@@ -61,11 +61,11 @@
 				<?php endif; ?>
 			</div>				
 		</li>
-		<li class="main-navigation__menu-item main-navigation__menu-item--button main-navigation__menu-item--quickpost avoid-menu">
+		<!--<li class="main-navigation__menu-item main-navigation__menu-item--button main-navigation__menu-item--quickpost avoid-menu">
 			<a href="#" class="title quickpost-activate">
 				<span>+</span>
 			</a>
-		</li>
+		</li>-->
 	</ul>
 	<a href="#" class="main-navigation-container__mobile-toggle"></a>
 </nav>

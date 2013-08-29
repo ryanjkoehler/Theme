@@ -55,3 +55,20 @@
 		max-width: auto;
 	}
 }
+
+.about--news-feed{
+	&>.h2{
+		@include rem( margin-bottom, 1 );
+	}
+	.news-feed--article{
+		@include rem( margin-bottom, 1 );
+	}
+	.news-feed--meta{	
+		@include fontstack_light;
+
+	}
+	.news-feed--title{
+		@include fontstack_medium;
+		@include rem( margin-bottom, 1 );
+	}
+}

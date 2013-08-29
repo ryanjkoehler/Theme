@@ -43,8 +43,12 @@
 							</div>	
 						</div><!-- 
 					 --><div class="col one-third push--one-sixth">
-							<div class="cell colour--blue">
-								<h1 class="h2 h2--ruled">Course News</h1>
+					 	<?php 
+					 		$get_slug = get_category( get_field('news_category') )->slug;
+					 		$news_slug =  ( $get_slug ) ? $get_slug : 'news';
+					 	?>					 	
+							<div class="cell colour--blue about--news-feed">
+								<h1 class="h2 h2--ruled"><a href="<?php bloginfo('url') ?>/category/<?php echo $news_slug; ?>">Course News</a></h1>
 								<?php 
 
 								/**
@@ -55,27 +59,38 @@
 								
 								$news = new WP_Query( array(
 									'post_type' => 'post',
-									'category__in' => get_field('course_newsas')
+									'category_name' => $news_slug
 								) );
 
 								if ( $news->have_posts() ) : ?>
 									<ul>
 										<?php while ( $news->have_posts() ) : $news->the_post(); ?>
 											<li>
-												<?php get_template_part( 'templates/post/post'); ?>
+												<article class="news-feed--article gw">
+													<aside class="news-feed--meta col one-quarter">
+														<?php echo esc_html( get_the_date( 'j.m.y') ); ?>
+													</aside><!--
+												 --><header class="news-feed--title col three-quarters">
+														<h1 class="h2"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+													</header>
+													<section class="news-feed--content wysiwyg col three-quarters push--one-quarter">
+														<?php the_excerpt(); ?>
+													</section>
+												</article>
 											</li>
 										<?php endwhile; ?>
 									</ul>
+									<?php wp_reset_postdata(); ?>
 								<?php endif; ?>
 							</div>			 	
 						</div><!-- 
-					 --><div class="col one-sixth">
+					 --><div class="col one-sixth push--one-sixth">
 							<div class="cell colour--yellow">
 								<h1 class="h2 h2--ruled">Apply to this course</h1>
 								<p>UCAS Code<br/>
-								<b><?php the_field('apply_code') ?></b>
+								<b><?php the_field( 'ucas_code' ) ?></b>
 								</p>
-								<p>For more information on how to apply, visit our <a href="http://www.ucreative.ac.uk/" target="_blank">UCA&nbsp;site</a></p>
+								<p>For more info on how to apply, visit our <a href="<?php the_field( 'ucreative_course_page' ); ?>" target="_blank">UCA&nbsp;site</a></p>
 							</div>
 							<div class="cell colour--red">
 								<h1 class="h2 h2--ruled">Related Courses</h1>
