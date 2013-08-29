@@ -1,4 +1,4 @@
-if( !window.SOCD ){ window.SOCD = {} };
+if( !window.SOCD ){ window.SOCD = {};}
 
 (function( $ ){
 
