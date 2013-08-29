@@ -4,11 +4,14 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     watch: {
       styleguide: {
-        files: ['*php', '*php', 'assets/sass/**/*.scss', 'assets/sass/*.scss'],
-        tasks: ['compass:styleguide'],
+        files: [ '*php', '*php', 'assets/sass/**.scss', 'assets/sass/**/**.scss', 'assets/javascript/**.js' ],
+        tasks: [ 'compass:styleguide' ],
+      },
+      livereload: {
         options: {
           livereload: true
-        }
+        },
+        files: ['assets/stylesheets/**.css']
       },
       hogan: {
         files: [ 'assets/templates/**/*.html' ],
