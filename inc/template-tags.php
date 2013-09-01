@@ -175,6 +175,9 @@ function socd_menu_has_course_crumb() {
 }
 
 function socd_menu_page_title() {
+
+	$output = '';
+
 	if( is_noticeboard() ){
 		$output = "Noticeboard";
 	} else if( is_sketchbook() ){
@@ -217,9 +220,20 @@ function socd_network_footer() {
 function socd_back_url() {
 	$url = isset( $_SERVER['HTTP_REFERER'] ) ? htmlspecialchars( $_SERVER['HTTP_REFERER'] ) : '';
 
-	if ( ! preg_match( '/socd/', $url ) ) return get_bloginfo( 'wpurl' );
+	if ( socd_back_url_invalid( $url ) )
+		return socd_blog_url();
 	
 	return $url;
+}
+
+function socd_back_url_invalid( $url ) {
+	return (!preg_match( '/socd/', $url )
+		|| "" == $url
+		|| $_SERVER['HTTP_REFERER'] == "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
+}
+
+function socd_blog_url() {
+	return get_option('page_on_front') > 0 ? get_permalink( get_bloginfo('page_for_posts') ) : get_bloginfo( 'wpurl' );
 }
 
 function socd_get_profile_url( $user = false ) {
@@ -240,20 +254,23 @@ function profile_url() {
 	echo socd_get_profile_url();
 }
 
-function socd_get_profile_thumbnail( $user = false, $size = 'thumb' ) {
+function socd_get_profile_thumbnail( $size = 'thumb', $user_id = false ) {
 	
 	global $user;
 
-	$src = get_user_meta( $user->ID, 'user_headshot_' . $size, true );
+	if (!$user_id) $user_id = $user->data->ID;
 
-	if (!$src) {
-		$src = 'http://placekitten.com/150/' . rand(147,152);
+	$src = get_user_meta( $user_id, 'user_headshot_' . $size, true );
+	
+	// No source found
+	if ($src) {
+		return sprintf(
+			'<img class="thumb" itemprop="image" src="%s" />',
+			$src
+		);
 	}
 
-	return sprintf(
-		'<img class="thumb" itemprop="image" src="%s" />',
-		$src
-	);
+	return preg_replace("/[a-z]+='[0-9]+'/", '', get_avatar( $user_id, 150 ) );
 }
 
 function socd_course_code_to_course_name( $course_slug ) {
@@ -276,12 +293,12 @@ function socd_course_code_to_course_name( $course_slug ) {
 	return isset( $courses[ $course_slug ] ) ? $courses[ $course_slug ] : false;
 }
 
-function socd_get_profile_field( $fieldname ) {
+function socd_get_profile_field( $fieldname, $user_id = false ) {
 	global $user;
 
+	$user_id = $user_id ? $user_id : $user->data->ID;
 
-
-	return get_user_meta( $user->data->ID, $fieldname, true );
+	return get_user_meta( $user_id, $fieldname, true );
 }
 
 if ( ! function_exists('profile_field') ) {
@@ -292,9 +309,9 @@ if ( ! function_exists('profile_field') ) {
 	 * @uses socd_get_profile_field
 	 * @return [type] [description]
 	 */
-	function profile_field( $fieldname ) {
+	function profile_field( $fieldname, $user_id = false ) {
 
-		echo socd_get_profile_field( $fieldname );
+		echo socd_get_profile_field( $fieldname, $user_id );
 	}
 }
 
