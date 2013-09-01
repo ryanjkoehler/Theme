@@ -32,7 +32,7 @@
 <!--[if lt IE 9]>
 <div class="site-wrap notifications-message notifications-message__ambivalent">
 	<p>Note: The browser you're using is at least <a href="http://www.w3.org/People/Berners-Lee/FAQ.html#standards"><?php echo (date("Y") - 2008) * 4.6; ?></a> years old. As a result you are missing out on enhanced functionality available to modern browsers.</p>
-	<p>Please visit  for information about the latest browsers available.</p>
+	<p>Please visit <a href="http://browsehappy.com/">Browse Happy</a> for information about the latest browsers.</p>
 </div>
 <![endif]  -->
 <section class="site-wrap h-animate-transform">
