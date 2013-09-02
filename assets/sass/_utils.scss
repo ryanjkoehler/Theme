@@ -55,7 +55,7 @@ $fix-mqs: false;
  */
 @mixin input-shadow( $colour: $colour_background, $left_border: $grid_padding * .33 ) {
     @include box-shadow(
-      inset $left_border -.1rem 0 $colour,
-      inset -.1rem .1rem 0 $colour
+      inset $left_border -2px 0 $colour,
+      inset -2px 2px 0 $colour
     );
 }

@@ -61,7 +61,7 @@ input[type="button"] {
   border-color: #dddddd #bbbbbb #999999;
   @include box-shadow(none);
   cursor: pointer;
-  color: $colour_background;
+  color: darken($colour_background, 75);
   display: inline-block;
   // Helvetica Neue present, because it works better
   // for line-height on buttons than Arial, on OS X.
@@ -71,10 +71,10 @@ input[type="button"] {
   outline: 0;
   overflow: visible;
   @include rem( 'line-height', 1.6 ); 
-  @include rem( 'padding-bottom', 0.1 );
+  @include rem( 'padding-bottom', 0.25 );
   @include rem( 'padding-left', .8 );
   @include rem( 'padding-right', .8 );
-  @include rem( 'padding-top', 0.1 );
+  @include rem( 'padding-top', 0.25 );
   position: relative;
   text-align: center;
   text-shadow: none;
@@ -84,11 +84,13 @@ input[type="button"] {
 
   &:hover {
     @include background-image(none);
+    border-color: #999999 #bbbbbb #dddddd;
     background-color: lighten( $colour_light, 10% );
-    border: 0;
     @include box-shadow( none );
     text-decoration: none;
+    @include transform(translateY(.1em));
   }
+
   &:active {
     border-bottom-width: 0;
     border-top-color: darken( $colour_light, 10% );
@@ -181,7 +183,7 @@ input[type="week"] {
   // on inputs. Arial is more reliable, on Windows and OS X.
 	@include fontstack_regular;
 	@include font-size(1);
-  @include transition(.2s ease all);
+  @include transition(.3s ease all);
   width: 100%;
   vertical-align: top;
 
@@ -447,5 +449,19 @@ optgroup {
     &:focus {
       background-color: #fff;
     }
+  }
+}
+
+/**
+ * Input with error
+ */
+
+.input__error {
+  position: relative;
+
+  .error,
+  .notifications-message {
+    position: absolute;
+    right: 0;
   }
 }
