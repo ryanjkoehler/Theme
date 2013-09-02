@@ -20,6 +20,10 @@ module.exports = function(grunt) {
       jshint: {
         files: ['assets/javascript/**.js'],
         tasks: 'jshint'
+      },
+      buster: {
+        files: ['assets/javascript/**.js', 'test/**.js'],
+        tasks: 'buster'
       }
     },
     compass: {
@@ -81,11 +85,18 @@ module.exports = function(grunt) {
     jshint: {
       files: [
         'Gruntfile.js',
+        'assets/javascript/config.js',
+        'assets/javascript/socd.js',
         'assets/javascript/maps.js',
         'assets/javascript/register.js'
       ],
       options: {
         ignores: ['assets/javascript/socd-hogan-templates.js']
+      }
+    },
+    buster : {
+      core: {
+
       }
     }
   });
@@ -97,4 +108,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-contrib-watch");
   grunt.loadNpmTasks("grunt-contrib-jshint");
   grunt.loadNpmTasks("grunt-sftp-deploy");
+  grunt.loadNpmTasks("grunt-buster");
 };
