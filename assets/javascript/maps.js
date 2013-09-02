@@ -1,85 +1,81 @@
-/*global SOCDMapping */
-var map;
-var SOCD_MAPTYPE_ID = 'socd_style';
+/*global google */
+(function() {
 
-function init() {
-	var coordinates = SOCDMapping.center.coordinates.split(',');
-	var mapOptions = {
-    disableDefaultUI: true,
-    scrollwheel: false,
-		zoom: 8,
-    zoomControl: false,
-		center: new google.maps.LatLng( coordinates[0], coordinates[1] ),
-		mapTypeControlOptions:{
-			mapTypeIds: []
-		},
-		mapTypeId: SOCD_MAPTYPE_ID
-	};
-	
-	var map = new google.maps.Map(document.getElementById('homepage--map'), mapOptions);
+  var SOCD = window.SOCD;
 
-	var featureOpts = [
-    {
-      "featureType": "transit.line",
-      "stylers": [
-        { "visibility": "off" }
-      ]
-    },{
-      "featureType": "poi",
-      "stylers": [
-        { "visibility": "off" }
-      ]
-    },{
-      "featureType": "road.arterial",
-      "stylers": [
-        { "visibility": "off" }
-      ]
-    },{
-      "featureType": "road.highway",
-      "elementType": "labels",
-      "stylers": [
-        { "visibility": "off" }
-      ]
-    },{
-      "featureType": "administrative",
-      "stylers": [
-        { "visibility": "off" }
-      ]
-    },{
-      "featureType": "water",
-      "elementType": "labels",
-      "stylers": [
-        { "visibility": "off" }
-      ]
-    },{
-      "featureType": "road.highway",
-      "elementType": "geometry",
-      "stylers": [
-        { "visibility": "simplified" }
-      ]
+  SOCD.Mapping = {
+    coordinates: SOCD.Config.center.coordinates.split(','),
+    maptypeId: 'socd_style',
+    mapSelector: 'homepage--map',
+    featureOpts: [
+      {
+        "featureType": "transit.line",
+        "stylers": [
+          { "visibility": "off" }
+        ]
+      },{
+        "featureType": "poi",
+        "stylers": [
+          { "visibility": "off" }
+        ]
+      },{
+        "featureType": "road.arterial",
+        "stylers": [
+          { "visibility": "off" }
+        ]
+      },{
+        "featureType": "road.highway",
+        "elementType": "labels",
+        "stylers": [
+          { "visibility": "off" }
+        ]
+      },{
+        "featureType": "administrative",
+        "stylers": [
+          { "visibility": "off" }
+        ]
+      },{
+        "featureType": "water",
+        "elementType": "labels",
+        "stylers": [
+          { "visibility": "off" }
+        ]
+      },{
+        "featureType": "road.highway",
+        "elementType": "geometry",
+        "stylers": [
+          { "visibility": "simplified" }
+        ]
+      }
+    ],
+    markers: SOCD.Config.places,
+    init: function() {
+      var self = this,
+          map;
+
+      try {
+        map = new google.maps.Map( document.getElementById(), self.mapSelector );
+      } catch(error) {
+        console.log(error);
+        return false;
+      }
+      
+      if (this.markers.length) {
+        for (var i = 0; i < markers.length; i++) {
+          var marker = markers[i],
+            coords = marker.locations.coordinates.split(',');
+
+          new google.maps.Marker({
+            position: new google.maps.LatLng( coords[0], coords[1] ),
+            map: map,
+            title: marker.name
+          })
+        };
+      }
+      
+      map.mapTypes.set( SOCD.Mapping.maptypeId, new google.maps.StyledMapType( featureOpts, {
+        name: "School of Communication Design"
+      } ));
     }
-];
-
-	map.mapTypes.set(SOCD_MAPTYPE_ID, new google.maps.StyledMapType( featureOpts, {
-		name: "School of Communication Design"
-	} ));
-
-	// Add Markers
-	var markers = SOCDMapping.places;
-
-	if (markers.length) {
-		for (var i = 0; i < markers.length; i++) {
-			var marker = markers[i],
-				coords = marker.locations.coordinates.split(',');
-
-			new google.maps.Marker({
-				position: new google.maps.LatLng( coords[0], coords[1] ),
-				map: map,
-				title: marker.name
-			})
-		};
-	}
-
-}
-
-google.maps.event.addDomListener(window, 'load', init);
+  };
+})();
