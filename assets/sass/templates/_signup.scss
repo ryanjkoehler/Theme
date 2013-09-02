@@ -6,16 +6,14 @@
  */
 
 .mu_register {
+
 	/**
-	 * Import some styling that sets a 
-	 * max-width for the page and centers it.
+	 * Left align
 	 */
-	@extend .h-center;
-	@extend .type-page;
-
-
-	h2 {
-		@extend .h2;
+	h2,
+	label,
+	p {
+		text-align: left;
 	}
 
 	input {
@@ -26,6 +24,8 @@
 
 	label {
 		display: block;
+		font-size: 1rem;
+
 
 		&.checkbox {
 			display: inline-block;
@@ -35,5 +35,39 @@
 	.error {
 		@extend .notifications-message;
 		@extend .notifications-message__negative;
+		
+		&+input {
+			@extend .s__error;
+		}
+	}
+}
+
+.mu_register,
+p.signup--helper {
+	font-size: .8rem;
+	text-align: right;
+}
+
+.mu_register,
+.widecolumn // Used on wp-activate
+{
+	/**
+	 * Import some styling that sets a 
+	 * max-width for the page and centers it.
+	 */
+	@extend .h-center;
+	max-width: $size_grid * 8;
+
+	h2 {
+		@extend .h2;
+		margin: 2em 0 1em;
+	}
+}
+
+.widecolumn {
+	padding-top: $size_grid * 2;
+
+	span.h3 {
+		@extend h3;
 	}
 }
