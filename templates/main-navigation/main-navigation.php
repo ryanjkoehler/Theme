@@ -19,7 +19,7 @@
 	 	<?php if( socd_menu_has_course_crumb() ): ?>
 	 --><li class="main-navigation__menu-item main-navigation__menu-item--breadcrumb main-navigation__menu-item--dropdown">
 	 		<div class="tab">
-	 			<h1 class="title"><?php echo socd_menu_course_title(); ?></h1>
+	 			<h1 class="title"><a href="#"><?php echo socd_menu_course_title(); ?></a></h1>
 	 		</div>
 	 		<?php socd_site_menu(); ?>
 	 	</li><!--
@@ -35,7 +35,7 @@
 	 	<?php if( socd_menu_page_title() ): ?>
 	 --><li class="main-navigation__menu-item main-navigation__menu-item--breadcrumb">
 	 		<div class="tab">
-	 			<h1 class="title"><?php echo socd_menu_page_title(); ?></h1>
+	 			<h1 class="title"><a href="#"><?php echo socd_menu_page_title(); ?></a></h1>
 	 		</div>
 	 	</li><!--
 	 	<?php endif; ?>

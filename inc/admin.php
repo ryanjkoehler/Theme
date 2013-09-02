@@ -177,7 +177,28 @@ function socd_widget_rss_output( $rss, $args = array() ) {
 function socd_alter_admin_bar( ) {
 	global $wp_admin_bar;
 
-	$wp_admin_bar->remove_menu('updates');
+	$wp_admin_bar->remove_menu( 'updates' );
+
+	// Move around
+	$nodes = array(
+		'search',
+		'my-account',
+		//'user-info',
+	);
+
+	foreach ( $nodes as $node ) {
+		$temp = $wp_admin_bar->get_node( $node );
+		$wp_admin_bar->remove_menu( $node );
+		$temp->parent = false;
+		
+		$wp_admin_bar->add_node( $temp );
+	}
+	
+	$wp_admin_bar->remove_menu( 'debug-bar' );
+
+	// Debug
+	$wp_admin_bar->remove_menu( 'network' );
+	$wp_admin_bar->remove_menu( 'logo-default' );
 }
 
 add_action('wp_before_admin_bar_render', 'socd_alter_admin_bar' );

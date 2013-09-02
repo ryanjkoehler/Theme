@@ -39,7 +39,6 @@
 		@include rem( 'width', $height_menu );
 	}
 	@include breakpoint($breakpoint_palm) {	
-		max-width: $size_grid_width;
 		@include rem( 'min-height', $height_menu );
 		.main-navigation-container__fixed-size{
 			z-index: 10;			
@@ -74,7 +73,7 @@
 
 //block
 .main-navigation,
-.quicklinks {
+.ab-top-menu {
 	background: $colour_background_dark;
 	color: $colour_background;
 	display: inline-block;
@@ -82,13 +81,17 @@
 	display: -moz-box;
 	display: -ms-flexbox;
 	display: -webkit-flex;
-	display: flex; 	
+	display: flex;
+	margin: 0 auto;
 	@include rem( 'height', $height_menu );
-	justify-content: center;
-	@include rem( 'line-height', $height_menu );
+	//@include rem( 'line-height', $height_menu );
 	width: 100%;
+	max-width: $size_grid_width;
 
+	.a,
 	a {
+		display: inline-block;
+		line-height: 2.6;
 		color: $colour_background;
 		&:hover{
 			color: $colour_link;
@@ -201,6 +204,7 @@
 			}	
 		}
 	
+		.admin-bar-search,
 		&.main-navigation__menu-item--flexible{
 			-webkit-box-flex: 1;
 			-moz-box-flex: 1;			
@@ -242,13 +246,17 @@
 			position: absolute;	
 			top: 0;
 			left: 0;
-			outline: 10px solid lime;
 		}
 
 		.ab-submenu,
 		.drop{
 			height: 0;
 			top: 100%;
+
+			.ab-submenu {
+				top: 0;
+				left: 100%;
+			}
 		}
 
 		.ab-submenu,
@@ -261,8 +269,6 @@
 			position: relative;
 
 			a{
-				width: 100%;
-				height: 100%;
 				display: block;
 				@include rem( padding-left, 1 );
 				@include rem( padding-right, 1.5 );
@@ -297,7 +303,7 @@
 		&:hover,
 		&.active {
 
-			.ab-submenu,
+			&> .ab-sub-wrapper > .ab-submenu,
 			.drop{
 				height: auto;
 				overflow: visible;
@@ -314,7 +320,6 @@
 			color: $colour_background_dark;
 			@include fontstack_medium;	
 			@include rem( 'height', $height_menu );
-			line-height: 44px;
 			&:focus{
 				-webkit-box-shadow: none;
 				-moz-box-shadow: none;
@@ -334,7 +339,7 @@
 
 	@include breakpoint( $breakpoint_palm_max ) {
 		display: block;
-		@include rem( 'line-height', 1.4 );
+		//@include rem( 'line-height', 1.4 );
 		@include rem( 'padding-top', .5 );
 		@include rem( 'padding-bottom', .5 );
 		height: auto;
@@ -482,7 +487,7 @@ body.logged-in{
 					float: left;
 					@include fontstack_medium;
 					height: 100%;	
-					line-height: 1.6;
+					//line-height: 1.6;
 					text-transform: capitalize;
 					width: 16%;
 					h2{
@@ -540,7 +545,7 @@ body.logged-in{
 				label{
 					font-size: 0.8rem;
 					display: block;
-					line-height: 1.5;
+					//line-height: 1.5;
 					color: $colour_white;
 				}
 				p{
@@ -609,7 +614,6 @@ body.logged-in{
 		}
 	}
 
-
 .navigation-notifications{
 	background: $colour_light;
 	color: $colour_background_dark;
@@ -638,4 +642,10 @@ body.logged-in{
 	.adminbar-button {
 		display: none;
 	}
+	
+	/* Very Temporary */
+	.screen-reader-shortcut {
+		display: none;
+	}
 }
+
