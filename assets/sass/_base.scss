@@ -23,7 +23,7 @@ img {
 
 /* Typography */
 
-.h1{
+.h1 {
 	@include fontstack_bold;
 	@include font-size(1.85);
 	margin: 0.4375rem 0;
@@ -103,6 +103,7 @@ a {
 	/* Internal links should not have outbound link graphic */
 	&[href*="socd.loc"]:after,
 	&[href*="socd.io"]:after,
+	&[href*="staging.socd.io"]:after,
 	&[href*="#"]:after,
 	&[href^="/"]:after,
 	&[href*="gdnm.org"]:after {
