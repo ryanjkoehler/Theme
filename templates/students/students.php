@@ -51,7 +51,7 @@ get_header(); ?>
 
 				?><li itemscope itemtype="http://schema.org/Person" class="listing--profile profile__student col one-fifth">
 					<a href="<?php profile_url(); ?>">
-						<img class="thumb" itemprop="image" src="http://placehold.it/60x60" alt="Staff Name"/>
+						<?php echo socd_get_profile_thumbnail(); ?>
 					</a>
 					
 					<div class="profile--info">
