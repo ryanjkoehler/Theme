@@ -32,9 +32,7 @@ get_header(); ?>
 	</section><!--
 	--><aside class="sidebar col--side col--side__right">
 		<div class="cell colour--light-grey">
-			
 			<?php if ( dynamic_sidebar( 'blog_sidebar' ) ) : else : endif; ?>
-			
 		</div><!-- .cell.colour-0grey -->
 	</aside>
 </section><!-- .gw -->
