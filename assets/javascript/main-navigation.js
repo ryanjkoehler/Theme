@@ -9,7 +9,7 @@ if( !window.SOCD ){ window.SOCD = {} };
 
 	var Menu = {
 		ele: '.main-navigation-container',
-		$ele: $( '.main-navigation-container' ),
+		$ele: $( '.main-navigation-container' ),	
 		init: function(){
 			Menu.init_toggle();
 			Menu.init_typeahead();
@@ -30,18 +30,26 @@ if( !window.SOCD ){ window.SOCD = {} };
 				structureTypeahead.push({
 					name: type,
 					local: raw[type],
+					limit: 100,
 					header: T.header( { name: type } ),
 					template: T.result
 				});
 			}				
 			$searchBox.typeahead( structureTypeahead );
 		},
-		init_ui: function(){
+		init_ui: function(){			
 			var $searchBox = $( '.site-search__input', Menu.$ele );	
-			$searchBox.on('focus', function(){
+			$searchBox.on('typeahead:opened', function(){				
+				$('.main-navigation', Menu.$ele ).addClass('typeahead-open');
+			});
+			$searchBox.on('typeahead:closed', function(){
+				$('.main-navigation', Menu.$ele ).removeClass('typeahead-open');
+			});
+			$searchBox.on( 'focus', function(){				
 				$('.main-navigation__menu-item--breadcrumb:not(.main-navigation__menu-item--root)').addClass('collapse');
 			});
-			$searchBox.on('blur', function(){
+			$searchBox.on( 'blur', function(){
+				$('.main-navigation', Menu.$ele ).removeClass('typeahead-open');
 				$('.main-navigation__menu-item--breadcrumb:not(.main-navigation__menu-item--root)').removeClass('collapse');
 			});
 		}
