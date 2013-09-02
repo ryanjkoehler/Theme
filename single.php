@@ -12,8 +12,12 @@ get_header(); ?>
 	</header><!-- .header -->
 	<section class="col--side col--side__left">
 		<div class="cell colour--blue">
-			<h2 class="h2 h2--ruled">About</h2>
-			
+			<?php if ( ! dynamic_sidebar( 'left_sidebar' )  ) : ?>
+				<h2 class="h2 h2--ruled">About</h2>
+				<div class="wysiwyg">
+					<?php bloginfo( 'description' ); ?>
+				</div>
+			<?php endif; ?>
 		</div>
 	</section><!-- 
 	--><section class="col--stream stream">
