@@ -1,7 +1,7 @@
-/*global google */
-(function() {
+/* global google */
+( function() {
 
-  var SOCD = window.SOCD;
+	var SOCD = window.SOCD;
 
   SOCD.Mapping = {
     maptypeId: 'socd_style',
