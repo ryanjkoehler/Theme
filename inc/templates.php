@@ -96,6 +96,13 @@ function socd_faux_pages() {
 		wp_safe_redirect( site_url('/wp-login.php?action=register') );
 		exit();
 	}
+
+	if ( "activate" == preg_replace('/\//','', $_SERVER['REQUEST_URI']) ) {
+		wp_safe_redirect( site_url('/wp-activate.php') );
+		exit();
+	}
+
+
 	
 	// Load our Student/Staff Listings
 	if ( 'profile' === $wp_query->get('socd_template') ) {
