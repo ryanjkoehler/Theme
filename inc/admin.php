@@ -10,6 +10,7 @@
 function socd_signup_style() {
 	global $wp_filter;
 	remove_action( 'wp_head', 'wpmu_signup_stylesheet' );
+	remove_action( 'wp_head', 'wpmu_activate_stylesheet' );
 }
 add_action( 'wp_head', 'socd_signup_style', 1 );
 
