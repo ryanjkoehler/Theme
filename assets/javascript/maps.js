@@ -4,7 +4,6 @@
   var SOCD = window.SOCD;
 
   SOCD.Mapping = {
-    coordinates: SOCD.Config.center.coordinates.split(','),
     maptypeId: 'socd_style',
     mapSelector: 'homepage--map',
     featureOpts: [
@@ -50,32 +49,58 @@
     ],
     markers: SOCD.Config.places,
     init: function() {
-      var self = this,
-          map;
 
+      SOCD.Mapping.loadScript();
+    },
+    loadScript: function() {
+      var script = document.createElement('script');
+
+      script.type = 'text/javascript';
+      script.src = 'http://maps.googleapis.com/maps/api/js?key=AIzaSyBQjFHblWw4toFdQmRIWRQIS9jppMAHKVs&sensor=false&' + 'callback=SOCD.Mapping.loaded'
+      document.body.appendChild(script);
+    },
+    loaded: function() {
+      var self = this,
+        coordinates = SOCD.Config.center.coordinates.split(',');
+  
       try {
-        map = new google.maps.Map( document.getElementById(), self.mapSelector );
+        self.map = new google.maps.Map(
+          document.getElementById( self.mapSelector ),
+          {
+            disableDefaultUI: true,
+            scrollwheel: false,
+            panControl: false,
+            zoom: 8,
+            zoomControl: false,
+            mapTypeControlOptions:{
+              mapTypeIds: []
+            },
+            mapTypeId: self.mapTypeId,
+            zoom: 8,
+            center: new google.maps.LatLng( coordinates[0], coordinates[1] )
+        } );
+
       } catch(error) {
-        console.log(error);
-        return false;
+
+        console.log( error );
       }
       
-      if (this.markers.length) {
-        for (var i = 0; i < markers.length; i++) {
-          var marker = markers[i],
+      if (self.markers.length) {
+        for (var i = 0; i < self.markers.length; i++) {
+          var marker = self.markers[i],
             coords = marker.locations.coordinates.split(',');
 
           new google.maps.Marker({
             position: new google.maps.LatLng( coords[0], coords[1] ),
-            map: map,
+            map: self.map,
             title: marker.name
           })
         };
       }
-      
-      map.mapTypes.set( SOCD.Mapping.maptypeId, new google.maps.StyledMapType( featureOpts, {
+
+      self.map.mapTypes.set( SOCD.Mapping.maptypeId, new google.maps.StyledMapType( self.featureOpts, {
         name: "School of Communication Design"
       } ));
-    }
-  };
+  } };
+
 })();

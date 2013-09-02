@@ -14,7 +14,6 @@
 		{
 			test: SOCD.Viewport.isBiggerThan(320),
 			yep: [
-				'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false',
 				'http://socd.loc/wp-content/themes/socd/assets/javascript/maps.js'
 			],
 			complete: function() {
