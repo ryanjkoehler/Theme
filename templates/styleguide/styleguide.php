@@ -185,7 +185,13 @@ get_header(); ?>
 <p>Used in client side validation to alert the user to any issues with the supplied information.</p>
 <label for="name">Statuses</label><input id="statuses" type="text"/>
 <label for="name">Status: Checking</label><input type="text" class="s__checking"/>
-<label for="name">Status: Error</label><input type="text" class="s__error"/>
+<label for="name">Status: Error</label>
+  <input type="text" class="s__error"/>
+  <div class="input__error">
+    <!-- Container element for constraining the position of the error  -->
+    <div class="notifications-message notifications-message__negative"><p>An error message, this should as brief as possi&hellip;</p></div>
+    <input type="text" class="s__error" value=""/>
+  </div>
 <label for="name">Status: OK</label><input type="text" class="s__ok"/>
 
 </section>
@@ -331,11 +337,7 @@ get_header(); ?>
       
       if (classes[i]) input.className = classes[i]
       
-      if (i >= classes.length) {
-        i = 0
-      } else {
-        i++;
-      }
+      i = i >= classes.length ? 0 : i + 1;
 
     }, 2000);
 
