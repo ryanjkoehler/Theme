@@ -93,6 +93,9 @@
 		display: inline-block;
 		line-height: 2.6;
 		color: $colour_background;
+		@include rem( padding-left, 1 );
+		@include rem( padding-right, 1 ); 
+
 		&:hover{
 			color: $colour_link;
 		}
@@ -103,6 +106,22 @@
 			content: none;
 		}
 	}
+
+	.admin-bar-search,
+	.main-navigation__menu-item--flexible{
+		-webkit-box-flex: 1;
+		-moz-box-flex: 1;			
+		-webkit-flex: 1;
+		-ms-flex: 1;
+		flex: 1;
+		max-width: 100%;
+		padding-top: 0;
+		padding-right: 0;
+		padding-bottom: 0;
+		padding-left: 0;
+	}
+
+
 
 	.ab-sub-wrapper,
 	.main-navigation__menu-item{
@@ -204,24 +223,8 @@
 			}	
 		}
 	
-		.admin-bar-search,
-		&.main-navigation__menu-item--flexible{
-			-webkit-box-flex: 1;
-			-moz-box-flex: 1;			
-			-webkit-flex: 1;
-			-ms-flex: 1;
-			flex: 1;
-			max-width: 100%;
-			padding-top: 0;
-			padding-right: 0;
-			padding-bottom: 0;
-			padding-left: 0;
-		}
-
 		.title{
 			@include fontstack_medium;	
-			@include rem( padding-left, 1 );
-			@include rem( padding-right, 1 ); 
 		}
 	}
 	
