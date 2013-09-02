@@ -103,7 +103,7 @@ a {
 	/* Internal links should not have outbound link graphic */
 	&[href*="socd.loc"]:after,
 	&[href*="socd.io"]:after,
-	&[href*="staging.socd.io"]:after,
+	&[href*="socd.staging.wpengine.com"]:after,
 	&[href*="#"]:after,
 	&[href^="/"]:after,
 	&[href*="gdnm.org"]:after {
