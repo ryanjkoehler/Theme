@@ -1,17 +1,11 @@
+#wpadminbar,
 .main-navigation-container{	
 	width: 100%;
 	min-height: 100%;
 	position: fixed;
 	top: 0;
 	z-index: 10;
-
-	/**
-	 * If the admin bar is visible then offset the
-	 * SOCD toolbar off of the viewport top
-	 */
-	.admin-bar & {
-		top: 28px;
-	}
+	left: 0;
 
 	.lt-ie9 & {
 		position: absolute;
@@ -79,9 +73,11 @@
 }
 
 //block
-.main-navigation{
+.main-navigation,
+.quicklinks {
 	background: $colour_background_dark;
 	color: $colour_background;
+	display: inline-block;
 	display: -webkit-box;
 	display: -moz-box;
 	display: -ms-flexbox;
@@ -92,29 +88,26 @@
 	@include rem( 'line-height', $height_menu );
 	width: 100%;
 
-	a{
+	a {
 		color: $colour_background;
 		&:hover{
 			color: $colour_link;
 		}
+
+		// remove external or any link iconography
+		// not relevant in menu
+		&:after{
+			content: none;
+		}
 	}
 
-	// remove external or any link iconography
-	// not relevant in menu
-	a:after{
-		content: none;
-		display: none;
-	}	
-	
+	.ab-sub-wrapper,
 	.main-navigation__menu-item{
 		background: $colour_background_dark;
 		@include fontstack_light;	
 		white-space: nowrap;
 
-		.tab{			
-			line-height: 44px;			
-		}
-
+		.ab-submenu,
 		.drop,
 		.children,
 		.flyout,
@@ -238,17 +231,27 @@
 		}
 	}
 
-	.main-navigation__menu-item--dropdown{
+	.menupop,
+	.main-navigation__menu-item--dropdown {
 		position: relative;
+		
+		.ab-submenu,
 		.drop,
 		ul{
 			overflow: hidden;
-			position: absolute;			
+			position: absolute;	
+			top: 0;
+			left: 0;
+			outline: 10px solid lime;
 		}
+
+		.ab-submenu,
 		.drop{
 			height: 0;
-			@include rem( top, $height_menu );
+			top: 100%;
 		}
+
+		.ab-submenu,
 		.drop,
 		.drop>ul{
 			min-width: 100%;
@@ -292,7 +295,9 @@
 		}
 		
 		&:hover,
-		&.active{
+		&.active {
+
+			.ab-submenu,
 			.drop{
 				height: auto;
 				overflow: visible;
@@ -324,100 +329,6 @@
 			padding: 0;
 			visibility: hidden;
 			width: 0;
-		}
-	}
-
-	.main-navigation__menu-item--profile{
-		background: $colour_menu_grey_light;
-		.avatar{
-			display: none;
-		}
-		.title a{
-			color: $colour_background_dark;
-		}
-		.drop{
-			background: $colour_menu_grey_light;
-			color: $colour_background_dark;
-			right: 0;
-			left: auto;			
-		}
-		&.logged-out{
-			&:hover,
-			&.active{
-				.drop{
-					@include rem( padding, 1 );				
-				}
-			}
-			form{
-				label{
-					font-size: 0.8rem;
-					display: block;
-					line-height: 1.5;
-					color: $colour_white;
-				}
-				p{
-					margin-bottom: 0.5em;
-				}
-				input:not([type="submit"]){
-					background: $colour_background;
-				}	
-				.login-remember{
-					float: left;
-					margin-bottom: 0;
-					label{
-						line-height: 2.6;
-						input{
-							margin-right: 0;
-						}
-					}
-				}
-				.login-submit{
-					float: right;
-					margin-bottom: 0;
-					line-height: 1;
-				}
-			}
-		}
-		&.logged-in{
-			background: $colour_yellow;
-			@include rem( padding-right, $height_menu ); 			
-			.title{
-				@include inline-block;
-				vertical-align: top;
-				@include breakpoint( $breakpoint_palm_max ) {
-					a{
-						color: $colour_background;
-					}
-				}
-			}
-			.drop{
-				background: $colour_yellow;
-				a{
-					color: $colour_background_dark;
-					&:hover{
-						color: $colour_link;
-					}
-				}
-			}
-			.avatar{
-				@include inline-block;
-				max-height: 100%;
-				vertical-align: top;
-				width: auto;
-			}
-		}
-	}
-	.main-navigation__menu-item--quickpost{		
-		display: none;
-		position: absolute;
-		right: 0;
-		@include rem( 'height', $height_menu );
-		@include rem( 'width', $height_menu );
-		.title{
-			text-align: center;
-			width: 100%;
-			height: 100%;
-			display: block;
 		}
 	}
 
@@ -603,6 +514,101 @@ body.logged-in{
 		}
 	}
 }
+	#wp-admin-bar-my-account,
+	.main-navigation__menu-item--profile{
+		background: $colour_menu_grey_light;
+		.avatar{
+			display: none;
+		}
+		.title a{
+			color: $colour_background_dark;
+		}
+		.drop{
+			background: $colour_menu_grey_light;
+			color: $colour_background_dark;
+			right: 0;
+			left: auto;			
+		}
+		&.logged-out{
+			&:hover,
+			&.active{
+				.drop{
+					@include rem( padding, 1 );				
+				}
+			}
+			form{
+				label{
+					font-size: 0.8rem;
+					display: block;
+					line-height: 1.5;
+					color: $colour_white;
+				}
+				p{
+					margin-bottom: 0.5em;
+				}
+				input:not([type="submit"]){
+					background: $colour_background;
+				}	
+				.login-remember{
+					float: left;
+					margin-bottom: 0;
+					label{
+						line-height: 2.6;
+						input{
+							margin-right: 0;
+						}
+					}
+				}
+				.login-submit{
+					float: right;
+					margin-bottom: 0;
+					line-height: 1;
+				}
+			}
+		}
+		&.logged-in{
+			background: $colour_yellow;
+			@include rem( padding-right, $height_menu ); 			
+			.title{
+				@include inline-block;
+				vertical-align: top;
+				@include breakpoint( $breakpoint_palm_max ) {
+					a{
+						color: $colour_background;
+					}
+				}
+			}
+			.drop{
+				background: $colour_yellow;
+				a{
+					color: $colour_background_dark;
+					&:hover{
+						color: $colour_link;
+					}
+				}
+			}
+			.avatar{
+				@include inline-block;
+				max-height: 100%;
+				vertical-align: top;
+				width: auto;
+			}
+		}
+	}
+	.main-navigation__menu-item--quickpost{		
+		display: none;
+		position: absolute;
+		right: 0;
+		@include rem( 'height', $height_menu );
+		@include rem( 'width', $height_menu );
+		.title{
+			text-align: center;
+			width: 100%;
+			height: 100%;
+			display: block;
+		}
+	}
+
 
 .navigation-notifications{
 	background: $colour_light;
@@ -612,4 +618,24 @@ body.logged-in{
 
 .navigation-quickpost{
 	background: $colour_blue;		
+}
+
+/**
+ * Nowhere to late in the day we decided to use the WP Admin bar once logged in!
+ *
+ * Great idea, below are some pretty brutal styles targetted at that ID heavy markup
+ */
+#wpadminbar {
+	top: 4em;
+
+	.ab-top-menu>li {
+		display: inline-block;
+	}
+
+	/**
+	 * Search Form
+	 */
+	.adminbar-button {
+		display: none;
+	}
 }

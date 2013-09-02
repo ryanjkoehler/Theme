@@ -173,3 +173,11 @@ function socd_widget_rss_output( $rss, $args = array() ) {
 	$rss->__destruct();
 	unset($rss);
 }
+
+function socd_alter_admin_bar( ) {
+	global $wp_admin_bar;
+
+	$wp_admin_bar->remove_menu('updates');
+}
+
+add_action('wp_before_admin_bar_render', 'socd_alter_admin_bar' );
