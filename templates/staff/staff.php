@@ -12,7 +12,26 @@ get_header(); ?>
 			<h1 class="h1 header__title"><?php _e('Staff Profiles', 'socd'); ?></h1>
 		</header>
 		<div>
-			<ul class="col two-thirds h-center listing__profiles">
+
+			<div class="col one-sixth">
+				<?php if( !socd_get_subdomain() ): ?>
+					<div class="cell colour--blue">
+						<h2 class="h2 h2--ruled">Filter By</h2>	
+						<h3>Course</h3>
+						<!-- <select name="course">
+							<?php foreach( $courses_represented as $course ): 
+								$code = $course;
+								$name = socd_course_code_to_course_name( $code );
+							?>
+								<option value="<?php echo $code ?>"><?php echo $name ?></option>
+							<?php endforeach;?>
+						</select> -->
+						<!-- 
+						<?php print_r( socd_filter_course() ); ?> -->
+					</div>
+				<?php endif; ?>
+			</div><!--
+		 --><ul class="col two-thirds listing__profiles">
 				<?php
 
 				$courses_represented = array();
@@ -62,22 +81,6 @@ get_header(); ?>
 				
 				?>
 			</ul>
-			<div class="col one-sixth">
-				<div class="cell colour--blue">
-					<h2 class="h2 h2--ruled">Filter By</h2>	
-					<h3>Course</h3>
-					<!-- <select name="course">
-						<?php foreach( $courses_represented as $course ): 
-							$code = $course;
-							$name = socd_course_code_to_course_name( $code );
-						?>
-							<option value="<?php echo $code ?>"><?php echo $name ?></option>
-						<?php endforeach;?>
-					</select> -->
-					<!-- 
-					<?php print_r( socd_filter_course() ); ?> -->
-				</div>
-			</div>
 		</div>
 	</section>
 </div>
