@@ -121,119 +121,14 @@
 		padding-left: 0;
 	}
 
-
-
-	.ab-sub-wrapper,
-	.main-navigation__menu-item{
-		background: $colour_background_dark;
-		@include fontstack_light;	
-		white-space: nowrap;
-
-		.ab-submenu,
-		.drop,
-		.children,
-		.flyout,
-		ul{
-			background: $colour_background_dark;
-			.page_item,
-			.drop__option,
-			li{
-				&:hover{
-					background: lighten( $colour_background_dark, 40% );
-					background: rgba( 255, 255, 255, 0.1 );
-				}
-				ul{
-					background: lighten( $colour_background_dark, 10% );
-					ul{
-						background: lighten( $colour_background_dark, 20% );
-						ul{
-							background: lighten( $colour_background_dark, 30% );
-						}
-					}
-				}
-			}
-		}
-		&:nth-child( 2 ){
-			background: $colour_menu_grey_mid;
-			.drop,
-			.children,
-			.flyout,
-			ul{
-				background: $colour_menu_grey_mid;
-				.page_item,
-				.drop__option,
-				li{
-					&:hover{
-						background: lighten( $colour_menu_grey_mid, 40% );
-						background: rgba( 255, 255, 255, 0.1 );
-					}
-					ul{
-						background: lighten( $colour_menu_grey_mid, 10% );
-						ul{
-							background: lighten( $colour_menu_grey_mid, 20% );
-							ul{
-								background: lighten( $colour_menu_grey_mid, 30% );
-							}
-						}
-					}
-				}
-			}
-		}
-		&:nth-child( 3 ){
-			background: $colour_menu_grey_mid_light;
-			.drop,
-			.children,
-			.flyout,
-			ul{
-				background: $colour_menu_grey_mid_light;
-				.page_item,
-				.drop__option,
-				li{
-					&:hover{
-						background: lighten( $colour_menu_grey_mid_light, 40% );
-						background: rgba( 255, 255, 255, 0.1 );
-					}
-					ul{
-						background: lighten( $colour_menu_grey_mid_light, 10% );
-						ul{
-							background: lighten( $colour_menu_grey_mid_light, 20% );
-							ul{
-								background: lighten( $colour_menu_grey_mid_light, 30% );
-							}
-						}
-					}
-				}
-			}	
-		}
-		&:nth-child( 4 ){
-			background: $colour_menu_grey_light;
-			.drop,
-			.children,
-			.flyout,
-			ul{
-				background: $colour_menu_grey_light;
-				.page_item,
-				.drop__option,
-				li{
-					&:hover{
-						background: lighten( $colour_menu_grey_light, 40% );
-						background: rgba( 255, 255, 255, 0.1 );
-					}
-				}
-			}	
-		}
-	
-		.title{
-			@include fontstack_medium;	
-		}
-	}
-	
-	.main-navigation__menu-item--breadcrumb{
+	& > li {
 		@include transition( max-width .25s ease-in-out, width .25s ease-in-out, min-width .25s ease-in-out );
 		width: auto;
 		max-width: 400px;
 		min-width: 0;
+		
 		&.collapse{
+			overflow: hidden;
 			max-width: 0;
 		}
 	}
@@ -424,7 +319,84 @@
 	} //end breakpoint: $breakpoint_palm_max
 }
 
+/**
+ * Colour stepping our menu
+ *
+ */
+.ab-sub-wrapper,
+.ab-top-menu > li,
+.main-navigation__menu-item {
+	background: $colour_background_dark;
+	@include fontstack_light;	
+	white-space: nowrap;
 
+	.ab-submenu,
+	.drop,
+	.children,
+	.flyout,
+	ul{
+		background: $colour_background_dark;
+		.page_item,
+		.drop__option,
+		li{
+			&:hover{
+				background: lighten( $colour_background_dark, 40% );
+				background: rgba( 255, 255, 255, 0.1 );
+			}
+			ul{
+				background: lighten( $colour_background_dark, 10% );
+				ul{
+					background: lighten( $colour_background_dark, 20% );
+					ul{
+						background: lighten( $colour_background_dark, 30% );
+					}
+				}
+			}
+		}
+	}
+	
+	$colours: (
+		$colour_menu_grey_mid,
+		$colour_menu_grey_light,
+		$colour_menu_grey_light
+	);
+
+	@for $i from 1 through length($colours) {
+		
+		$colour: nth( $colours, $i );
+
+		&:nth-child( #{$i + 1} ){
+			background: $colour;
+			.drop,
+			.children,
+			.flyout,
+			ul{
+				background: $colour;
+				.page_item,
+				.drop__option,
+				li{
+					&:hover{
+						background: lighten( $colour, 40% );
+						background: rgba( 255, 255, 255, 0.1 );
+					}
+					ul{
+						background: lighten( $colour, 10% );
+						ul{
+							background: lighten( $colour, 20% );
+							ul{
+								background: lighten( $colour, 30% );
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.title{
+		@include fontstack_medium;	
+	}
+}
 
 //logged in menu styles
 body.logged-in{

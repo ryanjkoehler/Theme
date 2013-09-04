@@ -98,61 +98,6 @@ function socd_posted_on() {
 	);
 }
 
-/**
- * Network wide navigation menu, this is controlled via the primary Network Appearance > Menus
- * @return [type] [description]
- */
-function socd_network_menu() {
-	if ( !function_exists('switch_to_blog') ) return false;
-
-	if ( false === ( $output = get_site_transient( 'site__socd_menu' ) ) || false ) {
-		switch_to_blog( 1 );
-		$output = wp_nav_menu( array(
-			'theme_location' => 'socd_network_menu',
-			'container' => '',
-			'menu_class' => 'drop',
-			'echo' => false
-		) );
-		restore_current_blog();
-		set_site_transient( 'site__socd_menu', $output, 1 * HOUR_IN_SECONDS );
-	}
-
-	echo $output;
-}
-
-function socd_site_menu(){
-	//just so we've got something coming out
-	$current_site_id = get_current_site()->id;
-
-	if ( false === ( $output = get_site_transient( 'site__socd_site_' . $current_site_id . '_menu' ) ) || false ) {
-		switch_to_blog( $current_site_id );
-	
-		$output = wp_nav_menu( array(
-			'theme_location' => 'socd_site_menu',
-			'container' 	 => '',
-			'menu_class' 	 => 'drop',
-			'echo'		 	 => false
-		) );
-
-		restore_current_blog();
-		set_site_transient( 'site__socd_site_' . $current_site_id . '_menu' , $output, 1 * HOUR_IN_SECONDS );
-	}
-
-	echo $output;
-}
-
-function socd_blog_menu(){
-	//just so we've got something coming out
-    $output = wp_nav_menu( array(
-		'theme_location' => 'socd_blog_menu',
-		'container' 	 => '',
-		'menu_class' 	 => 'drop',
-		'echo'		 	 => false
-	) );
-
-	echo $output;
-}
-
 function socd_menu_course_title() {
 	global $current_site;
 	$course_code = strtolower( $current_site->site_name );

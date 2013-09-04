@@ -10,6 +10,7 @@ if( !window.SOCD ){ window.SOCD = {} };
 	var Menu = {
 		ele: '.main-navigation-container',
 		$ele: $( '.main-navigation-container' ),
+		$searchInput: $( '.site-search__input, #adminbar-search' ),
 		init: function(){
 			Menu.init_toggle();
 			Menu.init_typeahead();
@@ -37,18 +38,25 @@ if( !window.SOCD ){ window.SOCD = {} };
 			$searchBox.typeahead( structureTypeahead );
 		},
 		init_ui: function(){
-			var $searchBox = $( '.site-search__input', Menu.$ele );	
+			var self = this,
+				$searchBox = self.$searchInput.last(),
+				$searchBreadCrumbs = $searchBox.parents('li').prevAll().not('#wp-admin-bar-socd-menu-network, .main-navigation__menu-item--root');
+
 			$searchBox.on('focus', function(){
-				$('.main-navigation__menu-item--breadcrumb:not(.main-navigation__menu-item--root)').addClass('collapse');
+				$searchBreadCrumbs.addClass('collapse');
 			});
 			$searchBox.on('blur', function(){
-				$('.main-navigation__menu-item--breadcrumb:not(.main-navigation__menu-item--root)').removeClass('collapse');
+				$searchBreadCrumbs.removeClass('collapse');
 			});
 		}
 	};
 
 	Menu.init();
 
-	window.SOCD.Menu = Menu;
+	try {
+		window.SOCD.Menu = Menu;
+	} catch(e) {
+		console.log( "Error assigning Menu module to SOCD Object, has everything loaded ok?", e );
+	}
 
 })( window, jQuery );

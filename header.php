@@ -36,5 +36,6 @@
 </div>
 <![endif]  -->
 <section class="site-wrap h-animate-transform">
-	
-<?php socd_template_part('main-navigation'); ?>
+<?php
+
+	socd_template_part( 'main-navigation' );
