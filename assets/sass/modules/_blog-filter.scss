@@ -1,0 +1,38 @@
+.blog-filter{
+	border-bottom: 1px solid darken( $colour_white, 20% );
+	border-bottom: 1px solid rgba(255,255,255,0.7);
+	padding-bottom: 1em;
+	margin-bottom: .5em;
+}
+
+	.blog-filter--section{
+		margin-bottom: 1em;
+		h2{
+			@include fontstack_bold;
+		}
+	}
+		.blog-filter--section .section-options{
+			li{
+				position: relative;				
+				a.active{
+					text-decoration: underline;
+				}
+				.clear{
+					display: none;
+					height: 1em;
+					line-height: 1em;
+					position: absolute;
+					right: 0;
+					text-align: center;
+					top: 1px;
+					width: 1em;
+					&:hover{
+						color: $colour_link;
+					}
+				}
+				a.active + .clear{
+					display: block;
+				}
+
+			}
+		}
