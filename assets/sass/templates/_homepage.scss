@@ -36,6 +36,13 @@
 	}	
 }
 
-#homepage--map {
-	height: 530px;
+.homepage--map-iw {
+	width: 150px;
+	height: 150px;
+}
+
+@include breakpoint($breakpoint_palm) {
+	#homepage--map {
+		height: 530px;
+	}
 }

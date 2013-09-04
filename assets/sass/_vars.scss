@@ -35,8 +35,11 @@
 	font-weight: normal;
 }
 
-$breakpoint_palm: 34em;
-$breakpoint_palm_max: max-width 34em;
+$breakpoint_palm: 30em;
+$breakpoint_palm_max: max-width $breakpoint_palm;
+
+$breakpoint_desk: 64em;
+$breakpoint_desk_max: max-width $breakpoint_desk;
 
 $colour_link: #EF2735;
 

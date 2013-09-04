@@ -19,11 +19,10 @@
 	}
 
 	.main-navigation-container__fixed-size{
-		left: $size_grid * -5;
+		left: 100%;
 		min-height: 100%;
 		position: absolute;
 		top: 0;
-		//width: $size_grid * 4;
 		width: 100%;
 	}
 	.main-navigation-container__openable{

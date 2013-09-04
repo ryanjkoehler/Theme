@@ -13,10 +13,14 @@
  */
 .site-wrap {
 	margin: 0 auto;
-	width: 98%;
+	width: 100%;
 	max-width: $size_grid_width;
 	min-height: 100%;
 	@include rem('padding-top', $height_menu );
+
+	@include breakpoint( $breakpoint_palm ) {
+		padding: $grid_padding;
+	}
 
 	.lt-ie9 & {
 		position: relative;
@@ -64,3 +68,15 @@
 		width: 39%;
 	}
 
+.palm--bigger-than {
+
+	@include breakpoint( $breakpoint_palm_max ) {
+		display: none;
+	}
+}
+
+.palm--only {
+	@include breakpoint( $breakpoint_palm ) {
+		display: none;
+	}
+}
