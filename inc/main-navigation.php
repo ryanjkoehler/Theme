@@ -13,7 +13,9 @@
 			if ( ! is_nav_menu( $menu_id ) ) return json_encode( array() );
 			
 			$menu = wp_get_nav_menu_object( $menu_id );
-			$mnu_items = array();
+
+			$menu_items = array();
+
 			if ( $menu && ! is_wp_error( $menu ) && !isset( $menu_items ) ){
 				$menu_items = wp_get_nav_menu_items( $menu );
 			}
