@@ -428,3 +428,64 @@ function socd_filter_campus() {
 
 	echo implode( ' ', $output );
 }
+
+function socd_get_vcard( $location ) {
+
+	$output = '<div itemscope itemtype="http://schema.org/EducationalOrganization">';
+		$output .= '<div itemscope itemtype="http://schema.org/EducationalOrganization">';
+			$output .= '<span itemprop="name">' . $location['name'] . '</span>';
+			$output .= '<div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">';
+			$output .= '<span itemprop="streetAddress">' . $location['street_address'] . '</span>';
+			$output .= '<span itemprop="addressLocality">' . $location['address_locality'] . '</span>,';
+			$output .= '<span itemprop="addressRegion">' . $location['address_region'] . '</span><br/>';
+			$output .= '<span itemprop="postalCode">' . $location['postal_code'] . '</span>';
+		$output .= '</div>';
+	$output .= '</div>';
+
+	return $output;
+}
+
+
+function socd_vcard( $location ) {
+	echo socd_get_vcard( $location );
+}
+
+
+/**
+ * Randomly Load Four staff members
+ */
+
+function socd_get_random_staff( $no_of_staff = 4 ) {
+
+	global $user;
+
+	$staff = get_users( array(
+		'number' 	 => 999,
+		'meta_query' => array(
+			array(
+				'key'  	  => 'group',
+				'value'   => 'staff',
+				'compare' => '='
+	) ) ) );
+
+	$output = array();
+
+	if ( $staff ) {
+
+		shuffle( $staff );
+
+		for ( $i = 0, $max = $no_of_staff; $i < $max; $i++ ) {
+
+			$user = $staff[$i];
+			
+			$output[] = sprintf(
+				'<div class="col one-half" itemscope itemtype="http://schema.org/Person"><a href="%1$s">%2$s</a><span itemprop="name" class="name">%3$s</span></div>',
+				socd_get_profile_url(),
+				socd_get_profile_thumbnail(),
+				$user->display_name
+			);
+		} 
+	}
+
+	echo implode( '', $output );
+}

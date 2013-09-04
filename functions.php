@@ -103,8 +103,26 @@ function socd_javascript_config() {
 
 		$locations = get_field('locations', $post->ID );
 
+		if ( is_array( $locations ) ) {
+			$temp = array();
+
+			for ($i=0; $i < count( $locations ); $i++) { 
+				$location = $locations[ $i ];
+
+				$temp = array_merge( $location, array(
+					'html' => socd_get_vcard( $location )
+				) );
+
+				$locations[$i] = $temp;
+			}
+
+
+		} else {
+			$locations = array();
+		}
+
 		$config = array_merge( $config, array(
-			'places' => is_array( $locations ) ? $locations : array(),
+			'places' => $locations,
 			'center' => get_field( 'center_point', $post->ID )
 		) );
 	}
