@@ -24,6 +24,5 @@
     "grunt-buster": "~0.2.1"
   },
   "dependencies": {
-    "grunt-contrib-hogan": "~0.2.2"
   }
 }
