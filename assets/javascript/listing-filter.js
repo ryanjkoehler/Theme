@@ -29,12 +29,12 @@ if( !window.SOCD ){ window.SOCD = {} };
 				ListingFilter.run();
 			});
 		},
-		run: function( section, by ){
+		run: function(){
 			var $active =  ListingFilter.$items;
 			ListingFilter.$filters.filter('.active').each( function(){
 				var section = $(this).closest( '.listing-filter--section' ).attr('data-section'),
 					by = $(this).attr('href').replace( '#', '' );
-					$active = $active.filter( '[data-' + section + '="' + by + '"]' );
+				$active = $active.filter( '[data-' + section + '="' + by + '"]' );
 			});
 			ListingFilter.$items.hide();
 			$active.show();
