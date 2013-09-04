@@ -118,11 +118,11 @@ $use-markup-fix:        true!default;
  * your classes (e.g. `.palm--one-half`), the second value is the media query
  * that the breakpoint fires at.
  */
-$breakpoints: (
-    'palm' '(max-width: 480px)',
-    'lap' '(min-width: 481px) and (max-width: 1023px)',
-    'portable' '(max-width: 1023px)',
-    'desk' '(min-width: 1024px)'
+$breakpointz: (
+    'palm' '(max-width: #{$breakpoint_palm})',
+    'lap' '(min-width: #{$breakpoint_palm}) and (max-width: #{( $breakpoint_desk - .1 )} )',
+    'portable' '(max-width: #{( $breakpoint_desk - .1 )})',
+    'desk' '(min-width: #{$breakpoint_desk})'
 )!default;
 
 
@@ -162,14 +162,14 @@ $class-type:            unquote(".");
  * These mixins are for the library to use only, you should not need to modify
  * them at all.
  *
- * Enclose a block of code with a media query as named in `$breakpoints`.
+ * Enclose a block of code with a media query as named in `$breakpointz`.
  */
 @mixin grid-media-query($media-query){
     $breakpoint-found: false;
 
-    @each $breakpoint in $breakpoints{
-        $name: nth($breakpoint, 1);
-        $declaration: nth($breakpoint, 2);
+    @each $breakpointer in $breakpointz{
+        $name: nth( $breakpointer, 1);
+        $declaration: nth( $breakpointer, 2);
 
         @if $media-query == $name and $declaration{
             $breakpoint-found: true;
@@ -460,7 +460,7 @@ $class-type:            unquote(".");
  * Our responsive classes, if we have enabled them.
  */
 @if $responsive == true{
-
+ 
     @each $name in $breakpoint-has-widths {
         @include grid-media-query($name) {
            @include device-type('#{$name}--');
