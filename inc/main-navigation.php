@@ -14,8 +14,6 @@
 			
 			$menu = wp_get_nav_menu_object( $menu_id );
 
-			$menu_items = array();
-
 			if ( $menu && ! is_wp_error( $menu ) && !isset( $menu_items ) ){
 				$menu_items = wp_get_nav_menu_items( $menu );
 			}
