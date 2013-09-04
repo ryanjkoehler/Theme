@@ -34,6 +34,35 @@
 	}
 }
 
+/* 
+*	SEARCH
+*/
+
+.searchform{
+	position: relative;		
+	input{
+		margin: 0;
+	}
+	input[type="submit"]{
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		width: 2em;
+		height: 0;
+		padding-top: 2.35em;
+		border: none;
+		background-color: darken( $colour_background, 25 );
+		// background-color: transparent;
+		// background-image: url( '../svg/magnifier.svg' );
+		// background-repeat: no-repeat;
+		// background-position: center center;
+		&:hover{
+			@include transform( none );
+			background-color: darken( $colour_background, 15 );
+		}
+	}
+}
+
 /**
  *  BUTTONS
  */

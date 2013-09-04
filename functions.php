@@ -134,7 +134,7 @@ function socd_widets_init() {
 		'id'   => 'left_sidebar',
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</div>',
-		'before_title'  => '<h2 class="h2 h2--ruled">',
+		'before_title'  => '<h2 class="widget--title">',
 		'after_title'  => '</h2>'
 	) );
 
@@ -143,7 +143,7 @@ function socd_widets_init() {
 		'id'   => 'blog_sidebar',
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</div>',
-		'before_title'  => '<h2 class="h2 h2--ruled">',
+		'before_title'  => '<h2 class="widget--title">',
 		'after_title'  => '</h2>'
 	) );
 }
