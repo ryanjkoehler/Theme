@@ -15,19 +15,16 @@ get_header(); ?>
 
 			<div class="col one-sixth">
 				<?php if( !socd_get_subdomain() ): ?>
-					<div class="cell colour--blue">
-						<h2 class="h2 h2--ruled">Filter By</h2>	
-						<h3>Course</h3>
-						<!-- <select name="course">
-							<?php foreach( $courses_represented as $course ): 
-								$code = $course;
-								$name = socd_course_code_to_course_name( $code );
-							?>
-								<option value="<?php echo $code ?>"><?php echo $name ?></option>
-							<?php endforeach;?>
-						</select> -->
-						<!-- 
-						<?php print_r( socd_filter_course() ); ?> -->
+					<div class="cell colour--blue listing-filter">
+						<h1 class="h2 h2--ruled">Filter By</h1>	
+						<ul>
+							<li class="listing-filter--section" data-section="course">
+								<h2 class="section-title">Course</h2>
+								<ul class="section-options">
+									<?php socd_filter_course(); ?>
+								</ul>
+							</li>
+						</ul>
 					</div>
 				<?php endif; ?>
 			</div><!--
@@ -65,7 +62,7 @@ get_header(); ?>
 						if( !in_array( get_user_meta( $user->ID, 'course', true ), $courses_represented) ){
 							$courses_represented[] = get_user_meta( $user->ID, 'course', true );
 						}
-						?><li itemscope itemtype="http://schema.org/Person" class="listing--profile col one-quarter filter--course-<?php echo get_user_meta( $user->ID, 'course', true ) ?>">
+						?><li itemscope itemtype="http://schema.org/Person" class="listing--profile col one-quarter" data-course="<?php socd_course_code(); ?>">
 							<a href="<?php echo socd_get_profile_url( $user ); ?>"><?php echo socd_get_profile_thumbnail(); ?></a>
 							<div class="profile--info">
 								<h1 class="name" itemprop="name"><?php echo $user->display_name; ?></h1>

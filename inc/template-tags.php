@@ -333,6 +333,13 @@ function socd_course() {
 	echo socd_course_code_to_course_name( socd_get_profile_field('course') );
 }
 
+function socd_year_code(){
+	echo socd_get_profile_field( 'group' );
+}
+function socd_course_code(){
+	echo socd_get_profile_field( 'course' );
+}
+
 /**
  * Prints the user's year of enrolment, if that's not found
  * then it will attempt to calculate that using their group/year number
@@ -394,7 +401,8 @@ function socd_filter_course() {
 	$output = array();
 	foreach ( $filters as $filter ) {
 		$output[] = sprintf(
-			'<li><a href="#">%1$s</a></li>',
+			'<li><a href="#%1$s">%2$s</a></li>',
+			$filter,
 			socd_course_code_to_course_name( $filter )
 		);
 	}

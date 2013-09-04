@@ -13,19 +13,26 @@ get_header(); ?>
 		</header>
 		
 		<div class="col one-sixth">
-			<div class="cell colour--blue">
+			<div class="cell colour--blue listing-filter">
 				<h1 class="h2 h2--ruled">Filter by</h1>
 				<ul>
-					<li>
-						Year of Study
-						<?php socd_filter_years_of_study(); ?>
+					<li class="listing-filter--section" data-section="year">
+						<h2 class="section-title">Year of Study</h2>
+						<ul class="section-options">
+							<?php socd_filter_years_of_study(); ?>
+						</ul>
 					</li>
-					<li>
-						Course
-						<?php socd_filter_course(); ?>
+					<li class="listing-filter--section" data-section="course">
+						<h2 class="section-title">Course</h2>
+						<ul class="section-options">
+							<?php socd_filter_course(); ?>
+						</ul>
 					</li>
-					<li>Campus
-						<?php socd_filter_campus(); ?>
+					<li class="listing-filter--section" data-section="campus">
+						<h2 class="section-title">Campus</h2>
+						<ul class="section-options">
+							<?php socd_filter_campus(); ?>
+						</ul>
 					</li>
 				</ul>
 			</div>
@@ -49,7 +56,10 @@ get_header(); ?>
 
 			foreach ( $students as $user ) :
 
-				?><li itemscope itemtype="http://schema.org/Person" class="listing--profile profile__student col one-fifth">
+				?><li itemscope itemtype="http://schema.org/Person" data-year="<?php socd_year_code(); ?>" data-course="<?php socd_course_code(); ?>" data-campus="" class="listing--profile profile__student col one-fifth">
+					<!--
+						<?php print_r( get_user_meta( $user->data->ID ) ); ?>
+					-->
 					<a href="<?php profile_url(); ?>">
 						<?php echo socd_get_profile_thumbnail(); ?>
 					</a>
