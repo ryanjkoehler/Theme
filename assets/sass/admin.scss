@@ -1,6 +1,11 @@
+@import "compass/css3";
 
-#login h1 {
-	display: none;
+#login h1 a {
+	background: url('../images/logo.png') center center no-repeat;
+	@include background-size(contain);
+	height: 5em;
+	width: 5em;
+	margin: 0 auto 2em;
 }
 
 .login form {
@@ -57,4 +62,3 @@
 		}
 	}
 }
-
