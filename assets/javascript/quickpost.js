@@ -1,7 +1,6 @@
 if( !window.SOCD ){ window.SOCD = {} };
 
 ( function( window, $, config, undefined){
-	console.log( 'SOCD_QP_CONFIG', config );
 
 	var T = {	
 		form: Templates[ 'quickpost--quickpost' ].render.bind( Templates[ 'quickpost--quickpost' ] ),
@@ -100,7 +99,6 @@ if( !window.SOCD ){ window.SOCD = {} };
 				for( var i = 0; i < data.terms[key].length; i++ ){
 					local.push( data.terms[key][i] );
 				}
-				console.log( local );
 				typeaheadData.push({
 					name: data.taxes[key].name,
 					local: local,
@@ -109,11 +107,7 @@ if( !window.SOCD ){ window.SOCD = {} };
 				});
 			}
 
-			console.log( typeaheadData );
-
 			$taxInput.typeahead( typeaheadData );
-
-
 
 		},
 		_initModeUI: function( context ){
@@ -161,16 +155,13 @@ if( !window.SOCD ){ window.SOCD = {} };
 					blog_id: id
 				},
 				function( data ){
-					console.log( 'TAX RESPONSE: ', data );
 					if( typeof callback === 'function' ) callback( data );
 				}
 			).fail( function( err ){
-				console.log('ERROR');
-				console.log( err );
+				console.log('ERROR', err);
 			});
 		},
 		_submit: function( callback ){
-			console.log( 'FORM', Quickpost._form.serialize() );
 			$.post( 
 				Quickpost._config.ajax_url,
 				{
