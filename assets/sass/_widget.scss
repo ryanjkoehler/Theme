@@ -5,6 +5,25 @@
 
 .widget {
 	padding-bottom: 1em;
+	margin-bottom: .5em;	
+	border-bottom: 1px solid darken( $colour_white, 20% );
+	@include fontstack_light;
+	@include font-size( .9 );	
+	&:last-child{
+		border-bottom: none;
+	}
+	.widget--title{
+		@include fontstack_medium;
+		margin-bottom: .5em;
+		@include font-size( 1 );
+	}
+	p{
+		@include font-size( .9 );
+	}
+	
+	a:hover{
+		text-decoration: underline;
+	}
 
 	/**
 	 * Widgets with listings(Categories,Pages, Navigation)
@@ -12,13 +31,28 @@
 	 */
 	.children {
 		padding-left: 1em;
-	}	
+	}
+
+	table{
+		width: 100%;
+	}
 }
 
 
 /**
  * 
  */
+.textwidget{
+	@extend .wysiwyg;
+	@include font-size( .9 );
+}
+
 .widget_nav_menu {
 	@extend .listing__navigation;
+}
+
+.widget_search{
+	label{
+		display: none;
+	}
 }
