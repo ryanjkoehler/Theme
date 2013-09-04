@@ -19,6 +19,8 @@ function socd_setup() {
 	require( get_stylesheet_directory() . '/inc/filters.php' );
 	require( get_stylesheet_directory() . '/inc/template-tags.php' );
 	require( get_stylesheet_directory() . '/inc/main-navigation.php' );
+	//acf
+	require( get_stylesheet_directory() . '/inc/fields/about-course.php' );
 }
 add_action( 'init', 'socd_setup' );
 
