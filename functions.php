@@ -16,8 +16,9 @@ function socd_setup() {
 	require( get_stylesheet_directory() . '/inc/admin.php' );
 	require( get_stylesheet_directory() . '/inc/customizer.php' );
 	require( get_stylesheet_directory() . '/inc/extras.php' );
-	require( get_stylesheet_directory() . '/inc/filters.php' );
+	require( get_stylesheet_directory() . '/inc/filters.php' );	
 	require( get_stylesheet_directory() . '/inc/template-tags.php' );
+	require( get_stylesheet_directory() . '/inc/blog-filter.php' );
 	require( get_stylesheet_directory() . '/inc/main-navigation.php' );
 	//acf
 	require( get_stylesheet_directory() . '/inc/fields/about-course.php' );
@@ -81,6 +82,7 @@ function socd_assets () {
 	wp_enqueue_script( 'socd_notification_center', get_stylesheet_directory_uri() . '/assets/javascript/notification-center.js', array( 'jquery', 'socd_hogan', 'socd_hogan_templates' ), false, true );
 	wp_enqueue_script( 'socd_comments', get_stylesheet_directory_uri() . '/assets/javascript/comments.js', array( 'jquery', 'socd_inline_attach'  ), false, true );
 	wp_enqueue_script( 'socd_listing_filters', get_stylesheet_directory_uri() . '/assets/javascript/listing-filter.js', array( 'jquery' ), false, true );
+	wp_enqueue_script( 'socd_blog_filters', get_stylesheet_directory_uri() . '/assets/javascript/blog-filter.js', array( 'jquery' ), false, true );
 	wp_enqueue_script( 'socd_main', get_stylesheet_directory_uri() . '/assets/javascript/main.js', array( 'jquery', 'modernizr', 'socd', 'socd_viewport', 'socd_inline_attach', 'socd_hogan', 'socd_hogan_templates', 'socd_typeahead', 'socd_states', 'socd_main_navigation', 'socd_notification_center', 'socd_comments', 'socd_listing_filters',  ), false, true );
 
 	// Only used in the registration form
