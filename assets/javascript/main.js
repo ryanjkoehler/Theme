@@ -9,4 +9,6 @@ if( !window.SOCD ){ window.SOCD = {} };
 		SOCD.ListingFilter.init( $('.listing-filter'), $('.listing__profiles') );
 	}
 
+	SOCD.BlogFilter.init( $('.blog-filter'), $('#posts-container'), $('.navigation.stream--paging') );
+
 } )( window, jQuery );

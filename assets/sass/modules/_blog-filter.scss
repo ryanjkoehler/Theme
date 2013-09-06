@@ -2,7 +2,7 @@
 	border-bottom: 1px solid darken( $colour_white, 20% );
 	border-bottom: 1px solid rgba(255,255,255,0.7);
 	padding-bottom: 1em;
-	margin-bottom: .5em;
+	margin-bottom: .5em;	
 }
 
 	.blog-filter--section{
@@ -13,7 +13,9 @@
 	}
 		.blog-filter--section .section-options{
 			li{
-				position: relative;				
+				position: relative;
+				text-transform: capitalize;
+
 				a.active{
 					text-decoration: underline;
 				}
