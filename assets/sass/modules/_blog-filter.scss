@@ -7,6 +7,9 @@
 
 	.blog-filter--section{
 		margin-bottom: 1em;
+		&:last-child{
+			margin-bottom: 0;
+		}
 		h2{
 			@include fontstack_bold;
 		}
@@ -17,7 +20,7 @@
 				text-transform: capitalize;
 
 				a.active{
-					text-decoration: underline;
+					@include fontstack_bold;
 				}
 				.clear{
 					display: none;
