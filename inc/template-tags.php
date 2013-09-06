@@ -429,25 +429,38 @@ function socd_filter_campus() {
 	echo implode( ' ', $output );
 }
 
-function socd_get_vcard( $location ) {
+function socd_get_vcard( $location = false ) {
+	global $location;
 
 	$output = '<div itemscope itemtype="http://schema.org/EducationalOrganization">';
-		$output .= '<div itemscope itemtype="http://schema.org/EducationalOrganization">';
-			$output .= '<span itemprop="name">' . $location['name'] . '</span>';
-			$output .= '<div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">';
+		$output .= '<h2 class="h4 heading--ruled" itemprop="name">' . $location['name'] . '</h2>';
+		$output .= '<div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">';
 			$output .= '<span itemprop="streetAddress">' . $location['street_address'] . '</span>';
-			$output .= '<span itemprop="addressLocality">' . $location['address_locality'] . '</span>,';
+			$output .= '<span itemprop="addressLocality">' . $location['address_locality'] . '</span>, ';
 			$output .= '<span itemprop="addressRegion">' . $location['address_region'] . '</span><br/>';
 			$output .= '<span itemprop="postalCode">' . $location['postal_code'] . '</span>';
 		$output .= '</div>';
+		$output .= '<a href="tel:' . $location['telephone'] . '" itemprop="telephone">' . $location['telephone'] . '</a>';
+
+		$geo = socd_get_coordinates( $location['locations']['coordinates'] );
+
+		if ( count( $geo ) == 2 )
+			$output .='<div itemprop="location" itemscope itemtype="http://schema.org/GeoCordinates"><meta itemprop="latitude" content="' . $geo[0] . '"/><meta itemprop="longitude" content="' . $geo[1] . '"/></div>';
+
 	$output .= '</div>';
+
 
 	return $output;
 }
 
+function socd_get_coordinates( $str ) {
+	if ( !preg_match( '/,/', $str ) ) return array();
+	return explode( ',', $str );
+}
 
-function socd_vcard( $location ) {
-	echo socd_get_vcard( $location );
+
+function socd_vcard() {
+	echo socd_get_vcard();
 }
 
 

@@ -4,6 +4,7 @@
 	var SOCD = window.SOCD;
 
   SOCD.Mapping = {
+    infowindow: null,
     maptypeId: 'socd_style',
     mapSelector: 'homepage--map',
     featureOpts: [
@@ -85,22 +86,42 @@
         console.log( error );
       }
       
+      self.infowindow = new google.maps.InfoWindow({
+          content: ''
+      });
+
       if (self.markers.length) {
         for (var i = 0; i < self.markers.length; i++) {
-          var marker = self.markers[i],
-            coords = marker.locations.coordinates.split(',');
+          var info = self.markers[i],
+              coords = info.locations.coordinates.split(','),
+              mark;
 
-          new google.maps.Marker({
+          mark = new google.maps.Marker({
             position: new google.maps.LatLng( coords[0], coords[1] ),
             map: self.map,
-            title: marker.name
-          })
+            flat: true,
+            title: info.name,
+            html: info.html,
+          });
+
+          console.log(coords[0], coords[1]);
+
+          google.maps.event.addListener(mark, 'click', function() {
+            self.infowindow.setContent( self.infowindowContent( this.html ) );
+            self.infowindow.open( self.map, this );
+          });
         };
       }
 
       self.map.mapTypes.set( SOCD.Mapping.maptypeId, new google.maps.StyledMapType( self.featureOpts, {
         name: "School of Communication Design"
       } ));
-  } };
+    },
+    infowindowContent: function(msg) {
+      return '<div class="homepage--map-iw">' + msg + '</div>';
+    }
 
+  };
+
+  window.SOCD = SOCD;
 })();

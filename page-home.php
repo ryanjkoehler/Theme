@@ -9,7 +9,7 @@ get_header(); ?>
 		<header class="header homepage--header">
 			<h1 class="h1 site--title"><?php bloginfo( 'description' ); ?></h1>
 		</header>
-		<div class="col one-half" style="position: relative; z-index: 1;">
+		<div class="col one-half palm--one-whole" style="position: relative; z-index: 1;">
 			<div class="gw">
 				<div class="col homepage--introduction">
 					<div class="cell colour--dark">
@@ -20,7 +20,7 @@ get_header(); ?>
 						echo apply_filters( 'the_content', $page->post_content ); ?>
 					</div>
 				</div>
-				<div class="col two-thirds">
+				<div class="col two-thirds palm--one-whole">
 					<a href="/gallery" class="homepage--gallery">
 						<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/Joanna_Louise_Bird__BA_(Hons)_Graphic_Design__UCA_Epsom_image.jpg" alt=""/>
 						<div class="cell colour--green">
@@ -31,11 +31,11 @@ get_header(); ?>
 
 			</div>
 		</div><!-- 
-		--><div class="col two-thirds homepage--map-container">
+		--><div class="col two-thirds palm--bigger-than homepage--map-container">
 			<figure id="homepage--map"></figure>
 		</div>
 	</div><div class="gw gw--rtl">
-		<div class="col one-third push--one-sixth">
+		<div class="col one-third push--desk--one-sixth lap--one-half palm--one-whole">
 			<div class="cell colour--red">
 				<h1 class="h2 h2--ruled"><a href="<?php echo get_permalink( get_option( 'page_for_posts') ) ?>">School News</a></h1>
 				<?php 
@@ -73,85 +73,36 @@ get_header(); ?>
 				<?php endif; ?>
 			</div>
 		</div><!-- 
-		--><div class="col one-third">
+		--><div class="col one-third lap--one-half palm--one-whole">
 			<div class="cell colour--blue">
 				<h1 class="h2 h2--ruled">School Events</h1>
 				<ul>
-					<li>
-						<div class="gw">
-							<div class="col one-quarter">
-								<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/white.png" class="avatar" alt=""/>
-							</div><!--
-							--><div class="col three-quarters">
-								<h2 class="h4">Research Conference:</h2>
-								<p>Creative Responses to a Changing&nbsp;World</p>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="gw">
-							<div class="col one-quarter">
-								<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/white.png" class="avatar" alt=""/>
-							</div><!--
-							--><div class="col three-quarters">
-								<h2 class="h4">Lecture Series: Developing Narrative</h2>
-								<p>We’re lucky to have the prolific speaker Lucy Davis at Farnham to talk about her process when developing...</p>
-							</div>
-						</div>
-					</li>
+					<li>Coming Soon&hellip;</li>
 				</ul>
 			</div>
 		</div><!-- 
-		--><div class="col one-sixth">
+		--><div class="col one-sixth lap--one-half palm--one-whole homepage--staff">
 			<div class="cell colour--dark">
 				<h1 class="h2 h2--ruled">School Staff</h1>
-				<?php
-
-				/**
-				 * Randomly Load Four staff members
-				 */
-
-				function socd_get_random_staff( $no_of_staff = 4 ) {
-
-					global $user;
-
-					$staff = get_users( array(
-						'number' 	 => 999,
-						'order_by'   => 'RAND()',
-						'meta_query' => array(
-							array(
-								'key'  	  => 'group',
-								'value'   => 'staff',
-								'compare' => '='
-					) ) ) );
-
-					$output = array();
-
-					if ($staff) {
-
-						shuffle( $staff );
-
-						for ( $i = 0, $max = $no_of_staff; $i < $max; $i++ ) {
-
-							$user = $staff[$i];
-							
-							$output[] = sprintf(
-								'<a href="%1$s" class="col one-half">%2$s</a>',
-								socd_get_profile_url(),
-								socd_get_profile_thumbnail()
-							);
-						} 
-					}
-
-					echo implode( "", $output );
-				}
-
-				socd_get_random_staff();
-
-				?>
+				<?php socd_get_random_staff(); ?>
 			</div>
 		</div><!-- 
-		-->
+		--><?php
+
+		if ( $locations = get_field( 'locations', $post->ID ) ) {
+
+			echo '<ol class="homepage--vcard">';
+		
+			foreach ( $locations as $location ) { ?>
+				<li class="cell colour--white">
+					<?php socd_vcard(); ?>
+				</li>
+				<?php 
+			}
+
+			echo '</ol>';
+		} ?>
+		</div>
 	</div><!-- .gw -->
 </section>
 <?php get_footer();

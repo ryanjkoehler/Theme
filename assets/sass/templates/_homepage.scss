@@ -2,7 +2,11 @@
 
 .homepage--header {
 	height: auto;
-	padding: 4.25em 0;
+	padding: 2em 0;
+	
+	@include breakpoint( $breakpoint_palm ) {
+		padding: 4.25em 0;
+	}
 }
 
 .homepage--introduction {
@@ -37,12 +41,46 @@
 }
 
 .homepage--map-iw {
-	width: 150px;
-	height: 150px;
+	width: 180px;
+	height: 100px;
+	
+	span {
+		display: inline-block;
+		@include fontstack_regular; font-size: 1rem !important;
+	}
 }
 
 @include breakpoint($breakpoint_palm) {
 	#homepage--map {
 		height: 530px;
+	}
+}
+
+.homepage--staff {
+	.one-half {
+		padding-bottom: $grid_padding * .5;
+
+		&:nth-child(even) {
+			padding-right: $grid_padding * .25;
+		}
+
+		&:nth-child(odd) {
+			padding-left: $grid_padding * .25;
+		}
+
+		.name {
+			display: none;
+		}
+	}
+}
+
+.page-template-page-home-php .footer {
+	margin-top: 0;
+}
+
+.homepage--vcard {
+
+	li:last-child {
+		padding-bottom: $grid_padding * 2;
 	}
 }
