@@ -1,17 +1,17 @@
 /* 
 # School of Communication Design
 */
-@import 'vars';
+@import "vars";
 
-@import 'libs/grids';
-@import 'breakpoint';
-@import 'utils';
+@import "libs/grids";
+@import "breakpoint";
+@import "utils";
 
-@import 'compass/reset';
-@import 'compass/css3';
-@import 'formalize'; // Edited Version
+@import "compass/reset";
+@import "compass/css3";
+@import "formalize"; // Edited Version
 
-@import 'layout';
+@import "layout";
 
 // Build Only
 @import "build";
