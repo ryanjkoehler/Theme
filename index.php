@@ -12,13 +12,9 @@ get_header(); ?>
 	</header><!-- .header -->
 	<section class="col--side col--side__left">
 		<div class="cell colour--blue">
-			<?php if( is_noticeboard() ): ?>				
+			<?php if( is_noticeboard() ): ?>
 				<h2 class="h2 h2--ruled">Filter By</h2>
-				<div class="blog-filter">
-					<ul>
-						<?php socd_filter_post_formats(); ?>
-					</ul>
-				</div>
+				<?php socd_blog_filter(); ?>
 			<?php endif; ?>
 			<?php if ( ! dynamic_sidebar( 'left_sidebar' )  ) : ?>
 				<h2 class="h2 h2--ruled">About</h2>

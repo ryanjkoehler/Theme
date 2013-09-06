@@ -11,7 +11,7 @@
 			li{
 				position: relative;				
 				a.active{
-					text-decoration: underline;
+					@include fontstack_bold;
 				}
 				.clear{
 					display: none;
