@@ -1,0 +1,42 @@
+.course--listing {
+	.h4 {
+		margin: 1em 0 .5em;
+
+		&:first-of-type {
+			margin-top: 0;
+		}
+	}
+
+	a {
+		display: block;
+		padding: .15em 0;
+	}
+
+	ul {
+		@extend .listing__navigation;
+		margin: 0 $grid_padding * -1;
+
+		li {
+			@include font-size( .8 );
+			position: relative;
+			padding-left: $grid_padding * 1.75;
+
+			&:before {
+				position: absolute;
+				top: .33em;
+				left: $grid_padding;
+			}
+
+			&:hover {
+				background: #fff;
+				color: red;
+
+				a {
+					color: red !important;
+				}
+			}
+
+		}
+	}
+
+}
