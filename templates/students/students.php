@@ -9,7 +9,7 @@ get_header(); ?>
 <div class="gw">
 	<section>
 		<header class="header">
-			<h1 class="h1 header__title"><?php _e('Course Students', 'socd'); ?></h1>
+			<h1 class="h1 site--title"><?php _e('Course Students', 'socd'); ?></h1>
 		</header>
 		
 		<div class="col one-sixth">
@@ -18,22 +18,23 @@ get_header(); ?>
 				<ul>
 					<li class="listing-filter--section" data-section="year">
 						<h2 class="section-title">Year of Study</h2>
-						<ul class="section-options">
+						<ul class="listing__filter section-options">
 							<?php socd_filter_years_of_study(); ?>
 						</ul>
 					</li>
 					<li class="listing-filter--section" data-section="course">
 						<h2 class="section-title">Course</h2>
-						<ul class="section-options">
+						<ul class="listing__filter section-options">
 							<?php socd_filter_course(); ?>
 						</ul>
 					</li>
+					<!-- 
 					<li class="listing-filter--section" data-section="campus">
 						<h2 class="section-title">Campus</h2>
 						<ul class="section-options">
 							<?php socd_filter_campus(); ?>
 						</ul>
-					</li>
+					</li> -->
 				</ul>
 			</div>
 		</div><!-- 
@@ -56,7 +57,7 @@ get_header(); ?>
 
 			foreach ( $students as $user ) :
 
-				?><li itemscope itemtype="http://schema.org/Person" data-year="<?php socd_year_code(); ?>" data-course="<?php socd_course_code(); ?>" data-campus="" class="listing--profile profile__student col one-fifth">
+				?><li itemscope itemtype="http://schema.org/Person" data-year="<?php socd_year_code(); ?>" data-course="<?php socd_course_code(); ?>" data-campus="" class="listing--profile profile__student col one-fifth" <?php socd_user_match_current_course(); ?>>
 					<!--
 						<?php print_r( get_user_meta( $user->data->ID ) ); ?>
 					-->

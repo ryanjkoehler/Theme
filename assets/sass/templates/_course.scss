@@ -13,30 +13,7 @@
 	}
 
 	ul {
-		@extend .listing__navigation;
-		margin: 0 $grid_padding * -1;
-
-		li {
-			@include font-size( .8 );
-			position: relative;
-			padding-left: $grid_padding * 1.75;
-
-			&:before {
-				position: absolute;
-				top: .33em;
-				left: $grid_padding;
-			}
-
-			&:hover {
-				background: #fff;
-				color: red;
-
-				a {
-					color: red !important;
-				}
-			}
-
-		}
+		@extend .listing__filter;
 	}
 
 }

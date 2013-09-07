@@ -329,7 +329,21 @@ function socd_headshot() {
 	) );
 }
 
+/**
+ * @uses socd_get_profile_field, socd_get_subdomain
+ * @return [type] [description]
+ */
+function socd_user_match_current_course() {
+	global $user;
+	echo socd_get_profile_field('course') !== socd_get_subdomain() ? 'style="display: none;"' : '';
+}
+
+/**
+ * Takes a current user and get's their current course
+ * @return String
+ */
 function socd_course() {
+	global $user;
 	echo socd_course_code_to_course_name( socd_get_profile_field('course') );
 }
 
@@ -384,7 +398,12 @@ function socd_filter_years_of_study() {
 	$output = array();
 
 	foreach ( $filters as $filter ) {
-		$output[] = sprintf( '<li><a href="#%1$s">Year %1$s</a></li>', $filter );
+
+		if ( $filter !== "student" )
+			$output[] = sprintf(
+				'<li><a href="#%1$s">%1$s</a></li>',
+				preg_match('/alumni/', $filter) ? ucfirst( $filter ) : 'Year ' . $filter
+			);
 	}
 
 	echo implode( ' ', $output );
@@ -401,9 +420,10 @@ function socd_filter_course() {
 	$output = array();
 	foreach ( $filters as $filter ) {
 		$output[] = sprintf(
-			'<li><a href="#%1$s">%2$s</a></li>',
+			'<li><a href="#%1$s" class="%3$s">%2$s</a></li>',
 			$filter,
-			socd_course_code_to_course_name( $filter )
+			preg_replace('/(BA|MA|Hons|\(|\))/', '', socd_course_code_to_course_name( $filter ) ),
+			$filter == socd_get_subdomain() ? 'active' : ''
 		);
 	}
 

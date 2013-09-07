@@ -71,7 +71,7 @@ img {
 
 .h2--ruled,
 .heading--ruled {
-	border-top: 1px solid rgba(255,255,255,0.7);
+	border-top: 1px solid;
 	padding: .4375rem 0;
 	display: block;
 }
@@ -236,6 +236,31 @@ strong{
 
 	a {
 		color: inherit;
+	}
+}
+
+.listing__filter {
+	margin: 0 $grid_padding * -1;
+
+	li {
+		@include font-size( .8 );
+		position: relative;
+		padding-left: $grid_padding * 1.75;
+
+		&:before {
+			content: "> " !important;
+			position: absolute;
+			top: .1em;
+			left: $grid_padding;
+		}
+
+		&:hover {
+			background: #fff;
+			color: $colour_red;
+
+			a { color: $colour_red }
+		}
+
 	}
 }
 
