@@ -75,23 +75,44 @@ get_header(); ?>
 
   <p class="fixie"></p>
 
-  <ul class="ul">
-    <li class="fixie"></li>
-    <ul class="fixie"></ul>
-  </ul>
-  <ol class="ol fixie"></ol>
-  <ul class="fixie listing__navigation"></ul>
+  <h1 class="h2">Listings</h1>
 
-  <ul class="listing__courses fixie"></ul>
+  <div class="col one-quarter">
+    <h3 class="h3">Unordered</h3>
+    <ul class="ul">
+      <li class="fixie"></li>
+      <ul class="fixie"></ul>
+    </ul>
+  </div><!-- 
+  --><div class="col one-quarter">
+    <h3 class="h3">Ordered</h3>
+    <ol class="ol fixie"></ol>  
+  </div><!-- 
+  --><div class="col one-quarter">
+    <h3 class="h3">Navigation</h3>
+    <ul class="listing__navigation fixie"></ul>
+  </div><!-- 
+  --><div class="col one-quarter">
+    <h3 class="h3">Filters</h3>
+    <ul class="listing__filter fixie"></ul>
+  </div>
 
 
   <h2 class="h2">Special Cases</h2>
 
-  <div class="header"><h1 class="h1 site--title">Page Title</h1></div>
+  <div class="col one-half">
+    
+    <div class="header">
+      <h1 class="h1 site--title">Page Title</h1>
+    </div>
 
-  <div class="header">
-    <h1 class="h1 site--title">Page Title</h1>
-    <h2 class="blog--title">with Subheading</h2>
+  </div><!-- 
+  --><div class="col one-half">
+    
+    <div class="header">
+      <h1 class="h1 site--title">Page Title</h1>
+      <h2 class="blog--title">with Subheading</h2>
+    </div>
   </div>
 
 </section>

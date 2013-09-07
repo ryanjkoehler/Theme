@@ -11,7 +11,7 @@
 		<article id="post-<?php the_ID(); ?>" class="page h-center">
 
 			<header class="header">
-				<h1 class="h1 header__title">
+				<h1 class="h1 site--title">
 					<?php bloginfo('name'); ?>
 				</h1><!-- .h1.header__title -->
 			</header><!-- .header -->
@@ -21,33 +21,36 @@
 			</figure>
 
 			<div class="gw">
-				<div class="one-half">
+				<div class="col one-half palm--one-whole">
 					<div class="cell colour--dark">
 						<p class="h2"><?php the_field('introduction_text'); ?>
 					</div>
 				</div><!-- 
-			 --><div class="one-half">
+			 --><div class="col one-half palm--one-whole">
 				 	<div class="cell about--gallery">
-				 		<a href="/gallery" class="h2 h2--ruled">View Gallery</a>
+				 		<a href="/gallery" class="h2 heading--ruled"><?php _e('View Gallery', 'socd'); ?></a>
 				 		<img src="<?php echo get_stylesheet_directory_uri(); ?>/demo/surf.jpeg" alt="">
 				 	</div>
 				</div>
 			 	<div class="col">
 				 	<div class="gw">
-					 	<div class="col one-third">
+					 	<div class="col one-third palm--one-whole">
 							<div class="cell colour--white">
-								<h1 class="h2 h2--ruled"><?php the_title(); ?></h1>
+								<h1 class="h2 heading--ruled"><?php the_title(); ?></h1>
 								<div class="wysiwyg">
 									<?php the_content(); ?>
 								</div><!-- .wysiwyg -->
 							</div>	
 						</div><!-- 
-					 --><div class="col one-third push--one-sixth">
-					 	<?php 
-					 		$news_slug =  ( $get_slug = get_category( get_field('news_category') )->slug ) ? $get_slug->slug : 'news';
-					 	?>					 	
+					 --><div class="col one-third palm--one-whole push--desk--one-sixth">
 							<div class="cell colour--blue about--news-feed">
-								<h1 class="h2 h2--ruled"><a href="<?php bloginfo('url') ?>/category/<?php echo $news_slug; ?>">Course News</a></h1>
+							<?php 
+
+								$get_slug = get_category( get_field('news_category') );
+						 		$news_slug = isset( $get_slug->slug ) ? $get_slug->slug : 'news';
+								
+								 ?>
+								<h1 class="h2 heading--ruled"><?php printf('<a href="/category/%1$s">%2$s</a>', $news_slug, __('Course News','socd') ); ?></h1>
 								<?php 
 
 								/**
@@ -55,8 +58,8 @@
 								 *  Load Contents from the Blog's Feed
 								 * 
 								 */
-								
-								$news = new WP_Query( array(
+
+						 		$news = new WP_Query( array(
 									'post_type' => 'post',
 									'category_name' => $news_slug
 								) );
@@ -83,16 +86,33 @@
 								<?php endif; ?>
 							</div>			 	
 						</div><!-- 
-					 --><div class="col one-sixth push--one-sixth">
+					 --><div class="col one-sixth palm--one-whole lap--one-third push--desk--one-sixth">
+							<?php
+
+								$children = get_children( array(
+									'post_parent' 	=> $post->ID,
+									'post_type' 	=> 'page'
+								) );
+
+								if ( is_array( $children ) && count( $children ) ) : ?>
+								<div class="cell colour--white">
+						 			<h2 class="h2 heading--ruled">Explore</h2>
+									<ul class="listing__navigation">
+									<?php 
+									foreach ( $children as $child ) {
+											printf('<li><a href="%1$s">%2$s</a></li>', get_permalink( $child->ID ),$child->post_title );
+										}
+									 ?>
+									</ul>
+								</div>
+							<?php endif; ?>
 							<div class="cell colour--yellow">
-								<h1 class="h2 h2--ruled">Apply to this course</h1>
-								<p>UCAS Code<br/>
-								<b><?php the_field( 'ucas_code' ) ?></b>
-								</p>
+								<h1 class="h2 heading--ruled">Apply to this course</h1>
+								<?php if ( $ucas_code = get_field( 'ucas_code' ) ) printf( '<p>UCAS Code<br/><b>%1$s</b></p>', $ucas_code ); ?>
 								<p>For more info on how to apply, visit our <a href="<?php the_field( 'ucreative_course_page' ); ?>" target="_blank">UCA&nbsp;site</a></p>
 							</div>
 							<div class="cell colour--red course--listing">
-								<h1 class="h2 h2--ruled">Other Courses</h1>
+								<h1 class="h2 heading--ruled"><?php _e( 'Other Courses', 'socd' ); ?></h1>
 								<?php socd_network_listing(); ?>
 							</div>
 						</div><!-- .col.one-sixth -->
