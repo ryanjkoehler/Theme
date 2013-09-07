@@ -257,6 +257,11 @@ strong{
 			margin-bottom: 0;
 		}
 	}
+
+	table {
+		max-width: 100%;
+		width: auto !important;
+	}
 }
 .wysiwyg .wp-caption,
 .wysiwyg img{ 
@@ -285,6 +290,7 @@ strong{
 		@include rem( 'margin-top', .3 );
 	}
 }
+
 
 /**
  *
