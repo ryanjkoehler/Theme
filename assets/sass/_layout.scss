@@ -18,7 +18,7 @@
 	min-height: 100%;
 	@include rem('padding-top', $height_menu );
 
-	@include breakpoint( $breakpoint_palm ) {
+	@include breakpoint( $breakpoint_lap ) {
 		padding: $grid_padding;
 	}
 

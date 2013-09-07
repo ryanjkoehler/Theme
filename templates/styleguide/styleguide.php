@@ -69,9 +69,21 @@ get_header(); ?>
   
   for ( $i=1; $i < 6; $i++ ) {
 
-    printf( '<h%1$d class="h%1$d">Heading %1$d</h%1$d><h%1$d class="h%1$d">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse feugiat, felis eget eleifend porta, mi mi iaculis quam, sit amet pharetra ante massa sed magna.</h%1$d>', $i );
+    printf( '<h%1$d class="h%1$d">Heading %1$d</h%1$d><p class="h%1$d fixie"></p>', $i );
 
   } ?>
+
+  <p class="fixie"></p>
+
+  <ul class="ul">
+    <li class="fixie"></li>
+    <ul class="fixie"></ul>
+  </ul>
+  <ol class="ol fixie"></ol>
+  <ul class="fixie listing__navigation"></ul>
+
+  <ul class="listing__courses fixie"></ul>
+
 
   <h2 class="h2">Special Cases</h2>
 
@@ -87,16 +99,16 @@ get_header(); ?>
 <section>
   <h1 class="h2"><abbr title="What You See Is What You Get">WYSIWYG</abbr> Output</h1>
   <div class="wysiwyg">
-  <p class="fixie"></p>
-  <ul>
-    <li class="fixie"></li>
-    <ul class="fixie"></ul>
-  </ul>
-  <ol class="fixie"></ol>
-  <ul class="fixie listing__navigation"></ul>
+    <p class="fixie"></p>
+    <ul>
+      <li class="fixie"></li>
+      <ul class="fixie"></ul>
+    </ul>
+    <ol class="fixie"></ol>
+    <ul class="fixie listing__navigation"></ul>
 
-  <p class="fixie" data-fixie-clone="2"></p>
-</div>
+    <p class="fixie" data-fixie-clone="2"></p>
+  </div>
 
 </section>
 

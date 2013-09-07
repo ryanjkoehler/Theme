@@ -44,8 +44,7 @@
 						</div><!-- 
 					 --><div class="col one-third push--one-sixth">
 					 	<?php 
-					 		$get_slug = get_category( get_field('news_category') )->slug;
-					 		$news_slug =  ( $get_slug ) ? $get_slug : 'news';
+					 		$news_slug =  ( $get_slug = get_category( get_field('news_category') )->slug ) ? $get_slug->slug : 'news';
 					 	?>					 	
 							<div class="cell colour--blue about--news-feed">
 								<h1 class="h2 h2--ruled"><a href="<?php bloginfo('url') ?>/category/<?php echo $news_slug; ?>">Course News</a></h1>
@@ -92,13 +91,9 @@
 								</p>
 								<p>For more info on how to apply, visit our <a href="<?php the_field( 'ucreative_course_page' ); ?>" target="_blank">UCA&nbsp;site</a></p>
 							</div>
-							<div class="cell colour--red">
-								<h1 class="h2 h2--ruled">Related Courses</h1>
-								<ul class="listing__navigation">
-									<li><a href="#">Course 1</a></li>
-									<li><a href="#">Course 2</a></li>
-									<li><a href="#">Course 3</a></li>
-								</ul>
+							<div class="cell colour--red course--listing">
+								<h1 class="h2 h2--ruled">Other Courses</h1>
+								<?php socd_network_listing(); ?>
 							</div>
 						</div><!-- .col.one-sixth -->
 			 		</div><!-- .gw -->

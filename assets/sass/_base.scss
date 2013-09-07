@@ -38,11 +38,6 @@ img {
 	margin: 0.4375rem 0;
 	line-height: 1.17;
 }
-	.h2--ruled {
-		border-top: 1px solid rgba(255,255,255,0.7);
-		padding: .4375rem 0;
-		display: block;
-	}
 
 .wysiwyg h2{
 	@include fontstack_medium;
@@ -72,6 +67,13 @@ img {
 .h5,
 .h6 {
 	line-height: 1.33;	
+}
+
+.h2--ruled,
+.heading--ruled {
+	border-top: 1px solid rgba(255,255,255,0.7);
+	padding: .4375rem 0;
+	display: block;
 }
 
 p {
@@ -236,6 +238,7 @@ strong{
 		color: inherit;
 	}
 }
+
 
 /* 
 *	WYSIWYG output defaults

@@ -16,6 +16,7 @@ $breakpoint-no-query-fallbacks: true;
 @import "compass/css3";
 @import "formalize"; // Edited Version
 
+
 @import "layout";
 
 // Build Only
@@ -23,6 +24,7 @@ $breakpoint-no-query-fallbacks: true;
 
 @import "base";
 
+@import "icons";
 @import "component";
 @import "widget";
 @import "colours";
@@ -35,6 +37,9 @@ $breakpoint-no-query-fallbacks: true;
 
 @import "modules/_header";
 @import "modules/_profile-listing";
+@import "modules/_search-listing";
+@import "modules/_listing-filter";
+@import "modules/_blog-filter";
 @import "modules/_footer";
 
 @import "notifications";
@@ -46,7 +51,9 @@ $breakpoint-no-query-fallbacks: true;
 @import "helpers";
 
 // Templates
+@import "templates/_course";
 @import "templates/_homepage";
+@import "templates/_search";
 @import "templates/_page";
 @import "templates/_post";
 @import "templates/_profile";

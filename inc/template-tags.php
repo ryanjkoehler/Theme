@@ -502,3 +502,38 @@ function socd_get_random_staff( $no_of_staff = 4 ) {
 
 	echo implode( '', $output );
 }
+
+
+
+/**
+ * @uses socd_get_grouped_networks
+ * @return HTML Output
+ */
+function socd_network_listing() {
+		
+	$listing = socd_get_grouped_networks();
+
+	$titles = array(
+		'MA' => 'MA',
+		'BA' => 'BA (Hons)'
+	);
+
+	foreach ( $listing as $label => $list ) { ?>
+		<h3 class="h4"><?php echo $titles[ $label ]; ?></h3>
+		<ul class="listing__courses">
+			<?php
+
+
+			foreach ( $list as $course ) {
+
+				if ( $course->domain != preg_replace('/https?:\/\//', '', get_bloginfo('wpurl') ) )
+					printf('<li><a href="%1$s">%2$s</a></li>',
+						'http://' . $course->domain,
+						str_replace( $titles[ $label ], '', $course->site_name )
+					);
+			} ?>
+		</ul><?php 
+	}
+
+	return $listing;
+}

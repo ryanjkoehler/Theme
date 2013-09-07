@@ -45,9 +45,10 @@
 @import "helpers";
 
 // Templates
+@import "templates/_course";
 @import "templates/_homepage";
+@import "templates/_search";
 @import "templates/_page";
 @import "templates/_post";
 @import "templates/_profile";
 @import "templates/_signup";
-@import "templates/_search";

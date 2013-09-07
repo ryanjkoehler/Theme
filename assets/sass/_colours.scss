@@ -62,7 +62,8 @@
 	background-color: $colour_white;
 	color: #000;
 
-	.h2--ruled {
+	.h2--ruled,
+	.heading--ruled {
 		border-color: darken($colour_white, 20);
 	}
 }
@@ -70,7 +71,8 @@
 .colour--light-grey {
 	background-color: $colour_light;
 
-	.h2--ruled {
+	.h2--ruled,
+	.heading--ruled {
 		border-color: darken($colour_light, 20);
 	}
 

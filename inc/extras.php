@@ -27,7 +27,6 @@ function get_post_parent_id ( $post_id = false ) {
 function socd_get_networks() {
 	global $wpdb;
 
-
 	$query = "SELECT {$wpdb->site}.*,
 			sm1.meta_value as site_name,
 			sm2.meta_value as site_admins,
@@ -49,10 +48,32 @@ function socd_get_networks() {
 		ON
 			sm2.meta_key = 'site_admins' AND
 			sm2.site_id = {$wpdb->site}.id
-		$searchConditions
 		GROUP BY {$wpdb->site}.id";
 
-	$networks = $wpdb->get_results($query);
+	$networks = $wpdb->get_results( $query );
 
 	return $networks;
+}
+
+/**
+ * 
+ * @uses  socd_get_networks
+ * @return [type] [description]
+ */
+function socd_get_grouped_networks() {
+
+	$networks = socd_get_networks();
+
+	$lists = array(
+		'BA' => array(),
+		'MA' => array()
+	);
+
+	foreach ( $networks as $network ) {
+		if ( preg_match( '/^(BA|MA)/', $network->site_name, $matches ) ) {
+			array_push( $lists[ $matches[0] ], $network );
+		}
+	}
+
+	return $lists;
 }
