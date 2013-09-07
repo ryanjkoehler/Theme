@@ -33,6 +33,7 @@ function socd_admin_styles() {
 	wp_enqueue_style( 'admin_css', get_template_directory_uri() . '/assets/stylesheets/admin.css' );
 }
 add_filter( 'admin_head', 'socd_admin_styles' );
+add_filter( 'login_head', 'socd_admin_styles' );
 
 function socd_admin_footer() {
 	printf(
