@@ -7,9 +7,9 @@
  * @package SOCD
  */
 ?><article class="gw gw--rtl stream--article article">
+	<?php socd_post_thumbnail(); ?>
 	<div class="col five-sixths">
 		<header class="article--header">
-			<?php the_post_thumbnail(); ?>
 			<h1 class="h2">
 				<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 			</h1>

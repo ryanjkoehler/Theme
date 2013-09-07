@@ -537,3 +537,14 @@ function socd_network_listing() {
 
 	return $listing;
 }
+
+
+function socd_post_thumbnail() {
+	global $post;
+
+	if ( ! has_post_thumbnail() ) return false;
+
+	?><figure class="article--thumbnail">
+		<?php the_post_thumbnail( false, array( 'class' => '' ) ); ?>
+	</figure><?php 
+}

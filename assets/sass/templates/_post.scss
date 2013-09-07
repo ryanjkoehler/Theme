@@ -1,3 +1,13 @@
+.article--thumbnail {
+	$margin-negative: $grid_padding * -1;
+	margin: $margin-negative $margin-negative $grid_padding $margin-negative;
+
+	img {
+		width: 100%;
+		height: auto;
+	}
+}
+
 .article--header .h2 {
 	margin-top: 0;
 }
