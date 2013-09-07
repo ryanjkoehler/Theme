@@ -5,6 +5,7 @@
 (function() {
 	var SOCD = window.SOCD || {};
 
+	SOCD.Config = SOCD.Config || {};
 	SOCD.breakpoints = [
 		34 // Palm
 	];
