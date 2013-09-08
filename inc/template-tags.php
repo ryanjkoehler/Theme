@@ -5,7 +5,7 @@
  * @package  socd
  */
 
-function socd_body_class($classes) {
+function socd_body_class( $classes ) {
 	$options = get_option('socd_theme_options');
 
 	if ($options['blog_type']) {
@@ -14,9 +14,17 @@ function socd_body_class($classes) {
 
 	return $classes;
 } 
-add_filter('body_class', 'socd_body_class');
+add_filter( 'body_class', 'socd_body_class' );
 
-
+function socd_post_class( $classes ) {
+	global $post;
+	
+	if ( has_post_thumbnail() )
+		$classes[] = 'article__w-thumbnail';
+	
+	return $classes;
+}
+add_filter( 'post_class', 'socd_post_class' );
 
 /**
  * Helper function to get values out of the themes'
@@ -399,7 +407,7 @@ function socd_filter_years_of_study() {
 
 	foreach ( $filters as $filter ) {
 
-		if ( $filter !== "student" )
+		if ( $filter !== "student")
 			$output[] = sprintf(
 				'<li><a href="#%1$s">%1$s</a></li>',
 				preg_match('/alumni/', $filter) ? ucfirst( $filter ) : 'Year ' . $filter
@@ -418,13 +426,16 @@ function socd_filter_course() {
 	$filters = get_filters('course');
 	
 	$output = array();
+
 	foreach ( $filters as $filter ) {
-		$output[] = sprintf(
-			'<li><a href="#%1$s" class="%3$s">%2$s</a></li>',
-			$filter,
-			preg_replace('/(BA|MA|Hons|\(|\))/', '', socd_course_code_to_course_name( $filter ) ),
-			$filter == socd_get_subdomain() ? 'active' : ''
-		);
+
+		if ( $course_name = socd_course_code_to_course_name( $filter ) )
+			$output[] = sprintf(
+				'<li><a href="#%1$s" class="%3$s">%2$s</a></li>',
+				$filter,
+				preg_replace('/(BA|MA|Hons|\(|\))/', '', $course_name ),
+				$filter == socd_get_subdomain() ? 'active' : ''
+			);
 	}
 
 	echo implode( ' ', $output );

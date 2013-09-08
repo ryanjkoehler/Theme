@@ -46,13 +46,20 @@
 }
 
 .stream--article {
-	border-top: 1px solid red;
+	border-top: 1px solid $colour_red;
 	padding: 1.4rem 0;
 
+	&.article__w-thumbnail,
 	&:first-child {
 		border-top: 0;
 		padding-top: 0;
 	}
+	
+	&.article__w-thumbnail {
+		margin-top: $grid_padding;
+	}
+
+
 	.article--header{
 		@include rem( 'padding-bottom', 1.4 );
 		img{
