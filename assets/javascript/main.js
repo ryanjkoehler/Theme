@@ -8,7 +8,13 @@ if( !window.SOCD ){ window.SOCD = {} };
 		console.log( 'profiles' );
 		SOCD.ListingFilter.init( $('.listing-filter'), $('.listing__profiles') );
 	}
-
-	SOCD.BlogFilter.init( $('.blog-filter'), $('#posts-container'), $('.navigation.stream--paging') );
+	if( $('.blog-filter').length > 0 ){
+		SOCD.BlogFilter.init( $('.blog-filter'), $('#posts-container'), $('.navigation.stream--paging') );
+	}
+	if( $('.search-form').length > 0 ){
+		$('.search-form').each( function(){
+			SOCD.SearchForm( $(this) );
+		});
+	}
 
 } )( window, jQuery );
