@@ -8,7 +8,7 @@
  */
 ?><article class="gw gw--rtl stream--article article">
 	<?php socd_post_thumbnail(); ?>
-	<div class="col five-sixths">
+	<div class="col four-fifths">
 		<header class="article--header">
 			<h1 class="h2">
 				<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
@@ -18,7 +18,7 @@
 			<?php the_content( 'Read more' ); ?>
 		</div>
 	</div><!--
-	--><aside class="col one-sixth article--meta"> 
+	--><aside class="col one-fifth article--meta"> 
 		<?php socd_posted_on(); ?>
 		<?php //?>
 		<?php edit_post_link( 'Edit', '<span class="admin">', '</span>' ); ?>

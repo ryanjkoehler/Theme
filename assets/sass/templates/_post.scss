@@ -39,7 +39,7 @@
 
 .entry-date{
 	display: block;	
-	
+	@include rem( margin-bottom, 1.4 );
 	.date{
 		display: block;
 		@include fontstack_medium;
@@ -53,7 +53,6 @@
 .post_format{
 	display: block;
 	height: 0;
-	@include rem( margin-top, 1.4 );
 	@include rem( margin-bottom, 1.4 );
 	overflow: hidden;
 	padding-top: 2.5em;
