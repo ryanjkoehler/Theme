@@ -61,7 +61,7 @@
 
 
 	.article--header{
-		@include rem( 'padding-bottom', 1.4 );
+		@include rem( 'padding-bottom', 0.4 );
 		img{
 			@include rem( 'margin-bottom', .5 );
 		}	
@@ -77,7 +77,7 @@
 			.date{
 				display: block;
 				@include fontstack_medium;
-				margin-top: .5em;
+				@include rem( margin-top, 0.2 );	
 			}
 			.time{
 				display: block;	

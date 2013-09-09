@@ -26,7 +26,8 @@ img {
 .h1 {
 	@include fontstack_bold;
 	@include font-size(1.85);
-	margin: 0.4375rem 0;
+	margin: 0;
+	@include rem( margin-bottom, 0.875 );
 	display: inline-block;
 	line-height: 1.19;
 }
@@ -35,7 +36,8 @@ img {
 .wysiwyg h1 {
 	@include fontstack_bold;
 	@include font-size(1.25);
-	margin: 0.4375rem 0;
+	margin: 0;
+	@include rem( margin-bottom, 0.875 );
 	line-height: 1.17;
 }
 
@@ -61,7 +63,8 @@ img {
 .wysiwyg h6 {
 	@include fontstack_bold;
 	line-height: 1.33;
-	margin: 0.4375rem 0 0.4375rem * 2;
+	margin: 0;
+	@include rem( margin-bottom, 0.875 );
 }
 
 .h5,
@@ -78,7 +81,7 @@ img {
 
 p {
 	@include font-size(1);
-	margin: 0 0 1em;
+	margin: 0 0 0.875em;
 	&:last-child{
 		margin: 0;
 	}

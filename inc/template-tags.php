@@ -244,6 +244,10 @@ function socd_blog_url() {
 	return get_option('page_on_front') > 0 ? get_permalink( get_bloginfo('page_for_posts') ) : get_bloginfo( 'wpurl' );
 }
 
+function socd_staff_page_url(){
+	echo get_bloginfo( 'wpurl' ) . '/staff';
+}
+
 function socd_get_profile_url( $user = false ) {
 	if ( !$user ) {
 		global $user;
