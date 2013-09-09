@@ -20,6 +20,7 @@
 	</div><!--
 	--><aside class="col one-sixth article--meta"> 
 		<?php socd_posted_on(); ?>
+		<?php //?>
 		<?php edit_post_link( 'Edit', '<span class="admin">', '</span>' ); ?>
 	</aside>
 </article>

@@ -93,17 +93,27 @@ function socd_get_subdomain() {
 }
 
 function socd_posted_on() {
-	printf( __( '<a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s" pubdate><span class="date">%5$s</span><span class="time">%4$s</span></time></a><span class="byline">Author<br/><span class="author vcard"><a class="url fn n" href="%7$s" title="%8$s" rel="author">%9$s</a></span></span>', 'dj' ),
+	printf( __( '<a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s" pubdate><span class="date">%5$s</span><span class="time">%4$s</span></time></a>%7$s<span class="byline">Author<br/><span class="author vcard"><a class="url fn n" href="%8$s" title="%9$s" rel="author">%10$s</a></span></span>', 'dj' ),
 		esc_url( get_permalink() ),
 		esc_attr( get_the_time() ),
 		esc_attr( get_the_date( 'c' ) ),
 		esc_html( get_the_date( 'H:i' ) ),
 		esc_html( get_the_date( 'j M y') ),
 		esc_html( get_the_date( 'Y') ),
+		socd_get_post_format(),
 		esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
 		esc_attr( sprintf( __( 'View all posts by %s', 'dj' ), get_the_author() ) ),
 		esc_html( get_the_author() )
 	);
+}
+
+function socd_get_post_format(){
+	if( get_post_format() ){
+		return sprintf( '<span class="post_format post_format__%1$s">%1$s</span>', get_post_format() );
+	}
+}
+function socd_post_format(){
+	echo socd_get_post_format(); 
 }
 
 /**
