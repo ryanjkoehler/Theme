@@ -163,18 +163,22 @@
 		@include rem( 'left', -1.4 );
 		top: 0;		
 	}
+	.must-log-in{
+		@include font-size( .8 );
+		@include rem( 'margin-bottom', 1.3 );
+		@include rem( 'margin-left', 5.4 );	
+		@include rem( 'padding-bottom', .5 );
+		@include rem( 'padding-top', .5 );
+	}		
 	#commentform{
 		.required{
 			color: $colour_red;
 		}
 		.logged-in-as,
 		.comment-notes{
-			@include font-size( .8 );
-			@include rem( 'margin-bottom', 1.3 );
-			@include rem( 'margin-left', 5.4 );	
-			@include rem( 'padding-bottom', .5 );
-			@include rem( 'padding-top', .5 );
-		}		
+			@extend .must-log-in;
+		}
+
 		
 		label[for="comment"]{
 			display: none;
