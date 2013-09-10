@@ -6,12 +6,18 @@
  * 
  * @package SOCD
  */
-?><article class="gw gw--rtl stream--article article">
+?><article class="gw gw--rtl stream--article article<?php echo ( $f = get_post_format() ) ? ' article__format-' . $f : ''; ?>">
 	<?php socd_post_thumbnail(); ?>
 	<div class="col four-fifths">
 		<header class="article--header">
 			<h1 class="h2">
-				<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+				<?php if( get_post_format() == 'link' && $href = get_post_meta( get_the_ID(), 'href', true ) ): ?>
+					<a href="<?php echo $href; ?>">
+				<?php else: ?>
+					<a href="<?php the_permalink(); ?>">
+				<?php endif; ?>
+					<?php the_title(); ?>
+				</a>
 			</h1>
 		</header>
 		<div class="wysiwyg">
@@ -20,7 +26,6 @@
 	</div><!--
 	--><aside class="col one-fifth article--meta"> 
 		<?php socd_posted_on(); ?>
-		<?php //?>
 		<?php edit_post_link( 'Edit', '<span class="admin">', '</span>' ); ?>
 	</aside>
 </article>

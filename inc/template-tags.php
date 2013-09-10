@@ -100,19 +100,19 @@ function socd_posted_on() {
 		esc_html( get_the_date( 'H:i' ) ),
 		esc_html( get_the_date( 'j M y') ),
 		esc_html( get_the_date( 'Y') ),
-		socd_get_post_format(),
+		socd_get_post_format_icon(),
 		esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
 		esc_attr( sprintf( __( 'View all posts by %s', 'dj' ), get_the_author() ) ),
 		esc_html( get_the_author() )
 	);
 }
 
-function socd_get_post_format(){
+function socd_get_post_format_icon(){
 	if( get_post_format() ){
 		return sprintf( '<span class="post_format post_format__%1$s">%1$s</span>', get_post_format() );
 	}
 }
-function socd_post_format(){
+function socd_post_format_icon(){
 	echo socd_get_post_format(); 
 }
 

@@ -18,4 +18,9 @@ if( !window.SOCD ){ window.SOCD = {} };
 		});
 	}
 
+	if( $( '.stream--article' ).length > 0  ){
+		console.log( 'fitVids' );
+		$( '.col--stream' ).fitVids();
+	}
+
 } )( window, jQuery );
