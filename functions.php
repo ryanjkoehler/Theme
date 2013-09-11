@@ -152,6 +152,23 @@ function remove_admin_bar_styling() {
 add_action( 'wp_head', 'remove_admin_bar_styling', 1 );
 
 /**
+ * Remove useless widgets
+ */
+function socd_unregister_widgets(){
+	// Default WP widgets
+	unregister_widget( 'WP_Widget_Search' );
+	unregister_widget( 'WP_Widget_Calendar' );
+	unregister_widget( 'WP_Widget_Meta' );
+	unregister_widget( 'WP_Widget_Archives' );
+	unregister_widget( 'WP_Widget_Tag_Cloud' );
+	// Plugin Widgets
+	unregister_widget( 'akismet_widget' );
+	unregister_widget( 'wpe_widget_powered_by' );
+}
+
+add_action('widgets_init', 'socd_unregister_widgets' );
+
+/**
  * Register our sidebars and widetized areas
  * 
  */
@@ -163,8 +180,7 @@ function socd_widets_init() {
 		'after_widget'  => '</div>',
 		'before_title'  => '<h2 class="widget--title">',
 		'after_title'  => '</h2>'
-	) );
-
+	) );	
 	register_sidebar( array(
 		'name' => 'Right Sidebar',
 		'id'   => 'blog_sidebar',
