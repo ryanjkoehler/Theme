@@ -30,7 +30,7 @@
 		z-index: 10;
 	}
 	.main-navigation-container__mobile-toggle{
-		background: red;
+		background: $colour_red;
 		display: block;
 		left: 0;
 		position: fixed;
@@ -95,9 +95,11 @@
 		color: $colour_background;
 		@include rem( padding-left, 1 );
 		@include rem( padding-right, 1 ); 
+		@include transition(.2s ease text-indent);
 
 		&:hover{
-			color: $colour_link;
+			color: $colour_white;
+			text-indent: .25em;
 		}
 
 		// remove external or any link iconography
