@@ -12,19 +12,22 @@
 	};
 
 	try {
+
 		yepnope([
 			{
-				test: SOCD.Viewport.isBiggerThan( 380 ),
+				test: (SOCD.Viewport.isBiggerThan( 380 ) && $('#homepage--map').length > 0),
 				yep: [
 					'http://socd.loc/wp-content/themes/socd/assets/javascript/maps.js'
 				],
-				complete: function() {
+				callback: function() {
 					SOCD.Mapping.init();
 				}
 			}
 		]);
-	} catch (e) {
-		console.log("Yepnope not available");
+
+	} catch( e ) {
+		console.log( e, 'Error loading maps' );
 	}
+	
 
 })(window.SOCD);
