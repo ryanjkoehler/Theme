@@ -8,20 +8,49 @@
 
 }
 
+$avatar_size: 110px;
+
 .profile--wrap {
 	position: relative;
-
+	
 	div {
 		position: relative;
 		z-index: 1;
 	}
 
+	.heading--ruled, .h4 {
+		padding-bottom: 0;
+		margin-bottom: 0;
+	}
+
+	header {
+		@include breakpoint( $breakpoint_palm_max ) {
+			padding-right: $avatar_size * 1.1;
+			min-height: $avatar_size * 1.1;
+		}
+	}
+
+	.h3 {
+		margin-bottom: 1em;
+	}
+
 	.profile--headshot {
-		position: absolute;
-		top: 0;
-		right: 11%;
-		z-index: 0;
-		width: 72.2%; // 100% / 18 * 13
+		@include breakpoint( $breakpoint_palm_max ) {
+			position: absolute;
+			top: $grid_padding * 1.25;
+			right: .7em;
+			z-index: 1;
+			height: $avatar_size;
+			width: $avatar_size;
+		}
+
+		@include breakpoint( $breakpoint_desk ) {
+			position: absolute;
+			top: 0;
+			right: 11%;
+			z-index: 0;
+			width: auto;
+		}
 	}
 	
 	.profile--quick {

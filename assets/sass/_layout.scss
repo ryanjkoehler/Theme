@@ -15,12 +15,12 @@
 	margin: 0 auto;
 	width: 100%;
 	max-width: $size_grid_width;
-	min-height: 100%;
-
+	
 //	@include rem('padding-top', $height_menu );
 
 	@include breakpoint( $breakpoint_lap ) {
-		padding: $grid_padding;
+		padding: 0 $grid_padding;
+		min-height: 100%;
 	}
 
 	.lt-ie9 & {
