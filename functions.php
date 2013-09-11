@@ -195,6 +195,31 @@ function socd_unregister_widgets(){
 
 add_action('widgets_init', 'socd_unregister_widgets' );
 
+function socd_default_widgets(){
+	$id = rand( 20, 100 );
+
+ 	$categories_args = array(
+		 $id => array(
+			'title' => '',
+			'count'	=> 0,
+			'hierarchical' => 0,
+			'dropdown'	=> 0
+		),
+		 '_multiwidget' => true
+	);
+ 	
+ 	$widgets_args = array( 
+ 		'left_sidebar' => array(
+ 			'categories-' . $id
+ 		)
+ 	);
+
+ 	update_option( 'widget_categories', $categories_args );
+ 	update_option( 'sidebars_widgets', $widgets_args );
+}
+
+add_action( 'after_switch_theme', 'socd_default_widgets' );
+
 /**
  * Create various menus
  */
