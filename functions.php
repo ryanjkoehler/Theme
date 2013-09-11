@@ -648,12 +648,12 @@ add_action( 'wp_ajax_socd_delete', 'socd_ci_ajax_delete' );
  * 
  * 
  */
-if ( !function_exists('get_field') ) {
-	function get_field( $field_label = false, $post_id = false ) {
-		return false;
-	}
+// if ( !function_exists('get_field') ) {
+// 	function get_field( $field_label = false, $post_id = false ) {
+// 		return false;
+// 	}
 
-	function the_field( $field_label = false, $post_id = false ) {
-		return false;
-	}
-}
+// 	function the_field( $field_label = false, $post_id = false ) {
+// 		return false;
+// 	}
+// }
