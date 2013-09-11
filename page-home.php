@@ -59,9 +59,9 @@ get_header(); ?>
 										<?php echo get_the_date("d.m"); ?>
 									</time><!-- 
 								 --><div class="col four-fifths">
-								 		<h2 class="h4 post--title"><?php the_title(); ?></h2>
+								 		<h2 class="h4 post--title"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
 								 		<?php the_excerpt(); ?>
-								 		<a href="<?php the_permalink(); ?>">Read More</a>
+								 		<a href="<?php the_permalink(); ?>" class="more-link">Read More</a>
 									</div><!-- .col.four-fifths -->
 								</article>
 							</li>
@@ -83,7 +83,7 @@ get_header(); ?>
 		</div><!-- 
 		--><div class="col one-sixth lap--one-half palm--one-whole homepage--staff">
 			<div class="cell colour--dark">
-				<h1 class="h2 h2--ruled">School Staff</h1>
+				<h1 class="h2 h2--ruled"><a href="<?php socd_staff_page_url(); ?>">School Staff</a></h1>
 				<?php socd_get_random_staff(); ?>
 			</div>
 		</div><!-- 

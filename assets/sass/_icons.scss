@@ -70,6 +70,14 @@
 	content: '\f122';
 }
 
+.search__submit:before{
+	@extend .dashicon;
+	content: '\f179';
+}
+.search__clear:before{
+	@extend .dashicon;
+	content: '\f158';
+}
 
 .no-icon:before{
 	content: '';

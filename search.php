@@ -43,10 +43,14 @@ get_header(); ?>
 				 				),
 				 				ARRAY_N
 			 				);
-			 				$src = $images[0]->guid;
+			 				if( count( $images ) ):
+			 					$src = $images[0]->guid;
 			 			?>
 							<img src="<?php echo $src; ?>" />
-			 			<?php endif; ?>
+			 			<?php 
+			 				endif;
+			 			endif; 
+			 			?>
 
 						<?php 
 							if( has_post_format( array( 'quote', 'link' ) ) ){
