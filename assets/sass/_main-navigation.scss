@@ -1,7 +1,7 @@
 #wpadminbar,
 .main-navigation-container{	
 	width: 100%;
-	min-height: 100%;
+	@include rem( 'min-height', $height_menu );
 	position: fixed;
 	top: 0;
 	z-index: 10;
@@ -13,59 +13,31 @@
 	}
 
 	.main-navigation-container__fixed-size{
-		left: 100%;
-		min-height: 100%;
-		position: absolute;
+		z-index: 10;			
 		top: 0;
+		left: 0;
 		width: 100%;
+		position: static;
 	}
 	.main-navigation-container__openable{
 		display: none;
-		min-height: 100%;
 		position: fixed;
 		right: 0;
+		top: 0;		
+		display: block;
+		height: 100%;		
+		max-height: 0;
+		min-height: 0;
+		position: static;
+		z-index: 9;			
 		top: 0;
 		width: 100%;
-		z-index: 10;
-	}
-	.main-navigation-container__mobile-toggle{
-		background: $colour_red;
-		display: block;
-		left: 0;
-		position: fixed;
-		top: 0;
-		@include rem( 'height', $height_menu );
-		@include rem( 'width', $height_menu );
-	}
-	@include breakpoint($breakpoint_palm) {	
-		@include rem( 'min-height', $height_menu );
-		.main-navigation-container__fixed-size{
-			z-index: 10;			
-			top: 0;
-			left: 0;
-			width: 100%;
-			position: static;
-		}
-		.main-navigation-container__openable{
-			display: block;
-			height: 100%;
-			height: 100%;
-			max-height: 0;
+		overflow: hidden;
+		@include transition( max-height .5s ease-in-out, min-height .5s ease-in-out );
+		&.open{
+			height: auto;
 			min-height: 0;
-			position: static;
-			z-index: 9;			
-			top: 0;
-			width: 100%;
-			overflow: hidden;
-			@include transition( max-height .5s ease-in-out, min-height .5s ease-in-out );
-			&.open{
-				height: auto;
-				min-height: 0;
-				max-height: 500em; //this is a high value to ensure that it will spring open
-			}
-		}
-		.main-navigation-container__mobile-toggle{
-			display: none;
+			max-height: 500em; //this is a high value to ensure that it will spring open
 		}
 	}
 }
@@ -108,6 +80,7 @@
 		}
 	}
 
+
 	.admin-bar-search,
 	.main-navigation__menu-item--flexible{
 		-webkit-box-flex: 1;
@@ -133,15 +106,7 @@
 			max-width: 0;
 		}
 	}
-	&.typeahead-open{
-		.main-navigation__menu-item--breadcrumb{
-			max-width: 0;
-		}
-		.main-navigation__menu-item--breadcrumb.main-navigation__menu-item--root{
-			max-width: 400px;
-		}
-	}
-
+	
 	.menupop,
 	.main-navigation__menu-item--dropdown {
 		position: relative;
@@ -223,6 +188,7 @@
 		form{
 			height: 100%;
 		}
+		.adminbar-input,
 		.site-search__input{
 			color: $colour_background_dark;
 			@include fontstack_medium;	
@@ -243,89 +209,6 @@
 			width: 0;
 		}
 	}
-
-	@include breakpoint( $breakpoint_palm_max ) {
-		display: block;
-		//@include rem( 'line-height', 1.4 );
-		@include rem( 'padding-top', .5 );
-		@include rem( 'padding-bottom', .5 );
-		height: auto;
-
-		.main-navigation__menu-item{
-			background: $colour_background_dark;
-			border-bottom: 1px solid lighten( $colour_dark, 10% );
-			@include rem( 'padding-left', 1 );
-			@include rem( 'padding-right', 1 );
-			@include rem( 'padding-top', .5 );
-			@include rem( 'padding-bottom', .5 );
-			.title{ 
-				padding: 0;
-			}
-			.drop,
-			&:nth-child( 2 ) .drop,
-			&:nth-child( 3 ) .drop {
-				@include rem( 'margin-top', .4 );
-				background: transparent;
-			}
-		}
-		.main-navigation__menu-item:nth-child( 2 ),
-		.main-navigation__menu-item:nth-child( 3 ){
-			background: $colour_background_dark;
-		}
-		
-		.main-navigation__menu-item--dropdown{
-			.drop{
-				background: transparent;
-				display: block;
-				height: auto;
-				padding: 0;
-				position: relative;
-				top: 0;
-			}
-			&.active,
-			&:hover{
-				.drop{
-					padding-top: 0;
-					padding-bottom: 0;
-				}
-			}
-		}
-
-		.main-navigation__menu-item--root{
-			.drop{
-				display: none;
-			}
-		}
-
-		.main-navigation__menu-item--search{
-			border-bottom: none;
-			@include rem( 'height', $height_menu );
-			left: 0;
-			position: fixed;
-			top: 0;		
-			width: 100%;
-			padding: 0;				
-			&.main-navigation__menu-item--flexible{
-				@include rem( 'padding-left', $height_menu );
-				@include rem( 'padding-right', $height_menu );
-			}
-		}
-
-		.main-navigation__menu-item--quickpost{
-			@include rem( 'height', $height_menu );
-			position: fixed;
-			right: 0;
-			top: 0;
-			@include rem( 'width', $height_menu );
-		}
-
-		.main-navigation__menu-item--profile{
-			border-bottom: none;
-			.avatar{
-				display: none;
-			}
-		}
-	} //end breakpoint: $breakpoint_palm_max
 }
 
 /**
@@ -416,13 +299,20 @@ body.logged-in{
 	}
 }
 
+.admin-bar-search,
 .site-search{
-	width: 100%;	
+	width: 100%;
+	.ab-item,
+	#adminbarsearch{
+		height: 100%;
+	}
+
 	.site-search__input{
 		height: 100%;
 		outline: none;
 		border: none;
 		background-color: #FFFFFF;
+		@include rem( 'height', $height_menu );
 		padding: 0 1em;
 		margin: 0;
 		font-size: 1em;		
@@ -430,7 +320,7 @@ body.logged-in{
 	}
 	.twitter-typeahead{
 		width: 100%;
-		height: 100%;
+		@include rem( 'height', $height_menu );
 		vertical-align: top;
 		a{
 			color: $colour_black;
