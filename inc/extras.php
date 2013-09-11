@@ -77,3 +77,9 @@ function socd_get_grouped_networks() {
 
 	return $lists;
 }
+
+function socd_content_filter( $content ) {
+	return preg_replace('/<p>\\s*?(<a .*?><img.*?><\\/a>|<img.*?>)?\\s*<\\/p>/s', '\1', $content);
+}
+
+add_filter( 'the_content', 'socd_content_filter' );
