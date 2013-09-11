@@ -93,19 +93,22 @@
 									'post_parent' 	=> $post->ID,
 									'post_type' 	=> 'page'
 								) );
-
-								if ( is_array( $children ) && count( $children ) ) : ?>
+								?>
 								<div class="cell colour--white">
 						 			<h2 class="h2 heading--ruled">Explore</h2>
 									<ul class="listing__navigation">
+										<li><a href="/staff"><?php _e('Course Staff', 'socd' ); ?></a></li>
+										<li><a href="/students"><?php _e('Course Students', 'socd' ); ?></a></li>
 									<?php 
-									foreach ( $children as $child ) {
+	
+									if ( is_array( $children ) && count( $children ) ) :
+										foreach ( $children as $child ) {
 											printf('<li><a href="%1$s">%2$s</a></li>', get_permalink( $child->ID ),$child->post_title );
 										}
+									endif;
 									 ?>
 									</ul>
 								</div>
-							<?php endif; ?>
 							<div class="cell colour--yellow">
 								<h1 class="h2 heading--ruled">Apply to this course</h1>
 								<?php if ( $ucas_code = get_field( 'ucas_code' ) ) printf( '<p>UCAS Code<br/><b>%1$s</b></p>', $ucas_code ); ?>
