@@ -6,7 +6,7 @@
  * 
  * @package SOCD
  */
-?><article class="gw gw--rtl stream--article article">
+?><article <?php post_class( 'gw gw--rtl stream--article article' ); ?>>
 	<?php socd_post_thumbnail(); ?>
 	<div class="col five-sixths">
 		<header class="article--header">
