@@ -1,17 +1,11 @@
+#wpadminbar,
 .main-navigation-container{	
 	width: 100%;
 	min-height: 100%;
 	position: fixed;
 	top: 0;
 	z-index: 10;
-
-	/**
-	 * If the admin bar is visible then offset the
-	 * SOCD toolbar off of the viewport top
-	 */
-	.admin-bar & {
-		top: 28px;
-	}
+	left: 0;
 
 	.lt-ie9 & {
 		position: absolute;
@@ -35,7 +29,7 @@
 		z-index: 10;
 	}
 	.main-navigation-container__mobile-toggle{
-		background: red;
+		background: $colour_red;
 		display: block;
 		left: 0;
 		position: fixed;
@@ -44,7 +38,6 @@
 		@include rem( 'width', $height_menu );
 	}
 	@include breakpoint($breakpoint_palm) {	
-		max-width: $size_grid_width;
 		@include rem( 'min-height', $height_menu );
 		.main-navigation-container__fixed-size{
 			z-index: 10;			
@@ -78,161 +71,65 @@
 }
 
 //block
-.main-navigation{
+.main-navigation,
+.ab-top-menu {
 	background: $colour_background_dark;
 	color: $colour_background;
+	display: inline-block;
 	display: -webkit-box;
 	display: -moz-box;
 	display: -ms-flexbox;
 	display: -webkit-flex;
-	display: flex; 	
+	display: flex;
+	margin: 0 auto;
 	@include rem( 'height', $height_menu );
-	justify-content: center;
-	@include rem( 'line-height', $height_menu );
+	//@include rem( 'line-height', $height_menu );
 	width: 100%;
+	max-width: $size_grid_width;
 
-	a{
+	.a,
+	a {
+		display: inline-block;
+		line-height: 2.6;
 		color: $colour_background;
+		@include rem( padding-left, 1 );
+		@include rem( padding-right, 1 ); 
+		@include transition(.2s ease text-indent);
+
 		&:hover{
-			color: $colour_link;
+			color: $colour_white;
+			text-indent: .25em;
+		}
+
+		// remove external or any link iconography
+		// not relevant in menu
+		&:after{
+			content: none;
 		}
 	}
 
-	// remove external or any link iconography
-	// not relevant in menu
-	a:after{
-		content: none;
-		display: none;
-	}	
-	
-	.main-navigation__menu-item{
-		background: $colour_background_dark;
-		@include fontstack_light;	
-		white-space: nowrap;
-
-		.tab{			
-			line-height: 44px;			
-		}
-
-		.drop,
-		.children,
-		.flyout,
-		ul{
-			background: $colour_background_dark;
-			.page_item,
-			.drop__option,
-			li{
-				&:hover{
-					background: lighten( $colour_background_dark, 40% );
-					background: rgba( 255, 255, 255, 0.1 );
-				}
-				ul{
-					background: lighten( $colour_background_dark, 10% );
-					ul{
-						background: lighten( $colour_background_dark, 20% );
-						ul{
-							background: lighten( $colour_background_dark, 30% );
-						}
-					}
-				}
-			}
-		}
-		&:nth-child( 2 ){
-			background: $colour_menu_grey_mid;
-			.drop,
-			.children,
-			.flyout,
-			ul{
-				background: $colour_menu_grey_mid;
-				.page_item,
-				.drop__option,
-				li{
-					&:hover{
-						background: lighten( $colour_menu_grey_mid, 40% );
-						background: rgba( 255, 255, 255, 0.1 );
-					}
-					ul{
-						background: lighten( $colour_menu_grey_mid, 10% );
-						ul{
-							background: lighten( $colour_menu_grey_mid, 20% );
-							ul{
-								background: lighten( $colour_menu_grey_mid, 30% );
-							}
-						}
-					}
-				}
-			}
-		}
-		&:nth-child( 3 ){
-			background: $colour_menu_grey_mid_light;
-			.drop,
-			.children,
-			.flyout,
-			ul{
-				background: $colour_menu_grey_mid_light;
-				.page_item,
-				.drop__option,
-				li{
-					&:hover{
-						background: lighten( $colour_menu_grey_mid_light, 40% );
-						background: rgba( 255, 255, 255, 0.1 );
-					}
-					ul{
-						background: lighten( $colour_menu_grey_mid_light, 10% );
-						ul{
-							background: lighten( $colour_menu_grey_mid_light, 20% );
-							ul{
-								background: lighten( $colour_menu_grey_mid_light, 30% );
-							}
-						}
-					}
-				}
-			}	
-		}
-		&:nth-child( 4 ){
-			background: $colour_menu_grey_light;
-			.drop,
-			.children,
-			.flyout,
-			ul{
-				background: $colour_menu_grey_light;
-				.page_item,
-				.drop__option,
-				li{
-					&:hover{
-						background: lighten( $colour_menu_grey_light, 40% );
-						background: rgba( 255, 255, 255, 0.1 );
-					}
-				}
-			}	
-		}
-	
-		&.main-navigation__menu-item--flexible{
-			-webkit-box-flex: 1;
-			-moz-box-flex: 1;			
-			-webkit-flex: 1;
-			-ms-flex: 1;
-			flex: 1;
-			max-width: 100%;
-			padding-top: 0;
-			padding-right: 0;
-			padding-bottom: 0;
-			padding-left: 0;
-		}
-
-		.title{
-			@include fontstack_medium;	
-			@include rem( padding-left, 1 );
-			@include rem( padding-right, 1 ); 
-		}
+	.admin-bar-search,
+	.main-navigation__menu-item--flexible{
+		-webkit-box-flex: 1;
+		-moz-box-flex: 1;			
+		-webkit-flex: 1;
+		-ms-flex: 1;
+		flex: 1;
+		max-width: 100%;
+		padding-top: 0;
+		padding-right: 0;
+		padding-bottom: 0;
+		padding-left: 0;
 	}
-	
-	.main-navigation__menu-item--breadcrumb{
+
+	& > li {
 		@include transition( max-width .25s ease-in-out, width .25s ease-in-out, min-width .25s ease-in-out );
 		width: auto;
 		max-width: 400px;
 		min-width: 0;
+		
 		&.collapse{
+			overflow: hidden;
 			max-width: 0;
 		}
 	}
@@ -245,17 +142,31 @@
 		}
 	}
 
-	.main-navigation__menu-item--dropdown{
+	.menupop,
+	.main-navigation__menu-item--dropdown {
 		position: relative;
+		
+		.ab-submenu,
 		.drop,
 		ul{
 			overflow: hidden;
-			position: absolute;			
+			position: absolute;	
+			top: 0;
+			left: 0;
 		}
+
+		.ab-submenu,
 		.drop{
 			height: 0;
-			@include rem( top, $height_menu );
+			top: 100%;
+
+			.ab-submenu {
+				top: 0;
+				left: 100%;
+			}
 		}
+
+		.ab-submenu,
 		.drop,
 		.drop>ul{
 			min-width: 100%;
@@ -265,8 +176,6 @@
 			position: relative;
 
 			a{
-				width: 100%;
-				height: 100%;
 				display: block;
 				@include rem( padding-left, 1 );
 				@include rem( padding-right, 1.5 );
@@ -299,7 +208,9 @@
 		}
 		
 		&:hover,
-		&.active{
+		&.active {
+
+			&> .ab-sub-wrapper > .ab-submenu,
 			.drop{
 				height: auto;
 				overflow: visible;
@@ -316,7 +227,6 @@
 			color: $colour_background_dark;
 			@include fontstack_medium;	
 			@include rem( 'height', $height_menu );
-			line-height: 44px;
 			&:focus{
 				-webkit-box-shadow: none;
 				-moz-box-shadow: none;
@@ -334,103 +244,9 @@
 		}
 	}
 
-	.main-navigation__menu-item--profile{
-		background: $colour_menu_grey_light;
-		.avatar{
-			display: none;
-		}
-		.title a{
-			color: $colour_background_dark;
-		}
-		.drop{
-			background: $colour_menu_grey_light;
-			color: $colour_background_dark;
-			right: 0;
-			left: auto;			
-		}
-		&.logged-out{
-			&:hover,
-			&.active{
-				.drop{
-					@include rem( padding, 1 );				
-				}
-			}
-			form{
-				label{
-					font-size: 0.8rem;
-					display: block;
-					line-height: 1.5;
-					color: $colour_white;
-				}
-				p{
-					margin-bottom: 0.5em;
-				}
-				input:not([type="submit"]){
-					background: $colour_background;
-				}	
-				.login-remember{
-					float: left;
-					margin-bottom: 0;
-					label{
-						line-height: 2.6;
-						input{
-							margin-right: 0;
-						}
-					}
-				}
-				.login-submit{
-					float: right;
-					margin-bottom: 0;
-					line-height: 1;
-				}
-			}
-		}
-		&.logged-in{
-			background: $colour_yellow;
-			@include rem( padding-right, $height_menu ); 			
-			.title{
-				@include inline-block;
-				vertical-align: top;
-				@include breakpoint( $breakpoint_palm_max ) {
-					a{
-						color: $colour_background;
-					}
-				}
-			}
-			.drop{
-				background: $colour_yellow;
-				a{
-					color: $colour_background_dark;
-					&:hover{
-						color: $colour_link;
-					}
-				}
-			}
-			.avatar{
-				@include inline-block;
-				max-height: 100%;
-				vertical-align: top;
-				width: auto;
-			}
-		}
-	}
-	.main-navigation__menu-item--quickpost{		
-		display: none;
-		position: absolute;
-		right: 0;
-		@include rem( 'height', $height_menu );
-		@include rem( 'width', $height_menu );
-		.title{
-			text-align: center;
-			width: 100%;
-			height: 100%;
-			display: block;
-		}
-	}
-
 	@include breakpoint( $breakpoint_palm_max ) {
 		display: block;
-		@include rem( 'line-height', 1.4 );
+		//@include rem( 'line-height', 1.4 );
 		@include rem( 'padding-top', .5 );
 		@include rem( 'padding-bottom', .5 );
 		height: auto;
@@ -512,7 +328,84 @@
 	} //end breakpoint: $breakpoint_palm_max
 }
 
+/**
+ * Colour stepping our menu
+ *
+ */
+.ab-sub-wrapper,
+.ab-top-menu > li,
+.main-navigation__menu-item {
+	background: $colour_background_dark;
+	@include fontstack_light;	
+	white-space: nowrap;
 
+	.ab-submenu,
+	.drop,
+	.children,
+	.flyout,
+	ul{
+		background: $colour_background_dark;
+		.page_item,
+		.drop__option,
+		li{
+			&:hover{
+				background: lighten( $colour_background_dark, 40% );
+				background: rgba( 255, 255, 255, 0.1 );
+			}
+			ul{
+				background: lighten( $colour_background_dark, 10% );
+				ul{
+					background: lighten( $colour_background_dark, 20% );
+					ul{
+						background: lighten( $colour_background_dark, 30% );
+					}
+				}
+			}
+		}
+	}
+	
+	$colours: (
+		$colour_menu_grey_mid,
+		$colour_menu_grey_light,
+		$colour_menu_grey_light
+	);
+
+	@for $i from 1 through length($colours) {
+		
+		$colour: nth( $colours, $i );
+
+		&:nth-child( #{$i + 1} ){
+			background: $colour;
+			.drop,
+			.children,
+			.flyout,
+			ul{
+				background: $colour;
+				.page_item,
+				.drop__option,
+				li{
+					&:hover{
+						background: lighten( $colour, 40% );
+						background: rgba( 255, 255, 255, 0.1 );
+					}
+					ul{
+						background: lighten( $colour, 10% );
+						ul{
+							background: lighten( $colour, 20% );
+							ul{
+								background: lighten( $colour, 30% );
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.title{
+		@include fontstack_medium;	
+	}
+}
 
 //logged in menu styles
 body.logged-in{
@@ -578,7 +471,7 @@ body.logged-in{
 					float: left;
 					@include fontstack_medium;
 					height: 100%;	
-					line-height: 1.6;
+					//line-height: 1.6;
 					text-transform: capitalize;
 					width: 16%;
 					h2{
@@ -612,6 +505,100 @@ body.logged-in{
 		}
 	}
 }
+	#wp-admin-bar-my-account,
+	.main-navigation__menu-item--profile{
+		background: $colour_menu_grey_light;
+		.avatar{
+			display: none;
+		}
+		.title a{
+			color: $colour_background_dark;
+		}
+		.drop{
+			background: $colour_menu_grey_light;
+			color: $colour_background_dark;
+			right: 0;
+			left: auto;			
+		}
+		&.logged-out{
+			&:hover,
+			&.active{
+				.drop{
+					@include rem( padding, 1 );				
+				}
+			}
+			form{
+				label{
+					font-size: 0.8rem;
+					display: block;
+					//line-height: 1.5;
+					color: $colour_white;
+				}
+				p{
+					margin-bottom: 0.5em;
+				}
+				input:not([type="submit"]){
+					background: $colour_background;
+				}	
+				.login-remember{
+					float: left;
+					margin-bottom: 0;
+					label{
+						line-height: 2.6;
+						input{
+							margin-right: 0;
+						}
+					}
+				}
+				.login-submit{
+					float: right;
+					margin-bottom: 0;
+					line-height: 1;
+				}
+			}
+		}
+		&.logged-in{
+			background: $colour_yellow;
+			@include rem( padding-right, $height_menu ); 			
+			.title{
+				@include inline-block;
+				vertical-align: top;
+				@include breakpoint( $breakpoint_palm_max ) {
+					a{
+						color: $colour_background;
+					}
+				}
+			}
+			.drop{
+				background: $colour_yellow;
+				a{
+					color: $colour_background_dark;
+					&:hover{
+						color: $colour_link;
+					}
+				}
+			}
+			.avatar{
+				@include inline-block;
+				max-height: 100%;
+				vertical-align: top;
+				width: auto;
+			}
+		}
+	}
+	.main-navigation__menu-item--quickpost{		
+		display: none;
+		position: absolute;
+		right: 0;
+		@include rem( 'height', $height_menu );
+		@include rem( 'width', $height_menu );
+		.title{
+			text-align: center;
+			width: 100%;
+			height: 100%;
+			display: block;
+		}
+	}
 
 .navigation-notifications{
 	background: $colour_light;
@@ -622,3 +609,29 @@ body.logged-in{
 .navigation-quickpost{
 	background: $colour_blue;		
 }
+
+/**
+ * Nowhere to late in the day we decided to use the WP Admin bar once logged in!
+ *
+ * Great idea, below are some pretty brutal styles targetted at that ID heavy markup
+ */
+#wpadminbar {
+	top: 4em;
+
+	.ab-top-menu>li {
+		display: inline-block;
+	}
+
+	/**
+	 * Search Form
+	 */
+	.adminbar-button {
+		display: none;
+	}
+	
+	/* Very Temporary */
+	.screen-reader-shortcut {
+		display: none;
+	}
+}
+
