@@ -106,15 +106,7 @@
 			max-width: 0;
 		}
 	}
-	&.typeahead-open{
-		.main-navigation__menu-item--breadcrumb{
-			max-width: 0;
-		}
-		.main-navigation__menu-item--breadcrumb.main-navigation__menu-item--root{
-			max-width: 400px;
-		}
-	}
-
+	
 	.menupop,
 	.main-navigation__menu-item--dropdown {
 		position: relative;
