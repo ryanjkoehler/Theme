@@ -51,36 +51,6 @@ function is_sketchbook() {
 	return "sketchbook" == $options['blog_type'];
 }
 
-if ( !function_exists('is_network') ) {
-
-	/**
-	 * Checks whether the current blog is a Network. Currently
-	 * this is reliant on the 'Networks for WordPress' plugin being available
-	 * 
-	 * @return boolean [description]
-	 */
-	function is_network( $blog_id = false ) {
-		
-		global $current_blog, $table_prefix, $wpdb;
-
-		if (!$blog_id ) $blog_id = $current_blog->blog_id;
-
-		$url_no_prototcal = preg_replace('/https?:\/\//', '', get_bloginfo( 'wpurl' ) );
-
-		// Query sites table
-		// 
-		if ( !isset($wpdb->sites) ) {
-			$wpdb->sites = $wpdb->base_prefix . 'site';
-		}
-		$res = $wpdb->get_results("SELECT * FROM $wpdb->sites WHERE `domain` = '" . $url_no_prototcal . "'");
-
-
-		if ( ! $res ) return false;
-		
-		return count($res) == 1;
-	}
-}
-
 function socd_get_subdomain() {
 	$subdomain = preg_replace( '/https?:\/\//', '', get_bloginfo( 'url' ) );
 
@@ -290,13 +260,13 @@ if ( ! function_exists('profile_field') ) {
  * Profile Specific Fields
  */
 
-function socd_headshot() {
+function socd_headshot( $class = "" ) {
 	$attachment_id = socd_get_profile_field('user_headshot');
 
 	if (!$attachment_id) return;
 
 	echo wp_get_attachment_image( $attachment_id, 'original', false, array(
-		'class' => "profile--headshot"
+		'class' => $class . " profile--headshot"
 	) );
 }
 
