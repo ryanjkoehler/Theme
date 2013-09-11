@@ -1,14 +1,6 @@
-<nav class="main-navigation-container">
-	<section class="navigation-notifications notifications main-navigation-container__openable">				
-		<div class="notifications-center-display">
-			<!-- populated with content formatted by the template /assets/templates/notifications/message.html -->
-		</div>
-	</section>
-	<section class="navigation-quickpost quickpost main-navigation-container__openable">				
-		<div class="quickpost--interface">
-			
-		</div>
-	</section>	
+
+	<?php // socd_template_part('notifications'); ?>
+	<?php // socd_template_part('quickpost'); ?>
 	<ul class="main-navigation-container__fixed-size main-navigation no-style">
 		<li class="main-navigation__menu-item main-navigation__menu-item--dropdown main-navigation__menu-item--breadcrumb main-navigation__menu-item--root">
 			<div class="tab">
@@ -19,12 +11,12 @@
 	 	<?php if( socd_menu_has_course_crumb() ): ?>
 	 --><li class="main-navigation__menu-item main-navigation__menu-item--breadcrumb main-navigation__menu-item--dropdown">
 	 		<div class="tab">
-	 			<h1 class="title"><a href="#"><?php echo socd_menu_course_title(); ?></a></h1>
+	 			<h1 class="title"><a href="#"><?php bloginfo('name'); ?></a></h1>
 	 		</div>
 	 		<?php socd_site_menu(); ?>
 	 	</li><!--
 	 	<?php endif; ?>
-	 	<?php if( socd_menu_has_blog_crumb() ): ?>
+	 	<?php if( socd_menu_has_blog_crumb() && !is_network() ): ?>
 	 --><li class="main-navigation__menu-item main-navigation__menu-item--breadcrumb main-navigation__menu-item--dropdown">
 	 		<div class="tab">
 	 			<h1 class="title"><a href="<?php bloginfo( 'url' ); ?>"><?php bloginfo( 'title' ); ?></a></h1>
@@ -61,11 +53,6 @@
 				<?php endif; ?>
 			</div>				
 		</li>
-		<!--<li class="main-navigation__menu-item main-navigation__menu-item--button main-navigation__menu-item--quickpost avoid-menu">
-			<a href="#" class="title quickpost-activate">
-				<span>+</span>
-			</a>
-		</li>-->
 	</ul>
 	<a href="#" class="main-navigation-container__mobile-toggle"></a>
 </nav>
