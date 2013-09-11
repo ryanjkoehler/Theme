@@ -88,6 +88,7 @@ function socd_dashboard_commits_widget() { ?>
 	<?php 
 }
 
+
 /**
  * Display the RSS entries in a list.
  *

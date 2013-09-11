@@ -152,23 +152,6 @@ function remove_admin_bar_styling() {
 add_action( 'wp_head', 'remove_admin_bar_styling', 1 );
 
 /**
- * Remove useless widgets
- */
-function socd_unregister_widgets(){
-	// Default WP widgets
-	unregister_widget( 'WP_Widget_Search' );
-	unregister_widget( 'WP_Widget_Calendar' );
-	unregister_widget( 'WP_Widget_Meta' );
-	unregister_widget( 'WP_Widget_Archives' );
-	unregister_widget( 'WP_Widget_Tag_Cloud' );
-	// Plugin Widgets
-	unregister_widget( 'akismet_widget' );
-	unregister_widget( 'wpe_widget_powered_by' );
-}
-
-add_action('widgets_init', 'socd_unregister_widgets' );
-
-/**
  * Register our sidebars and widetized areas
  * 
  */
@@ -191,6 +174,51 @@ function socd_widets_init() {
 	) );
 }
 add_action( 'widgets_init', 'socd_widets_init' );
+
+/**
+ * Remove widgets we deem useless
+ */
+function socd_unregister_widgets(){
+	// Default WP widgets
+	unregister_widget( 'WP_Widget_Search' );
+	unregister_widget( 'WP_Widget_Calendar' );
+	unregister_widget( 'WP_Widget_Meta' );
+	unregister_widget( 'WP_Widget_Archives' );
+	unregister_widget( 'WP_Widget_Tag_Cloud' );
+	// Plugin Widgets
+	unregister_widget( 'Akismet_Widget' ); //note: uses the name of the Class, not the string name/id of the widget
+	// wpengine widget does not extend WP_Widget, is registered as
+	// a sidebar widget so we have to do this. 
+	// (the argument - ID is the first arg passed to register_sidebar_widget() )
+	wp_unregister_sidebar_widget( 'wpe_widget_powered_by' );
+}
+
+add_action('widgets_init', 'socd_unregister_widgets' );
+
+function socd_default_widgets(){
+	$id = rand( 20, 100 );
+
+ 	$categories_args = array(
+		 $id => array(
+			'title' => '',
+			'count'	=> 0,
+			'hierarchical' => 0,
+			'dropdown'	=> 0
+		),
+		 '_multiwidget' => true
+	);
+ 	
+ 	$widgets_args = array( 
+ 		'left_sidebar' => array(
+ 			'categories-' . $id
+ 		)
+ 	);
+
+ 	update_option( 'widget_categories', $categories_args );
+ 	update_option( 'sidebars_widgets', $widgets_args );
+}
+
+add_action( 'after_switch_theme', 'socd_default_widgets' );
 
 /**
  * Create various menus
