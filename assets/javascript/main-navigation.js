@@ -9,7 +9,9 @@ if( !window.SOCD ){ window.SOCD = {} };
 
 	var Menu = {
 		ele: '.main-navigation-container',
-		$ele: $( '.main-navigation-container' ),	
+		$ele: $( '.main-navigation-container' ),
+		$searchInput: $( '.site-search__input, #adminbar-search' ),
+
 		init: function(){
 			Menu.init_toggle();
 			Menu.init_typeahead();
@@ -57,6 +59,10 @@ if( !window.SOCD ){ window.SOCD = {} };
 
 	Menu.init();
 
-	window.SOCD.Menu = Menu;
+	try {
+		window.SOCD.Menu = Menu;
+	} catch(e) {
+		console.log( "Error assigning Menu module to SOCD Object, has everything loaded ok?", e );
+	}
 
 })( window, jQuery );

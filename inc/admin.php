@@ -174,3 +174,4 @@ function socd_widget_rss_output( $rss, $args = array() ) {
 	$rss->__destruct();
 	unset($rss);
 }
+
