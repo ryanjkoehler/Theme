@@ -171,6 +171,26 @@ function socd_widets_init() {
 add_action( 'widgets_init', 'socd_widets_init' );
 
 /**
+ * Remove widgets we deem useless
+ */
+function socd_unregister_widgets(){
+	// Default WP widgets
+	unregister_widget( 'WP_Widget_Search' );
+	unregister_widget( 'WP_Widget_Calendar' );
+	unregister_widget( 'WP_Widget_Meta' );
+	unregister_widget( 'WP_Widget_Archives' );
+	unregister_widget( 'WP_Widget_Tag_Cloud' );
+	// Plugin Widgets
+	unregister_widget( 'Akismet_Widget' ); //note: uses the name of the Class, not the string name/id of the widget
+	// wpengine widget does not extend WP_Widget, is registered as
+	// a sidebar widget so we have to do this. 
+	// (the argument - ID is the first arg passed to register_sidebar_widget() )
+	wp_unregister_sidebar_widget( 'wpe_widget_powered_by' );
+}
+
+add_action('widgets_init', 'socd_unregister_widgets' );
+
+/**
  * Create various menus
  */
 function socd_menus() {

@@ -76,22 +76,6 @@ function socd_dashboard_commits_widget() { ?>
 	<?php 
 }
 
-/**
- * Remove widgets we deem useless
- */
-function socd_unregister_widgets(){
-	// Default WP widgets
-	unregister_widget( 'WP_Widget_Search' );
-	unregister_widget( 'WP_Widget_Calendar' );
-	unregister_widget( 'WP_Widget_Meta' );
-	unregister_widget( 'WP_Widget_Archives' );
-	unregister_widget( 'WP_Widget_Tag_Cloud' );
-	// Plugin Widgets
-	unregister_widget( 'akismet_widget' );
-	unregister_widget( 'wpe_widget_powered_by' );
-}
-
-add_action('widgets_init', 'socd_unregister_widgets', 11 );
 
 /**
  * Display the RSS entries in a list.
