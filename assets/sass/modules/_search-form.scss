@@ -15,7 +15,8 @@
 		right: 1.65em;
 		text-align: center;
 		top: 0;
-		width: 1.5em;	
+		width: 1.5em;
+		z-index: 20;
 		a.search__clear{
 			background-color: $colour_grey;
 			@include border-radius( 50% );
@@ -25,6 +26,7 @@
 			line-height: 1.1em;
 			margin-top: -.55em;
 			opacity: 0;
+			padding: 0;
 			position: absolute;
 			text-align: center;			
 			top: 50%;
@@ -33,7 +35,9 @@
 			&:hover{
 				background: $colour_red;
 				color: $colour_white;
+				padding: 0;
 				text-decoration: none;
+				text-indent: 0;
 			}
 			&:before{
 				display: block;
@@ -56,6 +60,7 @@
 		text-align: center;
 		top: 0;
 		width: 1.9em;
+		z-index: 20;
 		input,
 		input:hover{
 			background: transparent;

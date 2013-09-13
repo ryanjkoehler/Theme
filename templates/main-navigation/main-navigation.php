@@ -32,9 +32,14 @@
 	 	</li><!--
 	 	<?php endif; ?>
 	 --><li class="site-search main-navigation__menu-item main-navigation__menu-item--flexible main-navigation__menu-item--search avoid-menu">
-	 		<form role="search" method="get" action="http://test.socd.loc/">
-				<input class="site-search__input" type="text" placeholder="Search" name="s">
-				<input type="submit">
+	 		<form role="search" method="get" action="http://test.socd.loc/" class="search-form">
+				<input class="site-search__input search-form--input" type="text" placeholder="Search" name="s"><!--
+			 --><span class="search-form--clear">
+					<a href="#" class="search__clear"></a>
+				</span><!--
+			 --><span class="search-form--submit search__submit">
+					<input type="submit" class="search-submit" value="Search" />
+				</span>
 			</form>
 		</li><!--
 	 --><li class="main-navigation__menu-item main-navigation__menu-item--dropdown main-navigation__menu-item--profile <?php echo ( is_user_logged_in()) ? 'logged-in' : 'logged-out'; ?> ">
