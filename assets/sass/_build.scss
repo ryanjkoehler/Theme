@@ -34,3 +34,17 @@ x*[class*="col"] {
 .cell {
 	xbackground: rgba(0,255,0,0.2);
 }
+
+#beta {
+	background: $colour_red;
+	color: $colour_white;
+	display: block;
+	position: absolute;
+	@include rem( 'height', 2.6 );
+	@include rem( 'width', 2.6 );
+	@include rem( 'top', -2.6 );
+	@include rem( 'left', -1.2 );
+	line-height: 2.6;
+	text-align: center;
+	z-index: 99;
+}

@@ -36,6 +36,7 @@
 </div>
 <![endif]  -->
 <section class="site-wrap h-animate-transform">
+<a href="mailto:admin@socd.io?subject=Beta Issue/Question&body=Hello All,%0D%0A%0D%0ALoving the site so far, but " id="beta">&beta;</a>
 <?php
 
 	if ( !is_user_logged_in() ) socd_template_part( 'main-navigation' );
