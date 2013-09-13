@@ -10,5 +10,9 @@
 		34 // Palm
 	];
 
-	window.SOCD = SOCD;
+
+	SOCD.Debugger = function() {
+		$('#beta').attr('href', $('#beta').attr('href') + '%0D Screen Size: ' + window.innerWidth + "x" + window.innerHeight );
+	}();
+
 })();
