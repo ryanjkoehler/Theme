@@ -208,6 +208,8 @@ function socd_nav_menu_into_admin_bar( $id, $title, $href = '#', $menu_object = 
 }
 
 function socd_add_custom_menus() {
+	global $current_site;
+
 	$menu = get_socd_network_menu();
 	socd_nav_menu_into_admin_bar( 'socd-menu-network', __( 'SOCD.io', 'socd' ), '#', $menu );
 
@@ -216,10 +218,12 @@ function socd_add_custom_menus() {
 		socd_nav_menu_into_admin_bar( 'socd-menu-blog', get_bloginfo( 'name' ), '#', $blog_menu );
 	}
 	
-	$course_menu = get_socd_site_menu();
-	socd_nav_menu_into_admin_bar( 'socd-menu-site', get_network_name(), get_bloginfo( 'wpurl' ), $course_menu );
-
-	if ( is_page() || is_single() )
+	if ( $current_site->blog_id > 1 ) {
+		$course_menu = get_socd_site_menu();
+		socd_nav_menu_into_admin_bar( 'socd-menu-site', get_network_name(), get_bloginfo( 'wpurl' ), $course_menu );
+	}
+	
+	if ( ( is_page() || is_single() ) && !is_front_page() )
 		socd_nav_menu_into_admin_bar( 'socd-menu-current', socd_menu_page_title(), '#' );
 }
 
@@ -230,23 +234,59 @@ function socd_reorder_admin_bar() {
 
 	// Elements to Move around
 	$nodes = array(
-		'socd-menu-network',
-		'socd-menu-site',
-		'socd-menu-blog',
-		'socd-menu-current',
-		'site-name',
-		'search',
-		'edit',
-		'new-content',
-		'comments',
-		'my-account',
-		'my-sites'
+		array(
+			'id' 	=> 'socd-menu-network',
+			'class' => ''
+		),
+		array(
+			'id' 	=> 'socd-menu-site',
+			'class' => 'navigation--breadcrumb'
+		),
+		array(
+			'id' 	=> 'socd-menu-blog',
+			'class' => 'navigation--breadcrumb'
+		),
+		array(
+			'id' 	=> 'socd-menu-current',
+			'class' => 'navigation--breadcrumb'
+		),
+		array(
+			'id' 	=> 'site-name',
+			'class' => 'navigation--breadcrumb'
+		),
+		array(
+			'id' 	=> 'search',
+			'class' => ''
+		),
+		array(
+			'id' 	=> 'edit',
+			'class' => ''
+		),
+		array(
+			'id' 	=> 'new-content',
+			'class' => ''
+		),
+		array(
+			'id' 	=> 'comments',
+			'class' => ''
+		),
+		array(
+			'id' 	=> 'my-account',
+			'class' => ''
+		),
+		array(
+			'id' 	=> 'my-sites',
+			'class' => ''
+		),
 	);
 
 	foreach ( $nodes as $node ) {
-		$temp = $wp_admin_bar->get_node( $node );
-		$wp_admin_bar->remove_menu( $node );
+		$temp = $wp_admin_bar->get_node( $node['id'] );
+		$wp_admin_bar->remove_menu( $node['id'] );
 		$temp->parent = false;
+		$temp->meta = array(
+			'class' => $node['class']
+		);
 
 		if ( $node === "search" && isset( $temp->title ) ) {
 			$temp->title = preg_replace( '/text"/', 'search" placeholder="Search"', $temp->title );
