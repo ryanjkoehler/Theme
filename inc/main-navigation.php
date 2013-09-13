@@ -1,6 +1,6 @@
 <?php 
 /**
- * Handles our Administration
+ * Handles the Navigation bar
  * 
  * @package  socd
  */
@@ -63,7 +63,6 @@ add_action( 'wp_update_nav_menu', 'socd_clear_transient' );
 
 function socd_get_menu_id_by_location( $location_slug ) {
 	$locations = get_nav_menu_locations();
-
 	return isset( $locations[ $location_slug ] ) ? $locations[ $location_slug ] : false;
 }
 
@@ -108,31 +107,31 @@ function socd_network_menu() {
 }
 
 function get_socd_site_menu() {
-	//just so we've got something coming out
-	$current_site_id = get_current_site()->id;
+	global $current_site, $blog_id;
 
-	if ( false === ( $output = json_decode( get_site_transient( 'site__socd_site_' . $current_site_id . '_menu_raw' ) ) ) || true ) {
-		switch_to_blog( $current_site_id );
-	
+	if ( false == ( $output = json_decode( get_site_transient( 'site__socd_site_' . $current_site->blog_id . '_menu_raw' ) ) ) || true ) {
+		
+		if ( ! is_network() ) switch_to_blog( $current_site->blog_id );
+		
 		$menu_id = socd_get_menu_id_by_location( 'socd_site_menu' );
 
 		$output = wp_get_nav_menu_items( $menu_id );
 
-		restore_current_blog();
+		if ( ! is_network() ) restore_current_blog();
 
-		set_site_transient( 'site__socd_site_' . $current_site_id . '_menu_raw' , json_encode( $output ), 1 * HOUR_IN_SECONDS );
+		set_site_transient( 'site__socd_site_' . $current_site->blog_id . '_menu_raw' , json_encode( $output ), 1 * HOUR_IN_SECONDS );
 	}
 
 	return $output;
 }
 
 function socd_site_menu() {
-	//just so we've got something coming out
-	$current_site_id = get_current_site()->id;
+	global $current_site, $blog_id;
 
-	if ( false === ( $output = get_site_transient( 'site__socd_site_' . $current_site_id . '_menu' ) ) || false ) {
-		switch_to_blog( $current_site_id );
-	
+	if ( false === ( $output = get_site_transient( 'site__socd_site_' . $current_site->id . '_menu' ) ) || true ) {
+		
+		if ( ! is_network() ) switch_to_blog( $current_site->id );
+
 		$output = wp_nav_menu( array(
 			'theme_location' => 'socd_site_menu',
 			'container' 	 => '',
@@ -140,8 +139,9 @@ function socd_site_menu() {
 			'echo'		 	 => false
 		) );
 
-		restore_current_blog();
-		set_site_transient( 'site__socd_site_' . $current_site_id . '_menu' , $output, 1 * HOUR_IN_SECONDS );
+		if ( ! is_network() ) restore_current_blog();
+
+		set_site_transient( 'site__socd_site_' . $current_site->id . '_menu' , $output, 1 * HOUR_IN_SECONDS );
 	}
 
 	echo $output;
@@ -149,7 +149,8 @@ function socd_site_menu() {
 
 function get_socd_blog_menu(){
 	//just so we've got something coming out
-	$menu_id = socd_get_menu_id_by_location( 'socd_site_menu' );
+	$menu_id = socd_get_menu_id_by_location( 'socd_blog_menu' );
+
 	return wp_get_nav_menu_items( $menu_id );
 }
 
@@ -187,13 +188,13 @@ function socd_nav_menu_into_admin_bar( $id, $title, $menu_object ) {
 	global $wp_admin_bar;
 
 	$wp_admin_bar->add_menu( array(
-		'href'   => get_bloginfo( 'wpurl' ),
+		'href'   => get_bloginfo('url'),
 		'parent' => false,
 		'id'	 => $id,
 		'title'  => $title
 	) );
 
-	if (!$menu_object) return;
+	if ( ! $menu_object ) return;
 
 	foreach ( $menu_object as $menu_item ) {
 		$wp_admin_bar->add_node( array(
@@ -210,8 +211,13 @@ function socd_add_custom_menus() {
 	$menu = get_socd_network_menu();
 	socd_nav_menu_into_admin_bar( 'socd-menu-network', __( 'SOCD.io', 'socd' ), $menu );
 
-	$menu = get_socd_site_menu();
-	socd_nav_menu_into_admin_bar( 'socd-menu-site', socd_menu_course_title(), $menu );
+	if ( ! is_network() ) {
+		$blog_menu = get_socd_blog_menu();
+		socd_nav_menu_into_admin_bar( 'socd-menu-blog', get_bloginfo( 'name' ), $blog_menu );
+	}
+	
+	$course_menu = get_socd_site_menu();
+	socd_nav_menu_into_admin_bar( 'socd-menu-site', get_network_name(), $course_menu );
 }
 
 function socd_reorder_admin_bar() {
@@ -223,6 +229,7 @@ function socd_reorder_admin_bar() {
 	$nodes = array(
 		'socd-menu-network',
 		'socd-menu-site',
+		'socd-menu-blog',
 		'site-name',
 		'search',
 		'edit',
@@ -230,13 +237,17 @@ function socd_reorder_admin_bar() {
 		'comments',
 		'my-account',
 		'my-sites'
-		//'user-info',
 	);
 
 	foreach ( $nodes as $node ) {
 		$temp = $wp_admin_bar->get_node( $node );
 		$wp_admin_bar->remove_menu( $node );
 		$temp->parent = false;
+
+		if ( $node === "search" && isset( $temp->title ) ) {
+			$temp->title = preg_replace( '/text"/', 'search" placeholder="Search"', $temp->title );
+		}
+
 		$wp_admin_bar->add_node( $temp );
 	}
 
@@ -262,9 +273,10 @@ function socd_reorder_admin_bar() {
 add_action( 'wp_before_admin_bar_render', 'socd_alter_admin_bar' );
 
 function socd_after_admin_bar() {
-	?>
-<script src="<?php echo get_stylesheet_directory_uri() . '/assets/javascript/main-navigation.js'; ?>"></script>
-<?php 
+	
+	printf('<script src="%1$s"></script>',
+		get_stylesheet_directory_uri() . '/assets/javascript/main-navigation.js'
+	);
 }
 
 add_action( 'wp_after_admin_bar_render', 'socd_after_admin_bar' );
