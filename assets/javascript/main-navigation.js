@@ -36,7 +36,8 @@ if( !window.SOCD ){ window.SOCD = {} };
 					header: T.header( { name: type } ),
 					template: T.result
 				});
-			}				
+			}
+
 			Menu.$searchInput.typeahead( structureTypeahead );
 		},
 		init_ui: function(){
@@ -46,27 +47,47 @@ if( !window.SOCD ){ window.SOCD = {} };
 				'.main-navigation__menu-item--profile',
 				'#wp-admin-bar-socd-menu-network',
 				'.main-navigation__menu-item--root'
-
 			].join( ', ' );
-			var $searchLi = Menu.$searchInput.closest( 'li' );
-			var $collapsable = $searchLi.nextAll( 'li' ).not( noCollapse ).add( $searchLi.prevAll( 'li' ).not( noCollapse ) );
 
+			var $searchLi = Menu.$searchInput.closest( 'li' ),
+				$searchForm =  Menu.$searchInput.closest( 'form' ),
+				$collapsable = $searchLi.nextAll( 'li' ).not( noCollapse ).add( $searchLi.prevAll( 'li' ).not( noCollapse ) ),
+				$selectable = Menu.$searchInput.add( '.tt-dropdown-menu' );
 
-			Menu.$searchInput.on('typeahead:opened', function(){
+			Menu.$searchInput.addClass( 'search-form--input' );
+			
+			SOCD.SearchForm( $searchForm );
+
+			Menu.$searchInput.on( 'typeahead:opened', function(){
 				$collapsable.addClass( 'collapse' );
 				Menu.$bar.addClass('typeahead-open');
 			});
-			Menu.$searchInput.on('typeahead:closed', function(){
+
+			Menu.$searchInput.on( 'typeahead:closed', function(){
 				$collapsable.removeClass( 'collapse' );
 				Menu.$bar.removeClass('typeahead-open');
+			});			
+
+			Menu.$searchInput.on( 'typeahead:selected', function( e, data ){
+				Menu.typeahead_visit_url( data.url );
 			});
-			Menu.$searchInput.on( 'focus', function(){				
-				//$('.main-navigation__menu-item--breadcrumb:not(.main-navigation__menu-item--root)').addClass('collapse');
+
+			Menu.$searchInput.on( 'keydown', function( e ){	
+				if( e.which === 13 ){
+					Menu.typeahead_visit_index( 0 );
+				}
 			});
-			Menu.$searchInput.on( 'blur', function(){
-				// $('.main-navigation', Menu.$ele ).removeClass('typeahead-open');
-				// $('.main-navigation__menu-item--breadcrumb:not(.main-navigation__menu-item--root)').removeClass('collapse');
-			});
+		},
+		typeahead_visit_url: function( url ){
+			if( typeof url !== 'undefined' ){
+				window.location.href = url;
+			}
+		},
+		typeahead_visit_index: function( index ){
+			var $typeahead_menu = $('.tt-dropdown-menu'),
+				$links = $typeahead_menu.find('a'),
+				$visit = $( $links.get( index ) );
+			Menu.typeahead_visit_url( $visit.attr('href') );
 		}
 	};
 
