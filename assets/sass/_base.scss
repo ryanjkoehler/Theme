@@ -326,8 +326,11 @@ strong{
  *
  *  The most basic building block within the 'content' grid.
  */
-
 .cell {
-	padding: $grid_padding;
+	padding: $grid_padding $grid_padding / 2;
 	text-align: left;
+
+	@include breakpoint( $breakpoint_palm ) {
+		padding: $grid_padding
+	}
 }

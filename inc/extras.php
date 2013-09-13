@@ -109,7 +109,14 @@ if ( !function_exists('is_network') ) {
 
 
 		if ( ! $res ) return false;
-
 		return count($res) == 1;
+	}
+}
+
+
+if ( !function_exists('get_network_name') ) {
+	function get_network_name() {
+		global $current_site;
+		return $current_site->site_name;
 	}
 }

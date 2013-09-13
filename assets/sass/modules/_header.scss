@@ -4,8 +4,12 @@
 
 .header {
 	text-align: center;
-	padding: 3.95em 0;
-	height: $height_header; 
+	padding: $grid_padding / 2 0;
+
+	@include breakpoint( $breakpoint_palm ) {
+		padding: 3.95em 0;
+		height: $height_header; 
+	}
 }
 	.header__title {
 		text-align: left;

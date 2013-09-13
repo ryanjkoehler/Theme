@@ -57,9 +57,10 @@
 	@include rem( 'height', $height_menu );
 	//@include rem( 'line-height', $height_menu );
 	width: 100%;
-	max-width: $size_grid_width;
+	max-width: $size_grid_width - 2.7;
 
 	.a,
+	.menupop .ab-empty-item,
 	a {
 		display: inline-block;
 		line-height: 2.6;
@@ -70,7 +71,11 @@
 
 		&:hover{
 			color: $colour_white;
-			text-indent: .25em;
+			
+			.menupop &,
+			.drop & {
+				text-indent: .25em;
+			}
 		}
 
 		// remove external or any link iconography
@@ -215,7 +220,6 @@
  * Colour stepping our menu
  *
  */
-.ab-sub-wrapper,
 .ab-top-menu > li,
 .main-navigation__menu-item {
 	background: $colour_background_dark;
@@ -397,10 +401,6 @@ body.logged-in{
 }
 	#wp-admin-bar-my-account,
 	.main-navigation__menu-item--profile{
-		background: $colour_menu_grey_light;
-		.avatar{
-			display: none;
-		}
 		.title a{
 			color: $colour_background_dark;
 		}
@@ -447,36 +447,8 @@ body.logged-in{
 				}
 			}
 		}
-		&.logged-in{
-			background: $colour_yellow;
-			@include rem( padding-right, $height_menu ); 			
-			.title{
-				@include inline-block;
-				vertical-align: top;
-				@include breakpoint( $breakpoint_palm_max ) {
-					a{
-						color: $colour_background;
-					}
-				}
-			}
-			.drop{
-				background: $colour_yellow;
-				a{
-					color: $colour_background_dark;
-					&:hover{
-						color: $colour_link;
-					}
-				}
-			}
-			.avatar{
-				@include inline-block;
-				max-height: 100%;
-				vertical-align: top;
-				width: auto;
-			}
-		}
 	}
-	.main-navigation__menu-item--quickpost{		
+	.main-navigation__menu-item--quickpost {		
 		display: none;
 		position: absolute;
 		right: 0;
@@ -489,6 +461,45 @@ body.logged-in{
 			display: block;
 		}
 	}
+
+#wp-admin-bar-my-account,
+li.main-navigation__menu-item--profile {
+	background: $colour_yellow;
+
+	ul {
+		background: $colour_yellow;
+	}
+
+	@include rem( padding-right, $height_menu );
+
+	a {
+		color: $colour_background_dark;
+		@include fontstack_medium;
+	}
+
+	.avatar{
+		display: none;
+	}
+
+	.title{
+		@include inline-block;
+		vertical-align: top;
+		@include breakpoint( $breakpoint_palm_max ) {
+			a{
+				color: $colour_background;
+			}
+		}
+	}
+	.drop{
+		background: $colour_yellow;
+		a{
+			color: $colour_background_dark;
+			&:hover{
+				color: $colour_link;
+			}
+		}
+	}
+}
 
 .navigation-notifications{
 	background: $colour_light;
@@ -506,10 +517,15 @@ body.logged-in{
  * Great idea, below are some pretty brutal styles targetted at that ID heavy markup
  */
 #wpadminbar {
-	top: 4em;
 
-	.ab-top-menu>li {
-		display: inline-block;
+	.ab-top-menu > li {
+		@include breakpoint( $breakpoint_palm ) {
+			display: inline-block;
+		}
+
+		& > a {
+			@include fontstack_medium;
+		}
 	}
 
 	/**
@@ -525,3 +541,19 @@ body.logged-in{
 	}
 }
 
+@include breakpoint( $breakpoint_palm ) {
+	#wp-admin-bar-my-sites {
+		.ab-submenu {
+			left: auto;
+			right: 0;
+
+			.ab-submenu {
+				right: 100%;
+			}
+		}
+	}
+
+}
+.admin-bar {
+	@include rem( 'margin-top', 2.62 );
+}

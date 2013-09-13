@@ -38,4 +38,4 @@
 <section class="site-wrap h-animate-transform">
 <?php
 
-	socd_template_part( 'main-navigation' );
+	if ( !is_user_logged_in() ) socd_template_part( 'main-navigation' );
