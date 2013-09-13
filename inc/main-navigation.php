@@ -184,11 +184,11 @@ function socd_alter_admin_bar( ) {
 	$wp_admin_bar->remove_menu( 'site-name' );
 }
 
-function socd_nav_menu_into_admin_bar( $id, $title, $menu_object ) {
+function socd_nav_menu_into_admin_bar( $id, $title, $href = '#', $menu_object = false ) {
 	global $wp_admin_bar;
 
 	$wp_admin_bar->add_menu( array(
-		'href'   => get_bloginfo('url'),
+		'href'   => $href,
 		'parent' => false,
 		'id'	 => $id,
 		'title'  => $title
@@ -209,15 +209,18 @@ function socd_nav_menu_into_admin_bar( $id, $title, $menu_object ) {
 
 function socd_add_custom_menus() {
 	$menu = get_socd_network_menu();
-	socd_nav_menu_into_admin_bar( 'socd-menu-network', __( 'SOCD.io', 'socd' ), $menu );
+	socd_nav_menu_into_admin_bar( 'socd-menu-network', __( 'SOCD.io', 'socd' ), '#', $menu );
 
 	if ( ! is_network() ) {
 		$blog_menu = get_socd_blog_menu();
-		socd_nav_menu_into_admin_bar( 'socd-menu-blog', get_bloginfo( 'name' ), $blog_menu );
+		socd_nav_menu_into_admin_bar( 'socd-menu-blog', get_bloginfo( 'name' ), '#', $blog_menu );
 	}
 	
 	$course_menu = get_socd_site_menu();
-	socd_nav_menu_into_admin_bar( 'socd-menu-site', get_network_name(), $course_menu );
+	socd_nav_menu_into_admin_bar( 'socd-menu-site', get_network_name(), get_bloginfo( 'wpurl' ), $course_menu );
+
+	if ( is_page() || is_single() )
+		socd_nav_menu_into_admin_bar( 'socd-menu-current', socd_menu_page_title(), '#' );
 }
 
 function socd_reorder_admin_bar() {
@@ -230,6 +233,7 @@ function socd_reorder_admin_bar() {
 		'socd-menu-network',
 		'socd-menu-site',
 		'socd-menu-blog',
+		'socd-menu-current',
 		'site-name',
 		'search',
 		'edit',

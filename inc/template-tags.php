@@ -121,7 +121,7 @@ function socd_menu_page_title() {
 		$output = "Sketchbook";
 	}
 
-	if( is_page() ){
+	if( is_page() || is_single() ){
 		$output = get_the_title();
 	}
 
