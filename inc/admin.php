@@ -11,8 +11,20 @@ function socd_signup_style() {
 	global $wp_filter;
 	remove_action( 'wp_head', 'wpmu_signup_stylesheet' );
 	remove_action( 'wp_head', 'wpmu_activate_stylesheet' );
+	remove_action( 'wp_head', 'mp6_override_toolbar_margin' );
+
+	wp_dequeue_style( 'admin-bar' );
 }
 add_action( 'wp_head', 'socd_signup_style', 1 );
+
+
+function socd_mp6_cleanup() {
+	remove_action( 'wp_head', 'mp6_override_toolbar_margin', 11 );	
+
+	wp_dequeue_style( 'moby6-admin-bar' );
+}
+add_action( 'wp_enqueue_scripts', 'socd_mp6_cleanup' );
+
 
 function socd_signup_page() {
 	require_once get_stylesheet_directory() . "/templates/signup/signup.php";
