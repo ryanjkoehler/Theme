@@ -12,8 +12,8 @@ function socd_signup_style() {
 	remove_action( 'wp_head', 'wpmu_signup_stylesheet' );
 	remove_action( 'wp_head', 'wpmu_activate_stylesheet' );
 	remove_action( 'wp_head', 'mp6_override_toolbar_margin' );
-
 	wp_dequeue_style( 'admin-bar' );
+	wp_dequeue_script( 'admin-bar' );
 }
 add_action( 'wp_head', 'socd_signup_style', 1 );
 
