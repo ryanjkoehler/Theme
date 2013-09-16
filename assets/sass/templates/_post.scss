@@ -2,10 +2,11 @@
 	border-top: 1px solid $colour_red;
 	padding: 1.4rem 0;
 
-	&.article__w-thumbnail,
+	&.article__w-thumbnail:first-child,
 	&:first-child {
 		border-top: 0;
 		padding-top: 0;
+		margin-top: 0;
 	}
 	
 	&.article__w-thumbnail {
