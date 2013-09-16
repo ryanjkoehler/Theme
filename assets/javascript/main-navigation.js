@@ -17,6 +17,8 @@ if( !window.SOCD ){ window.SOCD = {} };
 			Menu.init_toggle();
 			Menu.init_typeahead();
 			Menu.init_ui();
+
+			if ( Modernizr.touch ) Menu.init_touch();
 		},
 		init_toggle: function(){
 			var $menuToggle = $( '.main-navigation-container__mobile-toggle', Menu.$ele );
@@ -28,7 +30,7 @@ if( !window.SOCD ){ window.SOCD = {} };
 		init_typeahead: function(){			
 			var raw = SOCD.Config.typeahead_local;
 			var structureTypeahead = [];
-			for( type in raw ){
+			for ( type in raw ) {
 				structureTypeahead.push({
 					name: type,
 					local: raw[type],
@@ -76,6 +78,20 @@ if( !window.SOCD ){ window.SOCD = {} };
 				if( e.which === 13 ){
 					Menu.typeahead_visit_index( 0 );
 				}
+			});
+		},
+		init_touch: function() {
+			var $menupoppers = $( '.main-navigation, .ab-top-menu, .main-navigation__menu-item--root' ).find('a');
+
+			$menupoppers.on('click', function( event ) {
+				var $el = $(this),
+					$li = $el.parents('li').first();
+
+				if ( $li.hasClass('menupop') || $li.hasClass('main-navigation__menu-item--root') || $li.find('.sub-menu').length ) {
+					event.preventDefault();
+					$li.toggleClass('s__hover');
+				}
+
 			});
 		},
 		typeahead_visit_url: function( url ){
