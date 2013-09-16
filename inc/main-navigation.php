@@ -14,7 +14,7 @@ function socd_get_navigation_data() {
 		$data = array();
 		
 		$all_menus = get_nav_menu_locations();
-		$menu_id = $all_menus['socd_network_menu'];
+		$menu_id = isset( $all_menus['socd_network_menu'] ) ? $all_menus['socd_network_menu'] : false;
 		
 		if ( ! is_nav_menu( $menu_id ) ) return json_encode( array() );
 		
@@ -80,7 +80,6 @@ function get_socd_network_menu() {
 		set_site_transient( 'site__socd_menu_raw', json_encode( $output ), 1 * HOUR_IN_SECONDS );
 	}
 
-	
 	return $output;
 }
 
@@ -91,7 +90,7 @@ function get_socd_network_menu() {
 function socd_network_menu() {
 	if ( !function_exists('switch_to_blog') ) return false;
 
-	if ( false === ( $output = get_site_transient( 'site__socd_menu' ) ) || false ) {
+	if ( false === ( $output = get_site_transient( 'site__socd_menu' ) ) || true ) {
 		switch_to_blog( 1 );
 		$output = wp_nav_menu( array(
 			'theme_location' => 'socd_network_menu',

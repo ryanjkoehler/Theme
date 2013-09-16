@@ -113,7 +113,6 @@ if ( !function_exists('is_network') ) {
 	}
 }
 
-
 if ( !function_exists('get_network_name') ) {
 	function get_network_name() {
 		global $current_site;
