@@ -254,8 +254,24 @@
 	$colours: (
 		$colour_menu_grey_mid,
 		$colour_menu_grey_light,
-		$colour_menu_grey_light
+		lighten($colour_menu_grey_light, 10)
 	);
+
+	&.navigation--breadcrumb {
+		text-indent: .2em;
+
+		&:after {
+			content: "";
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			border: 1em solid transparent;
+			border-width: 1.3rem .5rem;
+			height: 0;
+			width: 0;
+		}
+	}
 
 	@for $i from 1 through length($colours) {
 		
@@ -263,6 +279,19 @@
 
 		&:nth-child( #{$i + 1} ){
 			background: $colour;
+			position: relative;
+
+			// LA 
+			// https://github.com/socd-io/Deployment/issues/78
+			// 
+			&:after {
+				@if $i - 1 > 0 {
+					border-left-color: nth( $colours, $i - 1 );
+				} @else {
+					border-left-color: $colour_background_dark;
+				}
+			}
+
 			.drop,
 			.children,
 			.flyout,
