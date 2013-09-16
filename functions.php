@@ -104,7 +104,8 @@ function socd_javascript_config() {
 
 	$config = array(
 		'ajax_url' => admin_url( 'admin-ajax.php' ),
-		'typeahead_local' => socd_get_navigation_data()
+		'typeahead_local' => socd_get_navigation_data(),
+		'current_subdomain' => socd_get_subdomain()
 	);
 
 	if (is_front_page() && $blog_id == 1 ) {
