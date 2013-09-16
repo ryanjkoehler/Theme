@@ -1,4 +1,4 @@
-if( !window.SOCD ){ window.SOCD = {} };
+if ( !window.SOCD ){ window.SOCD = {}; }
 
 ( function( window, $, undefined ){
 
@@ -30,7 +30,7 @@ if( !window.SOCD ){ window.SOCD = {} };
 		init_typeahead: function(){			
 			var raw = SOCD.Config.typeahead_local;
 			var structureTypeahead = [];
-			for ( type in raw ) {
+			for ( var type in raw ) {
 				structureTypeahead.push({
 					name: type,
 					local: raw[type],
