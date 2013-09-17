@@ -1,5 +1,5 @@
 #wpadminbar,
-.main-navigation-container{	
+.main-navigation {	
 	width: 100%;
 	@include rem( 'min-height', $height_menu );
 	position: fixed;
@@ -19,6 +19,7 @@
 		width: 100%;
 		position: static;
 	}
+
 	.main-navigation-container__openable{
 		display: none;
 		position: fixed;
@@ -40,14 +41,19 @@
 			max-height: 500em; //this is a high value to ensure that it will spring open
 		}
 	}
+
+	.search-form--input {
+		&:focus{
+			@include box-shadow(none);
+		}
+	}
+
 }
 
 //block
 .main-navigation,
 .ab-top-menu {
-	background: $colour_background_dark;
 	color: $colour_background;
-	display: inline-block;
 	display: -webkit-box;
 	display: -moz-box;
 	display: -ms-flexbox;
@@ -55,10 +61,38 @@
 	display: flex;
 	margin: 0 auto;
 	position: relative;
+	flex-flow: row wrap;
 	@include rem( 'height', $height_menu );
 	width: 100%;
 	max-width: $size_grid_width - 2.7;
 	z-index: 2;
+
+	@include breakpoint( $breakpoint_lap (max-width 73.5em)) {
+		padding: 0 $grid_padding;
+	}
+
+	& > li {
+		-webkit-box-flex: 1;
+		-moz-box-flex: 1;
+		width: auto;
+		-webkit-flex: 1 1 auto;
+		-ms-flex: 1 1 auto;
+		flex: 1 1 auto;
+
+		&:first-child, /* socd.io menu link */
+		&:last-child   /* 'My Sites' or Logged In */{
+			max-width: 5.875em;
+		}
+
+		&#wp-admin-bar-comments {
+			max-width: 2.5em;
+		}
+
+		&#wp-admin-bar-new-content,
+		&#wp-admin-bar-edit {
+			max-width: 6.25em;
+		}
+	}
 
 	.a,
 	.menupop .ab-empty-item,
@@ -104,7 +138,7 @@
 	& > li {
 		@include transition( max-width .25s ease-in-out, width .25s ease-in-out, min-width .25s ease-in-out );
 		width: auto;
-		max-width: 400px;
+		max-width: 100%;
 		min-width: 0;
 		
 		&.collapse{
@@ -201,12 +235,8 @@
 			color: $colour_background_dark;
 			@include fontstack_medium;	
 			@include rem( 'height', $height_menu );
-			&:focus{
-				-webkit-box-shadow: none;
-				-moz-box-shadow: none;
-				box-shadow: none;
-			}
 		}
+
 		input[type="submit"]{
 			border: 0;
 			height: 0;
@@ -375,7 +405,10 @@ body.logged-in{
 			&:hover,
 			&.active{
 				.drop{
-					@include rem( padding, 1 );				
+					@include rem( padding, 1 );
+					width: 20em;
+					left: auto;
+					right: 0;
 				}
 			}
 			form{
@@ -479,11 +512,14 @@ li.main-navigation__menu-item--profile {
  */
 #wpadminbar {
 
-	.ab-top-menu > li {
-		@include breakpoint( $breakpoint_palm ) {
-			display: inline-block;
-		}
+	/**
+	 * 
+	 */
+	&:focus {
+		outline: none;
+	}
 
+	.ab-top-menu > li {
 		& > a {
 			@include fontstack_medium;
 		}

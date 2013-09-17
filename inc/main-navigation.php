@@ -279,21 +279,19 @@ function socd_reorder_admin_bar() {
 		),
 	);
 
+	
 	foreach ( $nodes as $node ) {
 		$temp = $wp_admin_bar->get_node( $node['id'] );
 		$wp_admin_bar->remove_menu( $node['id'] );
-		$temp->parent = false;
+		
 		$temp->meta = array(
 			'class' => $node['class']
 		);
 
-		if ( $node === "search" && isset( $temp->title ) ) {
-			$temp->title = preg_replace( '/text"/', 'search" placeholder="Search"', $temp->title );
-		}
-
-		$wp_admin_bar->add_node( $temp );
+		if ( !is_admin() ) $temp->parent = false;
+		
+		$wp_admin_bar->add_node( apply_filters( 'socd_alter_admin_bar', $temp ) );
 	}
-
 
 	// Take contents of 'site-name' and append to 'socd-menu-site'
 	// 
@@ -311,9 +309,27 @@ function socd_reorder_admin_bar() {
 		}
 	}
 
+	$wp_admin_bar->remove_node( 'user-info' );
 }
 
 add_action( 'wp_before_admin_bar_render', 'socd_alter_admin_bar' );
+
+function socd_alter_admin_bar_nodes( $node ) {
+	if ( ! isset( $node->id ) ) return $node;
+
+	if ( $node->id === "search" && isset( $node->title ) ) {
+		$node->title = preg_replace( '/text"/', 'search" placeholder="Search"', $node->title );
+	}
+
+	if ( $node->id === "my-account" ) {
+		$node->title = preg_replace( '/Howdy,/', __( '', 'socd' ), $node->title );
+	}
+
+	return $node;
+}
+add_filter( 'socd_alter_admin_bar', 'socd_alter_admin_bar_nodes' );
+
+
 
 function socd_after_admin_bar() {
 	if( !is_admin() ){
