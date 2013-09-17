@@ -57,8 +57,8 @@
       var script = document.createElement('script');
 
       script.type = 'text/javascript';
-      script.src = 'http://maps.googleapis.com/maps/api/js?key=AIzaSyBQjFHblWw4toFdQmRIWRQIS9jppMAHKVs&sensor=false&' + 'callback=SOCD.Mapping.loaded'
-      document.body.appendChild(script);
+      script.src = 'http://maps.googleapis.com/maps/api/js?key=AIzaSyBQjFHblWw4toFdQmRIWRQIS9jppMAHKVs&sensor=false&' + 'callback=SOCD.Mapping.loaded';
+      document.body.appendChild( script );
     },
     loaded: function() {
       var self = this,
@@ -77,7 +77,6 @@
               mapTypeIds: []
             },
             mapTypeId: self.mapTypeId,
-            zoom: 8,
             center: new google.maps.LatLng( coordinates[0], coordinates[1] )
         } );
 
@@ -104,13 +103,11 @@
             html: info.html,
           });
 
-          console.log(coords[0], coords[1]);
-
-          google.maps.event.addListener(mark, 'click', function() {
+          google.maps.event.addListener( mark, 'click', function() {
             self.infowindow.setContent( self.infowindowContent( this.html ) );
             self.infowindow.open( self.map, this );
           });
-        };
+        }
       }
 
       self.map.mapTypes.set( SOCD.Mapping.maptypeId, new google.maps.StyledMapType( self.featureOpts, {
@@ -118,6 +115,7 @@
       } ));
     },
     infowindowContent: function(msg) {
+      console.log(msg);
       return '<div class="homepage--map-iw">' + msg + '</div>';
     }
 

@@ -54,10 +54,11 @@
 	display: -webkit-flex;
 	display: flex;
 	margin: 0 auto;
+	position: relative;
 	@include rem( 'height', $height_menu );
-	//@include rem( 'line-height', $height_menu );
 	width: 100%;
 	max-width: $size_grid_width - 2.7;
+	z-index: 2;
 
 	.a,
 	.menupop .ab-empty-item,
@@ -166,7 +167,9 @@
 				position: absolute;
 				top: 0;	
 			}
+			
 			&:hover,
+			&.s__hover, // Used on touch devices
 			&.active{
 				color: white;
 				&>ul{
@@ -178,9 +181,9 @@
 		}
 		
 		&:hover,
-		&.active{
-
-			&> .ab-sub-wrapper > .ab-submenu,
+		&.s__hover, // Used on touch devices
+		&.active {
+			& > .ab-sub-wrapper > .ab-submenu,
 			.drop{
 				height: auto;
 				overflow: visible;
@@ -335,6 +338,11 @@ body.logged-in{
 .admin-bar-search,
 .site-search{
 	width: 100%;
+
+	input[type="text"] {
+		background-color: $colour_white !important;
+	}
+
 	.ab-item,
 	#adminbarsearch{
 		height: 100%;
