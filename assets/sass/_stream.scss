@@ -5,7 +5,65 @@
  * across Noticeboards & Sketchbooks
  */
 
-.stream {}
+.stream {
+
+	/**
+	 * Main container for stream content used
+	 * on noticeboards and sketchbooks
+	 */
+	.col--stream {
+		@extend .col;
+	}
+
+	@include breakpoint( $breakpoint_lap_only ) {
+	
+		overflow: hidden;
+
+		.col--stream {
+			float: left;
+			width: 60%;
+		}
+
+		.col--side {
+			float: right;
+			width: 40%;
+		}
+	}
+
+	@include breakpoint( $breakpoint_lap ) {
+
+		display: -webkit-flex;
+		display:         flex;
+		-webkit-flex-flow: row wrap;
+				flex-flow: row wrap;
+				align-items: flex-start;
+				align-content: flex-start;
+
+		.col--stream {
+			width: 100% - (22 * 2);
+			-webkit-flex: 3 1 56%;
+					flex: 3 1 56%;
+			-webkit-order: 2;
+					order: 2;
+		}
+
+		.col--side {
+			-webkit-flex: 1 6 22%;
+					flex: 1 6 22%;
+
+			&.col--side__left {
+				-webkit-order: 1;
+						order: 1;
+			}
+
+			&.col--side__right {
+				-webkit-order: 3;
+						order: 3;
+			}
+		}
+		
+	}
+}
 
 /**
  * Stream Filters
@@ -20,6 +78,7 @@
  * .s-active
  */
 .stream--filters {
+	
 	li {
 		@extend .col;
 		width: auto;

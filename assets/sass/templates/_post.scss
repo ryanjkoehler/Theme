@@ -12,31 +12,47 @@
 	&.article__w-thumbnail {
 		margin-top: $grid_padding;
 	}
-	.article--header{
-		@include rem( 'padding-bottom', 0.4 );
-		h2{
-			margin-top: 0;
+}
+
+.article--header{
+	@include rem( 'padding-bottom', 0.4 );
+	h2{
+		margin-top: 0;
+	}
+	img{
+		@include rem( 'margin-bottom', .5 );
+	}	
+}
+
+.article--meta{
+	@include fontstack_light;
+	@include font-size( .8 );
+	@include rem('padding-right', 1.4 );
+
+	@include breakpoint( $breakpoint_desk_max ) {
+		display: flex;
+		flex-flow: row wrap;
+		align-items: flex-start;
+		align-content: flex-start;
+		justify-content: space-between;
+			
+		.byline br {display: none }
+	}
+
+	.vcard {
+		@include fontstack_medium;
+		text-transform: capitalize;
+
+		@include breakpoint( $breakpoint_palm ) {
+			display: block;
+			margin-bottom: $grid_padding;
 		}
-		img{
-			@include rem( 'margin-bottom', .5 );
-		}	
 	}
-	.article--meta{
-		@include fontstack_light;
-		@include font-size( .8 );
-		@include rem('padding-right', 1.4 );
-	}
+
 }
 
-
-
-.article__format-image{
-	.article--header{
-		display: none;
-	}
-}
-
-.article__format-video{
+.article__format-image,
+.article__format-video {
 	.article--header{
 		display: none;
 	}
@@ -52,9 +68,11 @@
 }
 
 .article__format-quote{
+	
 	.article--header{
 		display: none;
 	}
+	
 	blockquote{
 		@include fontstack_medium;
 		&, p{
@@ -79,13 +97,16 @@
 .entry-date{
 	display: block;	
 	@include rem( margin-bottom, 0.9 );
+	
 	.date{
-		display: block;
 		@include fontstack_medium;
 		@include rem( margin-top, 0.2 );	
 	}
-	.time{
-		display: block;	
+
+	@include breakpoint( $breakpoint_lap ) {
+		.time, .data {
+			display: block
+		}
 	}
 }
 
@@ -103,16 +124,4 @@
 		position: absolute;
 		top: 0;
 	}
-}
-	
-.byline{
-	.author{
-		@include fontstack_medium;
-		text-transform: capitalize;
-	}
-}
-
-.admin {
-	display: block;
-	margin-top: $grid_padding;
 }

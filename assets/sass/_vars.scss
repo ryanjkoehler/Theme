@@ -40,6 +40,7 @@ $breakpoint_palm_max: max-width $breakpoint_palm;
 
 $breakpoint_lap: 50em;
 $breakpoint_lap_max: max-width $breakpoint_lap;
+$breakpoint_lap_only: ( min-width $breakpoint_palm ) ( $breakpoint_lap_max );
 
 $breakpoint_desk: 64em;
 $breakpoint_desk_max: max-width $breakpoint_desk;

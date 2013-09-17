@@ -15,6 +15,7 @@
 	margin: 0 auto;
 	width: 100%;
 	max-width: $size_grid_width;
+	position: relative;
 	
 //	@include rem('padding-top', $height_menu );
 
@@ -50,23 +51,15 @@
 	 */
 	.col--side {
 		@extend .col;
-		width: 22%
+		
+		@include breakpoint( $breakpoint_palm ) {
+			width: 22%
+		}
 	}
 
-	/**
-	 * Main container for stream content used
-	 * on noticeboards and sketchbooks
-	 */
 	.col--stream {
 		@extend .col;
-		width: 100% - (22 * 2)
-	}
-	
-	/**
-	 * Main content block, used on the single page template.
-	 */
-	.col--main {
-		width: 39%;
+
 	}
 
 .palm--bigger-than {
