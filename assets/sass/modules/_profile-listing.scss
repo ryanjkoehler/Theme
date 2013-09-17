@@ -26,6 +26,14 @@
 			right: 0;
 		}
 
+		@include breakpoint( $breakpoint_palm ) {
+			.year {
+				position: absolute;
+				top: $grid_padding;
+				right: 0;
+			}
+		}
+
 		@include breakpoint( $breakpoint_palm_max ) {
 			padding: $grid_padding;
 
@@ -53,12 +61,6 @@
 
 		.role {
 			margin-bottom: $grid_padding * .5;
-		}
-
-		.year {
-			position: absolute;
-			top: $grid_padding;
-			right: 0;
 		}
 	}
 

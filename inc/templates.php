@@ -56,8 +56,10 @@ function socd_template( $template_directory, $template_name=false ) {
 /**
  * Convience wrapper for WordPress' included function for loading template
  * partials, accommodates socd conventions
+ * 
+ * 
  */
-function socd_template_part( $template_directory, $template_name=false ) {
+function socd_template_part( $template_directory, $template_name = false ) {
 	if ( !$template_name ) $template_name = $template_directory;
 	get_template_part( "templates/$template_directory/$template_name" );
 }
@@ -175,3 +177,24 @@ function flushRules(){
 }
 
 add_filter('init','flushRules');
+
+
+function socd_get_students() {
+	return get_users( array(
+		'blog_id'	 => 1,
+		'number'	 => 999,
+		'meta_query' => array(
+			array(
+				'key'	  => 'group',
+				'value'   => 'staff',
+				'compare' => 'NOT LIKE'
+			)
+		)
+	) );
+}
+
+function is_student() {
+	global $user;
+	$group = get_user_meta( $user->ID, 'group', true );
+	return "staff" !== $group;
+}

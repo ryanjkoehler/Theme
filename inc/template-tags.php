@@ -274,8 +274,9 @@ function socd_headshot( $class = "" ) {
  * @return [type] [description]
  */
 function socd_user_match_current_course() {
-	global $user;
-	echo socd_get_profile_field('course') !== socd_get_subdomain() ? 'style="display: none;"' : '';
+	global $user, $current_site;
+
+	echo socd_get_profile_field('course') !== socd_get_subdomain() && $current_site->blog_id !== 1 ? 'style="display: none;"' : '';
 }
 
 /**
