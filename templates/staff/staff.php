@@ -63,15 +63,8 @@ get_header(); ?>
 						if( !in_array( get_user_meta( $user->ID, 'course', true ), $courses_represented) ){
 							$courses_represented[] = get_user_meta( $user->ID, 'course', true );
 						}
-						?><li itemscope itemtype="http://schema.org/Person" class="listing--profile col lap--one-half desk--one-quarter" data-course="<?php socd_course_code(); ?>">
-							<a href="<?php echo socd_get_profile_url( $user ); ?>" class="thumbnail col palm--one-third"><?php echo socd_get_profile_thumbnail(); ?></a>
-							<div class="profile--info col palm--two-thirds">
-								<h1 class="name" itemprop="name"><?php echo $user->display_name; ?></h1>
-								<h2 class="role" itemprop="jobTitle"><?php echo get_user_meta( $user->ID, 'socd_role', true ); ?></h2>
-		
-								<p><?php echo socd_course_code_to_course_name( get_user_meta( $user->ID, 'course', true ) ); ?></p>
-							</div>
-						</li><?php
+
+						socd_template_part( 'profile', 'listing' );
 
 					endforeach;
 
