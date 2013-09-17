@@ -316,10 +316,11 @@ function socd_reorder_admin_bar() {
 add_action( 'wp_before_admin_bar_render', 'socd_alter_admin_bar' );
 
 function socd_after_admin_bar() {
-	
-	printf('<script src="%1$s"></script>',
-		get_stylesheet_directory_uri() . '/assets/javascript/main-navigation.js'
-	);
+	if( !is_admin() ){
+		printf('<script src="%1$s"></script>',
+			get_stylesheet_directory_uri() . '/assets/javascript/main-navigation.js'
+		);
+	}
 }
 
 add_action( 'wp_after_admin_bar_render', 'socd_after_admin_bar' );

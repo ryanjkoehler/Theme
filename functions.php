@@ -86,12 +86,13 @@ function socd_assets () {
 	wp_enqueue_script( 'socd_comments', get_stylesheet_directory_uri() . '/assets/javascript/comments.js', array( 'jquery', 'socd_inline_attach'  ), false, true );
 	wp_enqueue_script( 'socd_listing_filters', get_stylesheet_directory_uri() . '/assets/javascript/listing-filter.js', array( 'jquery' ), false, true );
 	wp_enqueue_script( 'socd_blog_filters', get_stylesheet_directory_uri() . '/assets/javascript/blog-filter.js', array( 'jquery' ), false, true );
-	wp_enqueue_script( 'socd_search_form', get_stylesheet_directory_uri() . '/assets/javascript/search-form.js', array( 'jquery' ), false, true );
-	wp_enqueue_script( 'socd_main', get_stylesheet_directory_uri() . '/assets/javascript/main.js', array( 'jquery', 'modernizr', 'fitvids', 'socd', 'socd_viewport', 'socd_inline_attach', 'socd_hogan', 'socd_hogan_templates', 'socd_typeahead', 'socd_states', 'socd_main_navigation', 'socd_notification_center', 'socd_comments', 'socd_listing_filters', 'socd_search_form' ), false, true );
+	wp_enqueue_script( 'socd_search_form', get_stylesheet_directory_uri() . '/assets/javascript/search-form.js', array( 'jquery' ), false, true );	
 
 	if ( ! is_admin_bar_showing() ) {
 		wp_enqueue_script( 'socd_main_navigation', get_stylesheet_directory_uri() . '/assets/javascript/main-navigation.js', array( 'jquery', 'socd_typeahead', 'socd_states', 'socd_hogan', 'socd_hogan_templates', 'socd_search_form', 'modernizr' ), false, true );
 	}
+
+	wp_enqueue_script( 'socd_main', get_stylesheet_directory_uri() . '/assets/javascript/main.js', array( 'jquery', 'modernizr', 'fitvids', 'socd', 'socd_viewport', 'socd_inline_attach', 'socd_hogan', 'socd_hogan_templates', 'socd_typeahead', 'socd_states', 'socd_notification_center', 'socd_comments', 'socd_listing_filters', 'socd_blog_filters', 'socd_search_form' ), false, true );
 
 	// Only used in the registration form
 	// 

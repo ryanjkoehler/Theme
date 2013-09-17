@@ -30,7 +30,7 @@ if( !window.SOCD ){ window.SOCD = {} };
 			});
 		},
 		run: function(){
-			var $active =  ListingFilter.$items;
+			var $active = ListingFilter.$items;
 			ListingFilter.$filters.filter('.active').each( function(){
 				var section = $(this).closest( '.listing-filter--section' ).attr('data-section'),
 					by = $(this).attr('href').replace( '#', '' );
