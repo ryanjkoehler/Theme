@@ -44,24 +44,6 @@
  * Used to handle components that aren't specifically addressed
  * with the main columns.
  */
-
-
-	/**
-	 * Small sidebar 
-	 */
-	.col--side {
-		@extend .col;
-		
-		@include breakpoint( $breakpoint_palm ) {
-			width: 22%
-		}
-	}
-
-	.col--stream {
-		@extend .col;
-
-	}
-
 .palm--bigger-than {
 
 	@include breakpoint( $breakpoint_palm_max ) {

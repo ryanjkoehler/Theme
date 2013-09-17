@@ -12,23 +12,24 @@ get_header(); ?>
 			<h1 class="h1 header__title"><?php _e('Staff Profiles', 'socd'); ?></h1>
 		</header>
 		<div>
-
-			<div class="col one-sixth">
-				<?php if( !socd_get_subdomain() ): ?>
+			<?php if ( ! socd_get_subdomain() ): ?>
+				<div class="col lap--one-third desk--one-sixth">
 					<div class="cell colour--blue listing-filter">
 						<h1 class="h2 h2--ruled">Filter By</h1>	
 						<ul>
 							<li class="listing-filter--section" data-section="course">
 								<h2 class="section-title">Course</h2>
-								<ul class="section-options">
+								<ul class="section-options listing__filter">
 									<?php socd_filter_course(); ?>
 								</ul>
 							</li>
 						</ul>
 					</div>
-				<?php endif; ?>
-			</div><!--
-		 --><ul class="col two-thirds listing__profiles">
+				</div><?php
+
+				endif; ?><!--
+		 --><div class="col lap--two-thirds desk--two-thirds listing__profiles <?php echo socd_get_subdomain() ? "push--desk--one-sixth" : "" ; ?>">
+		 	<ul class="gw">
 				<?php
 
 				$courses_represented = array();
@@ -62,9 +63,9 @@ get_header(); ?>
 						if( !in_array( get_user_meta( $user->ID, 'course', true ), $courses_represented) ){
 							$courses_represented[] = get_user_meta( $user->ID, 'course', true );
 						}
-						?><li itemscope itemtype="http://schema.org/Person" class="listing--profile col one-quarter" data-course="<?php socd_course_code(); ?>">
-							<a href="<?php echo socd_get_profile_url( $user ); ?>"><?php echo socd_get_profile_thumbnail(); ?></a>
-							<div class="profile--info">
+						?><li itemscope itemtype="http://schema.org/Person" class="listing--profile col lap--one-half desk--one-quarter" data-course="<?php socd_course_code(); ?>">
+							<a href="<?php echo socd_get_profile_url( $user ); ?>" class="thumbnail col palm--one-third"><?php echo socd_get_profile_thumbnail(); ?></a>
+							<div class="profile--info col palm--two-thirds">
 								<h1 class="name" itemprop="name"><?php echo $user->display_name; ?></h1>
 								<h2 class="role" itemprop="jobTitle"><?php echo get_user_meta( $user->ID, 'socd_role', true ); ?></h2>
 		

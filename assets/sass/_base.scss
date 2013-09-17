@@ -249,6 +249,7 @@ strong{
 		@include font-size( .8 );
 		position: relative;
 		padding-left: $grid_padding * 1.75;
+		padding-right: $grid_padding;
 
 		&:before {
 			content: "> " !important;

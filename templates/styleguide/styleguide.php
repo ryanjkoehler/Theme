@@ -325,6 +325,32 @@ get_header(); ?>
 <section>
   <h1 class="h2">Layout Snippets</h1>
   <div class="gw">
+    <header class="header">
+      <h1 class="h1 site--title"><a href="#">Stream</a></h1>
+      <h2 class="blog--title">Noticeboard/Sketchbook</h2>
+    </header>
+    <div class="stream">
+      <div class="col--stream">
+        <div class="cell colour--white">
+          <h1 class="h2">Main Stream Content</h1>
+          <p class="fixie"></p>
+        </div>
+      </div><!-- 
+   --><div class="col--side col--side__left">
+        <div class="cell colour--blue">
+          <h3 class="h3">Widget Area</h3>
+          <p class="fixie"></p>
+        </div>
+      </div><!-- 
+   --><div class="col--side col--side__right">
+        <div class="cell colour--red">
+          <h3 class="h3">Widget Area</h3>
+          <p class="fixie"></p>
+        </div>
+      </div>
+    </div><!-- .stream -->
+  </div><!-- .gw -->
+  <div class="gw">
     <article class="type-page page h-center">
       <header class="header">
         <h1 class="h1 site--title">Page Layout</h1>
