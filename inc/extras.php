@@ -56,6 +56,18 @@ function socd_get_networks() {
 }
 
 /**
+ * @uses  socd_get_networks
+ */
+function socd_network_names_by_domain(){
+	$networks = socd_get_networks();
+	$name_by_url = array();
+	foreach( $networks as $network ){
+		$name_by_url[ $network->domain ] = $network->site_name; 
+	}
+	return $name_by_url;
+}
+
+/**
  * 
  * @uses  socd_get_networks
  * @return [type] [description]
