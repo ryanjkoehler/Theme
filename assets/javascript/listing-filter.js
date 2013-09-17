@@ -34,7 +34,6 @@ if( !window.SOCD ){ window.SOCD = {} };
 			ListingFilter.$filters.filter('.active').each( function(){
 				var section = $(this).closest( '.listing-filter--section' ).attr('data-section'),
 					by = $(this).attr('href').replace( '#', '' );
-				console.log( section );
 				$active = $active.filter( '[data-' + section + '="' + by + '"]' );
 			});
 			ListingFilter.$items.hide();
