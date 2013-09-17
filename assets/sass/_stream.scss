@@ -12,7 +12,6 @@
 	 * on noticeboards and sketchbooks
 	 */
 	.col--stream {
-		@extend .col;
 	}
 
 	@include breakpoint( $breakpoint_lap_only ) {
@@ -32,35 +31,56 @@
 
 	@include breakpoint( $breakpoint_lap ) {
 
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
 		display: -webkit-flex;
-		display:         flex;
+		display: flex;
 		-webkit-flex-flow: row wrap;
 				flex-flow: row wrap;
-				align-items: flex-start;
+		-webkit-align-items: flex-start;
+			    align-items: flex-start;
+		-webkit-align-content: flex-start;
 				align-content: flex-start;
 
 		.col--stream {
-			width: 100% - (22 * 2);
+			-webkit-box-flex: 1;
+			-moz-box-flex: 1;
+			
 			-webkit-flex: 3 1 56%;
 					flex: 3 1 56%;
+			-webkit-box-ordinal-group: 2;
+			-moz-box-ordinal-group: 2;
+			-ms-flex-order: 2;
 			-webkit-order: 2;
-					order: 2;
+			order: 2;
+			width: 100% - (22 * 2);
 		}
 
 		.col--side {
+			-webkit-box-flex: 1;
+			-moz-box-flex: 1;
+			width: 22%;
 			-webkit-flex: 1 6 22%;
 					flex: 1 6 22%;
-
-			&.col--side__left {
-				-webkit-order: 1;
-						order: 1;
-			}
-
-			&.col--side__right {
-				-webkit-order: 3;
-						order: 3;
-			}
 		}
+
+		.col--side__left {
+			-webkit-box-ordinal-group: 1;
+			-moz-box-ordinal-group: 1;
+			-ms-flex-order: 1;
+			-webkit-order: 1;
+			order: 1;
+		}
+
+		.col--side__right {
+			-webkit-box-ordinal-group: 3;
+			-moz-box-ordinal-group: 3;
+			-ms-flex-order: 3;
+			-webkit-order: 3;
+			order: 3;
+		}
+
 		
 	}
 }

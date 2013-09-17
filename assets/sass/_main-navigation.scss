@@ -592,5 +592,12 @@ li.main-navigation__menu-item--profile {
 
 }
 .admin-bar {
-	@include rem( 'margin-top', 2.62 );
+	.header {
+		@include rem( 'padding-top', ( 2.62 + 3.95 ) );
+	}
+}
+
+
+.s__hover {
+	outline: 10px solid lime !important;
 }
