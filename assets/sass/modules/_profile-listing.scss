@@ -12,7 +12,7 @@
 	}
 }
 
-	.listing--profile {
+	.profile--listing {
 		padding: $grid_padding 0 $grid_padding*.5 $grid_padding;
 		position: relative;
 
@@ -57,6 +57,10 @@
 		.name {
 			@extend .h4;
 			margin: $grid_padding * .5 0 0;
+
+			a {
+				color: $colour_black;
+			}
 		}
 
 		.role {
