@@ -88,7 +88,8 @@ module.exports = function(grunt) {
         'assets/javascript/config.js',
         'assets/javascript/socd.js',
         'assets/javascript/maps.js',
-        'assets/javascript/register.js'
+        'assets/javascript/register.js',
+        'assets/javascript/main-navigation.js'
       ],
       options: {
         ignores: ['assets/javascript/socd-hogan-templates.js']
