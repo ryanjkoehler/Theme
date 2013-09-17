@@ -64,7 +64,7 @@ get_header(); ?>
 							$courses_represented[] = get_user_meta( $user->ID, 'course', true );
 						}
 
-						socd_template_part( 'profile', 'listing' );
+							socd_template_part( 'profile', 'listing' );
 
 					endforeach;
 

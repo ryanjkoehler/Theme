@@ -70,13 +70,18 @@ global $current_site, $user;
 
 					 ?>
 				</div><!-- .cell -->
-			</div><?php if ( 1 !== $current_site->id ) : ?><aside class="col one-quarter profile--quick">
+			</div><!-- 
+			--><?php
+
+				socd_headshot('col lap--one-half');
+
+				if ( 1 !== $current_site->id ) : ?><!-- 
+		 --><aside class="col lap--one-half desk--one-fifth push--desk--one-sixth profile--quick">
 				<div class="cell colour--blue">
 					<h2 class="h2 h2--ruled">Quick links</h2>
 					<?php socd_site_menu(); ?>
 				</div>
-			</aside><?php endif; ?><!-- 
-			--><?php socd_headshot('col lap--one-half'); ?>
+			</aside><?php endif; ?>
 		</div><!-- .page--wrap -->
 	</article>
 </div>
