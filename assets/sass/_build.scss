@@ -42,7 +42,8 @@ x*[class*="col"] {
 	position: absolute;
 	@include rem( 'height', 2.6 );
 	@include rem( 'width', 2.6 );
-	@include rem( 'top', -2.6 );
+	top: 0;
+	// @include rem( 'top', -2.6 );
 	@include rem( 'left', -1.2 );
 	line-height: 2.6;
 	text-align: center;
