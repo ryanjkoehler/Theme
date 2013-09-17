@@ -39,13 +39,16 @@ x*[class*="col"] {
 	background: $colour_red;
 	color: $colour_white;
 	display: block;
-	position: absolute;
-	@include rem( 'height', 2.6 );
-	@include rem( 'width', 2.6 );
-	top: 0;
-	// @include rem( 'top', -2.6 );
-	@include rem( 'left', -1.2 );
+	position: fixed;
+	@include rem( 'height', $height_menu );
+	@include rem( 'width', $height_menu );
+	@include rem( 'top', $height_menu );
+	@include rem( 'left', $grid_padding );
 	line-height: 2.6;
 	text-align: center;
 	z-index: 99;
+
+	@include breakpoint( $breakpoint_lap_max ) {
+		left: 0;
+	}
 }
