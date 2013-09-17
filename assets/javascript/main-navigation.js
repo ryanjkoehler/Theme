@@ -28,18 +28,57 @@ if ( !window.SOCD ){ window.SOCD = {}; }
 			});
 		},	
 		init_typeahead: function(){			
+			var rootUrl = SOCD.Config.site_root_url.replace( /^(https?):\/\//, '' );
 			var raw = SOCD.Config.typeahead_local;
 			var structureTypeahead = [];
-			for ( var type in raw ) {
-				structureTypeahead.push({
-					name: type,
-					local: raw[type],
-					limit: 100,
-					header: T.header( { name: type } ),
-					template: T.result
-				});
+			if( SOCD.Config.current_site === 'SOCD.io' ){
+				// we need to include everything as we're at the root
+				for ( var type in raw ) {
+					var data = [];
+					if( type !== 'Course' ){						
+						for( var i = 0; i < raw[type].length; i++ ){
+							var item = raw[type][i];
+							var siteDomain = item.url.split('/');
+							siteDomain = siteDomain[ 2 ];
+							var siteName = SOCD.Config.sites[ siteDomain ];
+							if( siteName ){
+								item.title = item.title + ' - ' + siteName;
+							}
+							data.push( item );
+						}
+						
+					} else {
+						data = raw[type];
+					}					
+					structureTypeahead.push({
+						name: type,
+						local: data,
+						limit: 100,
+						header: T.header( { name: type } ),
+						template: T.result
+					});
+				}
+			} else {				
+				for ( var type in raw ) {
+					var section = raw[type];
+					var data = [];
+					for( var i = 0; i < section.length; i++ ){
+						var item = section[i];						
+						if( item.url.indexOf( rootUrl  ) !== -1 ){
+							data.push( item );
+						}
+					}
+					if( data.length > 0 ){
+						structureTypeahead.push({
+							name: type,
+							local: data,
+							limit: 100,
+							header: T.header( { name: type } ),
+							template: T.result
+						});
+					}
+				}
 			}
-
 			Menu.$searchInput.typeahead( structureTypeahead );
 		},
 		init_ui: function(){
