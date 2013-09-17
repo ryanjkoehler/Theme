@@ -22,7 +22,7 @@ get_header(); ?>
 				<?php socd_paging_nav(); ?>
 			</div>
 		</section><!-- 
-	 --><section class="col col--side col--side__left">
+	 --><section class="col--side col--side__left">
 			<?php if( is_active_sidebar( 'left_sidebar' ) || is_noticeboard() ): ?> 
 				<div class="cell colour--blue">
 					<?php if( is_noticeboard() ): ?>
@@ -38,7 +38,7 @@ get_header(); ?>
 				</div>
 			<?php endif; ?>
 		</section><!--
-	 --><aside class="sidebar col col--side col--side__right">
+	 --><aside class="sidebar col--side col--side__right">
 			<?php if( is_active_sidebar( 'blog_sidebar' ) ): ?> 
 				<div class="cell colour--light-grey">
 					<?php if ( dynamic_sidebar( 'blog_sidebar' ) ) : else : endif; ?>
