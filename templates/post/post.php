@@ -6,9 +6,13 @@
  * 
  * @package SOCD
  */ ?>
-<article <?php post_class( 'gw gw--rtl stream--article article' ); ?>>
+<article <?php post_class( 'gw stream--article article' ); ?>>
 	<?php socd_post_thumbnail(); ?>
-	<div class="col four-fifths">
+	<aside class="col desk--one-fifth article--meta"> 
+		<?php socd_posted_on(); ?>
+		<?php edit_post_link( 'Edit', '<span class="admin">', '</span>' ); ?>
+	</aside><!-- 
+ --><div class="col desk--four-fifths">
 		<header class="article--header">
 			<h1 class="h2">
 				<?php if( get_post_format() == 'link' && $href = get_post_meta( get_the_ID(), 'href', true ) ): ?>
@@ -23,11 +27,7 @@
 		<div class="wysiwyg">
 			<?php the_content( 'Read more' ); ?>
 		</div>
-	</div><!--
-	--><aside class="col one-fifth article--meta"> 
-		<?php socd_posted_on(); ?>
-		<?php edit_post_link( 'Edit', '<span class="admin">', '</span>' ); ?>
-	</aside>
+	</div>
 </article>
 <?php do_action( 'socd_after_content' ); ?>
 <?php comments_template('/templates/comments/comments.php'); ?>
