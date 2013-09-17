@@ -5,7 +5,7 @@
  * 
  */
 @mixin rem( $property, $value: 1.6) {
-	#{$property}: ($value * 10) + px;
+	#{$property}: ($value * 16) + px;
 	#{$property}: $value + rem;
 }
 
