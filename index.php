@@ -25,10 +25,10 @@ get_header(); ?>
 	 --><section class="col--side col--side__left">
 			<?php if( is_active_sidebar( 'left_sidebar' ) || is_noticeboard() ): ?> 
 				<div class="cell colour--blue">
-					<?php if( is_noticeboard() ): ?>
-						<h2 class="h2 h2--ruled">Filter By</h2>
-						<?php socd_blog_filter(); ?>
-					<?php endif; ?>
+					
+					<h2 class="h2 h2--ruled">Filter By</h2>
+					<?php socd_blog_filter(); ?>
+					
 					<?php if ( ! dynamic_sidebar( 'left_sidebar' )  ) : ?>
 						<h2 class="h2 h2--ruled">About</h2>
 						<div class="wysiwyg">
