@@ -181,6 +181,7 @@ function socd_alter_admin_bar( ) {
 	$wp_admin_bar->remove_menu( 'wp-logo' );
 	$wp_admin_bar->remove_menu( 'updates' );
 	$wp_admin_bar->remove_menu( 'site-name' );
+	$wp_admin_bar->remove_menu( 'comments' );
 }
 
 function socd_nav_menu_into_admin_bar( $id, $title, $href = '#', $menu_object = false ) {
@@ -263,10 +264,6 @@ function socd_reorder_admin_bar() {
 		),
 		array(
 			'id' 	=> 'new-content',
-			'class' => ''
-		),
-		array(
-			'id' 	=> 'comments',
 			'class' => ''
 		),
 		array(
