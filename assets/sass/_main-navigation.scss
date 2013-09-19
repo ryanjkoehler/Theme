@@ -1,4 +1,5 @@
 #wpadminbar,
+#wp-toolbar,
 .main-navigation {	
 	width: 100%;
 	@include rem( 'min-height', $height_menu );
@@ -64,7 +65,7 @@
 	flex-flow: row wrap;
 	@include rem( 'height', $height_menu );
 	width: 100%;
-	max-width: $size_grid_width - 2.7;
+	max-width: $size_grid_width - 2.80rem; //needs a decimal so SASS calculates it to the right accuracy...
 	z-index: 2;
 
 	@include breakpoint( $breakpoint_lap (max-width 73.5em)) {
