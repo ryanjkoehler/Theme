@@ -322,6 +322,10 @@ function socd_alter_admin_bar_nodes( $node ) {
 		$node->title = preg_replace( '/Howdy,/', __( '', 'socd' ), $node->title );
 	}
 
+	if ( $node->id === "edit" ) {
+		$node->title = 'Edit';
+	}
+
 	return $node;
 }
 add_filter( 'socd_alter_admin_bar', 'socd_alter_admin_bar_nodes' );
