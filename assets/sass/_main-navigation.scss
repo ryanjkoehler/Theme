@@ -69,26 +69,42 @@
 	z-index: 2;
 
 	& > li {
+		@include transition( max-width .25s ease-in-out, width .25s ease-in-out, min-width .25s ease-in-out );
 		-webkit-box-flex: 1;
 		-moz-box-flex: 1;
 		width: auto;
 		-webkit-flex: 1 1 auto;
 		-ms-flex: 1 1 auto;
 		flex: 1 1 auto;
+		max-width: 100%;
+		min-width: 0;
+		@include breakpoint( $breakpoint_lap ){
+			//if we've got a large enough screen
+			-webkit-box-flex: 1;
+			-moz-box-flex: 1;
+			width: auto;
+			-webkit-flex: 0 1 auto;
+			-ms-flex: 0 1 auto;
+			flex: 0 1 auto;
+			//only force max-sizes if they won't need to stretch
+			&:first-child, /* socd.io menu link */
+			&:last-child   /* 'My Sites' or Logged In */{
+				max-width: 5.875em;
+			}
 
-		&:first-child, /* socd.io menu link */
-		&:last-child   /* 'My Sites' or Logged In */{
-			max-width: 5.875em;
-		}
+			&#wp-admin-bar-comments {
+				max-width: 2.5em;
+			}
 
-		&#wp-admin-bar-comments {
-			max-width: 2.5em;
-		}
-
-		&#wp-admin-bar-new-content,
-		&#wp-admin-bar-edit {
-			max-width: 6.25em;
-		}
+			&#wp-admin-bar-new-content,
+			&#wp-admin-bar-edit {
+				max-width: 6.25em;
+			}
+			&.collapse{
+				overflow: hidden;
+				max-width: 0 !important; //have to fight those pesky ids...
+			}
+		}		
 	}
 
 	.a,
@@ -119,12 +135,14 @@
 
 
 	.admin-bar-search,
+	#wp-admin-bar-search,
 	.main-navigation__menu-item--flexible{
 		-webkit-box-flex: 1;
-		-moz-box-flex: 1;			
-		-webkit-flex: 1;
-		-ms-flex: 1;
-		flex: 1;
+		-moz-box-flex: 1;
+		width: auto;
+		-webkit-flex: 1 1 auto;
+		-ms-flex: 1 1 auto;
+		flex: 1 1 auto;
 		max-width: 100%;
 		padding-top: 0;
 		padding-right: 0;
@@ -132,18 +150,6 @@
 		padding-left: 0;
 	}
 
-	& > li {
-		@include transition( max-width .25s ease-in-out, width .25s ease-in-out, min-width .25s ease-in-out );
-		width: auto;
-		max-width: 100%;
-		min-width: 0;
-		
-		&.collapse{
-			overflow: hidden;
-			max-width: 0;
-		}
-	}
-	
 	.menupop,
 	.main-navigation__menu-item--dropdown {
 		position: relative;
@@ -387,58 +393,7 @@ body.logged-in{
 		width: 100%;
 	}
 }
-	#wp-admin-bar-my-account,
-	.main-navigation__menu-item--profile{
-		.title a{
-			color: $colour_background_dark;
-		}
-		.drop{
-			background: $colour_menu_grey_light;
-			color: $colour_background_dark;
-			right: 0;
-			left: auto;			
-		}
-		&.logged-out{
-			&:hover,
-			&.active{
-				.drop{
-					@include rem( padding, 1 );
-					width: 20em;
-					left: auto;
-					right: 0;
-				}
-			}
-			form{
-				label{
-					font-size: 0.8rem;
-					display: block;
-					//line-height: 1.5;
-					color: $colour_white;
-				}
-				p{
-					margin-bottom: 0.5em;
-				}
-				input:not([type="submit"]){
-					background: $colour_background;
-				}	
-				.login-remember{
-					float: left;
-					margin-bottom: 0;
-					label{
-						line-height: 2.6;
-						input{
-							margin-right: 0;
-						}
-					}
-				}
-				.login-submit{
-					float: right;
-					margin-bottom: 0;
-					line-height: 1;
-				}
-			}
-		}
-	}
+
 	.main-navigation__menu-item--quickpost {		
 		display: none;
 		position: absolute;
@@ -456,12 +411,9 @@ body.logged-in{
 #wp-admin-bar-my-account,
 li.main-navigation__menu-item--profile {
 	background: $colour_yellow;
-
 	ul {
 		background: $colour_yellow;
 	}
-
-	@include rem( padding-right, $height_menu );
 
 	a {
 		color: $colour_background_dark;
@@ -487,6 +439,47 @@ li.main-navigation__menu-item--profile {
 			color: $colour_background_dark;
 			&:hover{
 				color: $colour_link;
+			}
+		}
+	}
+
+	&.logged-out{
+		&:hover,
+		&.active{
+			.drop{
+				@include rem( padding, 1 );
+				width: 20em;
+				left: auto;
+				right: 0;
+			}
+		}
+		form{
+			label{
+				font-size: 0.8rem;
+				display: block;
+				//line-height: 1.5;
+				color: $colour_white;
+			}
+			p{
+				margin-bottom: 0.5em;
+			}
+			input:not([type="submit"]){
+				background: $colour_background;
+			}	
+			.login-remember{
+				float: left;
+				margin-bottom: 0;
+				label{
+					line-height: 2.6;
+					input{
+						margin-right: 0;
+					}
+				}
+			}
+			.login-submit{
+				float: right;
+				margin-bottom: 0;
+				line-height: 1;
 			}
 		}
 	}
