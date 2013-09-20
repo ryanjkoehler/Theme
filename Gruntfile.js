@@ -43,7 +43,8 @@ module.exports = function(grunt) {
           basePath: 'assets/',
           sassDir: 'sass',
           cssDir: 'build',
-          environment: 'production'
+          environment: 'production',
+          outputStyle: 'compressed'
         }
       }
     },
@@ -117,6 +118,7 @@ module.exports = function(grunt) {
 
   grunt.loadTasks('tasks');
   grunt.registerTask('build', ['compass:build', 'assets' ]);
+  grunt.registerTask('deploy', ['build', 'sftp-deploy' ]);
 
   grunt.loadNpmTasks('grunt-contrib-hogan');
   grunt.loadNpmTasks("grunt-contrib-compass");
