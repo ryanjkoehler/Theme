@@ -181,6 +181,7 @@ function socd_alter_admin_bar( ) {
 	$wp_admin_bar->remove_menu( 'wp-logo' );
 	$wp_admin_bar->remove_menu( 'updates' );
 	$wp_admin_bar->remove_menu( 'site-name' );
+	$wp_admin_bar->remove_menu( 'comments' );
 }
 
 function socd_nav_menu_into_admin_bar( $id, $title, $href = '#', $menu_object = false ) {
@@ -266,10 +267,6 @@ function socd_reorder_admin_bar() {
 			'class' => ''
 		),
 		array(
-			'id' 	=> 'comments',
-			'class' => ''
-		),
-		array(
 			'id' 	=> 'my-account',
 			'class' => ''
 		),
@@ -323,6 +320,10 @@ function socd_alter_admin_bar_nodes( $node ) {
 
 	if ( $node->id === "my-account" ) {
 		$node->title = preg_replace( '/Howdy,/', __( '', 'socd' ), $node->title );
+	}
+
+	if ( $node->id === "edit" ) {
+		$node->title = 'Edit';
 	}
 
 	return $node;
