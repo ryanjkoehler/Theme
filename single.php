@@ -17,12 +17,10 @@ get_header(); ?>
 					<li><a href="<?php echo socd_back_url(); ?>" class="s__active">&larr; Back</a></li>
 				</ul>
 			</div>
-			<div class="cell colour--white">
-				<div id="posts-container">
-					<?php while( have_posts() ) : the_post(); ?>
-						<?php get_template_part( 'templates/post/post'); ?>
-					<?php endwhile; ?>
-				</div>
+			<div id="posts-container" class="cell colour--white">
+				<?php while( have_posts() ) : the_post(); ?>
+					<?php get_template_part( 'templates/post/post'); ?>
+				<?php endwhile; ?>
 			</div>
 		</section><!-- 
 	 --><section class="col--side col--side__left">
