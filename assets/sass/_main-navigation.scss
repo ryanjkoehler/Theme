@@ -80,8 +80,8 @@
 		min-width: 0;
 		@include breakpoint( $breakpoint_lap ){
 			//if we've got a large enough screen
-			-webkit-box-flex: 1;
-			-moz-box-flex: 1;
+			-webkit-box-flex: 0;
+			-moz-box-flex: 0;
 			width: auto;
 			-webkit-flex: 0 1 auto;
 			-ms-flex: 0 1 auto;
