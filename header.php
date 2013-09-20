@@ -36,7 +36,7 @@
 </div>
 <![endif]  -->
 <section class="site-wrap h-animate-transform">
-<a href="mailto:admin@socd.io?subject=Beta Issue/Question&body=Hello All,%0D%0A%0D%0ALoving the site so far, but%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D------------------------------------%0ADebugger Details%0A------------------------------------%0D%0AURL: http://<?php echo $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; ?>%0D%0AUser Agent: <?php echo $_SERVER['HTTP_USER_AGENT']; ?>" id="beta">&beta;</a>
+<a href="<?php socd_beta_link(); ?>" id="beta" class="beta">&beta;</a>
 <?php 
 	// 
 	if ( !is_user_logged_in() ) socd_template_part( 'main-navigation' );
