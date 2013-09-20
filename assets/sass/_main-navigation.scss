@@ -68,10 +68,6 @@
 	max-width: $size_grid_width - 2.80rem; //needs a decimal so SASS calculates it to the right accuracy...
 	z-index: 2;
 
-	@include breakpoint( $breakpoint_lap (max-width 73.5em)) {
-		padding: 0 $grid_padding;
-	}
-
 	& > li {
 		-webkit-box-flex: 1;
 		-moz-box-flex: 1;
