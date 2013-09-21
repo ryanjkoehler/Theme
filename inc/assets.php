@@ -46,10 +46,8 @@ function socd_javascript_assets () {
 	 */
 	wp_deregister_script( 'jquery' );
 	wp_register_script( 'jquery', get_stylesheet_directory_uri(). '/assets/javascript/libs/jquery-1.9.1.min.js', false, false, true );
-	
 	wp_enqueue_script( 'modernizr', get_stylesheet_directory_uri() . '/assets/javascript/libs/modernizr.js', null, false, false );
-	wp_enqueue_script( 'fitvids', get_stylesheet_directory_uri() . '/assets/javascript/libs/jquery.fitvids.js', array( 'jquery' ), false, false );
-
+	
 	// Tested Code
 	wp_enqueue_script( 'socd', get_stylesheet_directory_uri() . '/assets/javascript/socd.js', false, false, true );
 	wp_enqueue_script( 'socd_viewport', get_stylesheet_directory_uri() . '/assets/javascript/viewport.js', false, false, true );
@@ -83,6 +81,7 @@ function socd_javascript_config() {
 	global $blog_id;
 
 	$config = array(
+		'assets_url' => get_stylesheet_directory_uri() . '/assets/',
 		'ajax_url' => admin_url( 'admin-ajax.php' ),
 		'typeahead_local' => socd_get_navigation_data(),
 		'current_site' => get_network_name(),
