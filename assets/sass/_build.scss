@@ -61,12 +61,15 @@ x*[class*="col"] {
 	}
 
 	.cell {
-		margin: $grid_padding * .5;
 		padding: $grid_padding * .5;
 		background-color: $colour_red;
+
+		@include breakpoint( $breakpoint_palm ) {
+			margin: $grid_padding * .5;
+		}
 	}
 
 	p {
-		font-size: .75rem;
+		font-size: .8rem;
 	}
 }
