@@ -18,8 +18,22 @@ if( !window.SOCD ){ window.SOCD = {} };
 		});
 	}
 
-	if( $( '.stream--article' ).length > 0  ){
-		$( '.col--stream' ).fitVids();
+	try {
+		console.log(SOCD.Config.asset_url);
+		yepnope([
+			{
+				test: $('iframe').length > 0,
+				yep: [
+					SOCD.Config.assets_url + '/javascript/libs/jquery.fitvids.js'
+				],
+				callback: function() {
+					$( 'iframe' ).parents('div').first().fitVids();
+				}
+			}
+		]);
+
+	} catch( e ) {
+		console.log( e, 'Error loading maps' );
 	}
 
 } )( window, jQuery );

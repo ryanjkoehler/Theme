@@ -2,6 +2,10 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    assets: {
+      css: {
+      }
+    },
     watch: {
       styleguide: {
         files: [ '*php', '*php', 'assets/sass/**.scss', 'assets/sass/**/**.scss', 'assets/javascript/**.js' ],
@@ -32,6 +36,15 @@ module.exports = function(grunt) {
           basePath: 'assets/',
           sassDir: 'sass',
           cssDir: 'stylesheets'
+        }
+      },
+      build: {
+        options: {
+          basePath: 'assets/',
+          sassDir: 'sass',
+          cssDir: 'build',
+          environment: 'production',
+          outputStyle: 'compressed'
         }
       }
     },
@@ -89,7 +102,8 @@ module.exports = function(grunt) {
         'assets/javascript/socd.js',
         'assets/javascript/maps.js',
         'assets/javascript/register.js',
-        'assets/javascript/main-navigation.js'
+        'assets/javascript/main-navigation.js',
+        'tasks/*.js'
       ],
       options: {
         ignores: ['assets/javascript/socd-hogan-templates.js']
@@ -102,12 +116,15 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('build', ['compass']);
+  grunt.loadTasks('tasks');
+  grunt.registerTask('build', ['compass:build', 'assets' ]);
+  grunt.registerTask('deploy', ['build', 'sftp-deploy' ]);
 
   grunt.loadNpmTasks('grunt-contrib-hogan');
   grunt.loadNpmTasks("grunt-contrib-compass");
   grunt.loadNpmTasks("grunt-contrib-watch");
   grunt.loadNpmTasks("grunt-contrib-jshint");
+
   grunt.loadNpmTasks("grunt-sftp-deploy");
   grunt.loadNpmTasks("grunt-buster");
 };

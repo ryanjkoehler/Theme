@@ -514,3 +514,7 @@ function socd_post_thumbnail() {
 		<?php the_post_thumbnail( false, array( 'class' => '' ) ); ?>
 	</figure><?php 
 }
+
+function socd_beta_link() {
+	echo "mailto:admin@socd.io?subject=Beta Issue/Question&body=Hello All,%0D%0A%0D%0ALoving the site so far, but%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D------------------------------------%0ADebugger Details%0A------------------------------------%0D%0AURL: http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'] . "%0D%0AUser Agent: " . $_SERVER['HTTP_USER_AGENT'];
+}

@@ -52,3 +52,21 @@ x*[class*="col"] {
 		left: 0;
 	}
 }
+
+.beta--box {
+	font-size: .75rem;
+
+	a {
+		color: #fff;
+	}
+
+	.cell {
+		margin: $grid_padding * .5;
+		padding: $grid_padding * .5;
+		background-color: $colour_red;
+	}
+
+	p {
+		font-size: .75rem;
+	}
+}

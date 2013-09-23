@@ -19,13 +19,15 @@
 	<?php wp_head(); ?>
 
 	<script>
-	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-	  ga('create', 'UA-43247794-1', 'socd.io');
-	  ga('send', 'pageview');
+		ga('create', 'UA-43247794-1', 'socd.io');
+		<?php if ( $socd_analytics = get_option( 'socd_analytics' ) ) : ?>ga('create', '<?php echo $socd_analytics; ?>', {'name': 'owner' });<?php endif; ?>
+		ga('send', 'pageview');
+		<?php if ( $socd_analytics ) : ?>ga('owner.send', 'pageview'); <?php endif; ?>
 	</script>
 </head>
 <body <?php body_class(); ?>>
@@ -36,7 +38,7 @@
 </div>
 <![endif]  -->
 <section class="site-wrap h-animate-transform">
-<a href="mailto:admin@socd.io?subject=Beta Issue/Question&body=Hello All,%0D%0A%0D%0ALoving the site so far, but%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D------------------------------------%0ADebugger Details%0A------------------------------------%0D%0AURL: http://<?php echo $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; ?>%0D%0AUser Agent: <?php echo $_SERVER['HTTP_USER_AGENT']; ?>" id="beta">&beta;</a>
+<a href="<?php socd_beta_link(); ?>" id="beta" class="beta">&beta;</a>
 <?php 
 	// 
 	if ( !is_user_logged_in() ) socd_template_part( 'main-navigation' );

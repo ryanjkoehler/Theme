@@ -351,6 +351,135 @@ get_header(); ?>
     </div><!-- .stream -->
   </div><!-- .gw -->
   <div class="gw">
+    <header class="header">
+      <h1 class="h1 site--title"><a href="#">Stream</a></h1>
+      <h2 class="blog--title">with Activity Signup</h2>
+    </header>
+    <div class="stream">
+      <div class="col--stream">
+        <div id="posts-container" class="cell colour--white">
+          <article></article>
+          <section class="activity--wrapper">
+            <header>
+              <h1 class="h2">Signup</h1>
+            </header>
+            <form>
+            <table style="width: 100%;">
+            <tbody>
+
+            <tr>
+            <th>10:30</th>
+            <td><a href="http://test.socd.loc/activity/1271/?action=book&amp;range=0&amp;slot=0&amp;place=0&amp;nonce=16f4bcdd2a">Book</a></td>               </tr>
+            <tr>
+            <th>10:40</th>
+            <td><a href="http://test.socd.loc/activity/1271/?action=book&amp;range=0&amp;slot=1&amp;place=0&amp;nonce=16f4bcdd2a">Book</a></td>               </tr>
+            <tr>
+            <th>10:50</th>
+            <td><a href="http://test.socd.loc/activity/1271/?action=book&amp;range=0&amp;slot=2&amp;place=0&amp;nonce=16f4bcdd2a">Book</a></td>               </tr>
+            <tr>
+            <th>11:00</th>
+            <td><a href="http://test.socd.loc/activity/1271/?action=book&amp;range=0&amp;slot=3&amp;place=0&amp;nonce=16f4bcdd2a">Book</a></td>               </tr>
+            <tr>
+            <th>11:10</th>
+            <td><a href="http://test.socd.loc/activity/1271/?action=book&amp;range=0&amp;slot=4&amp;place=0&amp;nonce=16f4bcdd2a">Book</a></td>               </tr>
+            <tr>
+            <th>11:20</th>
+            <td><a href="http://test.socd.loc/activity/1271/?action=book&amp;range=0&amp;slot=5&amp;place=0&amp;nonce=16f4bcdd2a">Book</a></td>               </tr>
+            <tr>
+            <th>11:30</th>
+            <td><a href="http://test.socd.loc/activity/1271/?action=book&amp;range=0&amp;slot=6&amp;place=0&amp;nonce=16f4bcdd2a">Book</a></td>               </tr>
+            <tr>
+            <th>11:40</th>
+            <td><a href="http://test.socd.loc/activity/1271/?action=book&amp;range=0&amp;slot=7&amp;place=0&amp;nonce=16f4bcdd2a">Book</a></td>               </tr>
+            <tr>
+            <th>11:50</th>
+            <td><a href="http://test.socd.loc/activity/1271/?action=book&amp;range=0&amp;slot=8&amp;place=0&amp;nonce=16f4bcdd2a">Book</a></td>               </tr>
+            <tr>
+            <th>12:00</th>
+            <td><a href="http://test.socd.loc/activity/1271/?action=book&amp;range=0&amp;slot=9&amp;place=0&amp;nonce=16f4bcdd2a">Book</a></td>               </tr>
+            <tr>
+            <th>12:10</th>
+            <td><a href="http://test.socd.loc/activity/1271/?action=book&amp;range=0&amp;slot=10&amp;place=0&amp;nonce=16f4bcdd2a">Book</a></td>                </tr>
+            <tr>
+            <th>12:20</th>
+            <td><a href="http://test.socd.loc/activity/1271/?action=book&amp;range=0&amp;slot=11&amp;place=0&amp;nonce=16f4bcdd2a">Book</a></td>                </tr>
+            <tr>
+            <th>12:30</th>
+            <td><a href="http://test.socd.loc/activity/1271/?action=book&amp;range=0&amp;slot=12&amp;place=0&amp;nonce=16f4bcdd2a">Book</a></td>                </tr>
+            <tr>
+            <th>12:40</th>
+            <td><a href="http://test.socd.loc/activity/1271/?action=book&amp;range=0&amp;slot=13&amp;place=0&amp;nonce=16f4bcdd2a">Book</a></td>                </tr>
+            <tr>
+            <th>12:50</th>
+            <td><a href="http://test.socd.loc/activity/1271/?action=book&amp;range=0&amp;slot=14&amp;place=0&amp;nonce=16f4bcdd2a">Book</a></td>                </tr>
+            <tr>
+            <td colspan="2">Break (13:00—14:00)</td>
+            </tr>
+
+            <tr>
+            <th>14:00</th>
+            <td><a href="http://test.socd.loc/activity/1271/?action=book&amp;range=1&amp;slot=0&amp;place=0&amp;nonce=16f4bcdd2a">Book</a></td>               </tr>
+            <tr>
+            <th>14:10</th>
+            <td><a href="http://test.socd.loc/activity/1271/?action=book&amp;range=1&amp;slot=1&amp;place=0&amp;nonce=16f4bcdd2a">Book</a></td>               </tr>
+            <tr>
+            <th>14:20</th>
+            <td><a href="http://test.socd.loc/activity/1271/?action=book&amp;range=1&amp;slot=2&amp;place=0&amp;nonce=16f4bcdd2a">Book</a></td>               </tr>
+            <tr>
+            <th>14:30</th>
+            <td><a href="http://test.socd.loc/activity/1271/?action=book&amp;range=1&amp;slot=3&amp;place=0&amp;nonce=16f4bcdd2a">Book</a></td>               </tr>
+            <tr>
+            <th>14:40</th>
+            <td><a href="http://test.socd.loc/activity/1271/?action=book&amp;range=1&amp;slot=4&amp;place=0&amp;nonce=16f4bcdd2a">Book</a></td>               </tr>
+            <tr>
+            <th>14:50</th>
+            <td><a href="http://test.socd.loc/activity/1271/?action=book&amp;range=1&amp;slot=5&amp;place=0&amp;nonce=16f4bcdd2a">Book</a></td>               </tr>
+            <tr>
+            <th>15:00</th>
+            <td><a href="http://test.socd.loc/activity/1271/?action=book&amp;range=1&amp;slot=6&amp;place=0&amp;nonce=16f4bcdd2a">Book</a></td>               </tr>
+            <tr>
+            <th>15:10</th>
+            <td><a href="http://test.socd.loc/activity/1271/?action=book&amp;range=1&amp;slot=7&amp;place=0&amp;nonce=16f4bcdd2a">Book</a></td>               </tr>
+            <tr>
+            <th>15:20</th>
+            <td><a href="http://test.socd.loc/activity/1271/?action=book&amp;range=1&amp;slot=8&amp;place=0&amp;nonce=16f4bcdd2a">Book</a></td>               </tr>
+            <tr>
+            <th>15:30</th>
+            <td><a href="http://test.socd.loc/activity/1271/?action=book&amp;range=1&amp;slot=9&amp;place=0&amp;nonce=16f4bcdd2a">Book</a></td>               </tr>
+            <tr>
+            <th>15:40</th>
+            <td><a href="http://test.socd.loc/activity/1271/?action=book&amp;range=1&amp;slot=10&amp;place=0&amp;nonce=16f4bcdd2a">Book</a></td>                </tr>
+            <tr>
+            <th>15:50</th>
+            <td><a href="http://test.socd.loc/activity/1271/?action=book&amp;range=1&amp;slot=11&amp;place=0&amp;nonce=16f4bcdd2a">Book</a></td>                </tr>
+            <tr>
+            <th>16:00</th>
+            <td><a href="http://test.socd.loc/activity/1271/?action=book&amp;range=1&amp;slot=12&amp;place=0&amp;nonce=16f4bcdd2a">Book</a></td>                </tr>
+            <tr>
+            <th>16:10</th>
+            <td><a href="http://test.socd.loc/activity/1271/?action=book&amp;range=1&amp;slot=13&amp;place=0&amp;nonce=16f4bcdd2a">Book</a></td>                </tr>
+            <tr>
+            <th>16:20</th>
+            <td><a href="http://test.socd.loc/activity/1271/?action=book&amp;range=1&amp;slot=14&amp;place=0&amp;nonce=16f4bcdd2a">Book</a></td>                </tr>
+            </tbody>
+            </table>
+            </form>
+          </section><!-- .activity--wrapper -->
+        </div>
+      </div><!-- 
+   --><div class="col--side col--side__left">
+        <div class="cell colour--blue">
+          <h3 class="h3">--</h3>
+        </div>
+      </div><!-- 
+   --><div class="col--side col--side__right">
+        <div class="cell colour--red">
+          <h3 class="h3">--</h3>
+        </div>
+      </div>
+    </div><!-- .stream -->
+  </div><!-- .gw -->
+  <div class="gw">
     <article class="type-page page h-center">
       <header class="header">
         <h1 class="h1 site--title">Page Layout</h1>

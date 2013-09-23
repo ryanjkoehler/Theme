@@ -188,3 +188,21 @@ function socd_widget_rss_output( $rss, $args = array() ) {
 	unset($rss);
 }
 
+
+/**
+ * Additional Google Analytics setting
+ */
+
+function socd_analytics_cb( $args ) {
+	printf('<input id="socd_analytics" name="socd_analytics" type="text" value="%s" placeholder="UA-XXXXX-YY"/>',
+		get_option('socd_analytics') ? get_option('socd_analytics') : ''
+	);
+}
+
+function socd_analytics_setting() {
+	register_setting( 'general', 'socd_analytics' );
+
+	add_settings_field( 'socd_analytics', 'Google Analytics', 'socd_analytics_cb', 'general' );
+}
+
+add_action( 'admin_init', 'socd_analytics_setting' );

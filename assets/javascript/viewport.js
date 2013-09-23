@@ -17,7 +17,7 @@
 			{
 				test: (SOCD.Viewport.isBiggerThan( 380 ) && $('#homepage--map').length > 0),
 				yep: [
-					'http://socd.loc/wp-content/themes/socd/assets/javascript/maps.js'
+					SOCD.Config.assets_url + '/javascript/maps.js'
 				],
 				callback: function() {
 					SOCD.Mapping.init();
