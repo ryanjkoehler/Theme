@@ -46,6 +46,8 @@ module.exports = function(grunt) {
       phpString = phpString.replace( regexp, '\$1\$2' + 'dist/' + hash + '.' + filetype + '\$2');
     };
 
+    phpString = phpString.replace( new RegExp( '(\\$versioned_js\\s?=\\s?)(\'|\")[\\w\\/\\.]+\\2' , 'g' ), '\$1\$2' + new Date().valueOf() + '\$2' );
+
     grunt.file.write(options.enqueued_in, phpString );
   
     cleanEnd();

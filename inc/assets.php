@@ -19,9 +19,9 @@ function socd_css_assets() {
 		wp_register_style( 'socd_ie', get_stylesheet_directory_uri() . '/assets/stylesheets/ie.css' );
 
 	} else {
-		$screen_css = "dist/c9ee92f8e5c78df7631e895d947777e7.css";
+		$screen_css = "dist/a62bd65f030e4de15c20341abc404225.css";
 		wp_enqueue_style( 'socd_base', get_stylesheet_directory_uri() . '/assets/' . $screen_css );
-		$ie_css = "dist/efdf273852131395e4bbb3df4a398f19.css";
+		$ie_css = "dist/c9d5ef1f9fb23736432a31dae1fe28ad.css";
 		wp_register_style( 'socd_ie', get_stylesheet_directory_uri() . '/assets/' . $ie_css );
 	}
 
@@ -44,35 +44,37 @@ function socd_javascript_assets () {
 	/**
 	 * Scripts
 	 */
+	
+	$versioned_js = '1379977452227';
 	wp_deregister_script( 'jquery' );
-	wp_register_script( 'jquery', get_stylesheet_directory_uri(). '/assets/javascript/libs/jquery-1.9.1.min.js', false, false, true );
-	wp_enqueue_script( 'modernizr', get_stylesheet_directory_uri() . '/assets/javascript/libs/modernizr.js', null, false, false );
+	wp_register_script( 'jquery', get_stylesheet_directory_uri(). '/assets/javascript/libs/jquery-1.9.1.min.js', false, $versioned_js, true );
+	wp_enqueue_script( 'modernizr', get_stylesheet_directory_uri() . '/assets/javascript/libs/modernizr.js', null, $versioned_js, false );
 	
 	// Tested Code
-	wp_enqueue_script( 'socd', get_stylesheet_directory_uri() . '/assets/javascript/socd.js', array( 'jquery' ), false, true );
-	wp_enqueue_script( 'socd_viewport', get_stylesheet_directory_uri() . '/assets/javascript/viewport.js', array( 'jquery' ), false, true );
+	wp_enqueue_script( 'socd', get_stylesheet_directory_uri() . '/assets/javascript/socd.js', array( 'jquery' ), $versioned_js, true );
+	wp_enqueue_script( 'socd_viewport', get_stylesheet_directory_uri() . '/assets/javascript/viewport.js', array( 'jquery' ), $versioned_js, true );
 
 	// Untested Code
-	wp_enqueue_script( 'socd_inline_attach', get_stylesheet_directory_uri() . '/assets/javascript/libs/jquery.inline-attach.min.js', array( 'jquery' ), false, true );
-	wp_enqueue_script( 'socd_hogan', get_stylesheet_directory_uri() . '/assets/javascript/libs/hogan.js', array( 'jquery' ), false, true );
-	wp_enqueue_script( 'socd_hogan_templates', get_stylesheet_directory_uri() . '/assets/javascript/socd-hogan-templates.js', array( 'socd_hogan' ), false, true );
-	wp_enqueue_script( 'socd_typeahead', get_stylesheet_directory_uri() . '/assets/javascript/libs/typeahead.min.js', array( 'jquery' ), false, true );
-	wp_enqueue_script( 'socd_states', get_stylesheet_directory_uri() . '/assets/javascript/states.js', array( 'jquery'  ), false, true );	
-	wp_enqueue_script( 'socd_notification_center', get_stylesheet_directory_uri() . '/assets/javascript/notification-center.js', array( 'jquery', 'socd_hogan', 'socd_hogan_templates' ), false, true );
-	wp_enqueue_script( 'socd_comments', get_stylesheet_directory_uri() . '/assets/javascript/comments.js', array( 'jquery', 'socd_inline_attach'  ), false, true );
-	wp_enqueue_script( 'socd_listing_filters', get_stylesheet_directory_uri() . '/assets/javascript/listing-filter.js', array( 'jquery' ), false, true );
-	wp_enqueue_script( 'socd_blog_filters', get_stylesheet_directory_uri() . '/assets/javascript/blog-filter.js', array( 'jquery' ), false, true );
-	wp_enqueue_script( 'socd_search_form', get_stylesheet_directory_uri() . '/assets/javascript/search-form.js', array( 'jquery' ), false, true );	
+	wp_enqueue_script( 'socd_inline_attach', get_stylesheet_directory_uri() . '/assets/javascript/libs/jquery.inline-attach.min.js', array( 'jquery' ), $versioned_js, true );
+	wp_enqueue_script( 'socd_hogan', get_stylesheet_directory_uri() . '/assets/javascript/libs/hogan.js', array( 'jquery' ), $versioned_js, true );
+	wp_enqueue_script( 'socd_hogan_templates', get_stylesheet_directory_uri() . '/assets/javascript/socd-hogan-templates.js', array( 'socd_hogan' ), $versioned_js, true );
+	wp_enqueue_script( 'socd_typeahead', get_stylesheet_directory_uri() . '/assets/javascript/libs/typeahead.min.js', array( 'jquery' ), $versioned_js, true );
+	wp_enqueue_script( 'socd_states', get_stylesheet_directory_uri() . '/assets/javascript/states.js', array( 'jquery'  ), $versioned_js, true );	
+	wp_enqueue_script( 'socd_notification_center', get_stylesheet_directory_uri() . '/assets/javascript/notification-center.js', array( 'jquery', 'socd_hogan', 'socd_hogan_templates' ), $versioned_js, true );
+	wp_enqueue_script( 'socd_comments', get_stylesheet_directory_uri() . '/assets/javascript/comments.js', array( 'jquery', 'socd_inline_attach'  ), $versioned_js, true );
+	wp_enqueue_script( 'socd_listing_filters', get_stylesheet_directory_uri() . '/assets/javascript/listing-filter.js', array( 'jquery' ), $versioned_js, true );
+	wp_enqueue_script( 'socd_blog_filters', get_stylesheet_directory_uri() . '/assets/javascript/blog-filter.js', array( 'jquery' ), $versioned_js, true );
+	wp_enqueue_script( 'socd_search_form', get_stylesheet_directory_uri() . '/assets/javascript/search-form.js', array( 'jquery' ), $versioned_js, true );	
 
 	if ( ! is_admin_bar_showing() ) {
-		wp_enqueue_script( 'socd_main_navigation', get_stylesheet_directory_uri() . '/assets/javascript/main-navigation.js', array( 'jquery', 'socd_typeahead', 'socd_states', 'socd_hogan', 'socd_hogan_templates', 'socd_search_form', 'modernizr' ), false, true );
+		wp_enqueue_script( 'socd_main_navigation', get_stylesheet_directory_uri() . '/assets/javascript/main-navigation.js', array( 'jquery', 'socd_typeahead', 'socd_states', 'socd_hogan', 'socd_hogan_templates', 'socd_search_form', 'modernizr' ), $versioned_js, true );
 	}
 
-	wp_enqueue_script( 'socd_main', get_stylesheet_directory_uri() . '/assets/javascript/main.js', array( 'jquery', 'modernizr', 'fitvids', 'socd', 'socd_viewport', 'socd_inline_attach', 'socd_hogan', 'socd_hogan_templates', 'socd_typeahead', 'socd_states', 'socd_notification_center', 'socd_comments', 'socd_listing_filters', 'socd_blog_filters', 'socd_search_form' ), false, true );
+	wp_enqueue_script( 'socd_main', get_stylesheet_directory_uri() . '/assets/javascript/main.js', array( 'jquery', 'modernizr', 'socd', 'socd_viewport', 'socd_inline_attach', 'socd_hogan', 'socd_hogan_templates', 'socd_typeahead', 'socd_states', 'socd_notification_center', 'socd_comments', 'socd_listing_filters', 'socd_blog_filters', 'socd_search_form' ), $versioned_js, true );
 
 	// Only used in the registration form
 	// 
-	wp_enqueue_script( 'socd_register', get_stylesheet_directory_uri() . '/assets/javascript/register.js', array( 'jquery' ), false, true );
+	wp_enqueue_script( 'socd_register', get_stylesheet_directory_uri() . '/assets/javascript/register.js', array( 'jquery' ), $versioned_js, true );
 }
 add_action( 'wp_enqueue_scripts', 'socd_javascript_assets' );
 
