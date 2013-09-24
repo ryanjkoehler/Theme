@@ -47,7 +47,7 @@ get_header(); ?>
 								if( has_post_format( array( 'quote', 'link' ) ) ){
 									the_content();
 								} else {
-									the_excerpt();
+									socd_excerpt();
 								}
 							?>
 						</div>
