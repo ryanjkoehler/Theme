@@ -177,7 +177,6 @@ function socd_alter_admin_bar( ) {
 
 	socd_reorder_admin_bar();
 
-	$wp_admin_bar->remove_menu( 'debug-bar' );
 	$wp_admin_bar->remove_menu( 'wp-logo' );
 	$wp_admin_bar->remove_menu( 'updates' );
 	$wp_admin_bar->remove_menu( 'site-name' );
