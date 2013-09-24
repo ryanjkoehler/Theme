@@ -360,11 +360,11 @@ get_header(); ?>
         <div id="posts-container" class="cell colour--white">
           <article></article>
           <section class="activity--wrapper">
-            <header>
+            <header class="activities--header">
               <h1 class="h2">Signup</h1>
             </header>
             <form>
-            <table style="width: 100%;">
+            <table id="activities--table" style="width: 100%;">
             <tbody>
 
             <tr>
@@ -372,7 +372,7 @@ get_header(); ?>
             <td><a href="http://test.socd.loc/activity/1271/?action=book&amp;range=0&amp;slot=0&amp;place=0&amp;nonce=16f4bcdd2a">Book</a></td>               </tr>
             <tr>
             <th>10:40</th>
-            <td><a href="http://test.socd.loc/activity/1271/?action=book&amp;range=0&amp;slot=1&amp;place=0&amp;nonce=16f4bcdd2a">Book</a></td>               </tr>
+            <td><a href="http://test.socd.loc/activity/1271/?action=book&amp;range=0&amp;slot=1&amp;place=0&amp;nonce=16f4bcdd2a" class="action__confirm">Book</a></td>               </tr>
             <tr>
             <th>10:50</th>
             <td><a href="http://test.socd.loc/activity/1271/?action=book&amp;range=0&amp;slot=2&amp;place=0&amp;nonce=16f4bcdd2a">Book</a></td>               </tr>
@@ -381,7 +381,7 @@ get_header(); ?>
             <td><a href="http://test.socd.loc/activity/1271/?action=book&amp;range=0&amp;slot=3&amp;place=0&amp;nonce=16f4bcdd2a">Book</a></td>               </tr>
             <tr>
             <th>11:10</th>
-            <td><a href="http://test.socd.loc/activity/1271/?action=book&amp;range=0&amp;slot=4&amp;place=0&amp;nonce=16f4bcdd2a">Book</a></td>               </tr>
+            <td>Booked <a href="http://test.socd.loc/activity/1271/?action=book&amp;range=0&amp;slot=4&amp;place=0&amp;nonce=16f4bcdd2a" class="action__clear">Cancel</a></td>               </tr>
             <tr>
             <th>11:20</th>
             <td><a href="http://test.socd.loc/activity/1271/?action=book&amp;range=0&amp;slot=5&amp;place=0&amp;nonce=16f4bcdd2a">Book</a></td>               </tr>

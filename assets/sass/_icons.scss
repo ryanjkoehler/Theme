@@ -74,6 +74,7 @@
 	@extend .dashicon;
 	content: '\f179';
 }
+.action__clear:before,
 .search__clear:before{
 	@extend .dashicon;
 	content: '\f158';

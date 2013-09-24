@@ -1,31 +1,121 @@
 .activity--wrapper{
-
+	position: relative;
+	@include rem( 'margin-left', -.7 );
+	@include rem( 'margin-right', -.7 );
+	@include breakpoint( $breakpoint_palm ){
+		@include rem( 'margin-left', -1.4 );
+		@include rem( 'margin-right', -1.4 );
+	}	
 }
-	#activities--table{
-		td, th{
-			padding: .5em .4em;
-		}
-		th{
-			@include fontstack_medium;
-		}
-		tr{
-			&:hover{
-				background: $colour_background;
-			}
-			&.break:hover,
-			&.activities--places:hover{
-				background: transparent;
-			}
-		}
-		.break{
-			td{
-				color: $colour_light;
-				text-align: center;
-			}
+
+	.activity--wrapper .notifications-message{	
+		float: right;
+	}
+	
+	.activities--header{
+		border-top: 1px solid $colour_red;
+		.h2{
+			background: $colour_red;
+			color: $colour_white;
+			float: left;
+			margin-bottom: 2em;
+			@include fontstack_regular;
+			@include font-size( .8 );
+			@include inline-block;
+			@include rem( 'padding', .5 );
 		}
 	}
-		.activities--places{
-			th{
-				
+	
+	.activity--wrapper form{
+		clear: both;
+		overflow-x: auto;
+		background-image: linear-gradient(left, #ffffff, rgba(255, 255, 255, 0)), linear-gradient(right, #ffffff, rgba(255, 255, 255, 0)), linear-gradient(left, #c3c3c5, rgba(175, 175, 177, 0)), linear-gradient(right, #c3c3c5, rgba(175, 175, 177, 0));
+		background-position: 0 0, 100% 0, 0 0, 100% 0;
+		background-repeat: no-repeat;
+		background-color: white;
+		background-size: 4em 100%, 4em 100%, 1em 100%, 1em 100%;
+		background-attachment: local, local, scroll, scroll;
+	}
+
+		#activities--table{
+			clear: both;
+			border-top: 1px solid $colour_light;
+			border-bottom: 1px solid $colour_light;
+			td, th{
+				position: relative;
+				padding: .7em;
+				vertical-align: middle;			
 			}
+			td{
+				&:hover{
+					background: $colour_light;
+				}
+			}
+			th{
+				width: 54px;
+				@include fontstack_medium;
+				border-right: 1px solid $colour_light;
+			}
+			tr{
+				&:hover{
+					th{
+						background: $colour_light;
+					}
+				}			
+				&.activities--places:hover{
+					th{
+						background: transparent;
+					}
+				}
+			}
+			.break{
+				td{
+					border-top: 1px solid $colour_light;
+					border-bottom: 1px solid $colour_light;
+					color: $colour_light;
+					text-align: center;
+				}
+			}
+			a{
+				&.action__clear{
+					@include inline-block;
+					height: 0;
+					padding-top: 1.1em;
+					overflow: hidden;
+					position: relative;
+					&:before{
+						color: $colour_grey;
+						position: absolute;
+						left: 5px;
+						top: 0;
+					}
+					&:hover{
+						color: $colour_grey;
+						&:before{
+							color: $colour_red;
+						}
+					}				
+				}
+				&:hover{
+					text-decoration: underline;
+				}
+			}
+			.activities--places{			
+				th{				
+					border-bottom: 1px solid $colour_light;
+					border-right: none;
+					&:first-child{
+						border-right: 1px solid $colour_light;
+						//background: $colour_light;
+					}
+				}
+			}
+		}	
+
+		.activities--no-one-else{
+			white-space: nowrap;
+			position: absolute;
+			color: $colour_light;
+			top: 50%;
+			margin-top: -0.65em;
 		}
