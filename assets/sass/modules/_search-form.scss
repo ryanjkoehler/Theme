@@ -17,7 +17,7 @@
 		top: 0;
 		width: 1.5em;
 		z-index: 20;
-		a.search__clear{
+		.search__clear{
 			background-color: $colour_grey;
 			@include border-radius( 50% );
 			color: $colour_white;	
@@ -44,7 +44,7 @@
 				font-size: .8em;
 				line-height: 1.4;
 				text-align: center;
-				width: 102%;
+				width: 100%;
 			}
 			&.visible{
 				opacity: 1;
@@ -61,6 +61,7 @@
 		top: 0;
 		width: 1.9em;
 		z-index: 20;
+		background-color: $colour_white;
 		input,
 		input:hover{
 			background: transparent;
@@ -75,6 +76,6 @@
 		&:before{
 			color: $colour_black;
 			font-size: 1.5em;
-			@include rem( line-height, 2.8 );	
+			@include rem( line-height, 2.9 );	
 		}
 	}
