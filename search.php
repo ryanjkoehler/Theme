@@ -22,35 +22,25 @@ get_header(); ?>
 					<div class="col one-third">
 						<div class="result--heading">
 							<h2 class="result--title h2"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-							<?php if( has_post_thumbnail() ): ?>
-								<a href="<?php the_permalink(); ?>">
-									<?php the_post_thumbnail(  array( 300, 300 ), $attr = '' ); ?>
-								</a>
-							<?php endif; ?>
 						</div>
 					</div><!--
 				 --><div class="col two-thirds last">
-				 <!--
-				 				<?php print_r( the_content() ); ?>
-				 			-->
 				 		<div class="result--excerpt wysiwyg">
-				 			<?php if( has_post_format( 'image' ) ):
-				 				$images = get_posts( 
-				 					array(
-					 					'numberposts' => 1,								
-										'post_mime_type' => 'image',
-										'post_parent' => $post->ID,
-										'post_type' => 'attachment'
-					 				),
-					 				ARRAY_N
-				 				);
-				 				if( count( $images ) ):
-				 					$src = $images[0]->guid;
-				 			?>
-								<img src="<?php echo $src; ?>" />
 				 			<?php 
-				 				endif;
-				 			endif; 
+					 			if( has_post_format( 'image' ) ){
+					 				$images = get_posts( 
+					 					array(
+						 					'numberposts' => 1,								
+											'post_mime_type' => 'image',
+											'post_parent' => $post->ID,
+											'post_type' => 'attachment'
+						 				),
+						 				ARRAY_N
+					 				);
+					 				if( count( $images ) ){
+										echo '<img src="' . $images[0]->guid . '" />';
+					 				}
+					 			}
 				 			?>
 
 							<?php 

@@ -26,19 +26,3 @@
 			}
 		}
 	}
-
-	.listing--result__thumbnail{
-		.result--heading{
-			img{
-				width: 100%;
-				height: auto;
-			}
-		}
-		.result--title{
-			background: $colour_white;
-			color: $colour_red;
-			@include rem( padding, .5 );			
-			position: absolute;
-			top: 0;
-		}
-	}
