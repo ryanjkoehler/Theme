@@ -1,0 +1,31 @@
+.activity--wrapper{
+
+}
+	#activities--table{
+		td, th{
+			padding: .5em .4em;
+		}
+		th{
+			@include fontstack_medium;
+		}
+		tr{
+			&:hover{
+				background: $colour_background;
+			}
+			&.break:hover,
+			&.activities--places:hover{
+				background: transparent;
+			}
+		}
+		.break{
+			td{
+				color: $colour_light;
+				text-align: center;
+			}
+		}
+	}
+		.activities--places{
+			th{
+				
+			}
+		}
