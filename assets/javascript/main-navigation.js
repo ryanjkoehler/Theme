@@ -117,7 +117,8 @@ if ( !window.SOCD ){ window.SOCD = {}; }
 			});
 
 			Menu.$searchInput.on( 'keydown', function( e ){	
-				if( e.which === 13 ){
+				if( e.which === 13 && $('.tt-suggestion').length === 1 ){
+					e.preventDefault();
 					Menu.typeahead_visit_index( 0 );
 				}
 			});
