@@ -1,0 +1,21 @@
+.gallery{
+
+}
+	.gallery-listing{
+		margin-left: -$grid_padding;
+	}
+		.gallery-listing--item{
+			padding: 0 0 $grid_padding $grid_padding;
+			position: relative;
+			.cell{
+				padding: 0;
+			}	
+			.h2{				
+				position: absolute;
+				top: $grid_padding;
+				left: $grid_padding * 2;
+				right: $grid_padding;
+				border-top-color: $colour_white;
+				color: $colour_white;
+			}
+		}
