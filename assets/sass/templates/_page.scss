@@ -8,17 +8,10 @@
 
 .type-page {
 	position: relative;
-	width: size_in_context(738, 1021);
-
-	@include breakpoint($breakpoint_palm_max) {
-		width: auto;
-		padding: 0 $grid_padding * .5;
-	}
 
 	.page--main {
 		@extend .col;
 		position: relative;
-		width: size_in_context(400, 738);
 	}
 	.page--aside {
 		@extend .col;
