@@ -13,7 +13,7 @@
 		<?php if ( comments_open() && !	is_single() ) : ?>
 		<strong><?php comments_popup_link( '<span class="leave-reply">' . __( 'Leave a comment', 'socd' ) . '</span>', __( '1 comment', 'socd' ), __( '% comments', 'socd' ) ); ?></strong>
 		<?php endif; ?>
-		<?php edit_post_link( 'Edit', '<br/><span class="admin">', '</span>' ); ?>
+		<?php edit_post_link( 'Edit', '<br/><br/><span class="admin">', '</span>' ); ?>
 	</aside><!-- 
  --><div class="col desk--four-fifths">
 		<header class="article--header">

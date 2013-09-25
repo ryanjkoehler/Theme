@@ -133,7 +133,8 @@ cite, em{
 	font-style: italic;
 }
 
-strong{
+strong,
+b {
 	@include fontstack_medium;
 }
 

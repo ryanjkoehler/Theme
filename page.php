@@ -11,16 +11,15 @@
 
 			<header class="header">
 				<h1 class="h1 site--title">
-					<?php the_title(); ?>
+					<?php the_title(); ?>	
 				</h1><!-- .h1.header__title -->
 			</header><!-- .header -->
-
+			<?php if ( has_post_thumbnail() ) : ?>
 			<figure class="page--thumbnail">
 				<?php the_post_thumbnail( 'large' ); ?>
-			</figure>
-
-			<div class="page--main">
-				<div class="cell colour--white">
+			</figure><?php endif; ?><!-- 
+		 --><div class="col push--desk--one-sixth desk--two-thirds">
+				<div class="cell colour--white wysiwyg">
 					<?php the_content(); ?>
 				</div>
 			</div><!-- .col--page --><?php 
@@ -38,7 +37,7 @@
 
 				?><div class="page--aside">
 					<div class="cell colour--blue">
-						<?php echo $subpages ?>
+						<?php echo $subpages; ?>
 					</div>
 				</div><!-- .page--aside -->
 			<?php endif; ?>

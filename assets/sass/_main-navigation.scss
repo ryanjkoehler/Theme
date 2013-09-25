@@ -414,6 +414,8 @@ body.logged-in{
 #wp-admin-bar-my-account,
 li.main-navigation__menu-item--profile {
 	background: $colour_yellow;
+	color: $colour_background_dark;
+
 	ul {
 		background: $colour_yellow;
 	}
@@ -461,7 +463,6 @@ li.main-navigation__menu-item--profile {
 				font-size: 0.8rem;
 				display: block;
 				//line-height: 1.5;
-				color: $colour_white;
 			}
 			p{
 				margin-bottom: 0.5em;

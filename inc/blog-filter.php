@@ -101,5 +101,3 @@ function socd_filter_blog_ajax() {
 
 add_action( 'wp_ajax_socd_blog_filter', 'socd_filter_blog_ajax' );
 add_action( 'wp_ajax_nopriv_socd_blog_filter', 'socd_filter_blog_ajax' );
-
-?>

@@ -95,12 +95,12 @@ function socd_faux_pages() {
 	 * 
 	 */
 	if ( "register" == preg_replace('/\//','', $_SERVER['REQUEST_URI']) ) {
-		wp_safe_redirect( site_url('/wp-login.php?action=register') );
+		wp_safe_redirect( site_url('/wp-login.php?action=register', 'login_post') );
 		exit();
 	}
 
 	if ( "activate" == preg_replace('/\//','', $_SERVER['REQUEST_URI']) ) {
-		wp_safe_redirect( site_url('/wp-activate.php') );
+		wp_safe_redirect( site_url('/wp-activate.php', 'login_post' ) );
 		exit();
 	}
 
