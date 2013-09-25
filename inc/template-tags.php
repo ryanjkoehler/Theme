@@ -74,7 +74,15 @@ function socd_excerpt(){
 	echo socd_get_excerpt();
 }
 
+function socd_staff_display_name( $user_id ) {
+	$user = get_userdata( $user_id );
+	return $author_display = socd_is_staff( $user->ID ) ? get_user_meta( $user->ID, 'nickname', true ) : $user->display_name;
+}
+
 function socd_posted_on() {
+
+	$user_id = get_the_author_meta( 'ID' );
+
 	printf( __( '<a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s" pubdate><span class="date">%5$s</span> <span class="time">%4$s</span></time></a>%7$s<span class="byline">Author <span class="author vcard"><a class="url fn n" href="%8$s" title="%9$s" rel="author">%10$s</a></span></span>', 'socd' ), esc_url( get_permalink() ),
 		esc_attr( get_the_time() ),
 		esc_attr( get_the_date( 'c' ) ),
@@ -82,9 +90,9 @@ function socd_posted_on() {
 		esc_html( get_the_date( 'j M y') ),
 		esc_html( get_the_date( 'Y') ),
 		socd_get_post_format_icon(),
-		esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
+		esc_url( get_author_posts_url( $user_id ) ),
 		esc_attr( sprintf( __( 'View all posts by %s', 'socd' ), get_the_author() ) ),
-		esc_html( get_the_author() )
+		socd_staff_display_name( $user_id )
 	);
 }
 
@@ -526,4 +534,8 @@ function socd_post_thumbnail() {
 
 function socd_beta_link() {
 	echo "mailto:admin@socd.io?subject=Beta Issue/Question&body=Hello All,%0D%0A%0D%0ALoving the site so far, but%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D------------------------------------%0ADebugger Details%0A------------------------------------%0D%0AURL: http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'] . "%0D%0AUser Agent: " . $_SERVER['HTTP_USER_AGENT'];
+}
+
+function socd_is_staff( $user_id ) {
+	return 'staff' == get_user_meta( $user_id, 'group', true );
 }
