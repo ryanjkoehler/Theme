@@ -18,22 +18,8 @@ if( !window.SOCD ){ window.SOCD = {} };
 		});
 	}
 
-	try {
-		console.log(SOCD.Config.asset_url);
-		yepnope([
-			{
-				test: $('iframe').length > 0,
-				yep: [
-					SOCD.Config.assets_url + '/javascript/libs/jquery.fitvids.js'
-				],
-				callback: function() {
-					$( 'iframe' ).parents('div').first().fitVids();
-				}
-			}
-		]);
-
-	} catch( e ) {
-		console.log( e, 'Error loading maps' );
-	}
+	SOCD.ConditionalScripts.load( 'fitVids', function(){
+		$( 'iframe' ).parents('div').first().fitVids();
+	});
 
 } )( window, jQuery );

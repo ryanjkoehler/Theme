@@ -56,6 +56,7 @@ function socd_javascript_assets () {
 
 	// Untested Code
 	wp_enqueue_script( 'socd_inline_attach', get_stylesheet_directory_uri() . '/assets/javascript/libs/jquery.inline-attach.min.js', array( 'jquery' ), $versioned_js, true );
+	wp_enqueue_script( 'socd_conditional_scripts', get_stylesheet_directory_uri() . '/assets/javascript/conditional-scripts.js', array( 'jquery', 'modernizr' ), $versioned_js, true );
 	wp_enqueue_script( 'socd_hogan', get_stylesheet_directory_uri() . '/assets/javascript/libs/hogan.js', array( 'jquery' ), $versioned_js, true );
 	wp_enqueue_script( 'socd_hogan_templates', get_stylesheet_directory_uri() . '/assets/javascript/socd-hogan-templates.js', array( 'socd_hogan' ), $versioned_js, true );
 	wp_enqueue_script( 'socd_typeahead', get_stylesheet_directory_uri() . '/assets/javascript/libs/typeahead.min.js', array( 'jquery' ), $versioned_js, true );
@@ -70,7 +71,7 @@ function socd_javascript_assets () {
 		wp_enqueue_script( 'socd_main_navigation', get_stylesheet_directory_uri() . '/assets/javascript/main-navigation.js', array( 'jquery', 'socd_typeahead', 'socd_states', 'socd_hogan', 'socd_hogan_templates', 'socd_search_form', 'modernizr' ), $versioned_js, true );
 	}
 
-	wp_enqueue_script( 'socd_main', get_stylesheet_directory_uri() . '/assets/javascript/main.js', array( 'jquery', 'modernizr', 'socd', 'socd_viewport', 'socd_inline_attach', 'socd_hogan', 'socd_hogan_templates', 'socd_typeahead', 'socd_states', 'socd_notification_center', 'socd_comments', 'socd_listing_filters', 'socd_blog_filters', 'socd_search_form' ), $versioned_js, true );
+	wp_enqueue_script( 'socd_main', get_stylesheet_directory_uri() . '/assets/javascript/main.js', array( 'jquery', 'modernizr', 'socd', 'socd_viewport', 'socd_inline_attach', 'socd_hogan', 'socd_hogan_templates', 'socd_typeahead', 'socd_states', 'socd_notification_center', 'socd_comments', 'socd_listing_filters', 'socd_blog_filters', 'socd_search_form', 'socd_conditional_scripts' ), $versioned_js, true );
 
 	// Only used in the registration form
 	// 

@@ -34,7 +34,8 @@
 	.notifications-message--dismiss{
 		color: $colour_white;
 		position: absolute;
-		top: $grid_padding * .5;
+		top: 50%;
+		margin-top: -.5em;
 		right: $grid_padding * .5;
 	}
 }

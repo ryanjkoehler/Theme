@@ -44,6 +44,7 @@ if( !window.SOCD ){ window.SOCD = {} };
 			var args = {}
 			args['action'] = 'socd_blog_filter'			
 			args[type] = data;
+			console.log( type, data );
 
 			$.post( 
 				SOCD.Config.ajax_url, 
@@ -72,7 +73,19 @@ if( !window.SOCD ){ window.SOCD = {} };
 		showResults: function( posts ){
 			BlogFilter.$output.empty();
 			BlogFilter.$pagination.empty();
-			BlogFilter.$output.append( posts );
+			if( !posts ){
+					SOCD.Notifications.message( {
+						text: 'No posts found.',
+						tone: 'negative',					
+						location: BlogFilter.$output					
+					});
+			} else {
+				BlogFilter.$output.append( posts );
+				SOCD.ConditionalScripts.load( 'fitVids', function(){
+					BlogFilter.$output.fitVids();
+				});
+			}
+
 		}
 	};	
 	
