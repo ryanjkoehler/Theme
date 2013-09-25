@@ -210,7 +210,7 @@ function socd_add_custom_menus() {
 	global $current_site;
 
 	$menu = get_socd_network_menu();
-	socd_nav_menu_into_admin_bar( 'socd-menu-network', __( 'SOCD.io', 'socd' ), '#', $menu );
+	socd_nav_menu_into_admin_bar( 'socd-menu-network', __( 'SOCD.io', 'socd' ), 'http://socd.io/', $menu );
 
 	if ( ! is_network() ) {
 		$blog_menu = get_socd_blog_menu();
