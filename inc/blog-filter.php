@@ -42,16 +42,24 @@ function socd_filter_activities( $echo = true ){
 
 function socd_filter_blog_query( $args ){
 	$posts_filter_query = new WP_Query( $args );	
-	$output = array();
-	if( $posts_filter_query->have_posts() ):		
+	$output = array(
+		'posts' => ''
+	);
+	if( $posts_filter_query->have_posts() ){
 		ob_start();
 		while( $posts_filter_query->have_posts() ):
 			$posts_filter_query->the_post();
 			get_template_part( 'templates/post/post');
-		endwhile;		
+		endwhile;
 		$output['posts'] = ob_get_contents();
 		ob_end_clean();
-	endif;
+	} else {	
+		$nothing_found = '<div class="notifications-message notifications-message__negative">';
+		$nothing_found .= '<p>No Posts Found</p>';
+		$nothing_found .= '</div>';
+		$output['posts'] = false;
+	}
+
 	return $output;
 }
 
