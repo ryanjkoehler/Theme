@@ -58,6 +58,10 @@ x*[class*="col"] {
 
 	a {
 		color: #fff;
+		
+		&:after {
+			display: none;
+		}
 	}
 
 	.cell {
