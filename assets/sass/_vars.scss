@@ -9,6 +9,12 @@
  * what the nature of the value is.
  */
 
+@mixin fontstack_dashicons{
+	font-family: 'dashicons';		
+	font-weight: normal;
+	line-height: 1;
+}
+
 @mixin fontstack_regular {
 	font-family: 'Theinhardt-Regular', Arial, "Liberation Sans", FreeSans, sans-serif;
 }

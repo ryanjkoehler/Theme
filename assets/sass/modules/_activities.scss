@@ -39,83 +39,130 @@
 
 		#activities--table{
 			clear: both;
-			border-top: 1px solid $colour_light;
-			border-bottom: 1px solid $colour_light;
-			td, th{
-				position: relative;
-				padding: .7em;
-				vertical-align: middle;			
+			
+			td, th{			
+				position: relative;				
+				vertical-align: middle;
+				border: 1px solid $colour_light;
+				&:first-child{
+					border-left: none;
+				}
+				&:last-child{
+					border-right: none;
+				}
 			}
+			
 			td{
 				&:hover{
 					background: $colour_light;
 				}
 			}
-			th{
-				width: 54px;
-				@include fontstack_medium;
-				border-right: 1px solid $colour_light;
-			}
+			
 			tr{
-				&:hover{
-					th{
-						background: $colour_light;
-					}
+				&:hover{					
+					background: $colour_background;
 				}			
 				&.activities--places:hover{
 					th{
 						background: transparent;
 					}
 				}
+			}			
+		}
+	
+		.activities--title{
+			@include fontstack_medium;
+			display: block;
+			padding: .7em;
+		}
+			.activities--title__col{
+			
 			}
-			.break{
-				td{
-					border-top: 1px solid $colour_light;
-					border-bottom: 1px solid $colour_light;
-					color: $colour_light;
-					text-align: center;
-				}
+			.activities--title__row{
+			
 			}
-			a{
-				&.action__clear{
-					@include inline-block;
-					height: 0;
-					padding-top: 1.1em;
-					overflow: hidden;
-					position: relative;
-					&:before{
-						color: $colour_grey;
-						position: absolute;
-						left: 5px;
-						top: 0;
-					}
-					&:hover{
-						color: $colour_grey;
-						&:before{
-							color: $colour_red;
-						}
-					}				
-				}
-				&:hover{
-					text-decoration: underline;
-				}
-			}
-			.activities--places{			
-				th{				
-					border-bottom: 1px solid $colour_light;
-					border-right: none;
-					&:first-child{
-						border-right: 1px solid $colour_light;
-						//background: $colour_light;
-					}
-				}
-			}
-		}	
 
-		.activities--no-one-else{
+		#activities--table .activities--break{
+			&:hover{
+				background: transparent;
+			}
+			td{				
+				color: $colour_light;
+				text-align: center;
+				&:hover{
+					background-color: transparent;
+				}
+			}
+		}
+			.activities--break-time{
+				display: block;
+				padding: .7em;
+			}
+
+		.activities--action{
+			width: 100%;
+			height: 100%;
+			padding: .7em;
+			display: block;
+			position: relative;
+			overflow: hidden;
+			&:after{
+				@include fontstack_dashicons;
+				@include rem( 'line-height', 2.7 );
+				@include transition( top .15s ease-out );
+				position: absolute;
+				text-align: center;
+				z-index: 1;
+				top: 100%;
+				left: -2px;
+				width: 100%;
+				height: 100%;
+				content: '-';
+				display: block !important;
+				font-size: 1.2em;
+				background: $colour_blue;
+				color: $colour_white;
+			}
+			&:hover:after{
+				top: 0;
+			}
+		}
+			.activities--action__cancel{
+				&:after{	
+					background: $colour_red;
+					content: '\f158';
+				}
+			}
+			.activities--action__book{
+				&:after{	
+					background: $colour_grey;
+					content: '\f147';
+				}
+			}
+		
+		// the dash, if you can't book a slot
+		.activities--booked-by{
+			padding: .7em;
+		}
+		.activities--slot-unavailable{
+			padding: .7em;	
+		}
+		
+		.activities--participants{
+			padding: .7em;
 			white-space: nowrap;
-			position: absolute;
-			color: $colour_light;
-			top: 50%;
-			margin-top: -0.65em;
+			li{
+				@include inline-block;
+				&:after{
+					content: ',\00a0';
+				}
+				&:last-child:after{
+					content: '.';
+				}
+			}
+		}
+
+		.activities--participants__no-one-else{
+			padding: .7em;
+			color: $colour_grey;			
 		}
