@@ -68,7 +68,7 @@ get_header(); ?>
 						<?php endforeach; ?>
 					</ol>
 
-					<a href="<?php echo get_permalink( get_option( 'page_for_posts') ); ?>">Archives &rarr;</a>
+					<a class="archives" href="<?php echo get_permalink( get_option( 'page_for_posts') ); ?>">Archives &rarr;</a>
 				
 				<?php endif; ?>
 			</div>
