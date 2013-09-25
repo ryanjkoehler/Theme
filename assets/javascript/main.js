@@ -23,7 +23,6 @@ if( !window.SOCD ){ window.SOCD = {} };
 	});
 
 	jQuery('#main-navigation--login-form').on('submit', function(event) {
-		event.preventDefault();
 		var d = new Date();
 			d.setTime(d.getTime() + ( 365 * 24 * 60 * 60 * 1000 ));
 		document.cookie = 'wordpress_socd_io=1; expires=' + d.toGMTString() + '; domain=.' + window.location.host + '; path=/';
