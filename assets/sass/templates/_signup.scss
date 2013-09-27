@@ -48,6 +48,25 @@ p.signup--helper {
 	text-align: right;
 }
 
+#noemail-tips{
+	text-align: left;
+	@include font-size( 1 );
+	li{
+		margin-bottom: 1em;
+	}
+}
+
+#signup-welcome{
+	margin-bottom: 1em;
+	p{
+		margin-bottom: .1em;
+	}
+	.h3{
+		@include fontstack_bold;
+	}
+
+}
+
 .mu_register,
 .widecolumn // Used on wp-activate
 {
