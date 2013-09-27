@@ -78,6 +78,7 @@
 		flex: 1 1 auto;
 		max-width: 100%;
 		min-width: 0;
+		height: 100%;
 		@include breakpoint( $breakpoint_lap ){
 			//if we've got a large enough screen
 			-webkit-box-flex: 0;
