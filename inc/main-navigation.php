@@ -216,7 +216,8 @@ function socd_add_custom_menus() {
 
 	if ( ! is_network() ) {
 		$blog_menu = get_socd_blog_menu();
-		socd_nav_menu_into_admin_bar( 'socd-menu-blog', get_bloginfo( 'name' ), '#', $blog_menu );
+		$name = ( strlen( get_bloginfo( 'name' ) ) > 10 ) ? substr( get_bloginfo( 'name' ), 0, 7 ) . '...' : get_bloginfo( 'name' );
+		socd_nav_menu_into_admin_bar( 'socd-menu-blog',  $name , '#', $blog_menu );
 	}
 	
 	if ( $current_site->blog_id > 1 ) {
@@ -224,8 +225,10 @@ function socd_add_custom_menus() {
 		socd_nav_menu_into_admin_bar( 'socd-menu-site', get_network_name(), get_bloginfo( 'wpurl' ), $course_menu );
 	}
 	
-	if ( ( is_page() || is_single() ) && !is_front_page() )
-		socd_nav_menu_into_admin_bar( 'socd-menu-current', socd_menu_page_title(), '#' );
+	if ( ( is_page() || is_single() ) && !is_front_page() ){
+		$name = ( strlen( socd_menu_page_title() ) > 10 ) ? substr( socd_menu_page_title(), 0, 7 ) . '...' : socd_menu_page_title();
+		socd_nav_menu_into_admin_bar( 'socd-menu-current', $name, '#' );
+	}
 }
 
 function socd_reorder_admin_bar() {

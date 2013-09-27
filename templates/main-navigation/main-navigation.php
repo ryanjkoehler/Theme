@@ -19,7 +19,8 @@
 	 	<?php if( socd_menu_has_blog_crumb() && !is_network() ): ?>
 	 --><li class="main-navigation__menu-item main-navigation__menu-item--breadcrumb main-navigation__menu-item--dropdown">
 	 		<div class="tab">
-	 			<h1 class="title"><a href="<?php bloginfo( 'url' ); ?>"><?php bloginfo( 'title' ); ?></a></h1>
+	 			<?php $name = ( strlen( get_bloginfo( 'name' ) ) > 10 ) ? substr( get_bloginfo( 'name' ), 0, 7 ) . '...' : get_bloginfo( 'name' ); ?>
+	 			<h1 class="title"><a href="<?php bloginfo( 'url' ); ?>"><?php echo $name ?></a></h1>
 	 		</div>
 	 		<?php socd_blog_menu(); ?>
 	 	</li><!--
@@ -27,7 +28,8 @@
 	 	<?php if( socd_menu_page_title() ): ?>
 	 --><li class="main-navigation__menu-item main-navigation__menu-item--breadcrumb">
 	 		<div class="tab">
-	 			<h1 class="title"><a href="#"><?php echo socd_menu_page_title(); ?></a></h1>
+	 			<?php $name = ( strlen( socd_menu_page_title() ) > 10 ) ? substr( socd_menu_page_title(), 0, 7 ) . '...' : socd_menu_page_title(); ?>
+	 			<h1 class="title"><a href="#"><?php echo $name ?></a></h1>
 	 		</div>
 	 	</li><!--
 	 	<?php endif; ?>
