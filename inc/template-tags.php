@@ -181,10 +181,12 @@ function socd_back_url() {
 
 function socd_back_url_invalid( $url ) {
 	$blog_url = socd_blog_url();
-	return (!preg_match( '/$blog_url/', $url )
+	return (
+		!strstr( $url, $blog_url )
 		|| "" == $url
-		|| $_SERVER['HTTP_REFERER'] == "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'])
-		|| preg_match( '/wp-admin/', $url );
+		|| $_SERVER['HTTP_REFERER'] == "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']
+		|| preg_match( '/wp-admin/', $url )
+	);
 }
 
 function socd_blog_url() {
