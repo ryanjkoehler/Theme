@@ -216,7 +216,7 @@ function socd_add_custom_menus() {
 
 	if ( ! is_network() ) {
 		$blog_menu = get_socd_blog_menu();
-		$name = ( strlen( get_bloginfo( 'name' ) ) > 10 ) ? substr( get_bloginfo( 'name' ), 0, 7 ) . '...' : get_bloginfo( 'name' );
+		$name = ( strlen( get_bloginfo( 'name' ) ) > 10 ) ? substr( get_bloginfo( 'name' ), 0, 7 ) . '&hellip;' : get_bloginfo( 'name' );
 		socd_nav_menu_into_admin_bar( 'socd-menu-blog',  $name , '#', $blog_menu );
 	}
 	
@@ -226,7 +226,7 @@ function socd_add_custom_menus() {
 	}
 	
 	if ( ( is_page() || is_single() ) && !is_front_page() ){
-		$name = ( strlen( socd_menu_page_title() ) > 10 ) ? substr( socd_menu_page_title(), 0, 7 ) . '...' : socd_menu_page_title();
+		$name = ( strlen( socd_menu_page_title() ) > 10 ) ? substr( socd_menu_page_title(), 0, 7 ) . '&hellip;' : socd_menu_page_title();
 		socd_nav_menu_into_admin_bar( 'socd-menu-current', $name, '#' );
 	}
 }
