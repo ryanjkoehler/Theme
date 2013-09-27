@@ -118,7 +118,7 @@
 		@include transition(.2s ease text-indent);
 
 		&:hover{
-			color: $colour_white;
+			color: $colour_background_dark;
 			
 			.menupop &,
 			.drop & {
