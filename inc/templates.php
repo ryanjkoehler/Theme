@@ -144,7 +144,7 @@ function socd_faux_pages() {
 		exit; 
 	}
 }
-add_action( 'template_redirect', 'socd_faux_pages' );
+add_action( 'template_redirect', 'socd_faux_pages', 9 );
 
 /**
  * 
