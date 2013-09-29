@@ -19,3 +19,29 @@
 				color: $colour_white;
 			}
 		}
+
+	.gallery-page{
+
+	}
+		.gallery-page--media{
+
+		}
+
+			.gallery-page--media-item{
+				display: none;
+				&:first-child{
+					display: block;
+				}
+			}
+
+		.gallery-page--meta{
+
+		}
+	
+		.gallery-page--back{
+			
+		}
+
+		.gallery-page--info{
+
+		}
