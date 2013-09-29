@@ -17,9 +17,5 @@ global $user;
 		<?php endif; ?>
 		
 		<p><?php socd_course(); ?></p>
-		
-		<?php if ( get_user_meta( $user->ID, 'group', true ) != 'staff' ): ?>
-			<p class="year"><?php socd_enrolment_year(); ?></p>
-		<?php endif ?>
 	</div>
 </li><?php 
