@@ -32,6 +32,12 @@ if ( !window.SOCD ){ window.SOCD = {}; }
 			var rootUrl = SOCD.Config.site_root_url.replace( cleanUrlRegex, '' );
 			var raw = SOCD.Config.typeahead_local;
 			var structureTypeahead = [];
+
+			//are we on a sub/student blog?
+			if( rootUrl.split( '.' ).length > 3 ){
+				rootUrl = rootUrl.split( '.' ).slice( 1 ).join('.');
+			}
+
 			if( SOCD.Config.current_site === 'SOCD.io' ){
 				// we need to include everything as we're at the root
 				for ( var type in raw ) {
