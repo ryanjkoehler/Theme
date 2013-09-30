@@ -29,14 +29,18 @@ if ( !window.SOCD ){ window.SOCD = {}; }
 		},	
 		init_typeahead: function(){
 			var cleanUrlRegex = /^(https?):\/\//;
-			var rootUrl = SOCD.Config.site_root_url.replace( cleanUrlRegex, '' );
+			var rootUrl = ( function(){
+				var r = SOCD.Config.site_root_url.replace( cleanUrlRegex, '' );
+				//are we on a sub/student blog?
+				if( r.split( '.' ).length > 3 ){
+					r = r.split( '.' ).slice( 1 ).join('.');
+				}
+				return r;
+			})();
 			var raw = SOCD.Config.typeahead_local;
 			var structureTypeahead = [];
 
-			//are we on a sub/student blog?
-			if( rootUrl.split( '.' ).length > 3 ){
-				rootUrl = rootUrl.split( '.' ).slice( 1 ).join('.');
-			}
+			
 
 			if( SOCD.Config.current_site === 'SOCD.io' ){
 				// we need to include everything as we're at the root
@@ -68,12 +72,14 @@ if ( !window.SOCD ){ window.SOCD = {}; }
 				}
 			} else {				
 				for ( var type in raw ) {
+
 					var section = raw[type];
 					var data = [];
 					for( var i = 0; i < section.length; i++ ){
 						var item = section[i];		
-						var url = item.url.replace( cleanUrlRegex, '' );				
-						if( url.indexOf( rootUrl  ) === 0 ){
+						var url = item.url.replace( cleanUrlRegex, '' );
+						//only include data for current site, but always include all courses	
+						if( url.indexOf( rootUrl  ) !== -1 || type === 'Course' ){ 
 							data.push( item );
 						}
 					}
