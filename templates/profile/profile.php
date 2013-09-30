@@ -78,7 +78,12 @@ global $current_site, $user;
 				if ( 1 !== $current_site->id ) : ?><!-- 
 		 --><aside class="col lap--one-half desk--one-fifth push--desk--one-sixth profile--quick">
 				<div class="cell colour--blue">
+					<?php if( socd_get_user_blogs() ): ?>
+						<h2 class="h2 h2--ruled">Blogs</h2>
+						<?php socd_user_blogs() ?>
+					<?php endif; ?> 
 					<h2 class="h2 h2--ruled">Quick links</h2>
+
 					<?php socd_site_menu(); ?>
 				</div>
 			</aside><?php endif; ?>

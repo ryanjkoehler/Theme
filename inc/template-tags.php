@@ -524,6 +524,35 @@ function socd_network_listing() {
 	return $listing;
 }
 
+function socd_user_blogs(){
+	echo socd_get_user_blogs();
+}
+
+function socd_get_user_blogs(){
+	global $user;
+	$blogs = get_blogs_of_user( $user->ID );
+	$valid_blogs = 0;
+	echo '<!--';
+	var_dump( $blogs );
+	echo '-->';
+	$output = '<ul>';
+	foreach ( $blogs as $blog) {
+		if( 1 != $blog->userblog_id ){
+			$output .= sprintf( 
+				'<li><a href="%1$s">%2$s</a></li>', 
+				$blog->siteurl,
+				$blog->blogname				
+			);
+			$valid_blogs++;
+		}
+	}
+	$output .= '</ul>';
+
+	if( $valid_blogs > 0 ) return $output;
+	
+	return false;
+}
+
 
 function socd_post_thumbnail() {
 	global $post;
