@@ -118,9 +118,7 @@
 		@include rem( padding-right, 1 ); 
 		@include transition(.2s ease text-indent);
 
-		&:hover{
-			color: $colour_background_dark;
-			
+		&:hover{			
 			.menupop &,
 			.drop & {
 				text-indent: .25em;
