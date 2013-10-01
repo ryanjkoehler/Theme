@@ -19,7 +19,8 @@
 	 	<?php if( socd_menu_has_blog_crumb() && !is_network() ): ?>
 	 --><li class="main-navigation__menu-item main-navigation__menu-item--breadcrumb main-navigation__menu-item--dropdown">
 	 		<div class="tab">
-	 			<h1 class="title"><a href="<?php bloginfo( 'url' ); ?>"><?php bloginfo( 'title' ); ?></a></h1>
+	 			<?php $name = ( strlen( get_bloginfo( 'name' ) ) > 10 ) ? substr( get_bloginfo( 'name' ), 0, 7 ) . '&hellip;' : get_bloginfo( 'name' ); ?>
+	 			<h1 class="title"><a href="<?php bloginfo( 'url' ); ?>"><?php echo $name ?></a></h1>
 	 		</div>
 	 		<?php socd_blog_menu(); ?>
 	 	</li><!--
@@ -27,7 +28,8 @@
 	 	<?php if( socd_menu_page_title() ): ?>
 	 --><li class="main-navigation__menu-item main-navigation__menu-item--breadcrumb">
 	 		<div class="tab">
-	 			<h1 class="title"><a href="#"><?php echo socd_menu_page_title(); ?></a></h1>
+	 			<?php $name = ( strlen( socd_menu_page_title() ) > 10 ) ? substr( socd_menu_page_title(), 0, 7 ) . '&hellip;' : socd_menu_page_title(); ?>
+	 			<h1 class="title"><a href="#"><?php echo $name ?></a></h1>
 	 		</div>
 	 	</li><!--
 	 	<?php endif; ?>
@@ -42,9 +44,11 @@
 				</span>
 			</form>
 		</li><!-- 
+		<?php if ( get_site_option( 'registration', 'none' ) != 'none' ): ?>
 	 --><li class="main-navigation__menu-item">
 			<a href="http://socd.io/register" class="title"><?php _e('Register', 'socd'); ?></a>
 		</li><!--
+		<?php endif ?>
 	 --><li class="main-navigation__menu-item main-navigation__menu-item--dropdown main-navigation__menu-item--profile <?php echo ( is_user_logged_in()) ? 'logged-in' : 'logged-out'; ?> ">
 	 		<?php $user_info = get_userdata( get_current_user_id() ); ?>
 			<div class="tab">

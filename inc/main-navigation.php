@@ -116,7 +116,7 @@ function get_socd_site_menu() {
 
 		$output = wp_get_nav_menu_items( $menu_id );
 
-		if ( ! is_network() ) restore_current_blog();
+		restore_current_blog();
 
 		set_site_transient( 'site__socd_site_' . $current_site->blog_id . '_menu_raw' , json_encode( $output ), 1 * HOUR_IN_SECONDS );
 	}
@@ -138,7 +138,7 @@ function socd_site_menu() {
 			'echo'		 	 => false
 		) );
 
-		if ( ! is_network() ) restore_current_blog();
+		restore_current_blog();
 
 		set_site_transient( 'site__socd_site_' . $current_site->id . '_menu' , $output, 1 * HOUR_IN_SECONDS );
 	}
@@ -174,7 +174,6 @@ function socd_blog_menu(){
 
 function socd_alter_admin_bar( ) {
 	global $wp_admin_bar;
-
 	if ( is_admin() ) return;
 
 	socd_reorder_admin_bar();
@@ -216,7 +215,8 @@ function socd_add_custom_menus() {
 
 	if ( ! is_network() ) {
 		$blog_menu = get_socd_blog_menu();
-		socd_nav_menu_into_admin_bar( 'socd-menu-blog', get_bloginfo( 'name' ), '#', $blog_menu );
+		$name = ( strlen( get_bloginfo( 'name' ) ) > 10 ) ? substr( get_bloginfo( 'name' ), 0, 7 ) . '&hellip;' : get_bloginfo( 'name' );
+		socd_nav_menu_into_admin_bar( 'socd-menu-blog',  $name , '#', $blog_menu );
 	}
 	
 	if ( $current_site->blog_id > 1 ) {
@@ -224,8 +224,10 @@ function socd_add_custom_menus() {
 		socd_nav_menu_into_admin_bar( 'socd-menu-site', get_network_name(), get_bloginfo( 'wpurl' ), $course_menu );
 	}
 	
-	if ( ( is_page() || is_single() ) && !is_front_page() )
-		socd_nav_menu_into_admin_bar( 'socd-menu-current', socd_menu_page_title(), '#' );
+	if ( ( is_page() || is_single() ) && !is_front_page() ){
+		$name = ( strlen( socd_menu_page_title() ) > 10 ) ? substr( socd_menu_page_title(), 0, 7 ) . '&hellip;' : socd_menu_page_title();
+		socd_nav_menu_into_admin_bar( 'socd-menu-current', $name, '#' );
+	}
 }
 
 function socd_reorder_admin_bar() {

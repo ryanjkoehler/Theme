@@ -14,7 +14,7 @@ function socd_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_setting( 'socd_theme_options[blog_type]', array(
-		'default' 	 => 'sketcbook',
+		'default' 	 => 'sketchbook',
 		'capability' => 'edit_theme_options',
 		'type'    	 => 'option'
 	) );

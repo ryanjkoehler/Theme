@@ -181,10 +181,12 @@ function socd_back_url() {
 
 function socd_back_url_invalid( $url ) {
 	$blog_url = socd_blog_url();
-	return (!preg_match( '/$blog_url/', $url )
+	return (
+		!strstr( $url, $blog_url )
 		|| "" == $url
-		|| $_SERVER['HTTP_REFERER'] == "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'])
-		|| preg_match( '/wp-admin/', $url );
+		|| $_SERVER['HTTP_REFERER'] == "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']
+		|| preg_match( '/wp-admin/', $url )
+	);
 }
 
 function socd_blog_url() {
@@ -361,7 +363,8 @@ function socd_filter_years_of_study() {
 
 		if ( $filter !== "student")
 			$output[] = sprintf(
-				'<li><a href="#%1$s">%1$s</a></li>',
+				'<li><a href="#%1$s">%2$s</a></li>',
+				$filter,
 				preg_match('/alumni/', $filter) ? ucfirst( $filter ) : 'Year ' . $filter
 			);
 	}
@@ -519,6 +522,35 @@ function socd_network_listing() {
 	}
 
 	return $listing;
+}
+
+function socd_user_blogs(){
+	echo socd_get_user_blogs();
+}
+
+function socd_get_user_blogs(){
+	global $user;
+	$blogs = get_blogs_of_user( $user->ID );
+	$valid_blogs = 0;
+	echo '<!--';
+	var_dump( $blogs );
+	echo '-->';
+	$output = '<ul>';
+	foreach ( $blogs as $blog) {
+		if( 1 != $blog->userblog_id ){
+			$output .= sprintf( 
+				'<li><a href="%1$s">%2$s</a></li>', 
+				$blog->siteurl,
+				$blog->blogname				
+			);
+			$valid_blogs++;
+		}
+	}
+	$output .= '</ul>';
+
+	if( $valid_blogs > 0 ) return $output;
+	
+	return false;
 }
 
 
