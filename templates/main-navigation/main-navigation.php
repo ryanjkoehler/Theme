@@ -46,12 +46,12 @@
 		</li><!-- 
 		<?php if ( get_site_option( 'registration', 'none' ) != 'none' ): ?>
 	 --><li class="main-navigation__menu-item">
-			<a href="http://socd.io/register" class="title"><?php _e('Register', 'socd'); ?></a>
+	 		<a href="<?php echo socd_register_link(); ?>" class="title"><?php _e('Register', 'socd'); ?></a>
 		</li><!--
 		<?php endif ?>
 	 --><li class="main-navigation__menu-item main-navigation__menu-item--dropdown main-navigation__menu-item--profile logged-out">
 			<div class="tab">
-				<a class="title" href="<?php echo wp_login_url( get_permalink() ); ?>">Login</a></h1>
+				<a class="title" href="<?php echo wp_login_url( get_permalink() ); ?>"><?php _e('Login', 'socd'); ?></a></h1>
 			</div>				
 		</li>
 	</ul>

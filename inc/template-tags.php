@@ -571,3 +571,9 @@ function socd_beta_link() {
 function socd_is_staff( $user_id ) {
 	return 'staff' == get_user_meta( $user_id, 'group', true );
 }
+
+function socd_register_link() {
+	$site = get_current_site();
+
+	echo '//' . $site->domain . '/register';
+}
