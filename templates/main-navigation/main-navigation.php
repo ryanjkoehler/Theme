@@ -49,13 +49,9 @@
 			<a href="http://socd.io/register" class="title"><?php _e('Register', 'socd'); ?></a>
 		</li><!--
 		<?php endif ?>
-	 --><li class="main-navigation__menu-item main-navigation__menu-item--dropdown main-navigation__menu-item--profile <?php echo ( is_user_logged_in()) ? 'logged-in' : 'logged-out'; ?> ">
-	 		<?php $user_info = get_userdata( get_current_user_id() ); ?>
+	 --><li class="main-navigation__menu-item main-navigation__menu-item--dropdown main-navigation__menu-item--profile logged-out">
 			<div class="tab">
 				<a class="title" href="<?php echo wp_login_url( get_permalink() ); ?>">Login</a></h1>
-				<div class="drop">
-					<?php wp_login_form( array( 'form_id' => 'main-navigation--login-form' ) ); ?>
-				</div>
 			</div>				
 		</li>
 	</ul>
