@@ -331,6 +331,8 @@ b {
 .cell {
 	padding: $grid_padding $grid_padding / 2;
 	text-align: left;
+	-ms-word-wrap: break-word;
+	word-wrap: break-word;
 
 	@include breakpoint( $breakpoint_palm ) {
 		padding: $grid_padding
