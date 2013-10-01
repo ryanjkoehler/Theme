@@ -116,7 +116,7 @@ function get_socd_site_menu() {
 
 		$output = wp_get_nav_menu_items( $menu_id );
 
-		if ( ! is_network() ) restore_current_blog();
+		restore_current_blog();
 
 		set_site_transient( 'site__socd_site_' . $current_site->blog_id . '_menu_raw' , json_encode( $output ), 1 * HOUR_IN_SECONDS );
 	}
@@ -138,7 +138,7 @@ function socd_site_menu() {
 			'echo'		 	 => false
 		) );
 
-		if ( ! is_network() ) restore_current_blog();
+		restore_current_blog();
 
 		set_site_transient( 'site__socd_site_' . $current_site->id . '_menu' , $output, 1 * HOUR_IN_SECONDS );
 	}
