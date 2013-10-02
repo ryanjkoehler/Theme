@@ -522,6 +522,10 @@ li.main-navigation__menu-item--profile {
 			overflow: hidden;
 			text-overflow: ellipsis;
 			width: 100%;
+
+			&:hover {
+				width: auto;
+			}
 		}
 	}
 
