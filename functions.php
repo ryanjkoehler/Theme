@@ -10,6 +10,28 @@
 require( get_stylesheet_directory() . '/inc/templates.php' );
 
 /**
+ * 
+ * @since  1.0.1
+ */
+function socd_is_registration_disabled() {
+	global $current_site;
+	$active_signup = apply_filters( 'wpmu_active_signup', get_site_option( 'registration' ) );
+
+	return ( $current_site->id === 1 && $active_signup === "none" );
+}
+
+/**
+ * 
+ * @since  1.0.1
+ */
+function socd_registration_disabled() {
+	if ( socd_is_registration_disabled() ) {
+		socd_template_part( 'signup', 'registration-disabled' );
+	}
+}
+add_action( 'after_signup_form', 'socd_registration_disabled' );
+
+/**
  * Basic setup
  */
 function socd_setup() {
@@ -97,7 +119,7 @@ function socd_unregister_widgets(){
 	wp_unregister_sidebar_widget( 'wpe_widget_powered_by' );
 }
 
-add_action('widgets_init', 'socd_unregister_widgets' );
+add_action( 'widgets_init', 'socd_unregister_widgets' );
 
 function socd_default_widgets(){
 	$id = rand( 20, 100 );
@@ -165,11 +187,11 @@ function socd_paging_nav() {
 		<div class="nav-links">
 			<?php
 			
-			if ( $prev = get_previous_posts_link( _('&uarr; Newer') ) )
-				echo preg_replace('/(http:\/\/)socd\.(io|loc)/', '$1' . $current_blog->domain, $prev );
+			if ( $prev = get_previous_posts_link( _( '&uarr; Newer' ) ) )
+				echo preg_replace( '/(http:\/\/)socd\.(io|loc)/', '$1' . $current_blog->domain, $prev );
 
 			if ( $next = get_next_posts_link( __( '&darr; Older' ) ) )
-				echo preg_replace('/(http:\/\/)socd\.(io|loc)/', '$1' . $current_blog->domain, $next );
+				echo preg_replace( '/(http:\/\/)socd\.(io|loc)/', '$1' . $current_blog->domain, $next );
 
 			?>
 		</div><!-- .nav-links -->
@@ -285,9 +307,9 @@ function dre($msg) {
 /**
  * [socd_breaking_wpengine_aggressive_caching description]
  * @return [type] [description]
- * @since  
+ * @since 1.0.1
  */
 function socd_breaking_wpengine_aggressive_caching() {
 	setcookie( 'wordpress_socd_io', 1, time() + ( 60 * 60 * 24 * 365 ), '/', '.' . $_SERVER['HTTP_HOST'] );
 }
-add_action('init', 'socd_breaking_wpengine_aggressive_caching');
+add_action( 'init', 'socd_breaking_wpengine_aggressive_caching' );

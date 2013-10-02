@@ -8,6 +8,11 @@
 function socd_body_class( $classes ) {
 	$options = get_option('socd_theme_options');
 
+	$classes[] = sanitize_title( $_SERVER['SCRIPT_NAME'] );
+
+	if ( socd_is_registration_disabled() ) 
+		$classes[] = 'registration__disabled';
+
 	if ($options['blog_type']) {
 		$classes[] = 'template__' . $options['blog_type'];
 	}

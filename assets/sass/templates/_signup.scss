@@ -45,7 +45,6 @@
 .mu_register,
 p.signup--helper {
 	font-size: .8rem;
-	text-align: right;
 }
 
 #noemail-tips{
@@ -86,5 +85,21 @@ p.signup--helper {
 .widecolumn {
 	span.h3 {
 		@extend h3;
+	}
+}
+
+/**
+ *
+ * Registration Disabled
+ * 
+ */
+.registration__disabled {
+	.mu_register {
+		display: none;
+	}
+
+	.button {
+		margin-bottom: .25em;
+		width: 100%;
 	}
 }
