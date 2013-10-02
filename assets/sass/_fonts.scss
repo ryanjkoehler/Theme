@@ -11,3 +11,29 @@
 	font-weight: normal;
 	font-style: normal;
 }
+
+.dashicons {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	-webkit-font-smoothing: antialiased;
+	font-size: 16px;
+	line-height: 1;
+	font-family: 'dashicons';
+	text-decoration: inherit;
+	font-weight: normal;
+	font-style: normal;
+	vertical-align: top;
+	-moz-transition: color .1s ease-in 0;
+	-webkit-transition: color .1s ease-in 0;
+	text-align: center;
+}
+
+
+.dashicons-screenoptions:before {
+	content:'\f180';
+}
+
+.dashicons-menu:before {
+	content:'\f228';
+}

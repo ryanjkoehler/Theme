@@ -134,6 +134,7 @@ cite, em{
 }
 
 strong,
+.strong,
 b {
 	@include fontstack_medium;
 }
@@ -255,11 +256,17 @@ b {
 		&:before {
 			content: "> " !important;
 			position: absolute;
-			top: .1em;
+			top: .2em;
 			left: $grid_padding;
 		}
 
-		&:hover {
+		a {
+			padding: $grid_padding * .1 0;
+			display: block;
+		}
+
+		&:hover,
+		&.s__active {
 			background: #fff;
 			color: $colour_red;
 
