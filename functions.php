@@ -9,6 +9,9 @@
  */
 require( get_stylesheet_directory() . '/inc/templates.php' );
 
+add_image_size( 'gdnm-size-1', 650, 650, false );
+add_image_size( 'gdnm-size-2', 560, 560, false );
+
 /**
  * 
  * @since  1.0.1
