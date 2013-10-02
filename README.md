@@ -1,3 +1,6 @@
 # School of Communication Design
 
-Main WordPress theme.
+## Deployment
+
+If you're looking to update only the theme this can be done by navigating to the theme directory then:
+`grunt deploy`
