@@ -232,6 +232,69 @@ function socd_get_profile_thumbnail( $size = 'thumb', $user_id = false ) {
 	return preg_replace("/[a-z]+='[0-9]+'/", '', get_avatar( $user_id, 150 ) );
 }
 
+function socd_filter_sites( $sites ) {
+	$not_course_sites = array();
+	$course_sites = array(
+		1, // socd
+		3, // dcd
+		5, // gc
+		6, // cga
+		7, // gc
+		8, // illustration
+		9, // advertising brand
+		10, // gdvc
+		11, // ma gd
+		12, // ma design innovation
+		13, // ma illustration
+	);
+
+	foreach ( $sites as $site ) {
+		if ( ! in_array( (int) $site->userblog_id, $course_sites ) ) {
+			$not_course_sites[] = $site;
+		}
+			
+	}
+	
+	return $not_course_sites;
+}
+
+function socd_is_user_blog_admin( $user_id, $blog_id ) {
+	global $wpdb;
+	
+	$query = $wpdb->prepare( "SELECT user_id, meta_value FROM $wpdb->usermeta WHERE meta_key = %s",
+		$wpdb->prefix . $blog_id . '_capabilities'
+	);
+	
+	$role = $wpdb->get_results( $query, ARRAY_A );
+	
+
+	// clean the role
+	$all_user = array_map( array( 'BPDevLimitBlogsPerUser', 'serialize_roles' ), $role ); // we are unserializing the role to make that as an array
+	
+	foreach( $all_user as $key => $user_info )
+		if( isset($user_info['meta_value']['administrator']) && $user_info['meta_value']['administrator'] == 1 && $user_info['user_id'] == $user_id ) // if the role is admin
+			return true;
+	return false;
+}
+
+function socd_get_user_blog( $user_id ) {
+	$blogs = socd_filter_sites( get_blogs_of_user( $user_id ) );
+	foreach ( $blogs as $blog ) {
+		if ( socd_is_user_blog_admin( $user_id, $blog->userblog_id ) )	
+			return $blog;
+	}
+}
+
+function socd_user_blog_link( $user_id ) {
+
+	$blog = socd_get_user_blog( $user_id );
+	
+	if ( is_null( $blog ) || empty( $blog->siteurl ) ) {
+		return false;
+	}
+	return $blog->siteurl;
+}
+
 function socd_course_code_to_course_name( $course_slug ) {
 
 	$courses = array(
