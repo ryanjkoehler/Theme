@@ -281,3 +281,13 @@ function dre($msg) {
 	pre($msg);
 	die();
 }
+
+/**
+ * [socd_breaking_wpengine_aggressive_caching description]
+ * @return [type] [description]
+ * @since  
+ */
+function socd_breaking_wpengine_aggressive_caching() {
+	setcookie( 'wordpress_socd_io', 1, time() + ( 60 * 60 * 24 * 365 ), '/', '.' . $_SERVER['HTTP_HOST'] );
+}
+add_action('init', 'socd_breaking_wpengine_aggressive_caching');
