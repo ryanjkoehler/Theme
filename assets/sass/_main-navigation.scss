@@ -498,8 +498,12 @@ li.main-navigation__menu-item--profile {
 	background: $colour_blue;		
 }
 
+.navigation--create-a-blog {
+	background: $colour_red !important;
+}
+
 /**
- * Nowhere to late in the day we decided to use the WP Admin bar once logged in!
+ * Now we're too late in the day we decided to use the WP Admin bar once logged in!
  *
  * Great idea, below are some pretty brutal styles targetted at that ID heavy markup
  */
@@ -515,6 +519,8 @@ li.main-navigation__menu-item--profile {
 	.ab-top-menu > li {
 		& > a {
 			@include fontstack_medium;
+			overflow: hidden;
+			text-overflow: ellipsis;
 		}
 	}
 
