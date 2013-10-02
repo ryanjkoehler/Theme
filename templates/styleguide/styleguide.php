@@ -93,8 +93,23 @@ get_header(); ?>
     <ul class="listing__navigation fixie"></ul>
   </div><!-- 
   --><div class="col one-quarter">
-    <h3 class="h3">Filters</h3>
-    <ul class="listing__filter fixie"></ul>
+    <div class="listing-filter">
+      <div class="listing-filter--section">
+        <h2 class="strong">Filters</h2>
+        <ul class="listing__filter fixie"></ul>
+      </div>
+      <div class="listing-filter--section">
+        <h2 class="strong">Filters</h2>
+        <ul class="listing__filter">
+          <li>Item</li>
+          <li class="s__active">Active Item</li>
+        </ul>
+      </div>
+      <footer class="listing-filter--display">
+        <a href="#" data-class="listing__students" class="dashicons dashicons-screenoptions"></a>
+        <a href="#" data-class="listing__linear" class="dashicons dashicons-menu"></a>          
+      </footer>
+    </div><!-- .listing-filter -->
   </div>
 
 

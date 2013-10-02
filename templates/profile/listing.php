@@ -18,10 +18,10 @@ global $user;
 		<h2 class="role" itemprop="jobTitle"><?php echo $role; ?></h2>
 		<?php endif; ?>
 		
-		<p><?php socd_course(); ?></p>
-		<?php if ( is_student() ) : ?>
-			<p><?php socd_user_blog_link( $user->ID ); ?></p>
-		<?php endif; ?>
-		<p class="year"><?php socd_enrolment_year(); ?></p>
+		<p><?php socd_course(); ?>
+		<?php if ( is_student() ) socd_user_blog_link( $user->ID ); ?>
+		</p>
+		
+		<!-- <p class="year"><?php socd_enrolment_year(); ?></p> -->
 	</div>
 </li><?php 

@@ -224,9 +224,9 @@ function socd_get_profile_thumbnail( $size = 'thumb', $user_id = false ) {
 	$src = get_user_meta( $user_id, 'user_headshot_' . $size, true );
 	
 	// No source found
-	if ($src) {
+	if ( $src ) {
 		return sprintf(
-			'<img class="thumb" itemprop="image" src="%s" />',
+			'<img class="avatar thumb" itemprop="image" src="%s" />',
 			$src
 		);
 	}
@@ -303,7 +303,7 @@ function socd_user_blog_link( $user_id ) {
 	}
 
 	printf(
-		'<a href="%1$s">View %2$s</a>', 
+		'<a href="%1$s" class="blogurl">View %2$s</a>', 
 		$blog->siteurl,
 		$blog->blogname
 	);
@@ -461,10 +461,10 @@ function socd_filter_course() {
 
 		if ( $course_name = socd_course_code_to_course_name( $filter ) )
 			$output[] = sprintf(
-				'<li><a href="#%1$s" class="%3$s">%2$s</a></li>',
+				'<li class="%3$s"><a href="#%1$s">%2$s</a></li>',
 				$filter,
 				preg_replace('/(BA|MA|Hons|\(|\))/', '', $course_name ),
-				$filter == socd_get_subdomain() ? 'active' : ''
+				$filter == socd_get_subdomain() ? 's__active' : ''
 			);
 	}
 

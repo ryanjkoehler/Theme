@@ -185,7 +185,7 @@ function socd_get_students() {
 
 
 	$wp_user_search = new WP_User_Query( array(
-		'number'  => 200,
+		'number'  => 999,
 		'offset'  => 0,
 		'search'  => '',
 		'blog_id' => 0,
@@ -200,17 +200,4 @@ function socd_get_students() {
 	) );
 
 	return $wp_user_search->get_results();
-
-
-	return get_users( array(
-		'blog_id'	 => $current_site->id,
-		'number'	 => 999,
-		'meta_query' => array(
-			array(
-				'key'	  => 'group',
-				'value'   => 'staff',
-				'compare' => 'NOT LIKE'
-			)
-		)
-	) );
 }

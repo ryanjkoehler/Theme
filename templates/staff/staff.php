@@ -18,7 +18,7 @@ get_header(); ?>
 						<h1 class="h2 h2--ruled">Filter By</h1>	
 						<ul>
 							<li class="listing-filter--section" data-section="course">
-								<h2 class="section-title">Course</h2>
+								<h2 class="strong">Course</h2>
 								<ul class="section-options listing__filter">
 									<?php socd_filter_course(); ?>
 								</ul>
