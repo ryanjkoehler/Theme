@@ -263,3 +263,21 @@ function socd_qp_ajax_oembed() {
 	}
 }
 add_action( 'wp_ajax_socd_oembed', 'socd_qp_ajax_oembed' );
+
+
+function pre( $msg ) {
+	echo '<pre>';
+	if ( is_array( $msg ) ) {
+		foreach ( $msg as $str ) {
+			var_dump( $str );
+		}
+	} else {
+		var_dump( $msg );
+	}
+	echo '</pre>';
+}
+
+function dre($msg) {
+	pre($msg);
+	die();
+}
