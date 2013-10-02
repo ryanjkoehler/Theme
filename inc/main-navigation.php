@@ -270,6 +270,10 @@ function socd_reorder_admin_bar() {
 			'class' => ''
 		),
 		array(
+			'id'	=> 'tiw-create-a-blog',
+			'class' => 'navigation--create-a-blog'
+		),
+		array(
 			'id' 	=> 'my-account',
 			'class' => ''
 		),
