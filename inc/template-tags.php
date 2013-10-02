@@ -260,16 +260,21 @@ function socd_filter_sites( $sites ) {
 	return $not_course_sites;
 }
 
+function socd_wpdb_root_prefix() {
+	global $wpdb;
+	return array_shift( explode('_', $wpdb->prefix ) ) . "_";
+}
+
 function socd_is_user_blog_admin( $user_id, $blog_id ) {
 	global $wpdb;
-	
+
 	$query = $wpdb->prepare( "SELECT user_id, meta_value FROM $wpdb->usermeta WHERE meta_key = %s",
-		$wpdb->prefix . $blog_id . '_capabilities'
+		socd_wpdb_root_prefix() . $blog_id . '_capabilities'
 	);
-	
+
+
 	$role = $wpdb->get_results( $query, ARRAY_A );
 	
-
 	// clean the role
 	$all_user = array_map( array( 'BPDevLimitBlogsPerUser', 'serialize_roles' ), $role ); // we are unserializing the role to make that as an array
 	
@@ -281,9 +286,11 @@ function socd_is_user_blog_admin( $user_id, $blog_id ) {
 
 function socd_get_user_blog( $user_id ) {
 	$blogs = socd_filter_sites( get_blogs_of_user( $user_id ) );
+
 	foreach ( $blogs as $blog ) {
-		if ( socd_is_user_blog_admin( $user_id, $blog->userblog_id ) )	
+		if ( socd_is_user_blog_admin( $user_id, $blog->userblog_id ) )	{
 			return $blog;
+		}
 	}
 }
 
@@ -294,7 +301,12 @@ function socd_user_blog_link( $user_id ) {
 	if ( is_null( $blog ) || empty( $blog->siteurl ) ) {
 		return false;
 	}
-	return $blog->siteurl;
+
+	printf(
+		'<a href="%1$s">View %2$s</a>', 
+		$blog->siteurl,
+		$blog->blogname
+	);
 }
 
 function socd_course_code_to_course_name( $course_slug ) {
@@ -629,6 +641,13 @@ function socd_post_thumbnail() {
 
 function socd_beta_link() {
 	echo "mailto:admin@socd.io?subject=Beta Issue/Question&body=Hello All,%0D%0A%0D%0ALoving the site so far, but%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D------------------------------------%0ADebugger Details%0A------------------------------------%0D%0AURL: http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'] . "%0D%0AUser Agent: " . $_SERVER['HTTP_USER_AGENT'];
+}
+
+
+function is_student() {
+	global $user;
+	$group = get_user_meta( $user->ID, 'group', true );
+	return "staff" !== $group;
 }
 
 function socd_is_staff( $user_id ) {

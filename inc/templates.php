@@ -180,8 +180,30 @@ add_filter('init','flushRules');
 
 
 function socd_get_students() {
+
+	global $current_site;
+
+
+	$wp_user_search = new WP_User_Query( array(
+		'number'  => 200,
+		'offset'  => 0,
+		'search'  => '',
+		'blog_id' => 0,
+		'fields'  => 'all_with_meta',
+		'meta_query' => array(
+			array(
+				'key'	  => 'group',
+				'value'   => 'staff',
+				'compare' => 'NOT LIKE'
+			)
+		)
+	) );
+
+	return $wp_user_search->get_results();
+
+
 	return get_users( array(
-		'blog_id'	 => 1,
+		'blog_id'	 => $current_site->id,
 		'number'	 => 999,
 		'meta_query' => array(
 			array(
@@ -191,10 +213,4 @@ function socd_get_students() {
 			)
 		)
 	) );
-}
-
-function is_student() {
-	global $user;
-	$group = get_user_meta( $user->ID, 'group', true );
-	return "staff" !== $group;
 }

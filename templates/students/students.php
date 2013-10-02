@@ -43,13 +43,21 @@ get_header(); ?>
 
 			$students = socd_get_students();
 
+			?><!-- 
+				<?php var_dump( count($students) ); ?>
+			 --><?
+
 			global $user;
 
-			foreach ( $students as $user ) :
+			if ( is_array( $students ) ) :
 
-				socd_template_part( 'profile', 'listing' );
+				foreach ( $students as $user ) :
 
-			endforeach; ?>
+					socd_template_part( 'profile', 'listing' );
+
+				endforeach;
+
+			endif; ?>
 		</ul>
 	</section>
 </div>
