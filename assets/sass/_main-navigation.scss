@@ -521,6 +521,7 @@ li.main-navigation__menu-item--profile {
 			@include fontstack_medium;
 			overflow: hidden;
 			text-overflow: ellipsis;
+			width: 100%;
 		}
 	}
 
