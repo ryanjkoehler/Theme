@@ -5,34 +5,41 @@
 
 .widget {
 	border-bottom: 1px solid darken( $colour_white, 20% );
-	border-bottom: 1px solid rgba(255,255,255,0.7);
+	border-bottom-color: rgba(255,255,255,0.7);
 	@include fontstack_light;
 	@include font-size( .9 );	
 	margin-bottom: .7em;
 	padding-bottom: .7em;	
-	.sidebar.col--side__right &{
+
+	.sidebar.col--side__right & {
 		border-bottom: 1px solid $colour_black;
-		border-bottom: 1px solid rgba( 0, 0, 0, 0.7 );
-		&:last-child{
+		border-bottom-color: rgba( 0, 0, 0, 0.7 );
+		
+		&:last-child {
 			border-bottom: none;
 		}
 	}
-	&:last-child{
+
+	&:last-child {
 		border-bottom: none;
+		margin-bottom: 0;
 	}
-	.widget--title{
+
+	.widget--title {
 		@include fontstack_medium;
-		margin-bottom: .5em;
 		@include font-size( 1 );
+		margin-bottom: .5em;
 	}
-	p{
+
+	p {
 		@include font-size( .9 );
 	}
-	li{
+
+	li {
 		margin: .2em 0;
 	}
 	
-	a:hover{
+	a:hover {
 		text-decoration: underline;
 	}
 
@@ -40,11 +47,11 @@
 	 * Widgets with listings(Categories,Pages, Navigation)
 	 * often add hierarchy to the lists stylable via following class
 	 */
-	.children {
+	.children  {
 		padding-left: 1em;
 	}
 
-	table{
+	table {
 		width: 100%;
 	}
 }
@@ -53,7 +60,7 @@
 /**
  * 
  */
-.textwidget{
+.textwidget {
 	@extend .wysiwyg;
 	@include font-size( .9 );
 }
