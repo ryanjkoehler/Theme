@@ -195,7 +195,8 @@ function socd_get_students() {
 				'value'   => 'staff',
 				'compare' => 'NOT LIKE'
 			)
-		)
+		),
+		'orderby' => 'display_name'
 	) );
 
 	return $wp_user_search->get_results();
