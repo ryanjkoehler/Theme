@@ -291,7 +291,6 @@ function socd_is_user_blog_admin( $user_id, $blog_id ) {
 
 function socd_get_user_blog( $user_id ) {
 	$blogs = socd_filter_sites( get_blogs_of_user( $user_id ) );
-
 	foreach ( $blogs as $blog ) {
 		if ( socd_is_user_blog_admin( $user_id, $blog->userblog_id ) )	{
 			return $blog;
@@ -312,6 +311,28 @@ function socd_user_blog_link( $user_id ) {
 		$blog->siteurl,
 		$blog->blogname
 	);
+}
+
+function socd_user_has_blog( $user_id ) {
+	
+	$blog = socd_get_user_blog( $user_id );
+	
+	if ( is_null( $blog ) || empty( $blog->siteurl ) ) {
+		return false;
+	}
+
+	return true;
+}
+
+function socd_user_blog_url( $user_id ) {
+
+	$blog = socd_get_user_blog( $user_id );
+	
+	if ( is_null( $blog ) || empty( $blog->siteurl ) ) {
+		return false;
+	}
+
+	echo $blog->siteurl;
 }
 
 function socd_course_code_to_course_name( $course_slug ) {
