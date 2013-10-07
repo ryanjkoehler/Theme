@@ -466,7 +466,7 @@ function socd_filter_years_of_study() {
 			$output[] = sprintf(
 				'<li><a href="#%1$s">%2$s</a></li>',
 				$filter,
-				preg_match('/alumni/', $filter) ? ucfirst( $filter ) : 'Year ' . $filter
+				preg_match('/alumni|topup/', $filter) ? ucfirst( $filter ) : 'Year ' . $filter
 			);
 	}
 
