@@ -329,7 +329,7 @@ function socd_course_code_to_course_name( $course_slug ) {
 		'mai'	 => "MA Illustration"
 	);
 
-	if ("" == $course_slug || !$course_slug) return;
+	if ( "" == $course_slug || !$course_slug) return;
 	
 	return isset( $courses[ $course_slug ] ) ? $courses[ $course_slug ] : false;
 }
