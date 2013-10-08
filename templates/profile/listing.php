@@ -26,7 +26,7 @@ global $user;
 	<div class="col palm--two-thirds profile--info">
 		<?php if ( is_student() ): ?>
 			<?php if ( socd_user_has_blog( $user->ID ) ): ?>
-				<h1 class="name" itemprop="name"><a href="<?php socd_user_blog_url( $user->ID ) ?>"><?php echo $user->display_name ?></a></h1>
+				<h1 class="name" itemprop="name"><a href="<?php socd_user_blog_url( $user->ID ) ?>"><?php echo $user->display_name ?> - <span>Blog</span></a></h1>
 			<?php else: ?>
 				<h1 class="name" itemprop="name"><?php echo $user->display_name ?></h1>
 			<?php endif ?>
