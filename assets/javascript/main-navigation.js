@@ -159,6 +159,9 @@ if ( !window.SOCD ){ window.SOCD = {}; }
 				$links = $typeahead_menu.find('a'),
 				$visit = $( $links.get( index ) );
 			Menu.typeahead_visit_url( $visit.attr('href') );
+		},
+		focus_search: function(){
+			Menu.$searchInput.focus();
 		}
 	};
 

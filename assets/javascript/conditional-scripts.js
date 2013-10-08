@@ -23,6 +23,23 @@ if ( !window.SOCD ){ window.SOCD = {}; }
 			} catch( e ) {
 				console.log( e, 'Error loading fitvids' );
 			}
+		},
+		keymaster: function( callback ){
+			try {
+				yepnope([
+					{
+						test: ( true ),
+						yep: [
+							SOCD.Config.assets_url + '/javascript/libs/keymaster.min.js'
+						],
+						complete: function(){
+							if( typeof callback === 'function' ) callback();
+						}
+					}
+				]);
+			} catch( e ){
+				console.log( e, 'Error loading keymaster. Gozer will be pissed.' );
+			}
 		}
 	}
 
