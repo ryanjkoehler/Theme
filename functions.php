@@ -19,7 +19,6 @@ add_image_size( 'gdnm-size-2', 560, 560, false );
 function socd_is_registration_disabled() {
 	global $current_site;
 	$active_signup = apply_filters( 'wpmu_active_signup', get_site_option( 'registration' ) );
-
 	return ( $current_site->id === 1 && $active_signup === "none" );
 }
 
