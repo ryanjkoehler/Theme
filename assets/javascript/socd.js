@@ -12,8 +12,10 @@
 
 
 	SOCD.Debugger = function() {
+		var screenSize = window.innerWidth + "x" + window.innerHeight;
+		
 		$('.beta').each(function() {
-			$(this).attr('href', $(this).attr('href') + '%0D Screen Size: ' + window.innerWidth + "x" + window.innerHeight );
+			$(this).attr('href', $(this).attr('href') + '%0D Screen Size: ' + screenSize );
 		});
 	}();
 

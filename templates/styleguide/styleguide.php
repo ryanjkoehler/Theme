@@ -223,7 +223,10 @@ get_header(); ?>
       Project<br>details</label>
     <textarea id="description" name="description" rows="8" required="required"></textarea>
   
+    <h3>Buttons</h3>
     <input type="submit"/>
+    <button>Button</button>
+    <a href="#" class="button">&lt;a&gt;.button</a>
 
     <h2 class="h2">Input States</h2>
     <label for="">Pseudo: Hover</label><input type="text" class="s__hover"/>
@@ -547,4 +550,4 @@ get_header(); ?>
   })();  
 
 </script>
-<?php get_footer();
+<?php get_footer();q

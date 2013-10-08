@@ -57,10 +57,6 @@
 		.name {
 			@extend .h4;
 			margin: $grid_padding * .5 0 0;
-
-			a {
-				color: $colour_black;
-			}
 		}
 
 		.role {

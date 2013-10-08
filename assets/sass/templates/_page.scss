@@ -13,10 +13,9 @@
 		@extend .col;
 		position: relative;
 	}
-	.page--aside {
-		@extend .col;
-		position: relative;
-		width: size_in_context(226, 738);
+	
+	.page_item .children {
+		padding: ( $grid_padding * .25 ) 0 $grid_padding*.25 $grid_padding*.5;
 	}
 }
 
