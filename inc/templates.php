@@ -182,7 +182,6 @@ function socd_get_students() {
 
 	global $current_site;
 
-
 	$wp_user_search = new WP_User_Query( array(
 		'number'  => 999,
 		'offset'  => 0,
@@ -196,6 +195,36 @@ function socd_get_students() {
 				'compare' => 'NOT LIKE'
 			)
 		),
+		'orderby' => 'display_name'
+	) );
+
+	return $wp_user_search->get_results();
+}
+
+function socd_get_staff( $additional_query = array() ) {
+
+	global $current_site;
+
+	$meta_query = array(
+		array(
+			'key'	  => 'group',
+			'value'   => 'staff',
+			'compare' => '='
+		)
+	);
+
+	foreach( $additional_query as $query ) {
+		$meta_query[] = $query;
+	}
+
+
+	$wp_user_search = new WP_User_Query( array(
+		'number'  => 999,
+		'offset'  => 0,
+		'search'  => '',
+		'blog_id' => 0,
+		'fields'  => 'all_with_meta',
+		'meta_query' => $meta_query,
 		'orderby' => 'display_name'
 	) );
 

@@ -34,27 +34,8 @@ get_header(); ?>
 
 				$courses_represented = array();
 
-				$meta_query = array(
-					array(
-						'key'   => 'group',
-						'value' => 'staff',
-						'compare' => '='
-				) );
+				$staff = socd_get_staff();
 
-				if ( is_main_site() && $course = socd_get_subdomain() ) {
-					$meta_query[] = array(
-						'key'     => 'course',
-						'value'	  => $course,
-						'compare' => '='
-					);
-				}
-
-				$staff = get_users( array(
-					'blog_id'	 => 1,
-					'meta_query' => $meta_query
-				) );
-
-				
 				if ( $staff ) : 
 
 					global $user;
