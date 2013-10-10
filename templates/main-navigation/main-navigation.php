@@ -11,7 +11,7 @@
 	 	<?php if( socd_menu_has_course_crumb() ): ?>
 	 --><li class="main-navigation__menu-item main-navigation__menu-item--breadcrumb main-navigation__menu-item--dropdown">
 	 		<div class="tab">
-	 			<h1 class="title"><a href="#"><?php echo get_network_name(); ?></a></h1>
+	 			<h1 class="title"><a href="<?php echo get_network_url(); ?>"><?php echo get_network_name(); ?></a></h1>
 	 		</div>
 	 		<?php socd_site_menu(); ?>
 	 	</li><!--
@@ -26,6 +26,7 @@
 	 	</li><!--
 	 	<?php endif; ?>
 	 	<?php if( socd_menu_page_title() ): ?>
+	 		<?php var_dump("Hello"); ?>
 	 --><li class="main-navigation__menu-item main-navigation__menu-item--breadcrumb">
 	 		<div class="tab">
 	 			<?php $name = ( strlen( socd_menu_page_title() ) > 10 ) ? substr( socd_menu_page_title(), 0, 7 ) . '&hellip;' : socd_menu_page_title(); ?>

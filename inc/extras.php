@@ -131,3 +131,10 @@ if ( !function_exists('get_network_name') ) {
 		return $current_site->site_name;
 	}
 }
+
+if ( !function_exists('get_network_url') ) {
+	function get_network_url() {
+		global $current_site;
+		return '//' . $current_site->domain . $current_site->path;
+	}
+}
