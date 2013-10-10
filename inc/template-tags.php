@@ -559,14 +559,7 @@ function socd_get_random_staff( $no_of_staff = 4 ) {
 
 	global $user;
 
-	$staff = get_users( array(
-		'number' 	 => 999,
-		'meta_query' => array(
-			array(
-				'key'  	  => 'group',
-				'value'   => 'staff',
-				'compare' => '='
-	) ) ) );
+	$staff = socd_get_staff();
 
 	$output = array();
 
