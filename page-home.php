@@ -20,6 +20,7 @@ get_header(); ?>
 						echo apply_filters( 'the_content', $page->post_content ); ?>
 					</div>
 				</div>
+				<?php /* 
 				<div class="col two-thirds palm--one-whole">
 					<a href="/gallery" class="homepage--gallery">
 						<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/Joanna_Louise_Bird__BA_(Hons)_Graphic_Design__UCA_Epsom_image.jpg" alt=""/>
@@ -28,7 +29,7 @@ get_header(); ?>
 						</div>
 					</a>
 				</div>
-
+				*/ ?>
 			</div>
 		</div><!-- 
 		--><div class="col two-thirds palm--bigger-than homepage--map-container">
