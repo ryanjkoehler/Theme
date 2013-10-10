@@ -217,7 +217,6 @@ function socd_get_staff( $additional_query = array() ) {
 		$meta_query[] = $query;
 	}
 
-
 	$wp_user_search = new WP_User_Query( array(
 		'number'  => 999,
 		'offset'  => 0,
