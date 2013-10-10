@@ -26,12 +26,12 @@
 						<p class="h2"><?php the_field('introduction_text'); ?>
 					</div>
 				</div><!-- 
-			 --><div class="col one-half palm--one-whole">
+			 --><?php /* <div class="col one-half palm--one-whole">
 				 	<div class="cell about--gallery">
 				 		<a href="/gallery" class="h2 heading--ruled"><?php _e('View Gallery', 'socd'); ?></a>
 				 		<img src="<?php echo get_stylesheet_directory_uri(); ?>/demo/surf.jpeg" alt="">
 				 	</div>
-				</div>
+				</div> */ ?>
 			 	<div class="col">
 				 	<div class="gw">
 					 	<div class="col one-third palm--one-whole">
