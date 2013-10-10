@@ -36,7 +36,7 @@ get_header(); ?>
 			<figure id="homepage--map"></figure>
 		</div>
 	</div><div class="gw gw--rtl">
-		<div class="col one-third push--desk--one-sixth lap--one-half palm--one-whole">
+		<div class="col one-third push--desk--one-half lap--one-half palm--one-whole">
 			<div class="cell colour--red">
 				<h1 class="h2 h2--ruled"><a href="<?php echo get_permalink( get_option( 'page_for_posts') ) ?>">School News</a></h1>
 				<?php 
@@ -74,14 +74,16 @@ get_header(); ?>
 				<?php endif; ?>
 			</div>
 		</div><!-- 
-		--><div class="col one-third lap--one-half palm--one-whole">
-			<div class="cell colour--blue">
-				<h1 class="h2 h2--ruled">School Events</h1>
-				<ul>
-					<li>Coming Soon&hellip;</li>
-				</ul>
-			</div>
-		</div><!-- 
+		--><?php /*
+				<div class="col one-third lap--one-half palm--one-whole">
+					<div class="cell colour--blue">
+						<h1 class="h2 h2--ruled">School Events</h1>
+						<ul>
+							<li>Coming Soon&hellip;</li>
+						</ul>
+					</div>
+				</div>
+			*/ ?><!-- 
 		--><div class="col one-sixth lap--one-half palm--one-whole homepage--staff">
 			<div class="cell colour--dark">
 				<h1 class="h2 h2--ruled"><a href="<?php socd_staff_page_url(); ?>">School Staff</a></h1>
