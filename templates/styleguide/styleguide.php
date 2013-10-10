@@ -550,4 +550,4 @@ get_header(); ?>
   })();  
 
 </script>
-<?php get_footer();q
+<?php get_footer();
