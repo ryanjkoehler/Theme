@@ -84,22 +84,46 @@ function socd_staff_display_name( $user_id ) {
 	return $author_display = socd_is_staff( $user->ID ) ? get_user_meta( $user->ID, 'nickname', true ) : $user->display_name;
 }
 
-function socd_posted_on() {
-
-	$user_id = get_the_author_meta( 'ID' );
-
-	printf( __( '<a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s" pubdate><span class="date">%5$s</span> <span class="time">%4$s</span></time></a>%7$s<span class="byline">Author <span class="author vcard"><a class="url fn n" href="%8$s" title="%9$s" rel="author">%10$s</a></span></span>', 'socd' ), esc_url( get_permalink() ),
+function socd_post_date() {
+	printf( __( '<a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s" pubdate><span class="date">%5$s</span> <span class="time">%4$s</span></time></a>' ),
+		esc_url( get_permalink() ),
 		esc_attr( get_the_time() ),
 		esc_attr( get_the_date( 'c' ) ),
 		esc_html( get_the_date( 'H:i' ) ),
 		esc_html( get_the_date( 'j M y') ),
-		esc_html( get_the_date( 'Y') ),
-		socd_get_post_format_icon(),
+		esc_html( get_the_date( 'Y') )
+	);
+}
+add_action( 'socd_post_meta', 'socd_post_date', 1 );
+
+function socd_post_icon() {
+	printf( __( '%1$s' ),
+		socd_get_post_format_icon()
+	);
+};
+add_action( 'socd_post_meta', 'socd_post_icon', 2 );
+	
+function socd_post_author() {
+	$user_id = get_the_author_meta( 'ID' );
+	printf( __( '<span class="byline">Author <span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a></span></span>' ),
 		esc_url( get_author_posts_url( $user_id ) ),
 		esc_attr( sprintf( __( 'View all posts by %s', 'socd' ), get_the_author() ) ),
 		socd_staff_display_name( $user_id )
 	);
 }
+add_action( 'socd_post_meta', 'socd_post_author', 3 );
+
+function socd_post_comments() {
+	if ( comments_open() && !	is_single() ) {
+		comments_popup_link( '<span class="leave-reply">' . __( 'Leave a comment', 'socd' ) . '</span>', __( '1 comment', 'socd' ), __( '% comments', 'socd' ) );
+	}
+}
+add_action( 'socd_post_meta', 'socd_post_comments', 4 );
+
+function socd_post_admin() {
+	edit_post_link( 'Edit', '<span class="admin">', '</span>' );
+}
+add_action( 'socd_post_meta', 'socd_post_admin', 11 );
 
 function socd_get_post_format_icon(){
 	if( get_post_format() ){
@@ -109,7 +133,6 @@ function socd_get_post_format_icon(){
 function socd_post_format_icon(){
 	echo socd_get_post_format(); 
 }
-
 
 function socd_menu_course_title() {
 	global $current_site;

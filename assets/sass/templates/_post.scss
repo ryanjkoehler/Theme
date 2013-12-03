@@ -39,11 +39,17 @@
 			
 		.byline br {display: none }
 	}
-
+	
+	.leave-reply {
+		@include fontstack_medium;
+		display: block;
+		margin-bottom: $grid_padding;
+	}
+	
 	.vcard {
 		@include fontstack_medium;
 		text-transform: capitalize;
-
+		
 		@include breakpoint( $breakpoint_palm ) {
 			display: block;
 			margin-bottom: $grid_padding;
