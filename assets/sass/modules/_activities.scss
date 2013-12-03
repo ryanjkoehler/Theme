@@ -169,11 +169,13 @@
 		}
 		
 		aside span.staff,
-		aside span.location {
+		aside span.location,
+		aside span.when,
+		aside span.cutoff {
 			display: block;
 			margin-bottom: $grid_padding;
 			
-			span {
+			span, time {
 				@include fontstack_medium;
 				display: block;
 			}
