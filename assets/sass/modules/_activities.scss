@@ -167,3 +167,14 @@
 			padding: .7em;
 			color: $colour_grey;			
 		}
+		
+		aside span.staff,
+		aside span.location {
+			display: block;
+			margin-bottom: $grid_padding;
+			
+			span {
+				@include fontstack_medium;
+				display: block;
+			}
+		}
