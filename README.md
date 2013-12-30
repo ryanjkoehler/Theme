@@ -1,6 +1,11 @@
 # School of Communication Design
 
-## Deployment
+Main WordPress theme.
 
-If you're looking to update only the theme this can be done by navigating to the theme directory then:
-`grunt deploy`
+## Requirements
+
+Developing this theme requires:
+* (Gruntjs)[http://gruntjs.com/]
+* (Sass)[http://sass-lang.com/]
+* (Compass)[compass-style.org]
+* (Breakpoint)[https://github.com/team-sass/breakpoint]
