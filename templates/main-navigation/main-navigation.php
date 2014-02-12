@@ -1,6 +1,6 @@
-
 	<?php // socd_template_part('notifications'); ?>
 	<?php // socd_template_part('quickpost'); ?>
+<nav>
 	<ul class="main-navigation-container__fixed-size main-navigation no-style">
 		<li class="main-navigation__menu-item main-navigation__menu-item--dropdown main-navigation__menu-item--breadcrumb main-navigation__menu-item--root">
 			<div class="tab">
